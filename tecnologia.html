@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Técnicos verificados en reparación de PC, laptops, celulares, instalación de cámaras de seguridad y redes en La Paz y El Alto.">
+    <title>Tecnología y Reparaciones | Verifica La Paz</title>
+    
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1><i class="fas fa-shield-alt"></i> VERIFICA LA PAZ</h1>
+                <p class="tagline">Primero verifica. Después resuelve.</p>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="salud.html" class="nav-link"><i class="fas fa-heartbeat"></i> Salud</a>
+                <a href="hogar.html" class="nav-link"><i class="fas fa-home"></i> Mi Hogar</a>
+                <a href="automotriz.html" class="nav-link"><i class="fas fa-car"></i> Auto</a>
+                <a href="tecnologia.html" class="nav-link active"><i class="fas fa-laptop-code"></i> Tecnología</a>
+                <a href="funerarias.html" class="nav-link"><i class="fas fa-dove"></i> Despedida</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="nav-link btn-proveedor" target="_blank">
+                    <i class="fas fa-store"></i> Soy Proveedor
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container content-grid">
+            
+            <!-- COLUMNA PRINCIPAL -->
+            <div class="content-main">
+                
+                <!-- HERO SECTION -->
+                <section class="hero">
+                    <div class="hero-content fade-in">
+                        <div class="hero-badge">
+                            <i class="fas fa-laptop-code"></i> Tecnología Verificada
+                        </div>
+                        <h2 class="hero-title">Reparación de Equipos, Cámaras de Seguridad y Redes</h2>
+                        <p class="hero-subtitle">Técnicos certificados, repuestos originales y garantía por escrito. Verificamos que no te cambien piezas, que usen materiales de calidad y que cumplan los plazos. Sin estafas, sin sorpresas.</p>
+                        
+                        <div class="hero-buttons" style="grid-template-columns: repeat(2, 1fr);">
+                            <a href="#pc-laptops" class="btn btn-primary btn-tecnologia"><i class="fas fa-laptop"></i> PC y Laptops</a>
+                            <a href="#celulares" class="btn btn-primary btn-tecnologia"><i class="fas fa-mobile-alt"></i> Celulares y Tablets</a>
+                            <a href="#camaras" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-video"></i> Cámaras de Seguridad</a>
+                            <a href="#redes" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-wifi"></i> Redes e Internet</a>
+                        </div>
+                        
+                        <div class="hero-features">
+                            <div class="hero-feature"><i class="fas fa-shield-alt"></i><span>Repuestos Originales</span></div>
+                            <div class="hero-feature"><i class="fas fa-file-invoice"></i><span>Garantía Escrita</span></div>
+                            <div class="hero-feature"><i class="fas fa-user-check"></i><span>Técnicos Verificados</span></div>
+                        </div>
+                        
+                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20reparar%20mi%20equipo%20tecnológico" class="btn-provider-link" target="_blank">
+                            <i class="fas fa-phone-alt"></i> Consultar por WhatsApp: 76536286
+                        </a>
+                    </div>
+                </section>
+
+                <!-- ESTADÍSTICAS -->
+                <section class="stats-section fade-in">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-user-cog"></i></div>
+                            <div class="stat-number" data-target="40" data-suffix="+">0</div>
+                            <div class="stat-label">Técnicos Verificados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-tools"></i></div>
+                            <div class="stat-number" data-target="3500" data-suffix="+">0</div>
+                            <div class="stat-label">Equipos Reparados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-video"></i></div>
+                            <div class="stat-number" data-target="500" data-suffix="+">0</div>
+                            <div class="stat-label">Cámaras Instaladas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-number" data-target="96" data-suffix="%">0</div>
+                            <div class="stat-label">Satisfacción</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PC Y LAPTOPS -->
+                <section id="pc-laptops" class="fade-in">
+                    <h2 class="section-title"><i class="fas fa-laptop"></i> PC Y LAPTOPS</h2>
+                    <p class="section-description">
+                        <strong>Formateo, Upgrade, Mantenimiento y Reparación de Placa</strong><br>
+                        Técnicos especializados en laptops HP, Lenovo, Dell, Asus, Acer y PCs de escritorio. Desde formateo hasta cambio de componentes internos. Verificamos que instalen software original y den garantía.
+                    </p>
+
+                    <div class="featured-section">
+                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <ul class="category-services">
+                            <li><i class="fas fa-check"></i> Instalación de Windows/Linux original o licenciado</li>
+                            <li><i class="fas fa-check"></i> Respaldo de datos antes de formatear</li>
+                            <li><i class="fas fa-check"></i> Uso de componentes de marca reconocida (Kingston, WD, Samsung)</li>
+                            <li><i class="fas fa-check"></i> Limpieza física interna profunda (polvo, pasta térmica)</li>
+                            <li><i class="fas fa-check"></i> Pruebas de estrés y temperatura antes de entregar</li>
+                            <li><i class="fas fa-check"></i> Soporte post-venta por 30 días</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <div class="categories-grid">
+                        <div class="category-card category-tecnologia">
+                            <h3>Formateo + Windows + Drivers</h3>
+                            <p class="category-subtitle">100-200 Bs</p>
+                            <p>Incluye programas básicos de oficina</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Cambio de Disco a SSD</h3>
+                            <p class="category-subtitle">300-600 Bs</p>
+                            <p>Incluye SSD 240GB/480GB + clonación de datos</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Ampliación de RAM</h3>
+                            <p class="category-subtitle">200-500 Bs</p>
+                            <p>Desde 4GB hasta 16GB DDR4/DDR5</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Limpieza + Pasta Térmica</h3>
+                            <p class="category-subtitle">80-150 Bs</p>
+                            <p>Previene sobrecalentamiento y apagados</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Cambio de Teclado / Pantalla</h3>
+                            <p class="category-subtitle">250-800 Bs</p>
+                            <p>Según modelo, original o genérico de calidad</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Reparación de Placa Madre</h3>
+                            <p class="category-subtitle">400-1200 Bs</p>
+                            <p>Micro-soldadura profesional de componentes</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Técnico Verificado:</h3>
+                    <div class="featured-section" style="border-left-color: var(--color-tecnologia);">
+                        <div class="featured-badge" style="background: var(--color-tecnologia); color: white;">TÉCNICO CERTIFICADO</div>
+                        <h3>COMPU FIX LA PAZ - ESPECIALISTAS EN LAPTOPS</h3>
+                        <div class="featured-details">
+                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Eloy Salmón, Local 234, Centro, La Paz</div>
+                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 9:00-20:00 | Dom: 10:00-14:00</div>
+                            <div class="detail-item"><i class="fas fa-phone"></i> 2-2345678 / 76533344</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Diagnóstico: Gratis (si se acepta la reparación)</div>
+                            <div class="detail-item"><i class="fas fa-star"></i> 8 años de experiencia | +2000 equipos reparados</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 90 días en hardware, 30 días en software</div>
+                        </div>
+                        <div class="category-actions">
+                            <a href="#" class="btn btn-outline btn-tecnologia"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20reparar%20mi%20laptop" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Cotizar reparación</a>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Técnicos de PC y Laptops Verificados:</h3>
+                    <div id="contenedor-pc-laptops" class="proveedores-grid">
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando técnicos verificados...</p>
+                    </div>
+                </section>
+
+                <!-- CELULARES Y TABLETS -->
+                <section id="celulares" class="fade-in" style="margin-top: 4rem;">
+                    <h2 class="section-title"><i class="fas fa-mobile-alt"></i> CELULARES Y TABLETS</h2>
+                    <p class="section-description">
+                        <strong>Pantallas, Baterías, Puertos de Carga y Desbloqueo</strong><br>
+                        Técnicos especializados en iPhone, Samsung, Xiaomi, Huawei y más. Verificamos que usen repuestos originales o genéricos de primera calidad, que te entreguen factura y que den garantía real por el trabajo.
+                    </p>
+
+                    <div class="featured-section">
+                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <ul class="category-services">
+                            <li><i class="fas fa-check"></i> Repuestos originales o genéricos certificados (no chinos falsos)</li>
+                            <li><i class="fas fa-check"></i> Diagnóstico gratuito antes de reparar</li>
+                            <li><i class="fas fa-check"></i> Cotización por escrito con desglose de piezas y mano de obra</li>
+                            <li><i class="fas fa-check"></i> Garantía mínima de 30 días en la reparación</li>
+                            <li><i class="fas fa-check"></i> Entrega en el plazo acordado (24-72 horas)</li>
+                            <li><i class="fas fa-check"></i> No cambian piezas originales por genéricas sin avisar</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <div class="categories-grid">
+                        <div class="category-card category-tecnologia">
+                            <h3>Cambio de Pantalla iPhone</h3>
+                            <p class="category-subtitle">250-800 Bs</p>
+                            <p>Según modelo (6 a 15 Pro Max), OLED o LCD</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Cambio de Pantalla Samsung/Xiaomi</h3>
+                            <p class="category-subtitle">200-1200 Bs</p>
+                            <p>Original o genérico de alta calidad</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Cambio de Batería</h3>
+                            <p class="category-subtitle">100-300 Bs</p>
+                            <p>Original o de alta capacidad certificada</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Reparación Puerto de Carga</h3>
+                            <p class="category-subtitle">80-200 Bs</p>
+                            <p>USB-C, Lightning, Micro USB</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Desbloqueo de Equipo</h3>
+                            <p class="category-subtitle">50-150 Bs</p>
+                            <p>Patrón, PIN, cuenta Google (con prueba de propiedad)</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Recuperación de Datos</h3>
+                            <p class="category-subtitle">150-500 Bs</p>
+                            <p>Fotos, contactos, WhatsApp de equipos dañados</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Técnico Verificado:</h3>
+                    <div class="featured-section" style="border-left-color: var(--color-tecnologia);">
+                        <div class="featured-badge" style="background: var(--color-tecnologia); color: white;">TÉCNICO CERTIFICADO</div>
+                        <h3>SMART REPAIR - ESPECIALISTAS EN CELULARES</h3>
+                        <div class="featured-details">
+                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. 16 de Julio, El Alto (Feria 16 de Julio)</div>
+                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 8:00-19:00</div>
+                            <div class="detail-item"><i class="fas fa-phone"></i> 71122334 / 2-8456789</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Revisión y diagnóstico: Gratis</div>
+                            <div class="detail-item"><i class="fas fa-star"></i> 6 años de experiencia | +5000 celulares reparados</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 60 días en pantallas, 30 días en baterías</div>
+                        </div>
+                        <div class="category-actions">
+                            <a href="#" class="btn btn-outline btn-tecnologia"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20reparar%20mi%20celular" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Cotizar reparación</a>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Técnicos de Celulares Verificados:</h3>
+                    <div id="contenedor-celulares" class="proveedores-grid">
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando técnicos verificados...</p>
+                    </div>
+                </section>
+
+                <!-- CÁMARAS DE SEGURIDAD -->
+                <section id="camaras" class="fade-in" style="margin-top: 4rem;">
+                    <h2 class="section-title"><i class="fas fa-video"></i> CÁMARAS DE SEGURIDAD</h2>
+                    <p class="section-description">
+                        <strong>Instalación, Configuración y Mantenimiento de CCTV</strong><br>
+                        Instaladores verificados para hogares, oficinas y comercios. Usamos equipos de marcas reconocidas (Hikvision, Dahua, TP-Link) con garantía y configuración de monitoreo remoto en tu celular.
+                    </p>
+
+                    <div class="featured-section">
+                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <ul class="category-services">
+                            <li><i class="fas fa-check"></i> Uso de cámaras de marcas reconocidas (no genéricas sin soporte)</li>
+                            <li><i class="fas fa-check"></i> Cableado ordenado, protegido y etiquetado</li>
+                            <li><i class="fas fa-check"></i> Configuración correcta de DVR/NVR y disco duro</li>
+                            <li><i class="fas fa-check"></i> App de monitoreo remoto funcionando en tu celular</li>
+                            <li><i class="fas fa-check"></i> Capacitación básica al usuario sobre cómo ver las grabaciones</li>
+                            <li><i class="fas fa-check"></i> Garantía de 1 año en equipos y 6 meses en instalación</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <div class="categories-grid">
+                        <div class="category-card category-tecnologia">
+                            <h3>Instalación Cámara IP Individual</h3>
+                            <p class="category-subtitle">150-300 Bs</p>
+                            <p>Mano de obra (equipo no incluido)</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Kit 4 Cámaras + DVR 1TB</h3>
+                            <p class="category-subtitle">1200-2000 Bs</p>
+                            <p>Incluye equipos, cableado e instalación</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Kit 8 Cámaras + DVR 2TB</h3>
+                            <p class="category-subtitle">2000-3500 Bs</p>
+                            <p>Ideal para comercios y oficinas medianas</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Cableado Estructurado (por metro)</h3>
+                            <p class="category-subtitle">15-30 Bs</p>
+                            <p>Cable UTP, canaleta y conectores</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Configuración de Acceso Remoto</h3>
+                            <p class="category-subtitle">100-200 Bs</p>
+                            <p>Si ya tienes los equipos instalados</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Mantenimiento Preventivo</h3>
+                            <p class="category-subtitle">150-300 Bs</p>
+                            <p>Limpieza de lentes, revisión de discos y conexiones</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Instalador Verificado:</h3>
+                    <div class="featured-section" style="border-left-color: var(--color-tecnologia);">
+                        <div class="featured-badge" style="background: var(--color-tecnologia); color: white;">INSTALADOR CERTIFICADO</div>
+                        <h3>SEGURIDAD TOTAL LA PAZ - CCTV Y ALARMAS</h3>
+                        <div class="featured-details">
+                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Sopocachi, La Paz (Cobertura a toda la ciudad)</div>
+                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 8:30-18:30</div>
+                            <div class="detail-item"><i class="fas fa-phone"></i> 2-2415678 / 70112233</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Visita y cotización: Gratis</div>
+                            <div class="detail-item"><i class="fas fa-star"></i> 10 años de experiencia | Partner de Hikvision</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 1 año en equipos, 6 meses en instalación</div>
+                        </div>
+                        <div class="category-actions">
+                            <a href="#" class="btn btn-outline btn-tecnologia"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20cotizar%20cámaras%20de%20seguridad" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar cotización</a>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Instaladores de Cámaras Verificados:</h3>
+                    <div id="contenedor-camaras" class="proveedores-grid">
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando instaladores verificados...</p>
+                    </div>
+                </section>
+
+                <!-- REDES E INTERNET -->
+                <section id="redes" class="fade-in" style="margin-top: 4rem;">
+                    <h2 class="section-title"><i class="fas fa-wifi"></i> REDES E INTERNET</h2>
+                    <p class="section-description">
+                        <strong>WiFi Mesh, Cableado Estructurado y Configuración de Routers</strong><br>
+                        Especialistas en eliminar zonas muertas de WiFi, cablear oficinas y configurar redes estables. Usamos equipos de calidad (TP-Link, Ubiquiti, MikroTik) para garantizar velocidad y estabilidad.
+                    </p>
+
+                    <div class="featured-section">
+                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <ul class="category-services">
+                            <li><i class="fas fa-check"></i> Equipos de red de marcas reconocidas y certificadas</li>
+                            <li><i class="fas fa-check"></i> Cableado de red (UTP) con conectores RJ45 crimpeados profesionalmente</li>
+                            <li><i class="fas fa-check"></i> Pruebas de velocidad (Speedtest) en cada punto de red instalado</li>
+                            <li><i class="fas fa-check"></i> Orden y etiquetado en racks o cajas de distribución</li>
+                            <li><i class="fas fa-check"></i> Configuración de seguridad (contraseñas fuertes, redes de invitados)</li>
+                            <li><i class="fas fa-check"></i> Garantía de funcionamiento por 6 meses</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <div class="categories-grid">
+                        <div class="category-card category-tecnologia">
+                            <h3>Configuración de Router / WiFi Mesh</h3>
+                            <p class="category-subtitle">100-250 Bs</p>
+                            <p>Optimización de canales y ubicación de nodos</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Instalación de Punto de Red (Cableado)</h3>
+                            <p class="category-subtitle">80-150 Bs</p>
+                            <p>Por punto (incluye cable, roseta, conector y mano de obra)</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Instalación de Repetidor / Extensor</h3>
+                            <p class="category-subtitle">80-150 Bs</p>
+                            <p>Configuración y prueba de señal</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Red para Oficina Pequeña (hasta 5 PCs)</h3>
+                            <p class="category-subtitle">500-1500 Bs</p>
+                            <p>Switch, cableado, rack básico y configuración</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Diagnóstico de Falla de Internet</h3>
+                            <p class="category-subtitle">80-150 Bs</p>
+                            <p>Revisión de modem, cables y configuración</p>
+                        </div>
+                        <div class="category-card category-tecnologia">
+                            <h3>Mantenimiento de Red Existente</h3>
+                            <p class="category-subtitle">150-300 Bs</p>
+                            <p>Reordenamiento, etiquetado y limpieza de rack</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Técnico en Redes Verificado:</h3>
+                    <div class="featured-section" style="border-left-color: var(--color-tecnologia);">
+                        <div class="featured-badge" style="background: var(--color-tecnologia); color: white;">TÉCNICO EN REDES CERTIFICADO</div>
+                        <h3>NET SOLUTIONS BOLIVIA - REDES Y WIFI</h3>
+                        <div class="featured-details">
+                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Calacoto, La Paz (Cobertura Zona Sur y Centro)</div>
+                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Vie: 8:00-18:00 | Sáb: 9:00-13:00</div>
+                            <div class="detail-item"><i class="fas fa-phone"></i> 2-2778899 / 76544455</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Diagnóstico de red: 80 Bs</div>
+                            <div class="detail-item"><i class="fas fa-star"></i> 7 años de experiencia | Certificación MikroTik MTCNA</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 6 meses en instalación y configuración</div>
+                        </div>
+                        <div class="category-actions">
+                            <a href="#" class="btn btn-outline btn-tecnologia"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20mejorar%20mi%20red%20o%20wifi" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar visita técnica</a>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Técnicos en Redes Verificados:</h3>
+                    <div id="contenedor-redes" class="proveedores-grid">
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando técnicos en redes verificados...</p>
+                    </div>
+                </section>
+
+                <!-- POR QUÉ CONFIAR -->
+                <section class="why-us-section fade-in" style="margin-top: 4rem;">
+                    <h2 class="section-title"><i class="fas fa-shield-alt"></i> ¿POR QUÉ CONFIAR EN NUESTROS TÉCNICOS?</h2>
+                    <div class="why-us-grid">
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-microchip"></i></div>
+                            <h3>Repuestos Originales</h3>
+                            <p>Verificamos que cada técnico use repuestos originales o genéricos certificados. Nada de piezas chinas falsas vendidas como originales.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <h3>Cotización por Escrito</h3>
+                            <p>Antes de reparar, recibes un PDF o mensaje con el precio exacto de piezas y mano de obra. Sin sorpresas al recoger tu equipo.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <h3>Regla de las 3 Quejas</h3>
+                            <p>Si un técnico recibe 3 quejas verificadas por cambiar piezas o no dar garantía, lo retiramos de nuestra red inmediatamente.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h3>Garantía Real</h3>
+                            <p>Todos nuestros técnicos dan garantía por escrito (mínimo 30 días). Si falla la reparación, te la arreglan gratis.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA FINAL -->
+                <section class="featured-section fade-in" style="margin-top: 4rem; background: var(--gradiente-hero); color: white; border-left: none;">
+                    <div class="featured-badge" style="background: rgba(255,255,255,0.2); color: white;">
+                        <i class="fas fa-phone-alt"></i> ¿TU EQUIPO O RED NECESITA ATENCIÓN?
+                    </div>
+                    <h3 style="color: white;">Cuéntanos qué tienes y te conectamos con el técnico verificado ideal</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Diagnóstico gratis y sin compromiso. Respuesta en menos de 1 hora en horario de oficina.</p>
+                    <div class="hero-features" style="margin: 2rem 0; justify-content: center;">
+                        <div class="hero-feature"><i class="fas fa-search"></i> Diagnóstico gratuito</div>
+                        <div class="hero-feature"><i class="fas fa-shield-alt"></i> Garantía por escrito</div>
+                        <div class="hero-feature"><i class="fas fa-gift"></i> 100% gratuito para ciudadanos</div>
+                    </div>
+                    <div class="category-actions">
+                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20reparar%20mi%20equipo%20tecnológico" class="btn btn-whatsapp btn-block" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp: 76536286
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-fire"></i> LO MÁS BUSCADO</h3>
+                    <ul class="popular-list">
+                        <li><a href="#pc-laptops"><i class="fas fa-chevron-right"></i> Formateo y cambio a SSD</a></li>
+                        <li><a href="#celulares"><i class="fas fa-chevron-right"></i> Cambio de pantalla iPhone/Samsung</a></li>
+                        <li><a href="#camaras"><i class="fas fa-chevron-right"></i> Instalación de cámaras en casa</a></li>
+                        <li><a href="#redes"><i class="fas fa-chevron-right"></i> Mejorar señal de WiFi (Mesh)</a></li>
+                        <li><a href="#celulares"><i class="fas fa-chevron-right"></i> Recuperación de datos de celular</a></li>
+                        <li><a href="#redes"><i class="fas fa-chevron-right"></i> Cableado de red para oficinas</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-envelope"></i> CONTÁCTANOS</h3>
+                    <p>¿No encuentras lo que buscas? Escríbenos directamente.</p>
+                    <a href="https://wa.me/59176536286" class="btn btn-whatsapp btn-block" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp: 76536286
+                    </a>
+                    <a href="https://t.me/verificalapaz_bot" class="btn btn-telegram btn-block" target="_blank">
+                        <i class="fab fa-telegram"></i> Bot de Telegram
+                    </a>
+                    <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline btn-block">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-store"></i> ¿ERES TÉCNICO?</h3>
+                    <p>Únete a nuestro directorio verificado y aumenta tu visibilidad.</p>
+                    <ul class="provider-benefits">
+                        <li><i class="fas fa-check"></i> Sello de verificado</li>
+                        <li><i class="fas fa-check"></i> Sin comisión por trabajo</li>
+                        <li><i class="fas fa-check"></i> Mayor visibilidad online</li>
+                    </ul>
+                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20técnico%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank">
+                        <i class="fas fa-store"></i> Unirme ahora
+                    </a>
+                </div>
+
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-share-alt"></i> SÍGUENOS</h3>
+                    <div class="social-grid">
+                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i><span>Facebook</span>
+                        </a>
+                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank">
+                            <i class="fab fa-tiktok"></i><span>TikTok</span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-shield-alt"></i> VERIFICA LA PAZ</h3>
+                    <p class="footer-tagline">Primero verifica. Después resuelve.</p>
+                    <p>Tu aliado de confianza para resolver lo que importa en La Paz y El Alto. Verificamos personalmente cada servicio para que tú decidas con seguridad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="salud.html"><i class="fas fa-heartbeat"></i> Salud y Bienestar</a></li>
+                        <li><a href="hogar.html"><i class="fas fa-home"></i> Mi Hogar Seguro</a></li>
+                        <li><a href="automotriz.html"><i class="fas fa-car"></i> Auto y Movilidad</a></li>
+                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code"></i> Tecnología</a></li>
+                        <li><a href="funerarias.html"><i class="fas fa-dove"></i> Despedida y Homenaje</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Cómo Funciona</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> Ciudadanos: 76536286</li>
+                        <li><i class="fas fa-phone"></i> Proveedores: 78835306</li>
+                        <li><i class="fas fa-envelope"></i> contactoverificalapaz@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> La Paz, Bolivia</li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/59176536286" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/verificalapaz_bot" target="_blank"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p><strong>NOTA LEGAL:</strong> Verifica La Paz se limita a verificar la existencia, horarios y datos de contacto de los proveedores listados. No nos hacemos responsables por la calidad del servicio prestado por terceros. Los precios son referenciales y pueden variar según el modelo del equipo y el tipo de repuesto.</p>
+                </div>
+                <p class="copyright">© 2026 Verifica La Paz. Todos los derechos reservados. | Hecho con <i class="fas fa-heart"></i> en Bolivia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/59176536286?text=Hola,%20necesito%20ayuda%20con%20mi%20equipo%20tecnológico" class="whatsapp-float" target="_blank" title="Chatear por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+    
+    <!-- ============================================
+    SCRIPT OPTIMIZADO PARA CARGA DINÁMICA DE PROVEEDORES
+    (Incluye soporte para Video y Audio del Panel Admin)
+    ============================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mapeo de contenedores y sus palabras clave para filtrar
+            const secciones = [
+                { id: 'contenedor-pc-laptops', keywords: ['pc', 'laptop', 'computadora'] },
+                { id: 'contenedor-celulares', keywords: ['celular', 'teléfono', 'telefono', 'smartphone', 'tablet'] },
+                { id: 'contenedor-camaras', keywords: ['cámara', 'camara', 'cctv', 'seguridad'] },
+                { id: 'contenedor-redes', keywords: ['red', 'wifi', 'internet', 'router'] }
+            ];
+
+            secciones.forEach(sec => cargarProveedoresTec(sec.id, sec.keywords));
+        });
+
+        async function cargarProveedoresTec(contenedorId, palabrasClave) {
+            const container = document.getElementById(contenedorId);
+            if (!container) return;
+            
+            try {
+                // Obtenemos todos los proveedores de la categoría Tecnología verificados desde la API
+                const response = await fetch('/api/proveedores?categoria=Tecnologia&verificado=1');
+                if (!response.ok) throw new Error('Error en la red');
+                const proveedores = await response.json();
+                
+                // Filtrado inteligente: busca cualquiera de las palabras clave en subcategoría, nombre O descripción
+                const filtrados = proveedores.filter(p => {
+                    const textoBusqueda = `${p.subcategoria} ${p.nombre} ${p.descripcion}`.toLowerCase();
+                    return palabrasClave.some(keyword => textoBusqueda.includes(keyword.toLowerCase()));
+                });
+                
+                if (filtrados.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-data fade-in visible" style="text-align:center; padding: 2rem; color: #666; grid-column: 1/-1;">
+                            <i class="fas fa-info-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block; color: #cbd5e1;"></i>
+                            <p>Próximamente agregaremos más proveedores de esta categoría.</p>
+                        </div>`;
+                    return;
+                }
+                
+                // Generamos las tarjetas HTML
+                container.innerHTML = filtrados.map(p => generarTarjetaTec(p)).join('');
+                
+                // Re-iniciar animaciones de fade-in si el observer existe en main.js
+                if (window.fadeObserver) {
+                    container.querySelectorAll('.fade-in').forEach(el => window.fadeObserver.observe(el));
+                }
+            } catch (error) {
+                console.error(`Error cargando proveedores:`, error);
+                container.innerHTML = `
+                    <div class="no-data fade-in visible" style="text-align:center; padding: 2rem; color: #ef4444; grid-column: 1/-1;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Error al cargar los proveedores. <button onclick="location.reload()" class="btn btn-outline btn-sm" style="margin-top:0.5rem;">Reintentar</button></p>
+                    </div>`;
+            }
+        }
+
+        function generarTarjetaTec(p) {
+            const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
+            const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz y necesito un servicio tecnológico')}` : '#';
+            
+            return `
+                <article class="category-card category-tecnologia fade-in" style="position: relative; border-left: 4px solid var(--color-tecnologia, #8b5cf6);">
+                    ${p.destacado == 1 ? `<div class="featured-badge" style="position:absolute; top:10px; right:10px; z-index:2; background: var(--color-tecnologia, #8b5cf6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fas fa-crown"></i> PREMIUM</div>` : ''}
+                    
+                    <h3 style="margin-top: 0;">${p.nombre || 'Técnico Verificado'}</h3>
+                    <p class="category-subtitle" style="color: var(--color-tecnologia, #8b5cf6); font-weight: 600; margin-bottom: 1rem;">${p.subcategoria || 'Servicio Tecnológico'}</p>
+                    
+                    ${p.descripcion ? `<p style="color: #475569; font-size: 0.95rem; margin-bottom: 1rem;">${p.descripcion}</p>` : ''}
+                    
+                    <ul class="category-services" style="list-style: none; padding: 0; margin: 0 0 1rem 0; font-size: 0.9rem; color: #64748b;">
+                        ${p.direccion ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt" style="width: 20px; color: #ef4444;"></i> ${p.direccion}</li>` : ''}
+                        ${p.horario ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="width: 20px; color: #3b82f6;"></i> ${p.horario}</li>` : ''}
+                        ${p.precios ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-dollar-sign" style="width: 20px; color: #10b981;"></i> ${p.precios}</li>` : ''}
+                    </ul>
+
+                    <!-- REPRODUCTOR DE VIDEO (Si existe en la BD) -->
+                    ${p.video_path ? `
+                        <div style="margin: 1rem 0; border-radius: 8px; overflow: hidden; background: #000;">
+                            <video controls preload="metadata" style="width: 100%; max-height: 200px; display: block;">
+                                <source src="/${p.video_path}" type="video/mp4">
+                                Tu navegador no soporta videos.
+                            </video>
+                        </div>
+                    ` : ''}
+                    
+                    <!-- REPRODUCTOR DE AUDIO (Si existe en la BD) -->
+                    ${p.audio_path ? `
+                        <div style="margin: 1rem 0; background: #f1f5f9; padding: 0.5rem; border-radius: 8px;">
+                            <audio controls preload="metadata" style="width: 100%;">
+                                <source src="/${p.audio_path}" type="audio/mpeg">
+                                Tu navegador no soporta audio.
+                            </audio>
+                        </div>
+                    ` : ''}
+
+                    <div class="category-actions" style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                        ${whatsappNum ? `<a href="${whatsappLink}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="flex: 1; text-align: center;"><i class="fab fa-whatsapp"></i> Contactar</a>` : ''}
+                        ${p.telefono && !whatsappNum ? `<a href="tel:${p.telefono}" class="btn btn-outline" style="flex: 1; text-align: center; border-color: var(--color-tecnologia, #8b5cf6); color: var(--color-tecnologia, #8b5cf6);"><i class="fas fa-phone"></i> Llamar</a>` : ''}
+                    </div>
+                </article>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Verifica La Paz - Directorio verificado de servicios en La Paz y El Alto. Salud, Hogar, Automotriz, Tecnología y Funerarias.">
+    <meta property="og:title" content="Verifica La Paz | Primero verifica. Después resuelve.">
+    <meta property="og:description" content="Directorio 100% verificado de servicios en La Paz y El Alto.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://verificalapaz.com">
+    <meta property="og:image" content="img/og-image.jpg">
+    <meta property="og:locale" content="es_BO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Verifica La Paz | Directorio Verificado">
+    <meta name="twitter:description" content="Servicios verificados en La Paz y El Alto.">
+    <meta name="author" content="Verifica La Paz">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="canonical" href="https://verificalapaz.com">
+    <title>Verifica La Paz | Primero verifica. Después resuelve.</title>
+    
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Verifica La Paz",
+        "url": "https://verificalapaz.com",
+        "description": "Directorio verificado de servicios en La Paz y El Alto",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://verificalapaz.com/buscar?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</head>
+<body>
+
+    <header class="header" id="header" role="banner">
+        <div class="container header-content">
+            <div class="logo">
+                <h1><i class="fas fa-shield-alt" aria-hidden="true"></i> VERIFICA LA PAZ</h1>
+                <p class="tagline">Primero verifica. Después resuelve.</p>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+                <a href="index.html" class="nav-link active" aria-current="page">Inicio</a>
+                <a href="salud.html" class="nav-link"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud</a>
+                <a href="hogar.html" class="nav-link"><i class="fas fa-home" aria-hidden="true"></i> Mi Hogar</a>
+                <a href="automotriz.html" class="nav-link"><i class="fas fa-car" aria-hidden="true"></i> Auto</a>
+                <a href="tecnologia.html" class="nav-link"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología</a>
+                <a href="funerarias.html" class="nav-link"><i class="fas fa-dove" aria-hidden="true"></i> Despedida</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="nav-link btn-proveedor" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-store" aria-hidden="true"></i> Soy Proveedor
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" role="main">
+        <div class="container content-grid">
+            
+            <div class="content-main">
+                
+                <section class="hero" aria-labelledby="hero-title">
+                    <div class="hero-content fade-in">
+                        <div class="hero-badge">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i> Directorio 100% Verificado
+                        </div>
+                        <h2 class="hero-title" id="hero-title">Encuentra servicios verificados en La Paz y El Alto</h2>
+                        <p class="hero-subtitle">Deja de perder tiempo con datos obsoletos o estafas. Nosotros llamamos, visitamos y probamos personalmente cada proveedor para que tú tomes decisiones con total confianza.</p>
+                        
+                        <div class="hero-search">
+                            <div class="search-container">
+                                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                                <input 
+                                    type="search" 
+                                    id="busquedaGlobal" 
+                                    class="search-input" 
+                                    placeholder="Buscar servicio, proveedor o categoría..." 
+                                    aria-label="Buscar en el directorio"
+                                    autocomplete="off"
+                                >
+                                <div id="searchResults" class="search-results" role="listbox" aria-label="Resultados de búsqueda"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-buttons">
+                            <a href="salud.html" class="btn btn-primary btn-salud">
+                                <i class="fas fa-heartbeat" aria-hidden="true"></i> Salud y Bienestar
+                            </a>
+                            <a href="hogar.html" class="btn btn-primary btn-hogar">
+                                <i class="fas fa-home" aria-hidden="true"></i> Mi Hogar Seguro
+                            </a>
+                            <a href="automotriz.html" class="btn btn-primary btn-auto">
+                                <i class="fas fa-car" aria-hidden="true"></i> Auto y Movilidad
+                            </a>
+                            <a href="tecnologia.html" class="btn btn-primary btn-tecnologia">
+                                <i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología
+                            </a>
+                            <a href="funerarias.html" class="btn btn-primary btn-funeraria">
+                                <i class="fas fa-dove" aria-hidden="true"></i> Despedida y Homenaje
+                            </a>
+                        </div>
+                        
+                        <div class="hero-features">
+                            <div class="hero-feature">
+                                <i class="fas fa-user-check" aria-hidden="true"></i>
+                                <span>Verificación Humana</span>
+                            </div>
+                            <div class="hero-feature">
+                                <i class="fas fa-tags" aria-hidden="true"></i>
+                                <span>Precios Reales</span>
+                            </div>
+                            <div class="hero-feature">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <span>Confianza Garantizada</span>
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn-provider-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-store" aria-hidden="true"></i> ¿Eres proveedor? Únete al directorio verificado
+                        </a>
+                    </div>
+                </section>
+
+                <section class="stats-section fade-in" aria-labelledby="stats-title">
+                    <h2 class="section-title" id="stats-title">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i> NUESTRO IMPACTO
+                    </h2>
+                    <p class="section-description">Números que respaldan nuestra misión de transparencia</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-store" aria-hidden="true"></i></div>
+                            <div class="stat-number" data-target="150" data-suffix="+">0</div>
+                            <div class="stat-label">Proveedores Verificados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                            <div class="stat-number" data-target="2500" data-suffix="+">0</div>
+                            <div class="stat-label">Ciudadanos Atendidos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
+                            <div class="stat-number" data-target="98" data-suffix="%">0</div>
+                            <div class="stat-label">Satisfacción</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-ban" aria-hidden="true"></i></div>
+                            <div class="stat-number" data-target="23" data-suffix="">0</div>
+                            <div class="stat-label">Proveedores Retirados</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="featured-section fade-in" aria-labelledby="destacados-title">
+                    <h2 class="section-title" id="destacados-title">
+                        <i class="fas fa-fire" aria-hidden="true"></i> LO MÁS BUSCADO
+                    </h2>
+                    <p class="section-description">Proveedores Ultra Premium destacados por categoría</p>
+                    
+                    <div id="destacados-container" class="destacados-grid">
+                        <div class="skeleton-card">
+                            <div class="skeleton-badge"></div>
+                            <div class="skeleton-title"></div>
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-text short"></div>
+                            <div class="skeleton-button"></div>
+                        </div>
+                        <div class="skeleton-card">
+                            <div class="skeleton-badge"></div>
+                            <div class="skeleton-title"></div>
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-text short"></div>
+                            <div class="skeleton-button"></div>
+                        </div>
+                        <div class="skeleton-card">
+                            <div class="skeleton-badge"></div>
+                            <div class="skeleton-title"></div>
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-text short"></div>
+                            <div class="skeleton-button"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="categories-section" aria-labelledby="categorias-title">
+                    <h2 class="section-title fade-in" id="categorias-title">
+                        <i class="fas fa-th-large" aria-hidden="true"></i> NUESTRAS CATEGORÍAS
+                    </h2>
+                    <p class="section-description fade-in">Cinco áreas esenciales donde verificamos personalmente cada proveedor</p>
+                    
+                    <div class="categories-grid">
+                        <article class="category-card category-salud fade-in">
+                            <div class="category-icon"><i class="fas fa-heartbeat" aria-hidden="true"></i></div>
+                            <h3>Salud y Bienestar</h3>
+                            <p class="category-subtitle">Humana y Animal</p>
+                            <p>Clínicas, postas, veterinarias 24h con horarios reales y precios transparentes.</p>
+                            <ul class="category-services">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Chequeo Médico</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Veterinaria 24h</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Laboratorios</li>
+                            </ul>
+                            <div class="category-actions">
+                                <a href="salud.html" class="btn btn-outline btn-salud">Ver más <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/59176536286?text=Hola,%20necesito%20información%20sobre%20salud" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Salud"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="category-card category-hogar fade-in">
+                            <div class="category-icon"><i class="fas fa-home" aria-hidden="true"></i></div>
+                            <h3>Mi Hogar Seguro</h3>
+                            <p class="category-subtitle">Reparaciones Domiciliarias</p>
+                            <p>Técnicos verificados para plomería, electricidad, albañilería y más.</p>
+                            <ul class="category-services">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Plomería</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Electricidad</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Albañilería</li>
+                            </ul>
+                            <div class="category-actions">
+                                <a href="hogar.html" class="btn btn-outline btn-hogar">Ver más <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20para%20mi%20hogar" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Hogar"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="category-card category-auto fade-in">
+                            <div class="category-icon"><i class="fas fa-car" aria-hidden="true"></i></div>
+                            <h3>Auto y Movilidad</h3>
+                            <p class="category-subtitle">Mecánica y Grúas</p>
+                            <p>Talleres mecánicos y grúas 24h con precios de mano de obra transparentes.</p>
+                            <ul class="category-services">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Mecánica General</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Grúas 24h</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Chapista</li>
+                            </ul>
+                            <div class="category-actions">
+                                <a href="automotriz.html" class="btn btn-outline btn-auto">Ver más <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/59176536286?text=Hola,%20necesito%20mecánico%20o%20grúa" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Auto"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="category-card category-tecnologia fade-in">
+                            <div class="category-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                            <h3>Tecnología</h3>
+                            <p class="category-subtitle">Reparaciones y Soporte</p>
+                            <p>Técnicos verificados en celulares, laptops y soporte técnico. Repuestos originales y garantía real.</p>
+                            <ul class="category-services">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Reparación Celulares</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Reparación Laptops</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Soporte a Domicilio</li>
+                            </ul>
+                            <div class="category-actions">
+                                <a href="tecnologia.html" class="btn btn-outline btn-tecnologia">Ver más <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/59176536286?text=Hola,%20necesito%20reparar%20mi%20equipo%20tecnológico" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Tecnología"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="category-card category-funeraria fade-in">
+                            <div class="category-icon"><i class="fas fa-dove" aria-hidden="true"></i></div>
+                            <h3>Despedida y Homenaje</h3>
+                            <p class="category-subtitle">Servicios Funerarios</p>
+                            <p>Servicios funerarios verificados con precios transparentes en momentos difíciles.</p>
+                            <ul class="category-services">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Funerarias 24h</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Velatorios</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Cremación</li>
+                            </ul>
+                            <div class="category-actions">
+                                <a href="funerarias.html" class="btn btn-outline btn-funeraria">Ver más <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/59176536286?text=Hola,%20necesito%20información%20funeraria" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp sobre Funerarias"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="testimonials-section fade-in" aria-labelledby="testimonios-title">
+                    <h2 class="section-title" id="testimonios-title">
+                        <i class="fas fa-quote-left" aria-hidden="true"></i> LO QUE DICEN NUESTROS USUARIOS
+                    </h2>
+                    <p class="section-description">Testimonios reales de ciudadanos que confiaron en nosotros</p>
+                    
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating" aria-label="5 de 5 estrellas">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Encontré un plomero verificado en menos de 10 minutos. El técnico llegó puntual, hizo un trabajo excelente y el precio fue exactamente el cotizado. ¡Totalmente recomendado!"</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">MR</div>
+                                <div class="author-info">
+                                    <strong>María Rodríguez</strong>
+                                    <span>Zona Sur, La Paz</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating" aria-label="5 de 5 estrellas">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Cuando mi auto se averió en la carretera, la grúa verificada llegó en 30 minutos. Tarifa clara, trato profesional y me llevaron al taller más cercano sin cobros extras."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">JC</div>
+                                <div class="author-info">
+                                    <strong>Juan Carlos Mamani</strong>
+                                    <span>El Alto</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating" aria-label="5 de 5 estrellas">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"En un momento difícil, la funeraria verificada nos trató con respeto y transparencia. Sin sorpresas en los precios, todo claro desde el inicio. Gracias por el acompañamiento."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">AP</div>
+                                <div class="author-info">
+                                    <strong>Ana Paola Quispe</strong>
+                                    <span>Miraflores, La Paz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="why-us-section fade-in" aria-labelledby="why-title">
+                    <h2 class="section-title" id="why-title">
+                        <i class="fas fa-award" aria-hidden="true"></i> ¿POR QUÉ CONFIAR EN NOSOTROS?
+                    </h2>
+                    <div class="why-us-grid">
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
+                            <h3>Verificación Humana</h3>
+                            <p>No somos un algoritmo. Llamamos, visitamos y probamos cada servicio antes de listarlo. Si un proveedor falla, lo retiramos.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
+                            <h3>Precios Reales</h3>
+                            <p>Publicamos precios reales de consulta, mano de obra y servicios. Sin sorpresas ni cobros ocultos.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-microphone-alt" aria-hidden="true"></i></div>
+                            <h3>Referencias de Audio</h3>
+                            <p>Audios de 30 segundos explicando cómo llegar a cada lugar. Sin mapas confusos ni direcciones incompletas.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+                            <h3>Sello de Garantía</h3>
+                            <p>Si un proveedor recibe 3 quejas verificadas, pierde nuestro sello. Tu confianza es nuestro activo.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <aside class="sidebar" role="complementary">
+                
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-comments" aria-hidden="true"></i> CONTÁCTANOS</h3>
+                    <p>¿No encuentras lo que buscas? Escríbenos directamente.</p>
+                    <a href="https://wa.me/59176536286" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp: 76536286
+                    </a>
+                    <a href="https://t.me/verificalapaz_bot" class="btn btn-telegram btn-block" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-telegram" aria-hidden="true"></i> Bot de Telegram
+                    </a>
+                    <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline btn-block">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Email
+                    </a>
+                </div>
+
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-store" aria-hidden="true"></i> ¿ERES PROVEEDOR?</h3>
+                    <p>Únete a nuestro directorio verificado y aumenta tu visibilidad.</p>
+                    <ul class="provider-benefits">
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Sello de verificado</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Sin comisión por cliente</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Mayor visibilidad</li>
+                    </ul>
+                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-store" aria-hidden="true"></i> Unirme ahora
+                    </a>
+                </div>
+
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-share-alt" aria-hidden="true"></i> SÍGUENOS</h3>
+                    <div class="social-grid">
+                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <i class="fab fa-tiktok" aria-hidden="true"></i>
+                            <span>TikTok</span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> VERIFICA LA PAZ</h3>
+                    <p class="footer-tagline">Primero verifica. Después resuelve.</p>
+                    <p>Tu aliado de confianza para resolver lo que importa en La Paz y El Alto. Verificamos personalmente cada servicio para que tú decidas con seguridad.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="salud.html"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud y Bienestar</a></li>
+                        <li><a href="hogar.html"><i class="fas fa-home" aria-hidden="true"></i> Mi Hogar Seguro</a></li>
+                        <li><a href="automotriz.html"><i class="fas fa-car" aria-hidden="true"></i> Auto y Movilidad</a></li>
+                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología</a></li>
+                        <li><a href="funerarias.html"><i class="fas fa-dove" aria-hidden="true"></i> Despedida y Homenaje</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Cómo Funciona</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> Ciudadanos: 76536286</li>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> Proveedores: 78835306</li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> contactoverificalapaz@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> La Paz, Bolivia</li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/59176536286" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://t.me/verificalapaz_bot" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p><strong>NOTA LEGAL:</strong> Verifica La Paz se limita a verificar la existencia, horarios y datos de contacto de los proveedores listados. No nos hacemos responsables por la calidad del servicio prestado por terceros.</p>
+                </div>
+                <p class="copyright">© 2026 Verifica La Paz. Todos los derechos reservados. | Hecho con <i class="fas fa-heart" aria-hidden="true"></i> en Bolivia</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/59176536286?text=Hola,%20necesito%20ayuda%20para%20encontrar%20un%20servicio" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chatear por WhatsApp" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <button id="backToTop" class="back-to-top" aria-label="Volver arriba" title="Volver arriba">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarDestacados();
+        });
+
+        async function cargarDestacados() {
+            const container = document.getElementById('destacados-container');
+            if (!container) return;
+            
+            try {
+                const response = await fetch('/api/proveedores?destacado=1', {
+                    headers: { 'Accept': 'application/json' },
+                    cache: 'no-cache'
+                });
+                
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                const proveedores = await response.json();
+                container.innerHTML = '';
+                
+                if (proveedores.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-data fade-in visible">
+                            <i class="fas fa-info-circle"></i> 
+                            <p>Próximamente agregaremos proveedores destacados</p>
+                        </div>`;
+                    return;
+                }
+                
+                const categorias = ['Salud', 'Hogar', 'Automotriz', 'Tecnologia', 'Funeraria'];
+                
+                categorias.forEach((categoria, index) => {
+                    const proveedoresCategoria = proveedores.filter(p => 
+                        (p.categoria === categoria || p.categoria.toLowerCase() === categoria.toLowerCase()) && 
+                        p.destacado === 1
+                    ).slice(0, 3);
+                    
+                    if (proveedoresCategoria.length > 0) {
+                        const categoriaHTML = `
+                            <div class="categoria-destacada fade-in" style="animation-delay: ${index * 0.1}s">
+                                <h3 class="categoria-titulo">
+                                    <i class="fas fa-crown" aria-hidden="true"></i> 
+                                    ${getCategoriaNombre(categoria)}
+                                </h3>
+                                <div class="destacados-list">
+                                    ${proveedoresCategoria.map(p => generarTarjetaDestacado(p)).join('')}
+                                </div>
+                            </div>
+                        `;
+                        container.innerHTML += categoriaHTML;
+                    }
+                });
+                
+                if (window.fadeObserver) {
+                    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+                        window.fadeObserver.observe(el);
+                    });
+                }
+                
+            } catch (error) {
+                console.error('Error cargando destacados:', error);
+                container.innerHTML = `
+                    <div class="no-data fade-in visible">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        <p>No se pudieron cargar los proveedores destacados. Intenta más tarde.</p>
+                        <button onclick="cargarDestacados()" class="btn btn-outline">
+                            <i class="fas fa-redo"></i> Reintentar
+                        </button>
+                    </div>`;
+            }
+        }
+
+        function generarTarjetaDestacado(p) {
+            const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
+            const whatsappLink = whatsappNum ? 
+                `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz y me interesa tu servicio')}` : 
+                '#';
+            
+            return `
+                <div class="destacado-card ${getCategoriaClass(p.categoria)}">
+                    <div class="destacado-badge">
+                        <i class="fas fa-crown" aria-hidden="true"></i> ULTRA PREMIUM
+                    </div>
+                    <h4>${p.nombre || 'Proveedor Verificado'}</h4>
+                    <p class="destacado-subtitle">${p.subcategoria || ''}</p>
+                    ${p.direccion ? `<p class="destacado-info"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ${p.direccion}</p>` : ''}
+                    ${p.telefono ? `<p class="destacado-info"><i class="fas fa-phone" aria-hidden="true"></i> ${p.telefono}</p>` : ''}
+                    ${p.horario ? `<p class="destacado-info"><i class="fas fa-clock" aria-hidden="true"></i> ${p.horario}</p>` : ''}
+                    ${p.video_path ? `
+                        <video controls preload="metadata" class="destacado-video" aria-label="Video de ${p.nombre}">
+                            <source src="/${p.video_path}" type="video/mp4">
+                        </video>` : ''}
+                    ${p.audio_path ? `
+                        <audio controls preload="metadata" class="destacado-audio" aria-label="Audio de ${p.nombre}">
+                            <source src="/${p.audio_path}" type="audio/mpeg">
+                        </audio>` : ''}
+                    <a href="${whatsappLink}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Contactar
+                    </a>
+                </div>
+            `;
+        }
+
+        function getCategoriaNombre(categoria) {
+            const nombres = {
+                'Salud': '🏥 Salud y Bienestar',
+                'Hogar': '🏠 Mi Hogar Seguro',
+                'Automotriz': '🚗 Auto y Movilidad',
+                'Tecnologia': '💻 Tecnología',
+                'Funeraria': '🕊️ Despedida y Homenaje'
+            };
+            return nombres[categoria] || categoria;
+        }
+
+        function getCategoriaClass(categoria) {
+            const classes = {
+                'Salud': 'category-salud',
+                'Hogar': 'category-hogar',
+                'Automotriz': 'category-auto',
+                'Tecnologia': 'category-tecnologia',
+                'Funeraria': 'category-funeraria'
+            };
+            return classes[categoria] || '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente WhatsApp - Verifica La Paz</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #f0f2f5; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #128C7E; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .instrucciones { background: #e7fce3; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #25D366; font-size: 0.95rem; }
+        .search-box { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 1.1rem; margin-bottom: 20px; transition: border 0.3s; }
+        .search-box:focus { outline: none; border-color: #128C7E; }
+        .resultado { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #128C7E; }
+        .resultado h3 { color: #075E54; margin-bottom: 10px; }
+        .mensaje-preview { background: white; padding: 15px; border-radius: 8px; border: 1px dashed #ccc; white-space: pre-wrap; font-size: 0.95rem; margin: 10px 0; color: #333; }
+        .btn-copiar { background: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: background 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-copiar:hover { background: #128C7E; }
+        .btn-copiar.copiado { background: #075E54; }
+        .sin-resultados { text-align: center; color: #666; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-whatsapp"></i> Asistente de Respuestas Rápidas</h1>
+        
+        <div class="instrucciones">
+            <strong>💡 Cómo usar:</strong><br>
+            1. Escribe lo que el cliente busca (ej: "plomería", "celular", "grúa").<br>
+            2. El sistema generará un mensaje profesional con los datos verificados.<br>
+            3. Haz clic en "Copiar Mensaje" y pégalo (Ctrl+V) en WhatsApp Web.
+        </div>
+
+        <input type="text" class="search-box" id="busqueda" placeholder="🔍 Escribe el servicio que solicita el cliente..." autofocus>
+
+        <div id="resultados"></div>
+    </div>
+
+    <script>
+        // Se conecta a tu API local que ya está corriendo en app.py
+        const API_URL = 'http://localhost:5000/api/proveedores?verificado=1';
+        let todosLosProveedores = [];
+
+        // Cargar datos al iniciar
+        fetch(API_URL)
+            .then(res => res.json())
+            .then(data => {
+                todosLosProveedores = data;
+                mostrarInstruccionInicial();
+            })
+            .catch(err => {
+                document.getElementById('resultados').innerHTML = 
+                    '<p class="sin-resultados">⚠️ Asegúrate de que el servidor Flask (app.py) esté corriendo en http://localhost:5000</p>';
+            });
+
+        function mostrarInstruccionInicial() {
+            document.getElementById('resultados').innerHTML = 
+                '<p class="sin-resultados">Escribe una palabra clave arriba para generar respuestas automáticas.</p>';
+        }
+
+        document.getElementById('busqueda').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const contenedor = document.getElementById('resultados');
+            
+            if (query.length < 3) {
+                mostrarInstruccionInicial();
+                return;
+            }
+
+            // Filtrar por nombre, categoría o subcategoría
+            const filtrados = todosLosProveedores.filter(p => 
+                p.nombre.toLowerCase().includes(query) ||
+                (p.categoria && p.categoria.toLowerCase().includes(query)) ||
+                (p.subcategoria && p.subcategoria.toLowerCase().includes(query))
+            ).slice(0, 3); // Máximo 3 resultados para no saturar
+
+            if (filtrados.length === 0) {
+                contenedor.innerHTML = '<p class="sin-resultados">No se encontraron proveedores verificados para esa búsqueda. Prueba con otro término.</p>';
+                return;
+            }
+
+            contenedor.innerHTML = '';
+            filtrados.forEach(p => {
+                const numeroWsp = p.whatsapp ? p.whatsapp.replace(/\D/g, '') : '';
+                const linkWsp = numeroWsp ? `https://wa.me/591${numeroWsp}` : '#';
+                
+                const textoMensaje = `¡Hola! 👋 Gracias por contactar a *Verifica La Paz*.\n\n` +
+                    `Te comparto esta opción *100% verificada* por nuestro equipo:\n\n` +
+                    `🏢 *${p.nombre}*\n` +
+                    (p.subcategoria ? `📌 ${p.subcategoria}\n` : '') +
+                    (p.direccion ? `📍 ${p.direccion}\n` : '') +
+                    (p.telefono ? `📞 ${p.telefono}\n` : '') +
+                    `\n✅ Este proveedor cumple con nuestros estándares de calidad y precios transparentes.\n\n` +
+                    `¿Deseas que te conecte directamente con ellos?`;
+
+                const div = document.createElement('div');
+                div.className = 'resultado';
+                div.innerHTML = `
+                    <h3>${p.nombre} <span style="font-size:0.8rem; font-weight:normal; color:#666">(${p.categoria} - ${p.subcategoria || 'General'})</span></h3>
+                    <div class="mensaje-preview" id="msg-${p.id}">${textoMensaje}</div>
+                    <button class="btn-copiar" onclick="copiarAlPortapapeles('msg-${p.id}', this)">
+                        📋 Copiar Mensaje para WhatsApp
+                    </button>
+                `;
+                contenedor.appendChild(div);
+            });
+        });
+
+        function copiarAlPortapapeles(elementId, btn) {
+            const texto = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(texto).then(() => {
+                const textoOriginal = btn.innerHTML;
+                btn.innerHTML = '✅ ¡Copiado! Ahora pégalo en WhatsApp';
+                btn.classList.add('copiado');
+                
+                setTimeout(() => {
+                    btn.innerHTML = textoOriginal;
+                    btn.classList.remove('copiado');
+                }, 2500);
+            });
+        }
+    </script>
+</body>
+</html>

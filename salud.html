@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clínicas, veterinarias, laboratorios y farmacias verificadas en La Paz y El Alto. Horarios reales, precios transparentes y atención de calidad.">
+    <title>Salud y Bienestar | Verifica La Paz</title>
+    
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1><i class="fas fa-shield-alt"></i> VERIFICA LA PAZ</h1>
+                <p class="tagline">Primero verifica. Después resuelve.</p>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="salud.html" class="nav-link active"><i class="fas fa-heartbeat"></i> Salud</a>
+                <a href="hogar.html" class="nav-link"><i class="fas fa-home"></i> Mi Hogar</a>
+                <a href="automotriz.html" class="nav-link"><i class="fas fa-car"></i> Auto</a>
+                <a href="tecnologia.html" class="nav-link"><i class="fas fa-laptop-code"></i> Tecnología</a>
+                <a href="funerarias.html" class="nav-link"><i class="fas fa-dove"></i> Despedida</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="nav-link btn-proveedor" target="_blank">
+                    <i class="fas fa-store"></i> Soy Proveedor
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container content-grid">
+            
+            <div class="content-main">
+                
+                <section class="hero">
+                    <div class="hero-content fade-in">
+                        <div class="hero-badge">
+                            <i class="fas fa-heartbeat"></i> Salud y Bienestar Verificado
+                        </div>
+                        <h2 class="hero-title">Clínicas, Veterinarias y Laboratorios de Confianza</h2>
+                        <p class="hero-subtitle">Horarios reales, precios transparentes y atención humana. Verificamos personalmente cada centro de salud para que tú y tu familia estén en las mejores manos.</p>
+                        
+                        <div class="hero-buttons">
+                            <a href="#clinicas" class="btn btn-primary btn-salud"><i class="fas fa-hospital"></i> Clínicas</a>
+                            <a href="#veterinarias" class="btn btn-primary btn-salud"><i class="fas fa-paw"></i> Veterinarias</a>
+                            <a href="#laboratorios" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-flask"></i> Laboratorios</a>
+                            <a href="#farmacias" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-pills"></i> Farmacias</a>
+                        </div>
+                        
+                        <div class="hero-features">
+                            <div class="hero-feature"><i class="fas fa-user-md"></i><span>Profesionales Colegiados</span></div>
+                            <div class="hero-feature"><i class="fas fa-clock"></i><span>Horarios Verificados</span></div>
+                            <div class="hero-feature"><i class="fas fa-shield-alt"></i><span>Equipamiento Revisado</span></div>
+                        </div>
+                        
+                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20información%20sobre%20un%20servicio%20de%20salud" class="btn-provider-link" target="_blank">
+                            <i class="fas fa-phone-alt"></i> Consultar por WhatsApp: 76536286
+                        </a>
+                    </div>
+                </section>
+
+                <section class="stats-section fade-in">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-hospital"></i></div>
+                            <div class="stat-number" data-target="45" data-suffix="+">0</div>
+                            <div class="stat-label">Centros Verificados</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-number" data-target="3500" data-suffix="+">0</div>
+                            <div class="stat-label">Pacientes Atendidos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-number" data-target="97" data-suffix="%">0</div>
+                            <div class="stat-label">Satisfacción</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-ambulance"></i></div>
+                            <div class="stat-number" data-target="24" data-suffix="/7">0</div>
+                            <div class="stat-label">Servicios de Urgencia</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="clinicas" class="fade-in">
+                    <h2 class="section-title"><i class="fas fa-hospital"></i> CLÍNICAS Y POSTAS</h2>
+                    <p class="section-description">
+                        <strong>Atención Médica Integral, Urgencias y Especialidades</strong><br>
+                        Clínicas y postas con infraestructura adecuada, personal médico colegiado y equipos de diagnóstico funcionales. Verificamos limpieza, tiempos de espera y transparencia en costos.
+                    </p>
+
+                    <div class="featured-section">
+                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <ul class="category-services">
+                            <li><i class="fas fa-check"></i> Licencia de funcionamiento municipal y ministerial vigente</li>
+                            <li><i class="fas fa-check"></i> Médicos con matrícula profesional activa</li>
+                            <li><i class="fas fa-check"></i> Área de emergencias con equipamiento básico funcional</li>
+                            <li><i class="fas fa-check"></i> Limpieza y protocolos de bioseguridad observables</li>
+                            <li><i class="fas fa-check"></i> Precios de consultas y procedimientos publicados o claros</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <div class="categories-grid">
+                        <div class="category-card category-salud">
+                            <h3>Consulta General</h3>
+                            <p class="category-subtitle">80-150 Bs</p>
+                            <p>Incluye revisión básica y receta</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Consulta Especialista</h3>
+                            <p class="category-subtitle">150-300 Bs</p>
+                            <p>Pediatría, Ginecología, Cardiología, etc.</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Atención de Urgencia</h3>
+                            <p class="category-subtitle">100-250 Bs</p>
+                            <p>Triaje, curaciones, suturas simples</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Internación (por día)</h3>
+                            <p class="category-subtitle">300-600 Bs</p>
+                            <p>Habitación compartida, sin incluir medicamentos</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Clínica Verificada:</h3>
+                    <div class="featured-section" style="border-left-color: var(--color-salud);">
+                        <div class="featured-badge" style="background: var(--color-salud); color: white;">CLÍNICA INTEGRAL</div>
+                        <h3>CLÍNICA SAN JUAN - ATENCIÓN INTEGRAL</h3>
+                        <div class="featured-details">
+                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. 6 de Agosto, Miraflores, La Paz</div>
+                            <div class="detail-item"><i class="fas fa-clock"></i> Lunes a Domingo: 7:00 - 22:00 | Urgencias 24h</div>
+                            <div class="detail-item"><i class="fas fa-phone"></i> 2-1234567 / 76511122</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Consulta general: 100 Bs</div>
+                            <div class="detail-item"><i class="fas fa-star"></i> 15 años de trayectoria | 5 especialistas</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Convenios con cajas de salud</div>
+                        </div>
+                        <div class="category-actions">
+                            <a href="#" class="btn btn-outline btn-salud"><i class="fas fa-volume-up"></i> Escuchar referencia de audio</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20información%20sobre%20la%20Clínica%20San%20Juan" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Consultar disponibilidad</a>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Clínicas y Postas Verificadas Disponibles:</h3>
+                    <div id="contenedor-clinicas" class="proveedores-grid">
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando clínicas verificadas...</p>
+                    </div>
+                </section>
+
+                <section id="veterinarias" class="fade-in" style="margin-top: 4rem;">
+                    <h2 class="section-title"><i class="fas fa-paw"></i> VETERINARIAS 24H</h2>
+                    <p class="section-description">
+                        <strong>Cuidado Profesional para tu Mascota</strong><br>
+                        Clínicas veterinarias con capacidad de cirugía, hospitalización y atención de emergencias. Verificamos la presencia de médico veterinario colegiado y el estado de las instalaciones.
+                    </p>
+
+                    <div class="featured-section">
+                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <ul class="category-services">
+                            <li><i class="fas fa-check"></i> Médico veterinario con matrícula vigente</li>
+                            <li><i class="fas fa-check"></i> Equipos de rayos X y laboratorio básico funcional</li>
+                            <li><i class="fas fa-check"></i> Área de hospitalización limpia y climatizada</li>
+                            <li><i class="fas fa-check"></i> Stock de vacunas y medicamentos esenciales</li>
+                            <li><i class="fas fa-check"></i> Servicio de ambulancia o traslado disponible</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <div class="categories-grid">
+                        <div class="category-card category-salud">
+                            <h3>Consulta General</h3>
+                            <p class="category-subtitle">70-120 Bs</p>
+                            <p>Revisión física y recomendaciones</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Vacunación (Polivalente/Rabia)</h3>
+                            <p class="category-subtitle">80-150 Bs</p>
+                            <p>Incluye carnet de vacunación</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Desparasitación</h3>
+                            <p class="category-subtitle">40-80 Bs</p>
+                            <p>Interna y/o externa, según peso</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Esterilización</h3>
+                            <p class="category-subtitle">300-600 Bs</p>
+                            <p>Incluye prequirúrgico y medicación</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Veterinarias Verificadas Disponibles:</h3>
+                    <div id="contenedor-veterinarias" class="proveedores-grid">
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando veterinarias verificadas...</p>
+                    </div>
+                </section>
+
+                <section id="laboratorios" class="fade-in" style="margin-top: 4rem;">
+                    <h2 class="section-title"><i class="fas fa-flask"></i> LABORATORIOS Y ANÁLISIS</h2>
+                    <p class="section-description">
+                        <strong>Resultados Confiables y Entrega Puntual</strong><br>
+                        Laboratorios clínicos con tecnología actualizada, toma de muestras a domicilio y resultados digitales. Verificamos los controles de calidad y los tiempos reales de entrega.
+                    </p>
+
+                    <div class="featured-section">
+                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <ul class="category-services">
+                            <li><i class="fas fa-check"></i> Bioquímico o responsable técnico colegiado</li>
+                            <li><i class="fas fa-check"></i> Reactivos con fecha de vencimiento vigente</li>
+                            <li><i class="fas fa-check"></i> Resultados entregados en el tiempo prometido</li>
+                            <li><i class="fas fa-check"></i> Opción de resultados en línea o por WhatsApp</li>
+                            <li><i class="fas fa-check"></i> Servicio de toma de muestras a domicilio</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <div class="categories-grid">
+                        <div class="category-card category-salud">
+                            <h3>Hemograma Completo</h3>
+                            <p class="category-subtitle">40-70 Bs</p>
+                            <p>Resultados en 2-4 horas</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Perfil Bioquímico Básico</h3>
+                            <p class="category-subtitle">100-180 Bs</p>
+                            <p>Glucosa, urea, creatinina, colesterol</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Examen General de Orina</h3>
+                            <p class="category-subtitle">30-50 Bs</p>
+                            <p>Resultados en 1-2 horas</p>
+                        </div>
+                        <div class="category-card category-salud">
+                            <h3>Toma de Muestra a Domicilio</h3>
+                            <p class="category-subtitle">30-50 Bs</p>
+                            <p>Adicional al costo de los análisis</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Laboratorios Verificados Disponibles:</h3>
+                    <div id="contenedor-laboratorios" class="proveedores-grid">
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando laboratorios verificados...</p>
+                    </div>
+                </section>
+
+                <section id="farmacias" class="fade-in" style="margin-top: 4rem;">
+                    <h2 class="section-title"><i class="fas fa-pills"></i> FARMACIAS CON DELIVERY</h2>
+                    <p class="section-description">
+                        <strong>Medicamentos Originales y Entrega Rápida</strong><br>
+                        Farmacias con registro sanitario, cadena de frío garantizada y servicio de entrega a domicilio en menos de 45 minutos. Verificamos la autenticidad de los medicamentos.
+                    </p>
+
+                    <div class="featured-section">
+                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <ul class="category-services">
+                            <li><i class="fas fa-check"></i> Registro sanitario de la farmacia vigente</li>
+                            <li><i class="fas fa-check"></i> Químico farmacéutico responsable presente</li>
+                            <li><i class="fas fa-check"></i> Cadena de frío para insulina y biológicos</li>
+                            <li><i class="fas fa-check"></i> Tiempos de entrega de delivery reales</li>
+                            <li><i class="fas fa-check"></i> No venta de antibióticos sin receta</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Farmacias Verificadas con Delivery:</h3>
+                    <div id="contenedor-farmacias" class="proveedores-grid">
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando farmacias verificadas...</p>
+                    </div>
+                </section>
+
+                <section class="why-us-section fade-in" style="margin-top: 4rem;">
+                    <h2 class="section-title"><i class="fas fa-shield-alt"></i> ¿POR QUÉ CONFIAR EN NUESTROS CENTROS DE SALUD?</h2>
+                    <div class="why-us-grid">
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-user-md"></i></div>
+                            <h3>Profesionales Colegiados</h3>
+                            <p>Verificamos la matrícula de cada médico y la licencia de funcionamiento del establecimiento antes de listarlos.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <h3>Precios Sin Sorpresas</h3>
+                            <p>Publicamos los costos de consultas y procedimientos básicos. Sabrás cuánto pagar antes de entrar al consultorio.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <h3>Regla de las 3 Quejas</h3>
+                            <p>Si un centro de salud recibe 3 quejas verificadas por mala atención o cobros indebidos, pierde nuestro sello inmediatamente.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="fas fa-bolt"></i></div>
+                            <h3>Urgencias Reales</h3>
+                            <p>Llamamos a las "urgencias 24h" en horarios nocturnos para confirmar que realmente haya personal y equipamiento disponible.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="featured-section fade-in" style="margin-top: 4rem; background: var(--gradiente-hero); color: white; border-left: none;">
+                    <div class="featured-badge" style="background: rgba(255,255,255,0.2); color: white;">
+                        <i class="fas fa-phone-alt"></i> ¿NECESITAS ORIENTACIÓN MÉDICA?
+                    </div>
+                    <h3 style="color: white;">Cuéntanos qué síntomas tienes y te conectamos con el especialista o centro verificado ideal</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Orientación gratuita y confidencial. Respuesta en menos de 1 hora en horario de oficina.</p>
+                    <div class="hero-features" style="margin: 2rem 0; justify-content: center;">
+                        <div class="hero-feature"><i class="fas fa-user-shield"></i> Confidencialidad total</div>
+                        <div class="hero-feature"><i class="fas fa-hospital"></i> Solo centros verificados</div>
+                        <div class="hero-feature"><i class="fas fa-gift"></i> 100% gratuito para ciudadanos</div>
+                    </div>
+                    <div class="category-actions">
+                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20orientación%20sobre%20un%20servicio%20de%20salud" class="btn btn-whatsapp btn-block" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp: 76536286
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+
+            <aside class="sidebar">
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-fire"></i> LO MÁS BUSCADO</h3>
+                    <ul class="popular-list">
+                        <li><a href="#clinicas"><i class="fas fa-chevron-right"></i> Clínicas con urgencias 24h en Zona Sur</a></li>
+                        <li><a href="#veterinarias"><i class="fas fa-chevron-right"></i> Veterinarias de guardia en El Alto</a></li>
+                        <li><a href="#laboratorios"><i class="fas fa-chevron-right"></i> Laboratorios con resultados en 1 hora</a></li>
+                        <li><a href="#farmacias"><i class="fas fa-chevron-right"></i> Farmacias con delivery nocturno</a></li>
+                        <li><a href="#clinicas"><i class="fas fa-chevron-right"></i> Pediatras con buena referencia</a></li>
+                        <li><a href="#laboratorios"><i class="fas fa-chevron-right"></i> Análisis de sangre a domicilio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-envelope"></i> CONTÁCTANOS</h3>
+                    <p>¿No encuentras lo que buscas? Escríbenos directamente.</p>
+                    <a href="https://wa.me/59176536286" class="btn btn-whatsapp btn-block" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp: 76536286
+                    </a>
+                    <a href="https://t.me/verificalapaz_bot" class="btn btn-telegram btn-block" target="_blank">
+                        <i class="fab fa-telegram"></i> Bot de Telegram
+                    </a>
+                    <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline btn-block">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-store"></i> ¿ERES CENTRO DE SALUD?</h3>
+                    <p>Únete a nuestro directorio verificado y genera confianza en los pacientes.</p>
+                    <ul class="provider-benefits">
+                        <li><i class="fas fa-check"></i> Sello de verificado</li>
+                        <li><i class="fas fa-check"></i> Sin comisión por paciente</li>
+                        <li><i class="fas fa-check"></i> Mayor visibilidad online</li>
+                    </ul>
+                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20un%20centro%20de%20salud%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank">
+                        <i class="fas fa-store"></i> Unirme ahora
+                    </a>
+                </div>
+
+                <div class="sidebar-section fade-in">
+                    <h3><i class="fas fa-share-alt"></i> SÍGUENOS</h3>
+                    <div class="social-grid">
+                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i><span>Facebook</span>
+                        </a>
+                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank">
+                            <i class="fab fa-tiktok"></i><span>TikTok</span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-shield-alt"></i> VERIFICA LA PAZ</h3>
+                    <p class="footer-tagline">Primero verifica. Después resuelve.</p>
+                    <p>Tu aliado de confianza para resolver lo que importa en La Paz y El Alto. Verificamos personalmente cada servicio para que tú decidas con seguridad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="salud.html"><i class="fas fa-heartbeat"></i> Salud y Bienestar</a></li>
+                        <li><a href="hogar.html"><i class="fas fa-home"></i> Mi Hogar Seguro</a></li>
+                        <li><a href="automotriz.html"><i class="fas fa-car"></i> Auto y Movilidad</a></li>
+                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code"></i> Tecnología</a></li>
+                        <li><a href="funerarias.html"><i class="fas fa-dove"></i> Despedida y Homenaje</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Cómo Funciona</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> Ciudadanos: 76536286</li>
+                        <li><i class="fas fa-phone"></i> Proveedores: 78835306</li>
+                        <li><i class="fas fa-envelope"></i> contactoverificalapaz@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> La Paz, Bolivia</li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/59176536286" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/verificalapaz_bot" target="_blank"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p><strong>NOTA LEGAL:</strong> Verifica La Paz se limita a verificar la existencia, horarios y datos de contacto de los proveedores listados. No nos hacemos responsables por diagnósticos, tratamientos o la calidad del servicio médico prestado por terceros. Ante una emergencia, acuda inmediatamente al centro de salud más cercano.</p>
+                </div>
+                <p class="copyright">© 2026 Verifica La Paz. Todos los derechos reservados. | Hecho con <i class="fas fa-heart"></i> en Bolivia</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/59176536286?text=Hola,%20necesito%20ayuda%20para%20encontrar%20un%20servicio%20de%20salud" class="whatsapp-float" target="_blank" title="Chatear por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+    
+    <!-- ============================================
+    SCRIPT OPTIMIZADO PARA CARGA DINÁMICA DE PROVEEDORES
+    (Incluye soporte para Video y Audio del Panel Admin)
+    ============================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mapeo de contenedores y sus palabras clave para filtrar
+            const secciones = [
+                { id: 'contenedor-clinicas', keyword: 'clinica' },
+                { id: 'contenedor-veterinarias', keyword: 'veterinaria' },
+                { id: 'contenedor-laboratorios', keyword: 'laboratorio' },
+                { id: 'contenedor-farmacias', keyword: 'farmacia' }
+            ];
+
+            secciones.forEach(sec => cargarProveedoresSalud(sec.id, sec.keyword));
+        });
+
+        async function cargarProveedoresSalud(contenedorId, palabraClave) {
+            const container = document.getElementById(contenedorId);
+            if (!container) return;
+            
+            try {
+                // Obtenemos todos los proveedores de la categoría Salud verificados desde la API
+                const response = await fetch('/api/proveedores?categoria=Salud&verificado=1');
+                if (!response.ok) throw new Error('Error en la red');
+                const proveedores = await response.json();
+                
+                // Filtrado inteligente: busca la palabra clave en subcategoría, nombre O descripción
+                const filtrados = proveedores.filter(p => {
+                    const textoBusqueda = `${p.subcategoria} ${p.nombre} ${p.descripcion}`.toLowerCase();
+                    return textoBusqueda.includes(palabraClave.toLowerCase());
+                });
+                
+                if (filtrados.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-data fade-in visible" style="text-align:center; padding: 2rem; color: #666; grid-column: 1/-1;">
+                            <i class="fas fa-info-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block; color: #cbd5e1;"></i>
+                            <p>Próximamente agregaremos más proveedores de esta categoría.</p>
+                        </div>`;
+                    return;
+                }
+                
+                // Generamos las tarjetas HTML
+                container.innerHTML = filtrados.map(p => generarTarjetaSalud(p)).join('');
+                
+                // Re-iniciar animaciones de fade-in si el observer existe en main.js
+                if (window.fadeObserver) {
+                    container.querySelectorAll('.fade-in').forEach(el => window.fadeObserver.observe(el));
+                }
+            } catch (error) {
+                console.error(`Error cargando ${palabraClave}:`, error);
+                container.innerHTML = `
+                    <div class="no-data fade-in visible" style="text-align:center; padding: 2rem; color: #ef4444; grid-column: 1/-1;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Error al cargar los proveedores. <button onclick="location.reload()" class="btn btn-outline btn-sm" style="margin-top:0.5rem;">Reintentar</button></p>
+                    </div>`;
+            }
+        }
+
+        function generarTarjetaSalud(p) {
+            const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
+            const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz y necesito información sobre un servicio de salud')}` : '#';
+            
+            return `
+                <article class="category-card category-salud fade-in" style="position: relative; border-left: 4px solid var(--color-salud, #ef4444);">
+                    ${p.destacado == 1 ? `<div class="featured-badge" style="position:absolute; top:10px; right:10px; z-index:2; background: var(--color-salud, #ef4444); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fas fa-crown"></i> PREMIUM</div>` : ''}
+                    
+                    <h3 style="margin-top: 0;">${p.nombre || 'Centro de Salud Verificado'}</h3>
+                    <p class="category-subtitle" style="color: var(--color-salud, #ef4444); font-weight: 600; margin-bottom: 1rem;">${p.subcategoria || 'Servicio de Salud'}</p>
+                    
+                    ${p.descripcion ? `<p style="color: #475569; font-size: 0.95rem; margin-bottom: 1rem;">${p.descripcion}</p>` : ''}
+                    
+                    <ul class="category-services" style="list-style: none; padding: 0; margin: 0 0 1rem 0; font-size: 0.9rem; color: #64748b;">
+                        ${p.direccion ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt" style="width: 20px; color: #ef4444;"></i> ${p.direccion}</li>` : ''}
+                        ${p.horario ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="width: 20px; color: #3b82f6;"></i> ${p.horario}</li>` : ''}
+                        ${p.precios ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-dollar-sign" style="width: 20px; color: #10b981;"></i> ${p.precios}</li>` : ''}
+                    </ul>
+
+                    <!-- REPRODUCTOR DE VIDEO (Si existe en la BD) -->
+                    ${p.video_path ? `
+                        <div style="margin: 1rem 0; border-radius: 8px; overflow: hidden; background: #000;">
+                            <video controls preload="metadata" style="width: 100%; max-height: 200px; display: block;">
+                                <source src="/${p.video_path}" type="video/mp4">
+                                Tu navegador no soporta videos.
+                            </video>
+                        </div>
+                    ` : ''}
+                    
+                    <!-- REPRODUCTOR DE AUDIO (Si existe en la BD) -->
+                    ${p.audio_path ? `
+                        <div style="margin: 1rem 0; background: #f1f5f9; padding: 0.5rem; border-radius: 8px;">
+                            <audio controls preload="metadata" style="width: 100%;">
+                                <source src="/${p.audio_path}" type="audio/mpeg">
+                                Tu navegador no soporta audio.
+                            </audio>
+                        </div>
+                    ` : ''}
+
+                    <div class="category-actions" style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                        ${whatsappNum ? `<a href="${whatsappLink}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="flex: 1; text-align: center;"><i class="fab fa-whatsapp"></i> Contactar</a>` : ''}
+                        ${p.telefono && !whatsappNum ? `<a href="tel:${p.telefono}" class="btn btn-outline" style="flex: 1; text-align: center; border-color: var(--color-salud, #ef4444); color: var(--color-salud, #ef4444);"><i class="fas fa-phone"></i> Llamar</a>` : ''}
+                    </div>
+                </article>
+            `;
+        }
+    </script>
+</body>
+</html>
