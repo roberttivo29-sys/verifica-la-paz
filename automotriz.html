@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Talleres mecánicos, frenos, muñonería, chapistería, eléctricos, electromecánicos, grúas y lavado de autos verificados en La Paz y El Alto.">
+    <meta property="og:title" content="Auto y Movilidad | Verifica La Paz">
+    <meta property="og:description" content="Talleres mecánicos, grúas 24h y servicios automotrices verificados en La Paz y El Alto.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://verificalapaz.com/automotriz.html">
+    <meta property="og:image" content="img/og-automotriz.jpg">
+    <meta property="og:locale" content="es_BO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Auto y Movilidad | Verifica La Paz">
+    <meta name="twitter:description" content="Servicios automotrices verificados en La Paz y El Alto.">
+    <meta name="author" content="Verifica La Paz">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="canonical" href="https://verificalapaz.com/automotriz.html">
     <title>Auto y Movilidad | Verifica La Paz</title>
     
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -16,88 +29,89 @@
 <body>
 
     <!-- HEADER -->
-    <header class="header" id="header">
+    <header class="header" id="header" role="banner">
         <div class="container header-content">
             <div class="logo">
-                <h1><i class="fas fa-shield-alt"></i> VERIFICA LA PAZ</h1>
+                <h1><i class="fas fa-shield-alt" aria-hidden="true"></i> VERIFICA LA PAZ</h1>
                 <p class="tagline">Primero verifica. Después resuelve.</p>
             </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
                 <span></span><span></span><span></span>
             </button>
-            <nav class="nav" id="nav">
+            <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
                 <a href="index.html" class="nav-link">Inicio</a>
-                <a href="salud.html" class="nav-link"><i class="fas fa-heartbeat"></i> Salud</a>
-                <a href="hogar.html" class="nav-link"><i class="fas fa-home"></i> Mi Hogar</a>
-                <a href="automotriz.html" class="nav-link active"><i class="fas fa-car"></i> Auto</a>
-                <a href="tecnologia.html" class="nav-link"><i class="fas fa-laptop-code"></i> Tecnología</a>
-                <a href="funerarias.html" class="nav-link"><i class="fas fa-dove"></i> Despedida</a>
+                <a href="salud.html" class="nav-link"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud</a>
+                <a href="hogar.html" class="nav-link"><i class="fas fa-home" aria-hidden="true"></i> Mi Hogar</a>
+                <a href="automotriz.html" class="nav-link active" aria-current="page"><i class="fas fa-car" aria-hidden="true"></i> Auto</a>
+                <a href="tecnologia.html" class="nav-link"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología</a>
+                <a href="funerarias.html" class="nav-link"><i class="fas fa-dove" aria-hidden="true"></i> Despedida</a>
                 <a href="contacto.html" class="nav-link">Contacto</a>
-                <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="nav-link btn-proveedor" target="_blank">
-                    <i class="fas fa-store"></i> Soy Proveedor
+                <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="nav-link btn-proveedor" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-store" aria-hidden="true"></i> Soy Proveedor
                 </a>
             </nav>
         </div>
     </header>
 
-    <main class="main-content">
+    <main class="main-content" role="main">
         <div class="container content-grid">
             
             <!-- COLUMNA PRINCIPAL -->
             <div class="content-main">
                 
                 <!-- HERO SECTION -->
-                <section class="hero">
+                <section class="hero" aria-labelledby="hero-title">
                     <div class="hero-content fade-in">
                         <div class="hero-badge">
-                            <i class="fas fa-car"></i> Auto y Movilidad Verificado
+                            <i class="fas fa-car" aria-hidden="true"></i> Auto y Movilidad Verificado
                         </div>
-                        <h2 class="hero-title">Talleres, Grúas, Lavado y Servicios Automotrices de Confianza</h2>
+                        <h2 class="hero-title" id="hero-title">Talleres, Grúas, Lavado y Servicios Automotrices de Confianza</h2>
                         <p class="hero-subtitle">Mecánicos certificados, especialistas en frenos, muñonería, chapistería, eléctricos y grúas 24h. Cotizaciones por escrito antes de tocar tu vehículo. Sin sorpresas ni cobros ocultos.</p>
                         
                         <div class="hero-buttons" style="grid-template-columns: repeat(4, 1fr);">
-                            <a href="#talleres" class="btn btn-primary btn-auto"><i class="fas fa-wrench"></i> Taller Mecánico</a>
-                            <a href="#frenos" class="btn btn-primary btn-auto"><i class="fas fa-circle-notch"></i> Frenos</a>
-                            <a href="#munoneria" class="btn btn-primary btn-auto"><i class="fas fa-sync-alt"></i> Muñonería</a>
-                            <a href="#chapista" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-spray-can"></i> Chapista</a>
-                            <a href="#electrico" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-bolt"></i> Eléctrico</a>
-                            <a href="#electromecanico" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-cogs"></i> Electromecánico</a>
-                            <a href="#gruas" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-truck-pickup"></i> Grúas 24h</a>
-                            <a href="#lavado" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-shower"></i> Lavado</a>
+                            <a href="#talleres" class="btn btn-primary btn-auto"><i class="fas fa-wrench" aria-hidden="true"></i> Taller Mecánico</a>
+                            <a href="#frenos" class="btn btn-primary btn-auto"><i class="fas fa-circle-notch" aria-hidden="true"></i> Frenos</a>
+                            <a href="#munoneria" class="btn btn-primary btn-auto"><i class="fas fa-sync-alt" aria-hidden="true"></i> Muñonería</a>
+                            <a href="#chapista" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-spray-can" aria-hidden="true"></i> Chapista</a>
+                            <a href="#electrico" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-bolt" aria-hidden="true"></i> Eléctrico</a>
+                            <a href="#electromecanico" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-cogs" aria-hidden="true"></i> Electromecánico</a>
+                            <a href="#gruas" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-truck-pickup" aria-hidden="true"></i> Grúas 24h</a>
+                            <a href="#lavado" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-shower" aria-hidden="true"></i> Lavado</a>
                         </div>
                         
                         <div class="hero-features">
-                            <div class="hero-feature"><i class="fas fa-user-cog"></i><span>Mecánicos Certificados</span></div>
-                            <div class="hero-feature"><i class="fas fa-file-invoice"></i><span>Cotización por Escrito</span></div>
-                            <div class="hero-feature"><i class="fas fa-shield-alt"></i><span>Garantía de Trabajo</span></div>
+                            <div class="hero-feature"><i class="fas fa-user-cog" aria-hidden="true"></i><span>Mecánicos Certificados</span></div>
+                            <div class="hero-feature"><i class="fas fa-file-invoice" aria-hidden="true"></i><span>Cotización por Escrito</span></div>
+                            <div class="hero-feature"><i class="fas fa-shield-alt" aria-hidden="true"></i><span>Garantía de Trabajo</span></div>
                         </div>
                         
-                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20servicio%20automotriz%20verificado" class="btn-provider-link" target="_blank">
-                            <i class="fas fa-phone-alt"></i> Consultar por WhatsApp: 76536286
+                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20servicio%20automotriz%20verificado" class="btn-provider-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i> Consultar por WhatsApp: 76536286
                         </a>
                     </div>
                 </section>
 
                 <!-- ESTADÍSTICAS -->
-                <section class="stats-section fade-in">
+                <section class="stats-section fade-in" aria-labelledby="stats-title">
+                    <h2 class="section-title" id="stats-title" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Estadísticas del Sector Automotriz</h2>
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-wrench"></i></div>
+                            <div class="stat-icon"><i class="fas fa-wrench" aria-hidden="true"></i></div>
                             <div class="stat-number" data-target="60" data-suffix="+">0</div>
                             <div class="stat-label">Talleres Verificados</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-truck-pickup"></i></div>
+                            <div class="stat-icon"><i class="fas fa-truck-pickup" aria-hidden="true"></i></div>
                             <div class="stat-number" data-target="25" data-suffix="+">0</div>
                             <div class="stat-label">Grúas 24/7</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
                             <div class="stat-number" data-target="95" data-suffix="%">0</div>
                             <div class="stat-label">Satisfacción</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                            <div class="stat-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
                             <div class="stat-number" data-target="30" data-suffix=" min">0</div>
                             <div class="stat-label">Tiempo Respuesta Grúa</div>
                         </div>
@@ -105,26 +119,26 @@
                 </section>
 
                 <!-- TALLER MECÁNICO -->
-                <section id="talleres" class="fade-in">
-                    <h2 class="section-title"><i class="fas fa-wrench"></i> TALLER MECÁNICO</h2>
+                <section id="talleres" class="fade-in" aria-labelledby="talleres-title">
+                    <h2 class="section-title" id="talleres-title"><i class="fas fa-wrench" aria-hidden="true"></i> TALLER MECÁNICO</h2>
                     <p class="section-description">
                         <strong>Afinación, Motor, Suspensión y Diagnóstico Computarizado</strong><br>
                         Talleres verificados con mecánicos certificados, herramientas de diagnóstico modernas y garantía por escrito en cada reparación. Cotización detallada antes de empezar.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Mecánicos con certificación o experiencia comprobada (+5 años)</li>
-                            <li><i class="fas fa-check"></i> Diagnóstico computarizado real (scanner profesional)</li>
-                            <li><i class="fas fa-check"></i> Cotización por escrito con desglose de piezas y mano de obra</li>
-                            <li><i class="fas fa-check"></i> Garantía mínima de 30 días o 1,000 km</li>
-                            <li><i class="fas fa-check"></i> Limpieza del vehículo al entregarlo</li>
-                            <li><i class="fas fa-check"></i> Repuestos originales o genéricos de calidad (no falsificados)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Mecánicos con certificación o experiencia comprobada (+5 años)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Diagnóstico computarizado real (scanner profesional)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Cotización por escrito con desglose de piezas y mano de obra</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Garantía mínima de 30 días o 1,000 km</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Limpieza del vehículo al entregarlo</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Repuestos originales o genéricos de calidad (no falsificados)</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-auto">
                             <h3>Cambio de Aceite y Filtros</h3>
@@ -158,51 +172,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Taller Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Taller Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-auto);">
                         <div class="featured-badge" style="background: var(--color-auto); color: white;">TALLER CERTIFICADO</div>
                         <h3>AUTOSERVICIO EL MAESTRO - MECÁNICA GENERAL</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. Perú, Sopocachi, La Paz</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 8:00-18:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 2-2345678 / 76599988</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Diagnóstico: 80 Bs (se descuenta del trabajo)</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 10 años de experiencia | Especialistas en Toyota/Chevrolet</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 30 días o 1,000 km</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Av. Perú, Sopocachi, La Paz</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sáb: 8:00-18:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 2-2345678 / 76599988</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Diagnóstico: 80 Bs (se descuenta del trabajo)</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 10 años de experiencia | Especialistas en Toyota/Chevrolet</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 30 días o 1,000 km</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20cotización%20para%20mi%20vehículo" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Cotizar reparación</a>
+                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20cotización%20para%20mi%20vehículo" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Cotizar reparación</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Talleres Mecánicos Verificados Disponibles:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Talleres Mecánicos Verificados Disponibles:</h3>
                     <div id="contenedor-talleres" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando talleres verificados...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando talleres verificados...</p>
                     </div>
                 </section>
 
                 <!-- SISTEMA DE FRENOS -->
-                <section id="frenos" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-circle-notch"></i> SISTEMA DE FRENOS</h2>
+                <section id="frenos" class="fade-in" style="margin-top: 4rem;" aria-labelledby="frenos-title">
+                    <h2 class="section-title" id="frenos-title"><i class="fas fa-circle-notch" aria-hidden="true"></i> SISTEMA DE FRENOS</h2>
                     <p class="section-description">
                         <strong>Pastillas, Discos, Tambores y Líquido de Frenos</strong><br>
                         Especialistas verificados en sistemas de frenado. Tu seguridad es primero: verificamos que usen repuestos de calidad y que hagan pruebas de frenado antes de entregar el vehículo.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Uso de pastillas y discos de marca reconocida (Brembo, TRW, Bosch)</li>
-                            <li><i class="fas fa-check"></i> Rectificación de discos con equipo profesional</li>
-                            <li><i class="fas fa-check"></i> Purga completa del sistema de frenos</li>
-                            <li><i class="fas fa-check"></i> Pruebas de frenado en banco o en ruta</li>
-                            <li><i class="fas fa-check"></i> Revisión de mangueras y cilindros</li>
-                            <li><i class="fas fa-check"></i> Garantía mínima de 6 meses en mano de obra</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Uso de pastillas y discos de marca reconocida (Brembo, TRW, Bosch)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Rectificación de discos con equipo profesional</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Purga completa del sistema de frenos</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Pruebas de frenado en banco o en ruta</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Revisión de mangueras y cilindros</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Garantía mínima de 6 meses en mano de obra</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-auto">
                             <h3>Cambio de Pastillas Delanteras</h3>
@@ -236,51 +250,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Especialista en Frenos:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Especialista en Frenos:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-auto);">
                         <div class="featured-badge" style="background: var(--color-auto); color: white;">ESPECIALISTA EN FRENOS</div>
                         <h3>FRENOS SEGUROS LA PAZ - ESPECIALISTAS CERTIFICADOS</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. Busch, Calacoto, La Paz</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Vie: 8:00-18:00 | Sáb: 8:00-13:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 2-2771234 / 70112233</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Revisión de frenos: Gratis</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 12 años de experiencia | Banco de pruebas propio</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 6 meses en mano de obra</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Av. Busch, Calacoto, La Paz</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Vie: 8:00-18:00 | Sáb: 8:00-13:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 2-2771234 / 70112233</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Revisión de frenos: Gratis</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 12 años de experiencia | Banco de pruebas propio</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 6 meses en mano de obra</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20revisión%20de%20frenos" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Agendar revisión</a>
+                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20revisión%20de%20frenos" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar revisión</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Especialistas en Frenos Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Especialistas en Frenos Verificados:</h3>
                     <div id="contenedor-frenos" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando especialistas en frenos...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando especialistas en frenos...</p>
                     </div>
                 </section>
 
                 <!-- MUÑONERÍA (ALINEACIÓN Y BALANCEO) -->
-                <section id="munoneria" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-sync-alt"></i> MUÑONERÍA - ALINEACIÓN Y BALANCEO</h2>
+                <section id="munoneria" class="fade-in" style="margin-top: 4rem;" aria-labelledby="munoneria-title">
+                    <h2 class="section-title" id="munoneria-title"><i class="fas fa-sync-alt" aria-hidden="true"></i> MUÑONERÍA - ALINEACIÓN Y BALANCEO</h2>
                     <p class="section-description">
                         <strong>Alineación Computarizada, Balanceo Dinámico y Suspensión</strong><br>
                         Servicios de muñonería con equipos computarizados de última generación. Verificamos que usen tecnología 3D para alineación precisa y balanceo dinámico profesional.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Equipo de alineación computarizada 3D</li>
-                            <li><i class="fas fa-check"></i> Balanceo dinámico con máquina calibrada</li>
-                            <li><i class="fas fa-check"></i> Técnicos capacitados en suspensión moderna</li>
-                            <li><i class="fas fa-check"></i> Revisión completa de dirección y suspensión</li>
-                            <li><i class="fas fa-check"></i> Informe impreso de ángulos antes y después</li>
-                            <li><i class="fas fa-check"></i> Garantía de 30 días o 1,000 km</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Equipo de alineación computarizada 3D</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Balanceo dinámico con máquina calibrada</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Técnicos capacitados en suspensión moderna</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Revisión completa de dirección y suspensión</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Informe impreso de ángulos antes y después</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Garantía de 30 días o 1,000 km</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-auto">
                             <h3>Alineación Computarizada</h3>
@@ -314,51 +328,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Muñonería Verificada:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Muñonería Verificada:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-auto);">
                         <div class="featured-badge" style="background: var(--color-auto); color: white;">MUÑONERÍA CERTIFICADA</div>
                         <h3>MUÑONERÍA PRECISIÓN - ALINEACIÓN 3D</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. Arce, San Miguel, La Paz</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 8:00-19:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 2-2412345 / 77889900</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Alineación + Balanceo: 180 Bs (paquete)</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 8 años de experiencia | Equipo Hunter 3D</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 30 días o 1,000 km</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Av. Arce, San Miguel, La Paz</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sáb: 8:00-19:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 2-2412345 / 77889900</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Alineación + Balanceo: 180 Bs (paquete)</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 8 años de experiencia | Equipo Hunter 3D</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 30 días o 1,000 km</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20alineación%20y%20balanceo" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Agendar servicio</a>
+                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20alineación%20y%20balanceo" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar servicio</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Muñonerías Verificadas Disponibles:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Muñonerías Verificadas Disponibles:</h3>
                     <div id="contenedor-munoneria" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando muñonerías verificadas...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando muñonerías verificadas...</p>
                     </div>
                 </section>
 
                 <!-- CHAPISTA (CARROCERÍA Y PINTURA) -->
-                <section id="chapista" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-spray-can"></i> CHAPISTA - CARROCERÍA Y PINTURA</h2>
+                <section id="chapista" class="fade-in" style="margin-top: 4rem;" aria-labelledby="chapista-title">
+                    <h2 class="section-title" id="chapista-title"><i class="fas fa-spray-can" aria-hidden="true"></i> CHAPISTA - CARROCERÍA Y PINTURA</h2>
                     <p class="section-description">
                         <strong>Enderezado, Pintura al Horno, Pulido y Reparación de Siniestros</strong><br>
                         Chapistas verificados con cabina de pintura, equipos de enderezado y materiales de primera calidad. Trabajos garantizados con acabados de fábrica.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Cabina de pintura con control de polvo y temperatura</li>
-                            <li><i class="fas fa-check"></i> Pinturas de marca (PPG, Sherwin-Williams, Axalta)</li>
-                            <li><i class="fas fa-check"></i> Equipo de enderezado con banco medidor</li>
-                            <li><i class="fas fa-check"></i> Igualación de color con espectrofotómetro</li>
-                            <li><i class="fas fa-check"></i> Presupuestos detallados con fotos del daño</li>
-                            <li><i class="fas fa-check"></i> Garantía de 1 año en pintura</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Cabina de pintura con control de polvo y temperatura</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Pinturas de marca (PPG, Sherwin-Williams, Axalta)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Equipo de enderezado con banco medidor</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Igualación de color con espectrofotómetro</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Presupuestos detallados con fotos del daño</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Garantía de 1 año en pintura</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-auto">
                             <h3>Pintura de Panel (puerta, guardabarros)</h3>
@@ -392,51 +406,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Chapista Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Chapista Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-auto);">
                         <div class="featured-badge" style="background: var(--color-auto); color: white;">CHAPISTA CERTIFICADO</div>
                         <h3>CHAPISTERÍA EL ARTISTA - ACABADOS DE FÁBRICA</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. 6 de Agosto, Miraflores, La Paz</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 8:00-18:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 2-2445566 / 71234567</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Presupuesto gratuito con fotos</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 15 años de experiencia | Cabina de pintura propia</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 1 año en pintura</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Av. 6 de Agosto, Miraflores, La Paz</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sáb: 8:00-18:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 2-2445566 / 71234567</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Presupuesto gratuito con fotos</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 15 años de experiencia | Cabina de pintura propia</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 1 año en pintura</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20cotización%20de%20chapistería" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar presupuesto</a>
+                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20cotización%20de%20chapistería" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar presupuesto</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Chapistas Verificados Disponibles:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Chapistas Verificados Disponibles:</h3>
                     <div id="contenedor-chapista" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando chapistas verificados...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando chapistas verificados...</p>
                     </div>
                 </section>
 
                 <!-- ELÉCTRICO AUTOMOTRIZ -->
-                <section id="electrico" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-bolt"></i> ELÉCTRICO AUTOMOTRIZ</h2>
+                <section id="electrico" class="fade-in" style="margin-top: 4rem;" aria-labelledby="electrico-title">
+                    <h2 class="section-title" id="electrico-title"><i class="fas fa-bolt" aria-hidden="true"></i> ELÉCTRICO AUTOMOTRIZ</h2>
                     <p class="section-description">
                         <strong>Baterías, Alternadores, Marchas, Luces y Cableado</strong><br>
                         Electricistas automotrices con equipos de diagnóstico electrónico. Especialistas en sistemas eléctricos modernos, computadoras de auto y sensores.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Scanner electrónico para diagnóstico de fallas</li>
-                            <li><i class="fas fa-check"></i> Equipos de prueba para alternador y marcha</li>
-                            <li><i class="fas fa-check"></i> Conocimiento en sistemas eléctricos modernos</li>
-                            <li><i class="fas fa-check"></i> Uso de repuestos originales o de calidad</li>
-                            <li><i class="fas fa-check"></i> Diagramas eléctricos actualizados</li>
-                            <li><i class="fas fa-check"></i> Garantía de 3 meses en reparaciones eléctricas</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Scanner electrónico para diagnóstico de fallas</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Equipos de prueba para alternador y marcha</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Conocimiento en sistemas eléctricos modernos</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Uso de repuestos originales o de calidad</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Diagramas eléctricos actualizados</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Garantía de 3 meses en reparaciones eléctricas</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-auto">
                             <h3>Cambio de Batería</h3>
@@ -470,51 +484,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Eléctrico Automotriz Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Eléctrico Automotriz Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-auto);">
                         <div class="featured-badge" style="background: var(--color-auto); color: white;">ELÉCTRICO AUTOMOTRIZ CERTIFICADO</div>
                         <h3>ELECTRO AUTO LA PAZ - DIAGNÓSTICO ELECTRÓNICO</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. 16 de Julio, El Alto</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 8:00-19:00 | Emergencias 24h</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 2-8412345 / 76543210</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Diagnóstico: 80 Bs (se descuenta del trabajo)</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 10 años de experiencia | Scanner multimarca</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 3 meses en reparaciones</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Av. 16 de Julio, El Alto</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sáb: 8:00-19:00 | Emergencias 24h</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 2-8412345 / 76543210</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Diagnóstico: 80 Bs (se descuenta del trabajo)</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 10 años de experiencia | Scanner multimarca</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 3 meses en reparaciones</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20eléctrico%20automotriz" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar servicio</a>
+                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20eléctrico%20automotriz" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar servicio</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Eléctricos Automotrices Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Eléctricos Automotrices Verificados:</h3>
                     <div id="contenedor-electrico" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando eléctricos automotrices...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando eléctricos automotrices...</p>
                     </div>
                 </section>
 
                 <!-- ELECTROMECÁNICO -->
-                <section id="electromecanico" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-cogs"></i> ELECTROMECÁNICO</h2>
+                <section id="electromecanico" class="fade-in" style="margin-top: 4rem;" aria-labelledby="electromecanico-title">
+                    <h2 class="section-title" id="electromecanico-title"><i class="fas fa-cogs" aria-hidden="true"></i> ELECTROMECÁNICO</h2>
                     <p class="section-description">
                         <strong>Inyección Electrónica, Sensores, Computadoras y Sistemas Modernos</strong><br>
                         Especialistas en vehículos con inyección electrónica, sensores, computadoras de abordo y sistemas modernos. Diagnóstico preciso con equipos de última generación.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Scanner de última generación (multimarca)</li>
-                            <li><i class="fas fa-check"></i> Conocimiento en inyección electrónica</li>
-                            <li><i class="fas fa-check"></i> Capacidad de reprogramación de computadoras</li>
-                            <li><i class="fas fa-check"></i> Pruebas de sensores con osciloscopio</li>
-                            <li><i class="fas fa-check"></i> Actualización de software de fábrica</li>
-                            <li><i class="fas fa-check"></i> Garantía de 3 meses en reparaciones electrónicas</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Scanner de última generación (multimarca)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Conocimiento en inyección electrónica</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Capacidad de reprogramación de computadoras</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Pruebas de sensores con osciloscopio</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Actualización de software de fábrica</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Garantía de 3 meses en reparaciones electrónicas</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-auto">
                             <h3>Diagnóstico con Scanner</h3>
@@ -548,51 +562,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Electromecánico Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Electromecánico Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-auto);">
                         <div class="featured-badge" style="background: var(--color-auto); color: white;">ELECTROMECÁNICO CERTIFICADO</div>
                         <h3>ELECTRO MECÁNICA MODERNA - INYECCIÓN ELECTRÓNICA</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. Blanco Galindo, Cochabamba (Sucursal La Paz)</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Vie: 8:00-18:00 | Sáb: 8:00-13:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 2-4567890 / 70123456</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Diagnóstico: 100 Bs</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 8 años de experiencia | Especialistas en vehículos modernos</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 3 meses en reparaciones electrónicas</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Av. Blanco Galindo, Cochabamba (Sucursal La Paz)</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Vie: 8:00-18:00 | Sáb: 8:00-13:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 2-4567890 / 70123456</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Diagnóstico: 100 Bs</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 8 años de experiencia | Especialistas en vehículos modernos</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 3 meses en reparaciones electrónicas</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20electromecánico" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar diagnóstico</a>
+                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20electromecánico" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar diagnóstico</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Electromecánicos Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Electromecánicos Verificados:</h3>
                     <div id="contenedor-electromecanico" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando electromecánicos...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando electromecánicos...</p>
                     </div>
                 </section>
 
                 <!-- GRÚAS 24H -->
-                <section id="gruas" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-truck-pickup"></i> GRÚAS Y AUXILIO VIAL 24H</h2>
+                <section id="gruas" class="fade-in" style="margin-top: 4rem;" aria-labelledby="gruas-title">
+                    <h2 class="section-title" id="gruas-title"><i class="fas fa-truck-pickup" aria-hidden="true"></i> GRÚAS Y AUXILIO VIAL 24H</h2>
                     <p class="section-description">
                         <strong>Traslado Seguro, Rápido y con Tarifas Claras</strong><br>
                         Servicios de grúa y auxilio vial disponibles las 24 horas. Tarifa base clara por kilómetro, sin cobros sorpresa por "espera" o "maniobra" no acordados previamente.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Disponibilidad real 24/7 (llamadas de prueba nocturnas)</li>
-                            <li><i class="fas fa-check"></i> Grúas en buen estado con seguros vigentes</li>
-                            <li><i class="fas fa-check"></i> Tarifas claras por zona (La Paz, El Alto, Carreteras)</li>
-                            <li><i class="fas fa-check"></i> Trato respetuoso y profesional en emergencias</li>
-                            <li><i class="fas fa-check"></i> Tiempo de respuesta promedio menor a 45 minutos</li>
-                            <li><i class="fas fa-check"></i> Capacidad para diferentes tipos de vehículos</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Disponibilidad real 24/7 (llamadas de prueba nocturnas)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Grúas en buen estado con seguros vigentes</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Tarifas claras por zona (La Paz, El Alto, Carreteras)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Trato respetuoso y profesional en emergencias</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Tiempo de respuesta promedio menor a 45 minutos</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Capacidad para diferentes tipos de vehículos</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Tarifas Referenciales Verificadas:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Tarifas Referenciales Verificadas:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-auto">
                             <h3>Traslado Local (Zona Sur/Centro)</h3>
@@ -626,51 +640,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Grúa Verificada:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Grúa Verificada:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-auto);">
                         <div class="featured-badge" style="background: var(--color-auto); color: white;">GRÚA CERTIFICADA 24H</div>
                         <h3>GRÚAS RÁPIDAS LA PAZ - AUXILIO VIAL 24/7</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Cobertura: La Paz, El Alto y carreteras cercanas</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> 24 horas, los 365 días del año</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 70112233 / 76544455 (Emergencias)</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Tarifa base: 200 Bs (primeros 5 km)</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 5 años de servicio | 3 grúas disponibles</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Tiempo promedio de respuesta: 30 minutos</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Cobertura: La Paz, El Alto y carreteras cercanas</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> 24 horas, los 365 días del año</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 70112233 / 76544455 (Emergencias)</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Tarifa base: 200 Bs (primeros 5 km)</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 5 años de servicio | 3 grúas disponibles</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Tiempo promedio de respuesta: 30 minutos</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20una%20grúa%20urgente" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Llamar grúa ahora</a>
+                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20una%20grúa%20urgente" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Llamar grúa ahora</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Grúas y Auxilio Vial Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Grúas y Auxilio Vial Verificados:</h3>
                     <div id="contenedor-gruas" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando grúas verificadas...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando grúas verificadas...</p>
                     </div>
                 </section>
 
                 <!-- LAVADO Y DETALLADO -->
-                <section id="lavado" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-shower"></i> LAVADO Y DETALLADO AUTOMOTRIZ</h2>
+                <section id="lavado" class="fade-in" style="margin-top: 4rem;" aria-labelledby="lavado-title">
+                    <h2 class="section-title" id="lavado-title"><i class="fas fa-shower" aria-hidden="true"></i> LAVADO Y DETALLADO AUTOMOTRIZ</h2>
                     <p class="section-description">
                         <strong>Lavado Exterior, Interior, Encerado y Limpieza de Motor</strong><br>
                         Centros de lavado verificados con productos de calidad, atención al detalle y cuidado de la pintura de tu vehículo. Desde un lavado rápido hasta un detallado completo que deja tu auto como nuevo.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Uso de shampoo automotriz de pH neutro (no daña la pintura)</li>
-                            <li><i class="fas fa-check"></i> Toallas de microfibra limpias y exclusivas para cada vehículo</li>
-                            <li><i class="fas fa-check"></i> Aspirado completo de interiores (asientos, alfombra, baúl)</li>
-                            <li><i class="fas fa-check"></i> Limpieza de tablero, consola y plásticos con productos adecuados</li>
-                            <li><i class="fas fa-check"></i> Limpieza de motor con desengrasante y protección</li>
-                            <li><i class="fas fa-check"></i> Tiempo de servicio respetado (no te hacen esperar horas)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Uso de shampoo automotriz de pH neutro (no daña la pintura)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Toallas de microfibra limpias y exclusivas para cada vehículo</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Aspirado completo de interiores (asientos, alfombra, baúl)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Limpieza de tablero, consola y plásticos con productos adecuados</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Limpieza de motor con desengrasante y protección</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Tiempo de servicio respetado (no te hacen esperar horas)</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-auto">
                             <h3>Lavado Exterior Básico</h3>
@@ -704,51 +718,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Centro de Lavado Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Centro de Lavado Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-auto);">
                         <div class="featured-badge" style="background: var(--color-auto); color: white;">CENTRO DE LAVADO CERTIFICADO</div>
                         <h3>LAVADO PREMIUM EL MAESTRO - CUIDADO TOTAL</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Av. 16 de Julio, El Alto (frente a la Feria)</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Dom: 7:00-19:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 71234567 / 2-8456789</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Lavado completo: 70 Bs (promoción lunes)</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 5 años de experiencia | Productos de primera marca</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: Si no quedas satisfecho, lo lavamos de nuevo gratis</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Av. 16 de Julio, El Alto (frente a la Feria)</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Dom: 7:00-19:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 71234567 / 2-8456789</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Lavado completo: 70 Bs (promoción lunes)</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 5 años de experiencia | Productos de primera marca</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: Si no quedas satisfecho, lo lavamos de nuevo gratis</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20lavado%20de%20auto" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Agendar lavado</a>
+                            <a href="#" class="btn btn-outline btn-auto"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20lavado%20de%20auto" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar lavado</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Centros de Lavado Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Centros de Lavado Verificados:</h3>
                     <div id="contenedor-lavado" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando centros de lavado verificados...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando centros de lavado verificados...</p>
                     </div>
                 </section>
 
                 <!-- POR QUÉ CONFIAR -->
-                <section class="why-us-section fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-shield-alt"></i> ¿POR QUÉ CONFIAR EN NUESTROS TALLERES?</h2>
+                <section class="why-us-section fade-in" style="margin-top: 4rem;" aria-labelledby="why-title">
+                    <h2 class="section-title" id="why-title"><i class="fas fa-shield-alt" aria-hidden="true"></i> ¿POR QUÉ CONFIAR EN NUESTROS TALLERES?</h2>
                     <div class="why-us-grid">
                         <div class="why-card">
-                            <div class="why-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <div class="why-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></div>
                             <h3>Cotización por Escrito</h3>
                             <p>Antes de tocar tu auto, recibes un desglose claro del precio de repuestos y mano de obra. Sin sorpresas.</p>
                         </div>
                         <div class="why-card">
-                            <div class="why-icon"><i class="fas fa-user-check"></i></div>
+                            <div class="why-icon"><i class="fas fa-user-check" aria-hidden="true"></i></div>
                             <h3>Verificación Humana</h3>
                             <p>Llevamos nuestros propios vehículos a estos talleres para probar la calidad del servicio antes de recomendarlos.</p>
                         </div>
                         <div class="why-card">
-                            <div class="why-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="why-icon"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></div>
                             <h3>Regla de las 3 Quejas</h3>
                             <p>Si un taller recibe 3 quejas verificadas por cobros excesivos o mal trabajo, pierde nuestro sello inmediatamente.</p>
                         </div>
                         <div class="why-card">
-                            <div class="why-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="why-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
                             <h3>Respuesta Rápida</h3>
                             <p>En emergencias, te conectamos con la grúa o taller disponible más cercano en menos de 15 minutos.</p>
                         </div>
@@ -756,20 +770,20 @@
                 </section>
 
                 <!-- CTA FINAL -->
-                <section class="featured-section fade-in" style="margin-top: 4rem; background: var(--gradiente-hero); color: white; border-left: none;">
+                <section class="featured-section fade-in" style="margin-top: 4rem; background: var(--gradiente-hero); color: white; border-left: none;" aria-labelledby="cta-title">
                     <div class="featured-badge" style="background: rgba(255,255,255,0.2); color: white;">
-                        <i class="fas fa-phone-alt"></i> ¿TU AUTO NECESITA ATENCIÓN?
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i> ¿TU AUTO NECESITA ATENCIÓN?
                     </div>
-                    <h3 style="color: white;">Cuéntanos qué tiene tu vehículo y te conectamos con el especialista verificado ideal</h3>
+                    <h3 id="cta-title" style="color: white;">Cuéntanos qué tiene tu vehículo y te conectamos con el especialista verificado ideal</h3>
                     <p style="color: rgba(255,255,255,0.9);">Cotización gratis y sin compromiso. Respuesta en menos de 2 horas en horario de oficina.</p>
                     <div class="hero-features" style="margin: 2rem 0; justify-content: center;">
-                        <div class="hero-feature"><i class="fas fa-file-alt"></i> Cotización por escrito</div>
-                        <div class="hero-feature"><i class="fas fa-shield-alt"></i> Garantía de buen trabajo</div>
-                        <div class="hero-feature"><i class="fas fa-gift"></i> 100% gratuito para ciudadanos</div>
+                        <div class="hero-feature"><i class="fas fa-file-alt" aria-hidden="true"></i> Cotización por escrito</div>
+                        <div class="hero-feature"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía de buen trabajo</div>
+                        <div class="hero-feature"><i class="fas fa-gift" aria-hidden="true"></i> 100% gratuito para ciudadanos</div>
                     </div>
                     <div class="category-actions">
-                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20servicio%20automotriz%20verificado" class="btn btn-whatsapp btn-block" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp: 76536286
+                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20servicio%20automotriz%20verificado" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp: 76536286
                         </a>
                     </div>
                 </section>
@@ -777,55 +791,55 @@
             </div>
 
             <!-- SIDEBAR -->
-            <aside class="sidebar">
+            <aside class="sidebar" role="complementary">
                 <div class="sidebar-section fade-in">
-                    <h3><i class="fas fa-fire"></i> LO MÁS BUSCADO</h3>
+                    <h3><i class="fas fa-fire" aria-hidden="true"></i> LO MÁS BUSCADO</h3>
                     <ul class="popular-list">
-                        <li><a href="#talleres"><i class="fas fa-chevron-right"></i> Talleres de confianza en Zona Sur</a></li>
-                        <li><a href="#frenos"><i class="fas fa-chevron-right"></i> Cambio de pastillas de freno</a></li>
-                        <li><a href="#munoneria"><i class="fas fa-chevron-right"></i> Alineación y balanceo 3D</a></li>
-                        <li><a href="#chapista"><i class="fas fa-chevron-right"></i> Chapistería y pintura al horno</a></li>
-                        <li><a href="#electrico"><i class="fas fa-chevron-right"></i> Fallas eléctricas y baterías</a></li>
-                        <li><a href="#gruas"><i class="fas fa-chevron-right"></i> Grúas 24h en El Alto</a></li>
-                        <li><a href="#lavado"><i class="fas fa-chevron-right"></i> Lavado y detallado premium</a></li>
+                        <li><a href="#talleres"><i class="fas fa-chevron-right" aria-hidden="true"></i> Talleres de confianza en Zona Sur</a></li>
+                        <li><a href="#frenos"><i class="fas fa-chevron-right" aria-hidden="true"></i> Cambio de pastillas de freno</a></li>
+                        <li><a href="#munoneria"><i class="fas fa-chevron-right" aria-hidden="true"></i> Alineación y balanceo 3D</a></li>
+                        <li><a href="#chapista"><i class="fas fa-chevron-right" aria-hidden="true"></i> Chapistería y pintura al horno</a></li>
+                        <li><a href="#electrico"><i class="fas fa-chevron-right" aria-hidden="true"></i> Fallas eléctricas y baterías</a></li>
+                        <li><a href="#gruas"><i class="fas fa-chevron-right" aria-hidden="true"></i> Grúas 24h en El Alto</a></li>
+                        <li><a href="#lavado"><i class="fas fa-chevron-right" aria-hidden="true"></i> Lavado y detallado premium</a></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-section fade-in">
-                    <h3><i class="fas fa-envelope"></i> CONTÁCTANOS</h3>
+                    <h3><i class="fas fa-envelope" aria-hidden="true"></i> CONTÁCTANOS</h3>
                     <p>¿No encuentras lo que buscas? Escríbenos directamente.</p>
-                    <a href="https://wa.me/59176536286" class="btn btn-whatsapp btn-block" target="_blank">
-                        <i class="fab fa-whatsapp"></i> WhatsApp: 76536286
+                    <a href="https://wa.me/59176536286" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp: 76536286
                     </a>
-                    <a href="https://t.me/verificalapaz_bot" class="btn btn-telegram btn-block" target="_blank">
-                        <i class="fab fa-telegram"></i> Bot de Telegram
+                    <a href="https://t.me/verificalapaz_bot" class="btn btn-telegram btn-block" target="_blank" rel="noopener noreferrer" aria-label="Contactar por Telegram">
+                        <i class="fab fa-telegram" aria-hidden="true"></i> Bot de Telegram
                     </a>
-                    <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline btn-block">
-                        <i class="fas fa-envelope"></i> Email
+                    <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline btn-block" aria-label="Enviar email">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Email
                     </a>
                 </div>
 
                 <div class="sidebar-section fade-in">
-                    <h3><i class="fas fa-store"></i> ¿ERES TALLER O GRÚA?</h3>
+                    <h3><i class="fas fa-store" aria-hidden="true"></i> ¿ERES TALLER O GRÚA?</h3>
                     <p>Únete a nuestro directorio verificado y aumenta tu visibilidad.</p>
                     <ul class="provider-benefits">
-                        <li><i class="fas fa-check"></i> Sello de verificado</li>
-                        <li><i class="fas fa-check"></i> Sin comisión por trabajo</li>
-                        <li><i class="fas fa-check"></i> Mayor visibilidad online</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Sello de verificado</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Sin comisión por trabajo</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Mayor visibilidad online</li>
                     </ul>
-                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20taller%20o%20grúa%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank">
-                        <i class="fas fa-store"></i> Unirme ahora
+                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20taller%20o%20grúa%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-store" aria-hidden="true"></i> Unirme ahora
                     </a>
                 </div>
 
                 <div class="sidebar-section fade-in">
-                    <h3><i class="fas fa-share-alt"></i> SÍGUENOS</h3>
+                    <h3><i class="fas fa-share-alt" aria-hidden="true"></i> SÍGUENOS</h3>
                     <div class="social-grid">
-                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank">
-                            <i class="fab fa-facebook-f"></i><span>Facebook</span>
+                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span>
                         </a>
-                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank">
-                            <i class="fab fa-tiktok"></i><span>TikTok</span>
+                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <i class="fab fa-tiktok" aria-hidden="true"></i><span>TikTok</span>
                         </a>
                     </div>
                 </div>
@@ -834,22 +848,22 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><i class="fas fa-shield-alt"></i> VERIFICA LA PAZ</h3>
+                    <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> VERIFICA LA PAZ</h3>
                     <p class="footer-tagline">Primero verifica. Después resuelve.</p>
                     <p>Tu aliado de confianza para resolver lo que importa en La Paz y El Alto. Verificamos personalmente cada servicio para que tú decidas con seguridad.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Categorías</h4>
                     <ul>
-                        <li><a href="salud.html"><i class="fas fa-heartbeat"></i> Salud y Bienestar</a></li>
-                        <li><a href="hogar.html"><i class="fas fa-home"></i> Mi Hogar Seguro</a></li>
-                        <li><a href="automotriz.html"><i class="fas fa-car"></i> Auto y Movilidad</a></li>
-                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code"></i> Tecnología</a></li>
-                        <li><a href="funerarias.html"><i class="fas fa-dove"></i> Despedida y Homenaje</a></li>
+                        <li><a href="salud.html"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud y Bienestar</a></li>
+                        <li><a href="hogar.html"><i class="fas fa-home" aria-hidden="true"></i> Mi Hogar Seguro</a></li>
+                        <li><a href="automotriz.html"><i class="fas fa-car" aria-hidden="true"></i> Auto y Movilidad</a></li>
+                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología</a></li>
+                        <li><a href="funerarias.html"><i class="fas fa-dove" aria-hidden="true"></i> Despedida y Homenaje</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -865,16 +879,16 @@
                 <div class="footer-section">
                     <h4>Contacto</h4>
                     <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> Ciudadanos: 76536286</li>
-                        <li><i class="fas fa-phone"></i> Proveedores: 78835306</li>
-                        <li><i class="fas fa-envelope"></i> contactoverificalapaz@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> La Paz, Bolivia</li>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> Ciudadanos: 76536286</li>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> Proveedores: 78835306</li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> contactoverificalapaz@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> La Paz, Bolivia</li>
                     </ul>
                     <div class="footer-social">
-                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://wa.me/59176536286" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://t.me/verificalapaz_bot" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/59176536286" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://t.me/verificalapaz_bot" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -882,14 +896,14 @@
                 <div class="footer-legal">
                     <p><strong>NOTA LEGAL:</strong> Verifica La Paz se limita a verificar la existencia, horarios y datos de contacto de los proveedores listados. No nos hacemos responsables por la calidad del servicio prestado por terceros. Los precios son referenciales y pueden variar según el modelo del vehículo.</p>
                 </div>
-                <p class="copyright">© 2026 Verifica La Paz. Todos los derechos reservados. | Hecho con <i class="fas fa-heart"></i> en Bolivia</p>
+                <p class="copyright">© 2026 Verifica La Paz. Todos los derechos reservados. | Hecho con <i class="fas fa-heart" aria-hidden="true"></i> en Bolivia</p>
             </div>
         </div>
     </footer>
 
     <!-- BOTÓN WHATSAPP FLOTANTE -->
-    <a href="https://wa.me/59176536286?text=Hola,%20necesito%20ayuda%20con%20mi%20vehículo" class="whatsapp-float" target="_blank" title="Chatear por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/59176536286?text=Hola,%20necesito%20ayuda%20con%20mi%20vehículo" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chatear por WhatsApp" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <script src="js/main.js"></script>
@@ -899,6 +913,17 @@
     (Incluye soporte para Video y Audio del Panel Admin)
     ============================================= -->
     <script>
+        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA (Local o Cloudinary)
+        function getMediaUrl(path) {
+            if (!path) return '';
+            // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+            if (path.startsWith('http://') || path.startsWith('https://')) {
+                return path;
+            }
+            // Si es ruta relativa local, asegurar que empiece con /
+            return path.startsWith('/') ? path : '/' + path;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Mapeo de contenedores y sus palabras clave para filtrar
             const secciones = [
@@ -976,21 +1001,20 @@
                         ${p.precios ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-dollar-sign" style="width: 20px; color: #10b981;"></i> ${p.precios}</li>` : ''}
                     </ul>
 
-                    <!-- REPRODUCTOR DE VIDEO (Si existe en la BD) -->
+                    ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
                     ${p.video_path ? `
                         <div style="margin: 1rem 0; border-radius: 8px; overflow: hidden; background: #000;">
                             <video controls preload="metadata" style="width: 100%; max-height: 200px; display: block;">
-                                <source src="/${p.video_path}" type="video/mp4">
+                                <source src="${getMediaUrl(p.video_path)}" type="video/mp4">
                                 Tu navegador no soporta videos.
                             </video>
                         </div>
                     ` : ''}
                     
-                    <!-- REPRODUCTOR DE AUDIO (Si existe en la BD) -->
                     ${p.audio_path ? `
                         <div style="margin: 1rem 0; background: #f1f5f9; padding: 0.5rem; border-radius: 8px;">
                             <audio controls preload="metadata" style="width: 100%;">
-                                <source src="/${p.audio_path}" type="audio/mpeg">
+                                <source src="${getMediaUrl(p.audio_path)}" type="audio/mpeg">
                                 Tu navegador no soporta audio.
                             </audio>
                         </div>

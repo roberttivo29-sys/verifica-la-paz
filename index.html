@@ -486,6 +486,17 @@
             cargarDestacados();
         });
 
+        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA (Local o Cloudinary)
+        function getMediaUrl(path) {
+            if (!path) return '';
+            // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+            if (path.startsWith('http://') || path.startsWith('https://')) {
+                return path;
+            }
+            // Si es ruta relativa local, asegurar que empiece con /
+            return path.startsWith('/') ? path : '/' + path;
+        }
+
         async function cargarDestacados() {
             const container = document.getElementById('destacados-container');
             if (!container) return;
@@ -569,14 +580,17 @@
                     ${p.direccion ? `<p class="destacado-info"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ${p.direccion}</p>` : ''}
                     ${p.telefono ? `<p class="destacado-info"><i class="fas fa-phone" aria-hidden="true"></i> ${p.telefono}</p>` : ''}
                     ${p.horario ? `<p class="destacado-info"><i class="fas fa-clock" aria-hidden="true"></i> ${p.horario}</p>` : ''}
+                    
+                    ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
                     ${p.video_path ? `
                         <video controls preload="metadata" class="destacado-video" aria-label="Video de ${p.nombre}">
-                            <source src="/${p.video_path}" type="video/mp4">
+                            <source src="${getMediaUrl(p.video_path)}" type="video/mp4">
                         </video>` : ''}
                     ${p.audio_path ? `
                         <audio controls preload="metadata" class="destacado-audio" aria-label="Audio de ${p.nombre}">
-                            <source src="/${p.audio_path}" type="audio/mpeg">
+                            <source src="${getMediaUrl(p.audio_path)}" type="audio/mpeg">
                         </audio>` : ''}
+                        
                     <a href="${whatsappLink}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-whatsapp" aria-hidden="true"></i> Contactar
                     </a>

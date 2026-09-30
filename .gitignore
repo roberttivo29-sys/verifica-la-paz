@@ -1,6 +1,44 @@
-__pycache__/
+# ==========================================
+# VERIFICA LA PAZ - .gitignore
+# ==========================================
+
+# Entornos virtuales de Python
+venv/
+env/
+ENV/
+
+# Archivos de base de datos local (Ahora usamos Neon/PostgreSQL)
 *.db
 *.sqlite3
+*.sqlite
+instance/
+
+# Archivos subidos localmente (Ahora usamos Cloudinary)
 uploads/
+*.mp4
+*.mp3
+*.wav
+
+# Variables de entorno y secretos (¡NUNCA subir esto!)
 .env
+.env.local
+.env.production
+
+# Archivos temporales y de caché
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+.DS_Store
+Thumbs.db
+
+# IDEs y editores
 .vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de compilación
+*.egg-info/
+dist/
+build/

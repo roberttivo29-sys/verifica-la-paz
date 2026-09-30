@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plomeros, electricistas, pintores, albañiles y técnicos verificados en La Paz y El Alto. Especialistas en reparaciones y mantenimiento del hogar.">
+    <meta property="og:title" content="Mi Hogar Seguro | Verifica La Paz">
+    <meta property="og:description" content="Técnicos verificados para plomería, electricidad, albañilería y más en La Paz y El Alto.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://verificalapaz.com/hogar.html">
+    <meta property="og:image" content="img/og-hogar.jpg">
+    <meta property="og:locale" content="es_BO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mi Hogar Seguro | Verifica La Paz">
+    <meta name="twitter:description" content="Reparaciones y mantenimiento del hogar con técnicos verificados y garantía real.">
+    <meta name="author" content="Verifica La Paz">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="canonical" href="https://verificalapaz.com/hogar.html">
     <title>Mi Hogar Seguro | Verifica La Paz</title>
     
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -16,85 +29,86 @@
 <body>
 
     <!-- HEADER -->
-    <header class="header" id="header">
+    <header class="header" id="header" role="banner">
         <div class="container header-content">
             <div class="logo">
-                <h1><i class="fas fa-shield-alt"></i> VERIFICA LA PAZ</h1>
+                <h1><i class="fas fa-shield-alt" aria-hidden="true"></i> VERIFICA LA PAZ</h1>
                 <p class="tagline">Primero verifica. Después resuelve.</p>
             </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
                 <span></span><span></span><span></span>
             </button>
-            <nav class="nav" id="nav">
+            <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
                 <a href="index.html" class="nav-link">Inicio</a>
-                <a href="salud.html" class="nav-link"><i class="fas fa-heartbeat"></i> Salud</a>
-                <a href="hogar.html" class="nav-link active"><i class="fas fa-home"></i> Mi Hogar</a>
-                <a href="automotriz.html" class="nav-link"><i class="fas fa-car"></i> Auto</a>
-                <a href="tecnologia.html" class="nav-link"><i class="fas fa-laptop-code"></i> Tecnología</a>
-                <a href="funerarias.html" class="nav-link"><i class="fas fa-dove"></i> Despedida</a>
+                <a href="salud.html" class="nav-link"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud</a>
+                <a href="hogar.html" class="nav-link active" aria-current="page"><i class="fas fa-home" aria-hidden="true"></i> Mi Hogar</a>
+                <a href="automotriz.html" class="nav-link"><i class="fas fa-car" aria-hidden="true"></i> Auto</a>
+                <a href="tecnologia.html" class="nav-link"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología</a>
+                <a href="funerarias.html" class="nav-link"><i class="fas fa-dove" aria-hidden="true"></i> Despedida</a>
                 <a href="contacto.html" class="nav-link">Contacto</a>
-                <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="nav-link btn-proveedor" target="_blank">
-                    <i class="fas fa-store"></i> Soy Proveedor
+                <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="nav-link btn-proveedor" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-store" aria-hidden="true"></i> Soy Proveedor
                 </a>
             </nav>
         </div>
     </header>
 
-    <main class="main-content">
+    <main class="main-content" role="main">
         <div class="container content-grid">
             
             <!-- COLUMNA PRINCIPAL -->
             <div class="content-main">
                 
                 <!-- HERO SECTION -->
-                <section class="hero">
+                <section class="hero" aria-labelledby="hero-title">
                     <div class="hero-content fade-in">
                         <div class="hero-badge">
-                            <i class="fas fa-home"></i> Mi Hogar Seguro Verificado
+                            <i class="fas fa-home" aria-hidden="true"></i> Mi Hogar Seguro Verificado
                         </div>
-                        <h2 class="hero-title">Plomeros, Electricistas, Pintores y Técnicos de Confianza</h2>
+                        <h2 class="hero-title" id="hero-title">Plomeros, Electricistas, Pintores y Técnicos de Confianza</h2>
                         <p class="hero-subtitle">Especialistas en <strong>reparaciones, mantenimiento y pequeñas modificaciones</strong> en tu hogar. Cotizaciones claras por escrito, garantía de buen trabajo y técnicos con referencias comprobadas. <br><small style="opacity: 0.8; font-style: italic;">*Nota: No realizamos construcciones desde cero ni edificaciones grandes.</small></p>
                         
                         <div class="hero-buttons" style="grid-template-columns: repeat(3, 1fr);">
-                            <a href="#plomeria" class="btn btn-primary btn-hogar"><i class="fas fa-wrench"></i> Plomería</a>
-                            <a href="#electricidad" class="btn btn-primary btn-hogar"><i class="fas fa-bolt"></i> Electricidad</a>
-                            <a href="#pintura" class="btn btn-primary btn-hogar"><i class="fas fa-paint-roller"></i> Pintura</a>
-                            <a href="#albanileria" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-hammer"></i> Albañilería</a>
-                            <a href="#otros" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-tools"></i> Otros Oficios</a>
+                            <a href="#plomeria" class="btn btn-primary btn-hogar"><i class="fas fa-wrench" aria-hidden="true"></i> Plomería</a>
+                            <a href="#electricidad" class="btn btn-primary btn-hogar"><i class="fas fa-bolt" aria-hidden="true"></i> Electricidad</a>
+                            <a href="#pintura" class="btn btn-primary btn-hogar"><i class="fas fa-paint-roller" aria-hidden="true"></i> Pintura</a>
+                            <a href="#albanileria" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-hammer" aria-hidden="true"></i> Albañilería</a>
+                            <a href="#otros" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-tools" aria-hidden="true"></i> Otros Oficios</a>
                         </div>
                         
                         <div class="hero-features">
-                            <div class="hero-feature"><i class="fas fa-user-check"></i><span>Verificación Humana</span></div>
-                            <div class="hero-feature"><i class="fas fa-file-invoice"></i><span>Cotización Escrita</span></div>
-                            <div class="hero-feature"><i class="fas fa-shield-alt"></i><span>Garantía Real</span></div>
+                            <div class="hero-feature"><i class="fas fa-user-check" aria-hidden="true"></i><span>Verificación Humana</span></div>
+                            <div class="hero-feature"><i class="fas fa-file-invoice" aria-hidden="true"></i><span>Cotización Escrita</span></div>
+                            <div class="hero-feature"><i class="fas fa-shield-alt" aria-hidden="true"></i><span>Garantía Real</span></div>
                         </div>
                         
-                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20para%20mi%20hogar" class="btn-provider-link" target="_blank">
-                            <i class="fas fa-phone-alt"></i> Consultar por WhatsApp: 76536286
+                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20para%20mi%20hogar" class="btn-provider-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i> Consultar por WhatsApp: 76536286
                         </a>
                     </div>
                 </section>
 
                 <!-- ESTADÍSTICAS -->
-                <section class="stats-section fade-in">
+                <section class="stats-section fade-in" aria-labelledby="stats-title">
+                    <h2 class="section-title" id="stats-title" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Estadísticas del Sector Hogar</h2>
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-user-cog"></i></div>
+                            <div class="stat-icon"><i class="fas fa-user-cog" aria-hidden="true"></i></div>
                             <div class="stat-number" data-target="75" data-suffix="+">0</div>
                             <div class="stat-label">Técnicos Verificados</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-home"></i></div>
+                            <div class="stat-icon"><i class="fas fa-home" aria-hidden="true"></i></div>
                             <div class="stat-number" data-target="1200" data-suffix="+">0</div>
                             <div class="stat-label">Hogares Atendidos</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
                             <div class="stat-number" data-target="97" data-suffix="%">0</div>
                             <div class="stat-label">Satisfacción</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                            <div class="stat-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
                             <div class="stat-number" data-target="2" data-suffix="h">0</div>
                             <div class="stat-label">Horas Respuesta</div>
                         </div>
@@ -102,26 +116,26 @@
                 </section>
 
                 <!-- PLOMERÍA -->
-                <section id="plomeria" class="fade-in">
-                    <h2 class="section-title"><i class="fas fa-wrench"></i> PLOMERÍA</h2>
+                <section id="plomeria" class="fade-in" aria-labelledby="plomeria-title">
+                    <h2 class="section-title" id="plomeria-title"><i class="fas fa-wrench" aria-hidden="true"></i> PLOMERÍA</h2>
                     <p class="section-description">
                         <strong>Fugas, Destapes e Instalaciones</strong><br>
                         Plomeros verificados con herramientas profesionales y materiales de calidad. Desde una fuga pequeña hasta instalaciones completas. Cotización por escrito antes de empezar, sin sorpresas al final.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Experiencia comprobada (mínimo 3 años en el oficio)</li>
-                            <li><i class="fas fa-check"></i> Herramientas profesionales propias</li>
-                            <li><i class="fas fa-check"></i> Cotización por escrito antes de empezar</li>
-                            <li><i class="fas fa-check"></i> Referencias de clientes anteriores verificadas</li>
-                            <li><i class="fas fa-check"></i> Garantía del trabajo (mínimo 30 días)</li>
-                            <li><i class="fas fa-check"></i> Limpieza del área al terminar</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Experiencia comprobada (mínimo 3 años en el oficio)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Herramientas profesionales propias</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Cotización por escrito antes de empezar</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Referencias de clientes anteriores verificadas</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Garantía del trabajo (mínimo 30 días)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Limpieza del área al terminar</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-hogar">
                             <h3>Reparación de Fuga Simple</h3>
@@ -155,51 +169,51 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Plomero Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Plomero Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-hogar);">
                         <div class="featured-badge" style="background: var(--color-hogar); color: white;">PLOMERO CERTIFICADO</div>
                         <h3>JOSE LUIS MAMANI - PLOMERÍA INTEGRAL</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Zona Sur, La Paz (Cobertura a toda la ciudad)</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Dom: 7:00-21:00 | Emergencias 24h</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 76544455 / 2-2789012</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Visita de diagnóstico: 50 Bs (se descuenta del trabajo)</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 12 años de experiencia | +800 trabajos realizados</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 60 días en instalaciones, 30 días en reparaciones</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Zona Sur, La Paz (Cobertura a toda la ciudad)</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Dom: 7:00-21:00 | Emergencias 24h</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 76544455 / 2-2789012</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Visita de diagnóstico: 50 Bs (se descuenta del trabajo)</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 12 años de experiencia | +800 trabajos realizados</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 60 días en instalaciones, 30 días en reparaciones</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20plomero%20verificado" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar servicio</a>
+                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20plomero%20verificado" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar servicio</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Plomeros Verificados Disponibles:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Plomeros Verificados Disponibles:</h3>
                     <div id="contenedor-plomeria" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando plomeros verificados...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando plomeros verificados...</p>
                     </div>
                 </section>
 
                 <!-- ELECTRICIDAD -->
-                <section id="electricidad" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-bolt"></i> ELECTRICIDAD</h2>
+                <section id="electricidad" class="fade-in" style="margin-top: 4rem;" aria-labelledby="electricidad-title">
+                    <h2 class="section-title" id="electricidad-title"><i class="fas fa-bolt" aria-hidden="true"></i> ELECTRICIDAD</h2>
                     <p class="section-description">
                         <strong>Instalaciones, Reparaciones y Emergencias</strong><br>
                         Electricistas con conocimientos técnicos actualizados, herramientas de medición y cumplimiento de normas de seguridad. Desde cambiar un tomacorriente hasta instalaciones completas.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Conocimientos técnicos actualizados</li>
-                            <li><i class="fas fa-check"></i> Uso de herramientas de medición (multímetro, amperímetro)</li>
-                            <li><i class="fas fa-check"></i> Materiales certificados (cables de sección correcta, breakers de marca)</li>
-                            <li><i class="fas fa-check"></i> Cumplimiento de normas de seguridad eléctrica</li>
-                            <li><i class="fas fa-check"></i> Referencias de trabajos anteriores comprobadas</li>
-                            <li><i class="fas fa-check"></i> Seguro contra accidentes durante el trabajo</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Conocimientos técnicos actualizados</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Uso de herramientas de medición (multímetro, amperímetro)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Materiales certificados (cables de sección correcta, breakers de marca)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Cumplimiento de normas de seguridad eléctrica</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Referencias de trabajos anteriores comprobadas</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Seguro contra accidentes durante el trabajo</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-hogar">
                             <h3>Cambio de Tomacorriente/Interruptor</h3>
@@ -233,50 +247,50 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Electricista Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Electricista Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-hogar);">
                         <div class="featured-badge" style="background: var(--color-hogar); color: white;">ELECTRICISTA CERTIFICADO</div>
                         <h3>ELECTRO SOLUCIONES - INSTALACIONES Y REPARACIONES</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> El Alto, Zona 16 de Julio (Cobertura La Paz y El Alto)</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 8:00-19:00 | Emergencias 24h</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 77889900 / 2-8456123</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Visita de diagnóstico: 40 Bs</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 8 años de experiencia | Técnico titulado SENATI</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 90 días en mano de obra</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> El Alto, Zona 16 de Julio (Cobertura La Paz y El Alto)</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sáb: 8:00-19:00 | Emergencias 24h</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 77889900 / 2-8456123</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Visita de diagnóstico: 40 Bs</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 8 años de experiencia | Técnico titulado SENATI</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 90 días en mano de obra</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20electricista%20verificado" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar servicio</a>
+                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20electricista%20verificado" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar servicio</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Electricistas Verificados Disponibles:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Electricistas Verificados Disponibles:</h3>
                     <div id="contenedor-electricidad" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando electricistas verificados...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando electricistas verificados...</p>
                     </div>
                 </section>
 
-                <!-- PINTURA (NUEVA SECCIÓN) -->
-                <section id="pintura" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-paint-roller"></i> PINTURA Y ACABADOS</h2>
+                <!-- PINTURA -->
+                <section id="pintura" class="fade-in" style="margin-top: 4rem;" aria-labelledby="pintura-title">
+                    <h2 class="section-title" id="pintura-title"><i class="fas fa-paint-roller" aria-hidden="true"></i> PINTURA Y ACABADOS</h2>
                     <p class="section-description">
                         <strong>Repintado, Tratamiento de Humedad y Acabados de Calidad</strong><br>
                         Pintores profesionales que devuelven la vida a tus paredes. Usamos materiales de primera marca, protegemos tus muebles y dejamos todo impecable al terminar.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Uso de pinturas de marca reconocida (CPP, Inti, etc.)</li>
-                            <li><i class="fas fa-check"></i> Preparación adecuada de superficie (lijado, masilla)</li>
-                            <li><i class="fas fa-check"></i> Protección de pisos, muebles y enchufes durante el trabajo</li>
-                            <li><i class="fas fa-check"></i> Limpieza total del área al terminar</li>
-                            <li><i class="fas fa-check"></i> Garantía de acabado (mínimo 30 días sin desprendimiento)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Uso de pinturas de marca reconocida (CPP, Inti, etc.)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Preparación adecuada de superficie (lijado, masilla)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Protección de pisos, muebles y enchufes durante el trabajo</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Limpieza total del área al terminar</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Garantía de acabado (mínimo 30 días sin desprendimiento)</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-hogar">
                             <h3>Repintado Habitación Pequeña</h3>
@@ -310,52 +324,52 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Pintor Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Pintor Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-hogar);">
                         <div class="featured-badge" style="background: var(--color-hogar); color: white;">PINTOR CERTIFICADO</div>
                         <h3>PINTURAS EL MAESTRO - ACABADOS PERFECTOS</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Sopocachi, La Paz (Cobertura a toda la ciudad)</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 8:00-18:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 71234567 / 2-4123456</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Presupuesto gratuito a domicilio</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 10 años de experiencia | +500 casas pintadas</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 6 meses en acabado</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Sopocachi, La Paz (Cobertura a toda la ciudad)</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sáb: 8:00-18:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 71234567 / 2-4123456</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Presupuesto gratuito a domicilio</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 10 años de experiencia | +500 casas pintadas</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 6 meses en acabado</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20pintor%20verificado" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar presupuesto</a>
+                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20pintor%20verificado" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar presupuesto</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Pintores Verificados Disponibles:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Pintores Verificados Disponibles:</h3>
                     <div id="contenedor-pintura" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando pintores verificados...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando pintores verificados...</p>
                     </div>
                 </section>
 
-                <!-- ALBAÑILERÍA (MODIFICADA: SOLO REPARACIONES) -->
-                <section id="albanileria" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-hammer"></i> ALBAÑILERÍA Y REPARACIONES</h2>
+                <!-- ALBAÑILERÍA -->
+                <section id="albanileria" class="fade-in" style="margin-top: 4rem;" aria-labelledby="albanileria-title">
+                    <h2 class="section-title" id="albanileria-title"><i class="fas fa-hammer" aria-hidden="true"></i> ALBAÑILERÍA Y REPARACIONES</h2>
                     <p class="section-description">
                         <strong>Reparación de Paredes, Techos y Pisos</strong><br>
                         Albañiles con experiencia comprobada en <strong>reparaciones y mantenimiento</strong> de viviendas existentes. Desde reparar una pared agrietada hasta impermeabilizar techos. Trabajo limpio y acabados de calidad.
-                        <br><small style="color: var(--rojo-alerta); font-weight: 600;"><i class="fas fa-info-circle"></i> Para construcciones desde cero o edificaciones grandes, recomendamos contactar empresas constructoras especializadas.</small>
+                        <br><small style="color: var(--rojo-alerta); font-weight: 600;"><i class="fas fa-info-circle" aria-hidden="true"></i> Para construcciones desde cero o edificaciones grandes, recomendamos contactar empresas constructoras especializadas.</small>
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-search"></i> Qué verificamos:</div>
+                        <div class="featured-badge"><i class="fas fa-search" aria-hidden="true"></i> Qué verificamos:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> Experiencia en reparaciones y mantenimiento comprobable</li>
-                            <li><i class="fas fa-check"></i> Equipo propio de herramientas</li>
-                            <li><i class="fas fa-check"></i> Conocimiento de materiales de calidad y técnicas actuales</li>
-                            <li><i class="fas fa-check"></i> Capacidad para calcular cantidades exactas de material</li>
-                            <li><i class="fas fa-check"></i> Referencias de trabajos anteriores verificadas</li>
-                            <li><i class="fas fa-check"></i> Limpieza y orden durante y después de la obra</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Experiencia en reparaciones y mantenimiento comprobable</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Equipo propio de herramientas</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Conocimiento de materiales de calidad y técnicas actuales</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Capacidad para calcular cantidades exactas de material</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Referencias de trabajos anteriores verificadas</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Limpieza y orden durante y después de la obra</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag"></i> Precios Referenciales Verificados:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-tag" aria-hidden="true"></i> Precios Referenciales Verificados:</h3>
                     <div class="categories-grid">
                         <div class="category-card category-hogar">
                             <h3>Reparación de Grietas (por m²)</h3>
@@ -389,94 +403,94 @@
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Albañil Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Albañil Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-hogar);">
                         <div class="featured-badge" style="background: var(--color-hogar); color: white;">ALBAÑIL CERTIFICADO</div>
                         <h3>MAESTRO PAREDES - REPARACIONES DE ALBAÑILERÍA</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Villa Dolores, La Paz (Cobertura a toda la ciudad)</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Sáb: 7:00-18:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 79887766 / 2-2123456</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Visita de diagnóstico: 30 Bs</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 15 años de experiencia | Especialista en filtraciones</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 6 meses en impermeabilización</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Villa Dolores, La Paz (Cobertura a toda la ciudad)</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sáb: 7:00-18:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 79887766 / 2-2123456</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Visita de diagnóstico: 30 Bs</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 15 años de experiencia | Especialista en filtraciones</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 6 meses en impermeabilización</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20albañil%20para%20reparaciones" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar servicio</a>
+                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20albañil%20para%20reparaciones" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar servicio</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Albañiles Verificados Disponibles:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Albañiles Verificados Disponibles:</h3>
                     <div id="contenedor-albanileria" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando albañiles verificados...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando albañiles verificados...</p>
                     </div>
                 </section>
 
                 <!-- OTROS OFICIOS -->
-                <section id="otros" class="fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-tools"></i> OTROS OFICIOS</h2>
+                <section id="otros" class="fade-in" style="margin-top: 4rem;" aria-labelledby="otros-title">
+                    <h2 class="section-title" id="otros-title"><i class="fas fa-tools" aria-hidden="true"></i> OTROS OFICIOS</h2>
                     <p class="section-description">
                         <strong>Carpintería, Gas, Cerrajería, Vidrios y Más</strong><br>
                         Técnicos especializados en otros oficios del hogar. Desde reparar un mueble hasta instalar un calefón. Todos con la misma verificación de calidad y garantía.
                     </p>
 
                     <div class="featured-section">
-                        <div class="featured-badge"><i class="fas fa-list-ul"></i> Oficios Disponibles:</div>
+                        <div class="featured-badge"><i class="fas fa-list-ul" aria-hidden="true"></i> Oficios Disponibles:</div>
                         <ul class="category-services">
-                            <li><i class="fas fa-check"></i> <strong>Carpintería:</strong> Reparación de muebles, puertas, chapas (desde 100 Bs)</li>
-                            <li><i class="fas fa-check"></i> <strong>Gas Fitero:</strong> Instalación de calefones, cocinas, detección de fugas (desde 80 Bs)</li>
-                            <li><i class="fas fa-check"></i> <strong>Cerrajería:</strong> Apertura de puertas, cambio de chapas, copias de llaves (desde 50 Bs)</li>
-                            <li><i class="fas fa-check"></i> <strong>Vidriería:</strong> Cambio de vidrios rotos, instalación de espejos (desde 120 Bs)</li>
-                            <li><i class="fas fa-check"></i> <strong>Tapicería:</strong> Reparación de sofás, sillas y colchones (desde 150 Bs)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Carpintería:</strong> Reparación de muebles, puertas, chapas (desde 100 Bs)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Gas Fitero:</strong> Instalación de calefones, cocinas, detección de fugas (desde 80 Bs)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Cerrajería:</strong> Apertura de puertas, cambio de chapas, copias de llaves (desde 50 Bs)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Vidriería:</strong> Cambio de vidrios rotos, instalación de espejos (desde 120 Bs)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Tapicería:</strong> Reparación de sofás, sillas y colchones (desde 150 Bs)</li>
                         </ul>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check"></i> Ejemplo de Técnico Multioficio Verificado:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-user-check" aria-hidden="true"></i> Ejemplo de Técnico Multioficio Verificado:</h3>
                     <div class="featured-section" style="border-left-color: var(--color-hogar);">
                         <div class="featured-badge" style="background: var(--color-hogar); color: white;">TÉCNICO MULTIOFICIO</div>
                         <h3>SERVICIOS INTEGRALES HOGAR - SOLUCIONES RÁPIDAS</h3>
                         <div class="featured-details">
-                            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> Miraflores, La Paz (Cobertura Zona Sur y Centro)</div>
-                            <div class="detail-item"><i class="fas fa-clock"></i> Lun-Dom: 8:00-20:00</div>
-                            <div class="detail-item"><i class="fas fa-phone"></i> 70112233 / 2-2789988</div>
-                            <div class="detail-item"><i class="fas fa-dollar-sign"></i> Visita de diagnóstico: 40 Bs</div>
-                            <div class="detail-item"><i class="fas fa-star"></i> 6 años de experiencia | Carpintero y Gasfitero titulado</div>
-                            <div class="detail-item"><i class="fas fa-shield-alt"></i> Garantía: 30 días en reparaciones</div>
+                            <div class="detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Miraflores, La Paz (Cobertura Zona Sur y Centro)</div>
+                            <div class="detail-item"><i class="fas fa-clock" aria-hidden="true"></i> Lun-Dom: 8:00-20:00</div>
+                            <div class="detail-item"><i class="fas fa-phone" aria-hidden="true"></i> 70112233 / 2-2789988</div>
+                            <div class="detail-item"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Visita de diagnóstico: 40 Bs</div>
+                            <div class="detail-item"><i class="fas fa-star" aria-hidden="true"></i> 6 años de experiencia | Carpintero y Gasfitero titulado</div>
+                            <div class="detail-item"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía: 30 días en reparaciones</div>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up"></i> Escuchar referencias</a>
-                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20multioficio" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar servicio</a>
+                            <a href="#" class="btn btn-outline btn-hogar"><i class="fas fa-volume-up" aria-hidden="true"></i> Escuchar referencias</a>
+                            <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20multioficio" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar servicio</a>
                         </div>
                     </div>
 
-                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list"></i> Otros Técnicos Verificados Disponibles:</h3>
+                    <h3 class="section-title" style="font-size: 1.5rem; margin-top: 2rem;"><i class="fas fa-list" aria-hidden="true"></i> Otros Técnicos Verificados Disponibles:</h3>
                     <div id="contenedor-otros-hogar" class="proveedores-grid">
-                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Cargando técnicos especializados...</p>
+                        <p class="text-center text-muted"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Cargando técnicos especializados...</p>
                     </div>
                 </section>
 
                 <!-- POR QUÉ CONFIAR -->
-                <section class="why-us-section fade-in" style="margin-top: 4rem;">
-                    <h2 class="section-title"><i class="fas fa-shield-alt"></i> ¿POR QUÉ CONFIAR EN NUESTROS TÉCNICOS?</h2>
+                <section class="why-us-section fade-in" style="margin-top: 4rem;" aria-labelledby="why-title">
+                    <h2 class="section-title" id="why-title"><i class="fas fa-shield-alt" aria-hidden="true"></i> ¿POR QUÉ CONFIAR EN NUESTROS TÉCNICOS?</h2>
                     <div class="why-us-grid">
                         <div class="why-card">
-                            <div class="why-icon"><i class="fas fa-user-check"></i></div>
+                            <div class="why-icon"><i class="fas fa-user-check" aria-hidden="true"></i></div>
                             <h3>Verificación Humana</h3>
                             <p>Llamamos a las referencias de cada técnico. Solo aceptamos a los que cumplen con nuestros estándares de calidad.</p>
                         </div>
                         <div class="why-card">
-                            <div class="why-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <div class="why-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></div>
                             <h3>Cotización por Escrito</h3>
-                            <p>Antes de empezar, recibes un PDF con el precio exacto. Sin sorpresas ni cobros extras al final.</p>
+                            <p>Antes de empezar, recibes un PDF o mensaje con el precio exacto. Sin sorpresas ni cobros extras al final.</p>
                         </div>
                         <div class="why-card">
-                            <div class="why-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="why-icon"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></div>
                             <h3>Regla de las 3 Quejas</h3>
                             <p>Si un técnico recibe 3 quejas verificadas, lo retiramos de nuestra red. Tu tranquilidad es primero.</p>
                         </div>
                         <div class="why-card">
-                            <div class="why-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="why-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
                             <h3>Respuesta Rápida</h3>
                             <p>Conectamos con el técnico disponible más cercano en menos de 2 horas. Emergencias atendidas de inmediato.</p>
                         </div>
@@ -484,20 +498,20 @@
                 </section>
 
                 <!-- CTA FINAL -->
-                <section class="featured-section fade-in" style="margin-top: 4rem; background: var(--gradiente-hero); color: white; border-left: none;">
+                <section class="featured-section fade-in" style="margin-top: 4rem; background: var(--gradiente-hero); color: white; border-left: none;" aria-labelledby="cta-title">
                     <div class="featured-badge" style="background: rgba(255,255,255,0.2); color: white;">
-                        <i class="fas fa-phone-alt"></i> ¿NECESITAS UN TÉCNICO DE CONFIANZA?
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i> ¿NECESITAS UN TÉCNICO DE CONFIANZA?
                     </div>
-                    <h3 style="color: white;">Cuéntanos qué necesitas reparar y te conectamos con el técnico verificado ideal</h3>
+                    <h3 id="cta-title" style="color: white;">Cuéntanos qué necesitas reparar y te conectamos con el técnico verificado ideal</h3>
                     <p style="color: rgba(255,255,255,0.9);">Cotización gratis y sin compromiso. Respuesta en menos de 2 horas en horario de oficina.</p>
                     <div class="hero-features" style="margin: 2rem 0; justify-content: center;">
-                        <div class="hero-feature"><i class="fas fa-search"></i> Diagnóstico gratuito</div>
-                        <div class="hero-feature"><i class="fas fa-shield-alt"></i> Garantía por escrito</div>
-                        <div class="hero-feature"><i class="fas fa-gift"></i> 100% gratuito para ciudadanos</div>
+                        <div class="hero-feature"><i class="fas fa-search" aria-hidden="true"></i> Diagnóstico gratuito</div>
+                        <div class="hero-feature"><i class="fas fa-shield-alt" aria-hidden="true"></i> Garantía por escrito</div>
+                        <div class="hero-feature"><i class="fas fa-gift" aria-hidden="true"></i> 100% gratuito para ciudadanos</div>
                     </div>
                     <div class="category-actions">
-                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20para%20mi%20hogar" class="btn btn-whatsapp btn-block" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp: 76536286
+                        <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20para%20mi%20hogar" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp: 76536286
                         </a>
                     </div>
                 </section>
@@ -505,54 +519,54 @@
             </div>
 
             <!-- SIDEBAR -->
-            <aside class="sidebar">
+            <aside class="sidebar" role="complementary">
                 <div class="sidebar-section fade-in">
-                    <h3><i class="fas fa-fire"></i> LO MÁS BUSCADO</h3>
+                    <h3><i class="fas fa-fire" aria-hidden="true"></i> LO MÁS BUSCADO</h3>
                     <ul class="popular-list">
-                        <li><a href="#plomeria"><i class="fas fa-chevron-right"></i> Plomeros 24h en Zona Sur</a></li>
-                        <li><a href="#electricidad"><i class="fas fa-chevron-right"></i> Electricistas en El Alto</a></li>
-                        <li><a href="#pintura"><i class="fas fa-chevron-right"></i> Pintores para interiores</a></li>
-                        <li><a href="#albanileria"><i class="fas fa-chevron-right"></i> Reparación de filtraciones</a></li>
-                        <li><a href="#electricidad"><i class="fas fa-chevron-right"></i> Instalación de tablero eléctrico</a></li>
-                        <li><a href="#otros"><i class="fas fa-chevron-right"></i> Cerrajeros urgentes 24h</a></li>
+                        <li><a href="#plomeria"><i class="fas fa-chevron-right" aria-hidden="true"></i> Plomeros 24h en Zona Sur</a></li>
+                        <li><a href="#electricidad"><i class="fas fa-chevron-right" aria-hidden="true"></i> Electricistas en El Alto</a></li>
+                        <li><a href="#pintura"><i class="fas fa-chevron-right" aria-hidden="true"></i> Pintores para interiores</a></li>
+                        <li><a href="#albanileria"><i class="fas fa-chevron-right" aria-hidden="true"></i> Reparación de filtraciones</a></li>
+                        <li><a href="#electricidad"><i class="fas fa-chevron-right" aria-hidden="true"></i> Instalación de tablero eléctrico</a></li>
+                        <li><a href="#otros"><i class="fas fa-chevron-right" aria-hidden="true"></i> Cerrajeros urgentes 24h</a></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-section fade-in">
-                    <h3><i class="fas fa-envelope"></i> CONTÁCTANOS</h3>
+                    <h3><i class="fas fa-envelope" aria-hidden="true"></i> CONTÁCTANOS</h3>
                     <p>¿No encuentras lo que buscas? Escríbenos directamente.</p>
-                    <a href="https://wa.me/59176536286" class="btn btn-whatsapp btn-block" target="_blank">
-                        <i class="fab fa-whatsapp"></i> WhatsApp: 76536286
+                    <a href="https://wa.me/59176536286" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp: 76536286
                     </a>
-                    <a href="https://t.me/verifica_la_paz" class="btn btn-telegram btn-block" target="_blank">
-                        <i class="fab fa-telegram"></i> Telegram: @verifica_la_paz
+                    <a href="https://t.me/verificalapaz_bot" class="btn btn-telegram btn-block" target="_blank" rel="noopener noreferrer" aria-label="Contactar por Telegram">
+                        <i class="fab fa-telegram" aria-hidden="true"></i> Bot de Telegram
                     </a>
-                    <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline btn-block">
-                        <i class="fas fa-envelope"></i> Email
+                    <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline btn-block" aria-label="Enviar email">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Email
                     </a>
                 </div>
 
                 <div class="sidebar-section fade-in">
-                    <h3><i class="fas fa-store"></i> ¿ERES TÉCNICO?</h3>
+                    <h3><i class="fas fa-store" aria-hidden="true"></i> ¿ERES TÉCNICO?</h3>
                     <p>Únete a nuestro directorio verificado y aumenta tu visibilidad.</p>
                     <ul class="provider-benefits">
-                        <li><i class="fas fa-check"></i> Sello de verificado</li>
-                        <li><i class="fas fa-check"></i> Sin comisión por trabajo</li>
-                        <li><i class="fas fa-check"></i> Mayor visibilidad online</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Sello de verificado</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Sin comisión por trabajo</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Mayor visibilidad online</li>
                     </ul>
-                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20técnico%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank">
-                        <i class="fas fa-store"></i> Unirme ahora
+                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20técnico%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-store" aria-hidden="true"></i> Unirme ahora
                     </a>
                 </div>
 
                 <div class="sidebar-section fade-in">
-                    <h3><i class="fas fa-share-alt"></i> SÍGUENOS</h3>
+                    <h3><i class="fas fa-share-alt" aria-hidden="true"></i> SÍGUENOS</h3>
                     <div class="social-grid">
-                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank">
-                            <i class="fab fa-facebook-f"></i><span>Facebook</span>
+                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span>
                         </a>
-                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank">
-                            <i class="fab fa-tiktok"></i><span>TikTok</span>
+                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <i class="fab fa-tiktok" aria-hidden="true"></i><span>TikTok</span>
                         </a>
                     </div>
                 </div>
@@ -561,22 +575,22 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><i class="fas fa-shield-alt"></i> VERIFICA LA PAZ</h3>
+                    <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> VERIFICA LA PAZ</h3>
                     <p class="footer-tagline">Primero verifica. Después resuelve.</p>
                     <p>Tu aliado de confianza para resolver lo que importa en La Paz y El Alto. Verificamos personalmente cada servicio para que tú decidas con seguridad.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Categorías</h4>
                     <ul>
-                        <li><a href="salud.html"><i class="fas fa-heartbeat"></i> Salud y Bienestar</a></li>
-                        <li><a href="hogar.html"><i class="fas fa-home"></i> Mi Hogar Seguro</a></li>
-                        <li><a href="automotriz.html"><i class="fas fa-car"></i> Auto y Movilidad</a></li>
-                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code"></i> Tecnología</a></li>
-                        <li><a href="funerarias.html"><i class="fas fa-dove"></i> Despedida y Homenaje</a></li>
+                        <li><a href="salud.html"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud y Bienestar</a></li>
+                        <li><a href="hogar.html"><i class="fas fa-home" aria-hidden="true"></i> Mi Hogar Seguro</a></li>
+                        <li><a href="automotriz.html"><i class="fas fa-car" aria-hidden="true"></i> Auto y Movilidad</a></li>
+                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología</a></li>
+                        <li><a href="funerarias.html"><i class="fas fa-dove" aria-hidden="true"></i> Despedida y Homenaje</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -592,16 +606,16 @@
                 <div class="footer-section">
                     <h4>Contacto</h4>
                     <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> Ciudadanos: 76536286</li>
-                        <li><i class="fas fa-phone"></i> Proveedores: 78835306</li>
-                        <li><i class="fas fa-envelope"></i> contactoverificalapaz@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> La Paz, Bolivia</li>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> Ciudadanos: 76536286</li>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> Proveedores: 78835306</li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> contactoverificalapaz@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> La Paz, Bolivia</li>
                     </ul>
                     <div class="footer-social">
-                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://wa.me/59176536286" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://t.me/verifica_la_paz" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/59176536286" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://t.me/verificalapaz_bot" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -609,80 +623,141 @@
                 <div class="footer-legal">
                     <p><strong>NOTA LEGAL:</strong> Verifica La Paz se limita a verificar la existencia, horarios y datos de contacto de los proveedores listados. No nos hacemos responsables por la calidad del servicio prestado por terceros. Los precios son referenciales y pueden variar según la complejidad del trabajo.</p>
                 </div>
-                <p class="copyright">© 2026 Verifica La Paz. Todos los derechos reservados. | Hecho con <i class="fas fa-heart"></i> en Bolivia</p>
+                <p class="copyright">© 2026 Verifica La Paz. Todos los derechos reservados. | Hecho con <i class="fas fa-heart" aria-hidden="true"></i> en Bolivia</p>
             </div>
         </div>
     </footer>
 
     <!-- BOTÓN WHATSAPP FLOTANTE -->
-    <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20para%20mi%20hogar" class="whatsapp-float" target="_blank" title="Chatear por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20técnico%20para%20mi%20hogar" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chatear por WhatsApp" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <script src="js/main.js"></script>
     
     <!-- ============================================
-    SCRIPT INLINE PARA CARGA DINÁMICA (5 SECCIONES)
+    SCRIPT OPTIMIZADO PARA CARGA DINÁMICA DE PROVEEDORES
+    (Incluye soporte para Video y Audio del Panel Admin)
     ============================================= -->
     <script>
+        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA (Local o Cloudinary)
+        function getMediaUrl(path) {
+            if (!path) return '';
+            // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+            if (path.startsWith('http://') || path.startsWith('https://')) {
+                return path;
+            }
+            // Si es ruta relativa local, asegurar que empiece con /
+            return path.startsWith('/') ? path : '/' + path;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            cargarProveedoresHogar('contenedor-plomeria', 'Plomer');
-            cargarProveedoresHogar('contenedor-electricidad', 'Electric');
-            cargarProveedoresHogar('contenedor-pintura', 'Pintur');
-            cargarProveedoresHogar('contenedor-albanileria', 'Albañil');
-            cargarProveedoresHogar('contenedor-otros-hogar', 'Otros');
+            // Mapeo de contenedores y sus palabras clave para filtrar
+            const secciones = [
+                { id: 'contenedor-plomeria', keyword: 'plom' },
+                { id: 'contenedor-electricidad', keyword: 'electric' },
+                { id: 'contenedor-pintura', keyword: 'pintur' },
+                { id: 'contenedor-albanileria', keyword: 'albañil' },
+                { id: 'contenedor-otros-hogar', keyword: 'otros' }
+            ];
+
+            secciones.forEach(sec => cargarProveedoresHogar(sec.id, sec.keyword));
         });
 
-        async function cargarProveedoresHogar(contenedorId, subcategoria) {
+        async function cargarProveedoresHogar(contenedorId, palabraClave) {
             const container = document.getElementById(contenedorId);
             if (!container) return;
             
             try {
-                const response = await fetch(`/api/proveedores?categoria=Hogar`);
+                // Obtenemos todos los proveedores de la categoría Hogar verificados desde la API
+                const response = await fetch('/api/proveedores?categoria=Hogar&verificado=1');
                 if (!response.ok) throw new Error('Error en la red');
                 const proveedores = await response.json();
                 
-                const filtrados = proveedores.filter(p => 
-                    (p.subcategoria && p.subcategoria.toLowerCase().includes(subcategoria.toLowerCase())) ||
-                    (subcategoria === 'Otros' && !['Plomer', 'Electric', 'Pintur', 'Albañil'].some(sub => p.subcategoria && p.subcategoria.includes(sub)))
-                );
+                // Filtrado inteligente: busca la palabra clave en subcategoría, nombre O descripción
+                let filtrados = [];
+                
+                if (palabraClave === 'otros') {
+                    // Para "Otros", excluimos los que ya están en otras categorías
+                    filtrados = proveedores.filter(p => {
+                        const textoBusqueda = `${p.subcategoria} ${p.nombre} ${p.descripcion}`.toLowerCase();
+                        return !['plom', 'electric', 'pintur', 'albañil'].some(kw => textoBusqueda.includes(kw));
+                    });
+                } else {
+                    // Para las demás, buscamos la palabra clave
+                    filtrados = proveedores.filter(p => {
+                        const textoBusqueda = `${p.subcategoria} ${p.nombre} ${p.descripcion}`.toLowerCase();
+                        return textoBusqueda.includes(palabraClave.toLowerCase());
+                    });
+                }
                 
                 if (filtrados.length === 0) {
-                    container.innerHTML = `<div class="no-data fade-in visible"><i class="fas fa-info-circle"></i><p>Próximamente agregaremos técnicos de ${subcategoria.toLowerCase()} verificados</p></div>`;
+                    container.innerHTML = `
+                        <div class="no-data fade-in visible" style="text-align:center; padding: 2rem; color: #666; grid-column: 1/-1;">
+                            <i class="fas fa-info-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block; color: #cbd5e1;"></i>
+                            <p>Próximamente agregaremos más proveedores de esta categoría.</p>
+                        </div>`;
                     return;
                 }
                 
+                // Generamos las tarjetas HTML
                 container.innerHTML = filtrados.map(p => generarTarjetaHogar(p)).join('');
                 
+                // Re-iniciar animaciones de fade-in si el observer existe en main.js
                 if (window.fadeObserver) {
                     container.querySelectorAll('.fade-in').forEach(el => window.fadeObserver.observe(el));
                 }
             } catch (error) {
-                console.error(`Error cargando ${subcategoria}:`, error);
-                container.innerHTML = `<div class="no-data fade-in visible"><i class="fas fa-exclamation-triangle"></i><p>Error al cargar. <button onclick="location.reload()" class="btn btn-outline btn-sm" style="margin-top:0.5rem;">Reintentar</button></p></div>`;
+                console.error(`Error cargando ${palabraClave}:`, error);
+                container.innerHTML = `
+                    <div class="no-data fade-in visible" style="text-align:center; padding: 2rem; color: #ef4444; grid-column: 1/-1;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Error al cargar los proveedores. <button onclick="location.reload()" class="btn btn-outline btn-sm" style="margin-top:0.5rem;">Reintentar</button></p>
+                    </div>`;
             }
         }
 
         function generarTarjetaHogar(p) {
             const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
-            const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz y necesito un técnico')}` : '#';
+            const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz y necesito un técnico para mi hogar')}` : '#';
             
             return `
-                <article class="category-card category-hogar fade-in">
-                    ${p.destacado == 1 ? `<div class="featured-badge" style="position:absolute; top:10px; right:10px; z-index:2;"><i class="fas fa-crown"></i> PREMIUM</div>` : ''}
-                    <h3>${p.nombre || 'Técnico Verificado'}</h3>
-                    <p class="category-subtitle">${p.subcategoria || 'Servicio del Hogar'}</p>
-                    ${p.descripcion ? `<p>${p.descripcion}</p>` : ''}
-                    <ul class="category-services">
-                        ${p.direccion ? `<li><i class="fas fa-map-marker-alt"></i> ${p.direccion}</li>` : ''}
-                        ${p.telefono ? `<li><i class="fas fa-phone"></i> ${p.telefono}</li>` : ''}
-                        ${p.horario ? `<li><i class="fas fa-clock"></i> ${p.horario}</li>` : ''}
-                        ${p.precios ? `<li><i class="fas fa-dollar-sign"></i> ${p.precios}</li>` : ''}
+                <article class="category-card category-hogar fade-in" style="position: relative; border-left: 4px solid var(--color-hogar, #10b981);">
+                    ${p.destacado == 1 ? `<div class="featured-badge" style="position:absolute; top:10px; right:10px; z-index:2; background: var(--color-hogar, #10b981); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fas fa-crown"></i> PREMIUM</div>` : ''}
+                    
+                    <h3 style="margin-top: 0;">${p.nombre || 'Técnico Verificado'}</h3>
+                    <p class="category-subtitle" style="color: var(--color-hogar, #10b981); font-weight: 600; margin-bottom: 1rem;">${p.subcategoria || 'Servicio del Hogar'}</p>
+                    
+                    ${p.descripcion ? `<p style="color: #475569; font-size: 0.95rem; margin-bottom: 1rem;">${p.descripcion}</p>` : ''}
+                    
+                    <ul class="category-services" style="list-style: none; padding: 0; margin: 0 0 1rem 0; font-size: 0.9rem; color: #64748b;">
+                        ${p.direccion ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt" style="width: 20px; color: #ef4444;"></i> ${p.direccion}</li>` : ''}
+                        ${p.horario ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="width: 20px; color: #3b82f6;"></i> ${p.horario}</li>` : ''}
+                        ${p.precios ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-dollar-sign" style="width: 20px; color: #10b981;"></i> ${p.precios}</li>` : ''}
                     </ul>
-                    ${p.video_path ? `<video controls preload="metadata" class="destacado-video"><source src="/${p.video_path}" type="video/mp4"></video>` : ''}
-                    ${p.audio_path ? `<audio controls preload="metadata" class="destacado-audio"><source src="/${p.audio_path}" type="audio/mpeg"></audio>` : ''}
-                    <div class="category-actions">
-                        ${whatsappNum ? `<a href="${whatsappLink}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Contactar</a>` : ''}
+
+                    ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
+                    ${p.video_path ? `
+                        <div style="margin: 1rem 0; border-radius: 8px; overflow: hidden; background: #000;">
+                            <video controls preload="metadata" style="width: 100%; max-height: 200px; display: block;">
+                                <source src="${getMediaUrl(p.video_path)}" type="video/mp4">
+                                Tu navegador no soporta videos.
+                            </video>
+                        </div>
+                    ` : ''}
+                    
+                    ${p.audio_path ? `
+                        <div style="margin: 1rem 0; background: #f1f5f9; padding: 0.5rem; border-radius: 8px;">
+                            <audio controls preload="metadata" style="width: 100%;">
+                                <source src="${getMediaUrl(p.audio_path)}" type="audio/mpeg">
+                                Tu navegador no soporta audio.
+                            </audio>
+                        </div>
+                    ` : ''}
+
+                    <div class="category-actions" style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                        ${whatsappNum ? `<a href="${whatsappLink}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="flex: 1; text-align: center;"><i class="fab fa-whatsapp"></i> Contactar</a>` : ''}
+                        ${p.telefono && !whatsappNum ? `<a href="tel:${p.telefono}" class="btn btn-outline" style="flex: 1; text-align: center; border-color: var(--color-hogar, #10b981); color: var(--color-hogar, #10b981);"><i class="fas fa-phone"></i> Llamar</a>` : ''}
                     </div>
                 </article>
             `;

@@ -421,7 +421,7 @@ function initBusquedaInteligente() {
         { nombre: 'Pediatra', categoria: 'salud', icono: 'fa-baby', url: 'salud.html#clinicas', tipo: 'Servicio' },
         { nombre: 'Ginecología', categoria: 'salud', icono: 'fa-female', url: 'salud.html#clinicas', tipo: 'Servicio' },
         
-        // ===== HOGAR (ACTUALIZADO: incluye Pintura) =====
+        // ===== HOGAR =====
         { nombre: 'Plomero verificado', categoria: 'hogar', icono: 'fa-wrench', url: 'hogar.html#plomeria', tipo: 'Servicio' },
         { nombre: 'Fuga de agua', categoria: 'hogar', icono: 'fa-tint', url: 'hogar.html#plomeria', tipo: 'Servicio' },
         { nombre: 'Destape de cañería', categoria: 'hogar', icono: 'fa-wrench', url: 'hogar.html#plomeria', tipo: 'Servicio' },
@@ -439,7 +439,7 @@ function initBusquedaInteligente() {
         { nombre: 'Cerrajero 24h', categoria: 'hogar', icono: 'fa-key', url: 'hogar.html#otros', tipo: 'Servicio' },
         { nombre: 'Gasfitero', categoria: 'hogar', icono: 'fa-tools', url: 'hogar.html#otros', tipo: 'Servicio' },
         
-        // ===== AUTOMOTRIZ (ACTUALIZADO: incluye Lavado) =====
+        // ===== AUTOMOTRIZ =====
         { nombre: 'Talleres Mecánicos', categoria: 'automotriz', icono: 'fa-wrench', url: 'automotriz.html#talleres', tipo: 'Servicio' },
         { nombre: 'Mecánico', categoria: 'automotriz', icono: 'fa-wrench', url: 'automotriz.html#talleres', tipo: 'Servicio' },
         { nombre: 'Afinación', categoria: 'automotriz', icono: 'fa-wrench', url: 'automotriz.html#talleres', tipo: 'Servicio' },
@@ -470,10 +470,10 @@ function initBusquedaInteligente() {
         { nombre: 'Reparación de Celulares', categoria: 'tecnologia', icono: 'fa-mobile-alt', url: 'tecnologia.html#celulares', tipo: 'Servicio' },
         { nombre: 'Cambio de pantalla iPhone', categoria: 'tecnologia', icono: 'fa-mobile-alt', url: 'tecnologia.html#celulares', tipo: 'Servicio' },
         { nombre: 'Cambio de pantalla Samsung', categoria: 'tecnologia', icono: 'fa-mobile-alt', url: 'tecnologia.html#celulares', tipo: 'Servicio' },
-        { nombre: 'Reparación de Laptops', categoria: 'tecnologia', icono: 'fa-laptop', url: 'tecnologia.html#laptops', tipo: 'Servicio' },
-        { nombre: 'Formateo de laptop', categoria: 'tecnologia', icono: 'fa-laptop', url: 'tecnologia.html#laptops', tipo: 'Servicio' },
-        { nombre: 'Cambio a SSD', categoria: 'tecnologia', icono: 'fa-hdd', url: 'tecnologia.html#laptops', tipo: 'Servicio' },
-        { nombre: 'Soporte Técnico a Domicilio', categoria: 'tecnologia', icono: 'fa-home', url: 'tecnologia.html#domicilio', tipo: 'Servicio' },
+        { nombre: 'Reparación de Laptops', categoria: 'tecnologia', icono: 'fa-laptop', url: 'tecnologia.html#pc-laptops', tipo: 'Servicio' },
+        { nombre: 'Formateo de laptop', categoria: 'tecnologia', icono: 'fa-laptop', url: 'tecnologia.html#pc-laptops', tipo: 'Servicio' },
+        { nombre: 'Cambio a SSD', categoria: 'tecnologia', icono: 'fa-hdd', url: 'tecnologia.html#pc-laptops', tipo: 'Servicio' },
+        { nombre: 'Soporte Técnico a Domicilio', categoria: 'tecnologia', icono: 'fa-home', url: 'tecnologia.html#pc-laptops', tipo: 'Servicio' },
         { nombre: 'Instalación de Cámaras de Seguridad', categoria: 'tecnologia', icono: 'fa-video', url: 'tecnologia.html#camaras', tipo: 'Servicio' },
         { nombre: 'CCTV', categoria: 'tecnologia', icono: 'fa-video', url: 'tecnologia.html#camaras', tipo: 'Servicio' },
         { nombre: 'Instalación de WiFi', categoria: 'tecnologia', icono: 'fa-wifi', url: 'tecnologia.html#redes', tipo: 'Servicio' },
@@ -625,7 +625,8 @@ function initModoOscuroSistema() {
 // 17. SISTEMA DE NOTIFICACIONES TOAST
 // ========================================
 function showToast(title, message, type = 'info', duration = 5000) {
-    const container = document.getElementById('toast-container');
+    // Soporte para ambos IDs (público y admin)
+    const container = document.getElementById('toast-container') || document.getElementById('toastContainer');
     if (!container) {
         console.warn('Toast container no encontrado');
         return;
@@ -671,8 +672,21 @@ function removeToast(toast) {
 window.showToast = showToast;
 
 // ========================================
-// 18. FUNCIÓN ROBUSTA PARA CARGAR PROVEEDORES
+// ✅ 18. FUNCIONES COMPATIBLES CON CLOUDINARY Y LOCAL
 // ========================================
+
+// Función auxiliar para manejar rutas de multimedia (Local o Cloudinary)
+function getMediaUrl(path) {
+    if (!path) return '';
+    // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+        return path;
+    }
+    // Si es ruta relativa local, asegurar que empiece con /
+    return path.startsWith('/') ? path : '/' + path;
+}
+
+// Función robusta para cargar proveedores en contenedores genéricos
 async function cargarProveedoresEnContenedor(contenedorId, categoria, subcategoria = null) {
     const container = document.getElementById(contenedorId);
     if (!container) {
@@ -729,7 +743,7 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, subcategor
 }
 
 function generarTarjetaProveedor(p) {
-    const whatsappNum = (p.whatsapp || '').replace(/\D/g, '');
+    const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
     const whatsappLink = whatsappNum ? 
         `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz')}` : 
         '#';
@@ -753,16 +767,19 @@ function generarTarjetaProveedor(p) {
                 ${p.horario ? `<li><i class="fas fa-clock"></i> ${p.horario}</li>` : ''}
                 ${p.precios ? `<li><i class="fas fa-dollar-sign"></i> ${p.precios}</li>` : ''}
             </ul>
+            
+            ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
             ${p.video_path ? `
-                <video controls preload="metadata" style="width:100%; border-radius:8px; margin:1rem 0;">
-                    <source src="/${p.video_path}" type="video/mp4">
+                <video controls preload="metadata" style="width:100%; border-radius:8px; margin:1rem 0; max-height: 200px; object-fit: cover;">
+                    <source src="${getMediaUrl(p.video_path)}" type="video/mp4">
                 </video>
             ` : ''}
             ${p.audio_path ? `
                 <audio controls preload="metadata" style="width:100%; margin:1rem 0;">
-                    <source src="/${p.audio_path}" type="audio/mpeg">
+                    <source src="${getMediaUrl(p.audio_path)}" type="audio/mpeg">
                 </audio>
             ` : ''}
+            
             <div class="category-actions">
                 ${whatsappNum ? `
                     <a href="${whatsappLink}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
@@ -789,7 +806,7 @@ function getCategoriaClass(categoria) {
 window.cargarProveedoresEnContenedor = cargarProveedoresEnContenedor;
 window.generarTarjetaProveedor = generarTarjetaProveedor;
 window.getCategoriaClass = getCategoriaClass;
-window.showToast = showToast;
+window.getMediaUrl = getMediaUrl;
 
 // ========================================
 // 19. MANEJO GLOBAL DE ERRORES

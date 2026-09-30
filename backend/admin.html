@@ -694,7 +694,7 @@
                                 <select class="form-select" name="categoria" id="categoriaAgregar" required onchange="actualizarSubcategorias('agregar')">
                                     <option value="">Seleccionar...</option>
                                     <option value="Salud">🏥 Salud</option>
-                                    <option value="Hogar"> Hogar</option>
+                                    <option value="Hogar">🏠 Hogar</option>
                                     <option value="Automotriz">🚗 Automotriz</option>
                                     <option value="Tecnologia">💻 Tecnología</option>
                                     <option value="Funeraria">🕊️ Funeraria</option>
@@ -767,7 +767,7 @@
                                 <label class="form-label fw-bold">¿Verificado?</label>
                                 <select class="form-select" name="verificado">
                                     <option value="1">✅ Sí</option>
-                                    <option value="0"> Pendiente</option>
+                                    <option value="0">⏳ Pendiente</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
@@ -974,7 +974,7 @@
                                 <select class="form-select" id="edit_tipo_plan" name="tipo_plan" required>
                                     <option value="gratuito">🎁 Gratuito</option>
                                     <option value="premium">⭐ Premium</option>
-                                    <option value="ultra_premium"> Ultra Premium</option>
+                                    <option value="ultra_premium">👑 Ultra Premium</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
@@ -1029,47 +1029,11 @@
         // SUBCATEGORÍAS POR CATEGORÍA
         // ============================================
         const subcategoriasPorCategoria = {
-            'Salud': [
-                'Clínica',
-                'Veterinaria',
-                'Laboratorio',
-                'Farmacia',
-                'Otros'
-            ],
-            'Hogar': [
-                'Plomería',
-                'Electricidad',
-                'Pintura',
-                'Albañilería',
-                'Carpintería',
-                'Gasfitería',
-                'Cerrajería',
-                'Otros'
-            ],
-            'Automotriz': [
-                'Taller Mecánico',
-                'Frenos',
-                'Muñonería',
-                'Chapista',
-                'Eléctrico',
-                'Electromecánico',
-                'Grúas',
-                'Lavado',
-                'Otros'
-            ],
-            'Tecnologia': [
-                'PC y Laptops',
-                'Celulares',
-                'Cámaras de Seguridad',
-                'Redes e Internet',
-                'Otros'
-            ],
-            'Funeraria': [
-                'Funeraria',
-                'Crematorio',
-                'Floristería',
-                'Otros'
-            ]
+            'Salud': ['Clínica', 'Veterinaria', 'Laboratorio', 'Farmacia', 'Otros'],
+            'Hogar': ['Plomería', 'Electricidad', 'Pintura', 'Albañilería', 'Carpintería', 'Gasfitería', 'Cerrajería', 'Otros'],
+            'Automotriz': ['Taller Mecánico', 'Frenos', 'Muñonería', 'Chapista', 'Eléctrico', 'Electromecánico', 'Grúas', 'Lavado', 'Otros'],
+            'Tecnologia': ['PC y Laptops', 'Celulares', 'Cámaras de Seguridad', 'Redes e Internet', 'Otros'],
+            'Funeraria': ['Funeraria', 'Crematorio', 'Floristería', 'Otros']
         };
 
         // Variables globales
@@ -1091,18 +1055,28 @@
         });
 
         // ============================================
-        // ACTUALIZAR SUBCATEGORÍAS
+        // ✅ ACTUALIZAR SUBCATEGORÍAS (CORREGIDO)
         // ============================================
         function actualizarSubcategorias(tipo) {
-            const categoriaSelect = document.getElementById(`categoria${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`);
-            const subcategoriaSelect = document.getElementById(`subcategoria${tipo === 'agregar' ? 'Agregar' : 'Select'}`);
+            let categoriaSelect, subcategoriaSelect, otrosDiv;
+            
+            if (tipo === 'agregar') {
+                categoriaSelect = document.getElementById('categoriaAgregar');
+                subcategoriaSelect = document.getElementById('subcategoriaAgregar');
+                otrosDiv = document.getElementById('otrosAgregar');
+            } else {
+                categoriaSelect = document.getElementById('edit_categoria');
+                subcategoriaSelect = document.getElementById('edit_subcategoria_select');
+                otrosDiv = document.getElementById('otrosEditar');
+            }
+            
             const categoria = categoriaSelect.value;
             
             // Limpiar select de subcategoría
             subcategoriaSelect.innerHTML = '<option value="">Seleccionar subcategoría...</option>';
             
             // Ocultar campo "Otros"
-            document.getElementById(`otros${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`).classList.remove('activo');
+            otrosDiv.classList.remove('activo');
             
             if (categoria && subcategoriasPorCategoria[categoria]) {
                 subcategoriasPorCategoria[categoria].forEach(sub => {
@@ -1115,17 +1089,26 @@
         }
 
         // ============================================
-        // VERIFICAR SI SELECCIONÓ "OTROS"
+        // ✅ VERIFICAR SI SELECCIONÓ "OTROS" (CORREGIDO)
         // ============================================
         function verificarOtros(tipo) {
-            const subcategoriaSelect = document.getElementById(`subcategoria${tipo === 'agregar' ? 'Agregar' : 'Select'}`);
-            const campoOtros = document.getElementById(`otros${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`);
+            let subcategoriaSelect, otrosDiv, inputOtro;
+            
+            if (tipo === 'agregar') {
+                subcategoriaSelect = document.getElementById('subcategoriaAgregar');
+                otrosDiv = document.getElementById('otrosAgregar');
+                inputOtro = document.getElementById('subcategoriaOtroAgregar');
+            } else {
+                subcategoriaSelect = document.getElementById('edit_subcategoria_select');
+                otrosDiv = document.getElementById('otrosEditar');
+                inputOtro = document.getElementById('subcategoriaOtroEditar');
+            }
             
             if (subcategoriaSelect.value === 'Otros') {
-                campoOtros.classList.add('activo');
-                document.getElementById(`subcategoriaOtro${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`).focus();
+                otrosDiv.classList.add('activo');
+                inputOtro.focus();
             } else {
-                campoOtros.classList.remove('activo');
+                otrosDiv.classList.remove('activo');
             }
         }
 
@@ -1386,7 +1369,7 @@
         }
 
         // ============================================
-        // EDITAR PROVEEDOR
+        // ✅ EDITAR PROVEEDOR (CORREGIDO)
         // ============================================
         function editarProveedor(id) {
             const p = proveedoresData.find(prov => prov.id === id);
@@ -1396,26 +1379,28 @@
             document.getElementById('edit_nombre').value = p.nombre || '';
             document.getElementById('edit_categoria').value = p.categoria || 'Salud';
             
-            // Actualizar subcategorías según la categoría
+            // Actualizar subcategorías según la categoría seleccionada
             actualizarSubcategorias('editar');
             
-            // Esperar a que se carguen las subcategorías
+            // Esperar a que el DOM se actualice con las nuevas opciones
             setTimeout(() => {
                 const subcategoriaSelect = document.getElementById('edit_subcategoria_select');
                 const subcategoriaActual = p.subcategoria || '';
                 
-                // Verificar si la subcategoría existe en la lista
+                // Verificar si la subcategoría existe en la lista de opciones
                 const opcionesExistentes = Array.from(subcategoriaSelect.options).map(opt => opt.value);
                 
                 if (opcionesExistentes.includes(subcategoriaActual)) {
                     subcategoriaSelect.value = subcategoriaActual;
                     document.getElementById('otrosEditar').classList.remove('activo');
                 } else {
+                    // Si no existe (ej. fue escrito manualmente antes), seleccionar "Otros" y mostrar el campo de texto
                     subcategoriaSelect.value = 'Otros';
                     document.getElementById('subcategoriaOtroEditar').value = subcategoriaActual;
                     document.getElementById('otrosEditar').classList.add('activo');
                 }
                 
+                // Rellenar el resto de campos
                 document.getElementById('edit_subcategoria').value = subcategoriaActual;
                 document.getElementById('edit_presentacion_texto').value = p.presentacion_texto || '';
                 document.getElementById('edit_direccion').value = p.direccion || '';
@@ -1427,7 +1412,7 @@
                 document.getElementById('edit_tipo_plan').value = p.tipo_plan || 'gratuito';
                 document.getElementById('edit_verificado').value = p.verificado || '1';
                 document.getElementById('edit_destacado').value = p.destacado || '0';
-            }, 100);
+            }, 50);
             
             new bootstrap.Modal(document.getElementById('modalEditarProveedor')).show();
         }
@@ -1590,10 +1575,10 @@
         function getCategoriaIcono(cat) {
             const iconos = {
                 'Salud': '🏥',
-                'Hogar': '',
-                'Automotriz': '',
-                'Tecnologia': '',
-                'Funeraria': '️'
+                'Hogar': '🏠',
+                'Automotriz': '🚗',
+                'Tecnologia': '💻',
+                'Funeraria': '🕊️'
             };
             return iconos[cat] || '';
         }

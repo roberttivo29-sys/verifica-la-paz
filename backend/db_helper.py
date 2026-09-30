@@ -1,38 +1,72 @@
-import sqlite3
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+VERIFICA LA PAZ - Database Helper para el Bot de Telegram
+Integrado con PostgreSQL (Neon.tech) y SQLAlchemy
+"""
+
 import os
+import logging
+from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker
 
-DB_PATH = os.path.join(os.path.dirname(__file__), 'verifica_lapaz.db')
+logger = logging.getLogger(__name__)
 
-def get_db_connection():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+# ==========================================
+# CONFIGURACIÓN DE BASE DE DATOS
+# ==========================================
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
-def buscar_proveedores_por_palabra_clave(keyword):
-    """Busca proveedores por nombre, categoría o subcategoría"""
-    conn = get_db_connection()
-    search_term = f"%{keyword}%"
+if DATABASE_URL:
+    # SQLAlchemy requiere postgresql:// en lugar de postgres://
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
     
-    query = """
-        SELECT nombre, subcategoria, direccion, telefono, whatsapp, descripcion 
-        FROM proveedores 
-        WHERE verificado = 1 
-        AND (nombre LIKE ? OR categoria LIKE ? OR subcategoria LIKE ?)
-        ORDER BY tipo_plan DESC, destacado DESC
-        LIMIT 3
-    """
-    
-    results = conn.execute(query, (search_term, search_term, search_term)).fetchall()
-    conn.close()
-    
-    return [dict(row) for row in results]
+    engine = create_engine(DATABASE_URL)
+    Session = sessionmaker(bind=engine)
+    logger.info("✅ Database Helper conectado exitosamente a PostgreSQL")
+else:
+    logger.warning("⚠️ DATABASE_URL no configurada. El bot no podrá buscar proveedores.")
 
+# ==========================================
+# FUNCIONES DE CONSULTA
+# ==========================================
 def obtener_categorias_principales():
-    """Devuelve las categorías principales para el menú"""
-    return [
-        "🏥 Salud (Clínicas, Veterinarias)",
-        "🏠 Hogar (Plomería, Electricidad, Pintura)",
-        "🚗 Automotriz (Talleres, Grúas, Lavado)",
-        "💻 Tecnología (Celulares, Laptops, Cámaras)",
-        "🕊️ Funerarias y Homenajes"
-    ]
+    """Obtiene las categorías principales de proveedores verificados"""
+    try:
+        session = Session()
+        result = session.execute(text(
+            "SELECT DISTINCT categoria FROM proveedores WHERE verificado = 1 ORDER BY categoria"
+        ))
+        categorias = [row[0] for row in result]
+        session.close()
+        return categorias if categorias else ["Salud", "Hogar", "Automotriz", "Tecnología", "Funeraria"]
+    except Exception as e:
+        logger.error(f"Error obteniendo categorías: {e}")
+        return ["Salud", "Hogar", "Automotriz", "Tecnología", "Funeraria"]
+
+def buscar_proveedores_por_palabra_clave(texto_busqueda):
+    """Busca proveedores por palabra clave en nombre, subcategoría o descripción"""
+    try:
+        session = Session()
+        query = text("""
+            SELECT nombre, subcategoria, direccion, whatsapp, telefono 
+            FROM proveedores 
+            WHERE verificado = 1 
+            AND (
+                LOWER(nombre) LIKE :texto 
+                OR LOWER(subcategoria) LIKE :texto 
+                OR LOWER(descripcion) LIKE :texto
+            )
+            LIMIT 5
+        """)
+        
+        resultado = session.execute(query, {"texto": f"%{texto_busqueda.lower()}%"})
+        # Convertir filas de SQLAlchemy a diccionarios de Python
+        proveedores = [dict(row._mapping) for row in resultado]
+        session.close()
+        
+        return proveedores
+    except Exception as e:
+        logger.error(f"Error buscando proveedores: {e}")
+        return []

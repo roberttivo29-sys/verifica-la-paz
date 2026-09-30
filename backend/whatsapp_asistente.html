@@ -4,79 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asistente WhatsApp - Verifica La Paz</title>
+    <!-- Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: #f0f2f5; padding: 20px; color: #333; }
         .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { color: #128C7E; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .instrucciones { background: #e7fce3; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #25D366; font-size: 0.95rem; }
-        .search-box { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 1.1rem; margin-bottom: 20px; transition: border 0.3s; }
+        .instrucciones { background: #e7fce3; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #25D366; font-size: 0.95rem; line-height: 1.5; }
+        
+        .search-box { 
+            width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; 
+            font-size: 1.1rem; margin-bottom: 20px; transition: border 0.3s; 
+        }
         .search-box:focus { outline: none; border-color: #128C7E; }
-        .resultado { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #128C7E; }
-        .resultado h3 { color: #075E54; margin-bottom: 10px; }
-        .mensaje-preview { background: white; padding: 15px; border-radius: 8px; border: 1px dashed #ccc; white-space: pre-wrap; font-size: 0.95rem; margin: 10px 0; color: #333; }
-        .btn-copiar { background: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: background 0.3s; display: flex; align-items: center; gap: 8px; }
+        
+        .resultado { 
+            background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 15px; 
+            border-left: 4px solid #128C7E; animation: fadeIn 0.3s ease-out; 
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .resultado h3 { color: #075E54; margin-bottom: 10px; font-size: 1.2rem; }
+        
+        .mensaje-preview { 
+            background: white; padding: 15px; border-radius: 8px; border: 1px dashed #ccc; 
+            white-space: pre-wrap; font-size: 0.95rem; margin: 10px 0; color: #333; line-height: 1.5;
+        }
+        
+        .acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+        
+        .btn { 
+            border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; 
+            font-weight: bold; font-size: 0.95rem; transition: all 0.3s; 
+            display: flex; align-items: center; gap: 8px; text-decoration: none;
+        }
+        .btn-copiar { background: #25D366; color: white; }
         .btn-copiar:hover { background: #128C7E; }
         .btn-copiar.copiado { background: #075E54; }
-        .sin-resultados { text-align: center; color: #666; padding: 20px; }
+        
+        .btn-whatsapp { background: #128C7E; color: white; }
+        .btn-whatsapp:hover { background: #075E54; }
+
+        .sin-resultados { text-align: center; color: #666; padding: 30px; font-size: 1.1rem; }
+        
+        .loading { text-align: center; padding: 40px; color: #128C7E; font-size: 1.2rem; }
+        .loading i { animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1><i class="fas fa-whatsapp"></i> Asistente de Respuestas Rápidas</h1>
+        <h1><i class="fab fa-whatsapp"></i> Asistente de Respuestas Rápidas</h1>
         
         <div class="instrucciones">
             <strong>💡 Cómo usar:</strong><br>
-            1. Escribe lo que el cliente busca (ej: "plomería", "celular", "grúa").<br>
+            1. Escribe lo que el cliente busca (ej: "plomería", "celular", "grúa", "fuga").<br>
             2. El sistema generará un mensaje profesional con los datos verificados.<br>
-            3. Haz clic en "Copiar Mensaje" y pégalo (Ctrl+V) en WhatsApp Web.
+            3. Haz clic en "Copiar" o "Abrir WhatsApp" para responder al instante.
         </div>
 
         <input type="text" class="search-box" id="busqueda" placeholder="🔍 Escribe el servicio que solicita el cliente..." autofocus>
 
-        <div id="resultados"></div>
+        <div id="resultados">
+            <div class="loading"><i class="fas fa-spinner"></i> Cargando proveedores verificados...</div>
+        </div>
     </div>
 
     <script>
-        // Se conecta a tu API local que ya está corriendo en app.py
-        const API_URL = 'http://localhost:5000/api/proveedores?verificado=1';
+        // ✅ RUTA RELATIVA: Funciona tanto en localhost como en Render.com
+        const API_URL = '/api/proveedores?verificado=1';
         let todosLosProveedores = [];
+        let debounceTimer;
 
         // Cargar datos al iniciar
-        fetch(API_URL)
-            .then(res => res.json())
-            .then(data => {
-                todosLosProveedores = data;
+        async function cargarProveedores() {
+            try {
+                const res = await fetch(API_URL);
+                if (!res.ok) throw new Error('Error en la red');
+                todosLosProveedores = await res.json();
                 mostrarInstruccionInicial();
-            })
-            .catch(err => {
-                document.getElementById('resultados').innerHTML = 
-                    '<p class="sin-resultados">⚠️ Asegúrate de que el servidor Flask (app.py) esté corriendo en http://localhost:5000</p>';
-            });
+            } catch (err) {
+                document.getElementById('resultados').innerHTML = `
+                    <div class="sin-resultados" style="color: #d32f2f;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                        ⚠️ No se pudieron cargar los datos.<br>
+                        <small>Asegúrate de que el servidor Flask esté corriendo o de tener conexión a internet.</small>
+                    </div>
+                `;
+            }
+        }
 
         function mostrarInstruccionInicial() {
             document.getElementById('resultados').innerHTML = 
-                '<p class="sin-resultados">Escribe una palabra clave arriba para generar respuestas automáticas.</p>';
+                '<p class="sin-resultados">Escribe al menos 2 caracteres arriba para generar respuestas automáticas.</p>';
         }
 
+        // ✅ DEBOUNCE: Espera 300ms después de que el usuario deje de escribir para buscar
         document.getElementById('busqueda').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                filtrarYMostrar(e.target.value.toLowerCase().trim());
+            }, 300);
+        });
+
+        function filtrarYMostrar(query) {
             const contenedor = document.getElementById('resultados');
             
-            if (query.length < 3) {
+            if (query.length < 2) {
                 mostrarInstruccionInicial();
                 return;
             }
 
-            // Filtrar por nombre, categoría o subcategoría
+            // ✅ FILTRADO MEJORADO: Incluye ahora la descripción
             const filtrados = todosLosProveedores.filter(p => 
                 p.nombre.toLowerCase().includes(query) ||
                 (p.categoria && p.categoria.toLowerCase().includes(query)) ||
-                (p.subcategoria && p.subcategoria.toLowerCase().includes(query))
-            ).slice(0, 3); // Máximo 3 resultados para no saturar
+                (p.subcategoria && p.subcategoria.toLowerCase().includes(query)) ||
+                (p.descripcion && p.descripcion.toLowerCase().includes(query))
+            ).slice(0, 5); // Máximo 5 resultados para mantener la interfaz limpia
 
             if (filtrados.length === 0) {
-                contenedor.innerHTML = '<p class="sin-resultados">No se encontraron proveedores verificados para esa búsqueda. Prueba con otro término.</p>';
+                contenedor.innerHTML = `
+                    <div class="sin-resultados">
+                        <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 10px; display: block; color: #ccc;"></i>
+                        No se encontraron proveedores verificados para "<strong>${query}</strong>".<br>
+                        <small>Prueba con términos más generales (ej: "taller", "clínica").</small>
+                    </div>
+                `;
                 return;
             }
 
@@ -97,29 +152,52 @@
                 const div = document.createElement('div');
                 div.className = 'resultado';
                 div.innerHTML = `
-                    <h3>${p.nombre} <span style="font-size:0.8rem; font-weight:normal; color:#666">(${p.categoria} - ${p.subcategoria || 'General'})</span></h3>
+                    <h3>${p.nombre} <span style="font-size:0.85rem; font-weight:normal; color:#666; display:block; margin-top:5px;">${p.categoria} ${p.subcategoria ? '• ' + p.subcategoria : ''}</span></h3>
                     <div class="mensaje-preview" id="msg-${p.id}">${textoMensaje}</div>
-                    <button class="btn-copiar" onclick="copiarAlPortapapeles('msg-${p.id}', this)">
-                        📋 Copiar Mensaje para WhatsApp
-                    </button>
+                    <div class="acciones">
+                        <button class="btn btn-copiar" onclick="copiarAlPortapapeles('msg-${p.id}', this)">
+                            <i class="fas fa-copy"></i> Copiar Mensaje
+                        </button>
+                        ${numeroWsp ? `
+                        <a href="${linkWsp}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz')}" target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Abrir Chat Directo
+                        </a>` : ''}
+                    </div>
                 `;
                 contenedor.appendChild(div);
             });
-        });
+        }
 
         function copiarAlPortapapeles(elementId, btn) {
             const texto = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(texto).then(() => {
-                const textoOriginal = btn.innerHTML;
-                btn.innerHTML = '✅ ¡Copiado! Ahora pégalo en WhatsApp';
-                btn.classList.add('copiado');
-                
-                setTimeout(() => {
-                    btn.innerHTML = textoOriginal;
-                    btn.classList.remove('copiado');
-                }, 2500);
-            });
+            
+            // Fallback para navegadores antiguos
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(texto).then(() => mostrarExito(btn));
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = texto;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+                mostrarExito(btn);
+            }
         }
+
+        function mostrarExito(btn) {
+            const textoOriginal = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> ¡Copiado! Pégalo en WhatsApp';
+            btn.classList.add('copiado');
+            
+            setTimeout(() => {
+                btn.innerHTML = textoOriginal;
+                btn.classList.remove('copiado');
+            }, 2500);
+        }
+
+        // Iniciar carga
+        cargarProveedores();
     </script>
 </body>
 </html>
