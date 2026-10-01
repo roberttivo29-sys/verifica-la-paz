@@ -1,25 +1,28 @@
 # ==========================================
 # VERIFICA LA PAZ - .gitignore
+# Arquitectura: PythonAnywhere + SQLite Local + Uploads Locales
 # ==========================================
+
+# Base de datos SQLite (se crea automáticamente al iniciar la app)
+*.db
+*.sqlite3
+*.sqlite
+instance/
+
+# Archivos subidos localmente (videos, audios, imágenes de proveedores)
+backend/uploads/*
+!backend/uploads/.gitkeep
+*.mp4
+*.mp3
+*.wav
+*.ogg
 
 # Entornos virtuales de Python
 venv/
 env/
 ENV/
 
-# Archivos de base de datos local (Ahora usamos Neon/PostgreSQL)
-*.db
-*.sqlite3
-*.sqlite
-instance/
-
-# Archivos subidos localmente (Ahora usamos Cloudinary)
-uploads/
-*.mp4
-*.mp3
-*.wav
-
-# Variables de entorno y secretos (¡NUNCA subir esto!)
+# Variables de entorno y secretos (¡NUNCA subir!)
 .env
 .env.local
 .env.production
@@ -37,8 +40,12 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+Profile
 
-# Archivos de compilación
+# Archivos de compilación y distribución
 *.egg-info/
 dist/
 build/
+
+# Scripts de desarrollo local (opcionales, no necesarios en producción)
+*.bat

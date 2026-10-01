@@ -458,13 +458,14 @@
     
     <!-- ============================================
     SCRIPT OPTIMIZADO PARA CARGA DINÁMICA DE PROVEEDORES
-    (Incluye soporte para Video y Audio del Panel Admin)
+    (Soporte para Video y Audio del Panel Admin)
     ============================================= -->
     <script>
-        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA (Local o Cloudinary)
+        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA 
+        // (Compatible con archivos locales en PythonAnywhere y URLs absolutas)
         function getMediaUrl(path) {
             if (!path) return '';
-            // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+            // Si ya es una URL absoluta, devolverla tal cual
             if (path.startsWith('http://') || path.startsWith('https://')) {
                 return path;
             }
@@ -545,7 +546,6 @@
                         ${p.precios ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-dollar-sign" style="width: 20px; color: #10b981;"></i> ${p.precios}</li>` : ''}
                     </ul>
 
-                    ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
                     ${p.video_path ? `
                         <div style="margin: 1rem 0; border-radius: 8px; overflow: hidden; background: #000;">
                             <video controls preload="metadata" style="width: 100%; max-height: 200px; display: block;">

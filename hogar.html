@@ -68,7 +68,8 @@
                         <h2 class="hero-title" id="hero-title">Plomeros, Electricistas, Pintores y Técnicos de Confianza</h2>
                         <p class="hero-subtitle">Especialistas en <strong>reparaciones, mantenimiento y pequeñas modificaciones</strong> en tu hogar. Cotizaciones claras por escrito, garantía de buen trabajo y técnicos con referencias comprobadas. <br><small style="opacity: 0.8; font-style: italic;">*Nota: No realizamos construcciones desde cero ni edificaciones grandes.</small></p>
                         
-                        <div class="hero-buttons" style="grid-template-columns: repeat(3, 1fr);">
+                        <!-- CORRECCIÓN: Grid responsivo para móviles -->
+                        <div class="hero-buttons" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
                             <a href="#plomeria" class="btn btn-primary btn-hogar"><i class="fas fa-wrench" aria-hidden="true"></i> Plomería</a>
                             <a href="#electricidad" class="btn btn-primary btn-hogar"><i class="fas fa-bolt" aria-hidden="true"></i> Electricidad</a>
                             <a href="#pintura" class="btn btn-primary btn-hogar"><i class="fas fa-paint-roller" aria-hidden="true"></i> Pintura</a>
@@ -637,13 +638,14 @@
     
     <!-- ============================================
     SCRIPT OPTIMIZADO PARA CARGA DINÁMICA DE PROVEEDORES
-    (Incluye soporte para Video y Audio del Panel Admin)
+    (Soporte para Video y Audio del Panel Admin)
     ============================================= -->
     <script>
-        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA (Local o Cloudinary)
+        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA 
+        // (Compatible con archivos locales en PythonAnywhere y URLs absolutas)
         function getMediaUrl(path) {
             if (!path) return '';
-            // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+            // Si ya es una URL absoluta, devolverla tal cual
             if (path.startsWith('http://') || path.startsWith('https://')) {
                 return path;
             }
@@ -736,7 +738,6 @@
                         ${p.precios ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-dollar-sign" style="width: 20px; color: #10b981;"></i> ${p.precios}</li>` : ''}
                     </ul>
 
-                    ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
                     ${p.video_path ? `
                         <div style="margin: 1rem 0; border-radius: 8px; overflow: hidden; background: #000;">
                             <video controls preload="metadata" style="width: 100%; max-height: 200px; display: block;">

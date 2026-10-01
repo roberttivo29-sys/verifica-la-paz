@@ -1,7 +1,7 @@
 // ========================================
 // VERIFICA LA PAZ - JavaScript Moderno v3.1
 // Proyecto Final - Arquitectura Robusta
-// Última actualización: Septiembre 2026
+// Última actualización: Octubre 2026
 // ========================================
 
 // Namespace global para evitar colisiones
@@ -391,7 +391,7 @@ function initBackToTop() {
 }
 
 // ========================================
-// 14. BÚSQUEDA INTELIGENTE EN VIVO (ACTUALIZADA v3.1)
+// 14. BÚSQUEDA INTELIGENTE EN VIVO
 // ========================================
 function initBusquedaInteligente() {
     const searchInput = document.getElementById('busquedaGlobal');
@@ -399,10 +399,7 @@ function initBusquedaInteligente() {
     
     if (!searchInput || !searchResults) return;
     
-    // ============================================
-    // BASE DE DATOS DE BÚSQUEDA LOCAL (v3.1)
-    // Actualizada con Pintura (Hogar) y Lavado (Automotriz)
-    // ============================================
+    // Base de datos de búsqueda local
     const datosBusqueda = [
         // ===== CATEGORÍAS PRINCIPALES =====
         { nombre: 'Salud y Bienestar', categoria: 'salud', icono: 'fa-heartbeat', url: 'salud.html', tipo: 'Categoría' },
@@ -672,13 +669,13 @@ function removeToast(toast) {
 window.showToast = showToast;
 
 // ========================================
-// ✅ 18. FUNCIONES COMPATIBLES CON CLOUDINARY Y LOCAL
+// ✅ 18. FUNCIONES PARA CARGA DE PROVEEDORES Y MULTIMEDIA
 // ========================================
 
-// Función auxiliar para manejar rutas de multimedia (Local o Cloudinary)
+// Función auxiliar para manejar rutas de multimedia (Archivos locales en PythonAnywhere o URLs absolutas)
 function getMediaUrl(path) {
     if (!path) return '';
-    // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+    // Si ya es una URL absoluta, devolverla tal cual
     if (path.startsWith('http://') || path.startsWith('https://')) {
         return path;
     }
@@ -768,7 +765,6 @@ function generarTarjetaProveedor(p) {
                 ${p.precios ? `<li><i class="fas fa-dollar-sign"></i> ${p.precios}</li>` : ''}
             </ul>
             
-            ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
             ${p.video_path ? `
                 <video controls preload="metadata" style="width:100%; border-radius:8px; margin:1rem 0; max-height: 200px; object-fit: cover;">
                     <source src="${getMediaUrl(p.video_path)}" type="video/mp4">

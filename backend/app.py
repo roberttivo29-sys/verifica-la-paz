@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-VERIFICA LA PAZ - Backend Flask v2.0 (Arquitectura en la Nube)
-Compatible con PostgreSQL (Neon.tech) y Cloudinary para almacenamiento permanente.
+VERIFICA LA PAZ - Backend Flask
+Compatible con PythonAnywhere (SQLite local y almacenamiento de archivos persistente).
 """
 
 import os
@@ -11,8 +11,7 @@ from datetime import datetime
 from functools import wraps
 from flask import Flask, request, jsonify, send_from_directory, session, redirect
 from flask_sqlalchemy import SQLAlchemy
-import cloudinary
-import cloudinary.uploader
+from werkzeug.utils import secure_filename
 
 # ==========================================
 # CONFIGURACIÓN
@@ -23,26 +22,23 @@ BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, static_folder=BASE_DIR, static_url_path='')
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB max
 
-# Clave secreta para sesiones (usar variable de entorno en producción)
+# Clave secreta para sesiones
 app.secret_key = os.environ.get("SECRET_KEY", secrets.token_hex(32))
 
-# Configuración de Base de Datos (PostgreSQL en Render, SQLite en local como fallback)
-DATABASE_URL = os.environ.get("DATABASE_URL")
-if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
-    # SQLAlchemy requiere postgresql:// en lugar de postgres://
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL or f"sqlite:///{os.path.join(BACKEND_DIR, 'verifica_lapaz.db')}"
+# Configuración de Base de Datos (SQLite para PythonAnywhere)
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BACKEND_DIR, 'verifica_lapaz.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-# Configuración de Cloudinary
-cloudinary.config(
-    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME", "demo"),
-    api_key=os.environ.get("CLOUDINARY_API_KEY", "demo"),
-    api_secret=os.environ.get("CLOUDINARY_API_SECRET", "demo")
-)
+# Configuración de subida de archivos local
+UPLOAD_FOLDER = os.path.join(BACKEND_DIR, 'uploads')
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = {'mp4', 'mov', 'avi', 'mp3', 'wav', 'ogg'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Credenciales admin
 ADMIN_USER = 'admin'
@@ -65,8 +61,8 @@ class Proveedor(db.Model):
     descripcion = db.Column(db.Text)
     tipo_plan = db.Column(db.String(50), default='gratuito')
     destacado = db.Column(db.Integer, default=0)
-    video_path = db.Column(db.String(500))  # Ahora guarda URL de Cloudinary
-    audio_path = db.Column(db.String(500))  # Ahora guarda URL de Cloudinary
+    video_path = db.Column(db.String(500))  # Guarda ruta relativa local (ej: /uploads/video.mp4)
+    audio_path = db.Column(db.String(500))  # Guarda ruta relativa local (ej: /uploads/audio.mp3)
     presentacion_texto = db.Column(db.Text)
     verificado = db.Column(db.Integer, default=1)
     fecha_alta = db.Column(db.DateTime, default=datetime.utcnow)
@@ -86,7 +82,7 @@ class Consulta(db.Model):
 # Crear tablas si no existen
 with app.app_context():
     db.create_all()
-    print("✅ Base de datos inicializada correctamente")
+    print("✅ Base de datos SQLite inicializada correctamente")
 
 # ==========================================
 # DECORADORES
@@ -123,6 +119,10 @@ def serve_js(filename):
 @app.route('/img/<path:filename>')
 def serve_img(filename):
     return send_from_directory(os.path.join(BASE_DIR, 'img'), filename)
+
+@app.route('/uploads/<path:filename>')
+def serve_uploads(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename)
 
 # ==========================================
 # LOGIN Y LOGOUT
@@ -287,14 +287,21 @@ def add_proveedor():
         video_path = None
         audio_path = None
         
-        # Subir a Cloudinary si existe el archivo
-        if video_file and video_file.filename:
-            upload_result = cloudinary.uploader.upload(video_file, resource_type="video")
-            video_path = upload_result['secure_url']
+        # Guardar video localmente si existe
+        if video_file and video_file.filename and allowed_file(video_file.filename):
+            filename = secure_filename(video_file.filename)
+            name, ext = os.path.splitext(filename)
+            filename = f"{name}_{int(datetime.now().timestamp())}{ext}"
+            video_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            video_path = f"/uploads/{filename}"
             
-        if audio_file and audio_file.filename:
-            upload_result = cloudinary.uploader.upload(audio_file, resource_type="video") # "video" soporta audio también
-            audio_path = upload_result['secure_url']
+        # Guardar audio localmente si existe
+        if audio_file and audio_file.filename and allowed_file(audio_file.filename):
+            filename = secure_filename(audio_file.filename)
+            name, ext = os.path.splitext(filename)
+            filename = f"{name}_{int(datetime.now().timestamp())}{ext}"
+            audio_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            audio_path = f"/uploads/{filename}"
         
         nuevo_proveedor = Proveedor(
             nombre=data['nombre'],
@@ -331,14 +338,20 @@ def edit_proveedor(id):
         video_file = request.files.get('video')
         audio_file = request.files.get('audio')
         
-        # Solo actualizamos las URLs si se suben archivos nuevos
-        if video_file and video_file.filename:
-            upload_result = cloudinary.uploader.upload(video_file, resource_type="video")
-            proveedor.video_path = upload_result['secure_url']
+        # Solo actualizamos las rutas si se suben archivos nuevos
+        if video_file and video_file.filename and allowed_file(video_file.filename):
+            filename = secure_filename(video_file.filename)
+            name, ext = os.path.splitext(filename)
+            filename = f"{name}_{int(datetime.now().timestamp())}{ext}"
+            video_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            proveedor.video_path = f"/uploads/{filename}"
             
-        if audio_file and audio_file.filename:
-            upload_result = cloudinary.uploader.upload(audio_file, resource_type="video")
-            proveedor.audio_path = upload_result['secure_url']
+        if audio_file and audio_file.filename and allowed_file(audio_file.filename):
+            filename = secure_filename(audio_file.filename)
+            name, ext = os.path.splitext(filename)
+            filename = f"{name}_{int(datetime.now().timestamp())}{ext}"
+            audio_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            proveedor.audio_path = f"/uploads/{filename}"
         
         proveedor.nombre = data['nombre']
         proveedor.categoria = data['categoria']
@@ -426,9 +439,9 @@ def internal_error(error):
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     print("\n" + "=" * 60)
-    print("  🚀 SERVIDOR VERIFICA LA PAZ INICIADO (v2.0 Nube)  ")
+    print("  🚀 SERVIDOR VERIFICA LA PAZ INICIADO  ")
     print("=" * 60)
     print(f"🌐 Puerto asignado: {port}")
-    print(f"💾 Base de datos: {'PostgreSQL (Neon)' if DATABASE_URL else 'SQLite (Local)'}")
+    print("💾 Base de datos: SQLite (Local persistente)")
     print("=" * 60 + "\n")
     app.run(debug=False, port=port, host='0.0.0.0')

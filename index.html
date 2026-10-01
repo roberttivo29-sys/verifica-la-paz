@@ -486,10 +486,11 @@
             cargarDestacados();
         });
 
-        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA (Local o Cloudinary)
+        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA 
+        // (Compatible con archivos locales en PythonAnywhere y URLs absolutas)
         function getMediaUrl(path) {
             if (!path) return '';
-            // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+            // Si ya es una URL absoluta, devolverla tal cual
             if (path.startsWith('http://') || path.startsWith('https://')) {
                 return path;
             }
@@ -581,7 +582,6 @@
                     ${p.telefono ? `<p class="destacado-info"><i class="fas fa-phone" aria-hidden="true"></i> ${p.telefono}</p>` : ''}
                     ${p.horario ? `<p class="destacado-info"><i class="fas fa-clock" aria-hidden="true"></i> ${p.horario}</p>` : ''}
                     
-                    ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
                     ${p.video_path ? `
                         <video controls preload="metadata" class="destacado-video" aria-label="Video de ${p.nombre}">
                             <source src="${getMediaUrl(p.video_path)}" type="video/mp4">

@@ -68,7 +68,8 @@
                         <h2 class="hero-title" id="hero-title">Reparación de Equipos, Cámaras de Seguridad y Redes</h2>
                         <p class="hero-subtitle">Técnicos certificados, repuestos originales y garantía por escrito. Verificamos que no te cambien piezas, que usen materiales de calidad y que cumplan los plazos. Sin estafas, sin sorpresas.</p>
                         
-                        <div class="hero-buttons" style="grid-template-columns: repeat(2, 1fr);">
+                        <!-- CORRECCIÓN: Grid responsivo para móviles -->
+                        <div class="hero-buttons" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
                             <a href="#pc-laptops" class="btn btn-primary btn-tecnologia"><i class="fas fa-laptop" aria-hidden="true"></i> PC y Laptops</a>
                             <a href="#celulares" class="btn btn-primary btn-tecnologia"><i class="fas fa-mobile-alt" aria-hidden="true"></i> Celulares y Tablets</a>
                             <a href="#camaras" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-video" aria-hidden="true"></i> Cámaras de Seguridad</a>
@@ -593,13 +594,14 @@
     
     <!-- ============================================
     SCRIPT OPTIMIZADO PARA CARGA DINÁMICA DE PROVEEDORES
-    (Incluye soporte para Video y Audio del Panel Admin)
+    (Soporte para Video y Audio del Panel Admin)
     ============================================= -->
     <script>
-        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA (Local o Cloudinary)
+        // ✅ FUNCIÓN ESTÁNDAR PARA MANEJAR RUTAS DE MULTIMEDIA 
+        // (Compatible con archivos locales en PythonAnywhere y URLs absolutas)
         function getMediaUrl(path) {
             if (!path) return '';
-            // Si ya es una URL absoluta (ej. Cloudinary), devolverla tal cual
+            // Si ya es una URL absoluta, devolverla tal cual
             if (path.startsWith('http://') || path.startsWith('https://')) {
                 return path;
             }
@@ -680,7 +682,6 @@
                         ${p.precios ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-dollar-sign" style="width: 20px; color: #10b981;"></i> ${p.precios}</li>` : ''}
                     </ul>
 
-                    ✅ RUTA DE MULTIMEDIA INTELIGENTE (Compatible con Local y Cloudinary)
                     ${p.video_path ? `
                         <div style="margin: 1rem 0; border-radius: 8px; overflow: hidden; background: #000;">
                             <video controls preload="metadata" style="width: 100%; max-height: 200px; display: block;">
