@@ -4,7 +4,7 @@ backend:
   branch: main
   auth_scope: repo
   oauth:
-    client_id: POv23li5VARzweAOk7S93
+    client_id: 0v23li5VARzweA0k7S93
     client_secret: 8d7e52cdd485881ad521ab55da791e2c853ab3dd
 
 media_folder: "img/uploads"
