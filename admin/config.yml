@@ -1,8 +1,10 @@
 backend:
-  name: git-gateway
-  branch: main # O 'master', dependiendo de tu rama principal en GitHub
+  name: github
+  repo: roberttivo29-sys/verifica-la-paz
+  branch: main
+  auth_scope: repo
 
-media_folder: "img/uploads" # Carpeta para imágenes (si las usas)
+media_folder: "img/uploads"
 public_folder: "/img/uploads"
 
 collections:
@@ -11,8 +13,8 @@ collections:
     folder: "data"
     create: true
     slug: "proveedores"
-    extension: json
-    format: json
+    extension: "json"
+    format: "json"
     identifier_field: "id"
     fields:
       - { label: "ID (Número único)", name: "id", widget: "number" }
