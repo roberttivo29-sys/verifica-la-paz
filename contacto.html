@@ -25,7 +25,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <!-- Bootstrap 5 para formulario y Toasts (CDN oficial, ligero y necesario) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -56,14 +55,11 @@
 
     <main class="main-content" role="main">
         <div class="container content-grid">
-            
             <div class="content-main">
                 
                 <section class="hero" aria-labelledby="hero-title">
                     <div class="hero-content fade-in">
-                        <div class="hero-badge">
-                            <i class="fas fa-comments" aria-hidden="true"></i> Hablemos
-                        </div>
+                        <div class="hero-badge"><i class="fas fa-comments" aria-hidden="true"></i> Hablemos</div>
                         <h2 class="hero-title" id="hero-title">¿Tienes dudas, sugerencias o quieres que verifiquemos un nuevo servicio?</h2>
                         <p class="hero-subtitle">Estamos aquí para ayudarte a resolver lo que importa. Contáctanos por el canal que prefieras y te responderemos en menos de 2 horas.</p>
                         
@@ -109,18 +105,14 @@
 
                 <section id="canales" class="fade-in" aria-labelledby="canales-title">
                     <h2 class="section-title" id="canales-title"><i class="fas fa-phone-alt" aria-hidden="true"></i> CANALES DE ATENCIÓN DIRECTA</h2>
-                    <p class="section-description">
-                        Elige el canal que más te convenga. Todos son gratuitos y confidenciales.
-                    </p>
+                    <p class="section-description">Elige el canal que más te convenga. Todos son gratuitos y confidenciales.</p>
 
                     <div class="categories-grid">
                         <div class="category-card category-salud">
-                            <div class="category-icon">
-                                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-                            </div>
+                            <div class="category-icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
                             <h3>WhatsApp: Atención Ciudadana</h3>
                             <p class="category-subtitle">Para consultas de salud, hogar, tecnología y más</p>
-                            <p>Respondemos en menos de 2 horas en horario de oficina. Ideal para encontrar proveedores verificados al instante.</p>
+                            <p>Respondemos en menos de 2 horas en horario de oficina. Ideal para encontrar proveedores al instante.</p>
                             <div class="category-actions">
                                 <a href="https://wa.me/59176536286?text=Hola,%20necesito%20información%20sobre%20un%20servicio" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer">
                                     <i class="fab fa-whatsapp" aria-hidden="true"></i> Chatear con Atención Ciudadana
@@ -129,9 +121,7 @@
                         </div>
 
                         <div class="category-card category-tecnologia">
-                            <div class="category-icon">
-                                <i class="fas fa-briefcase" aria-hidden="true"></i>
-                            </div>
+                            <div class="category-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
                             <h3>WhatsApp: Empresas y Proveedores</h3>
                             <p class="category-subtitle">Para negocios que quieren aparecer en el directorio</p>
                             <p>Atención personalizada para dueños de clínicas, talleres, tiendas de tecnología y comercios que buscan mayor visibilidad.</p>
@@ -143,19 +133,13 @@
                         </div>
 
                         <div class="category-card category-auto">
-                            <div class="category-icon">
-                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                            </div>
+                            <div class="category-icon"><i class="fas fa-paper-plane" aria-hidden="true"></i></div>
                             <h3>Telegram y Correo</h3>
                             <p class="category-subtitle">Canales alternativos y formales</p>
                             <p>Únete a nuestro canal de Telegram para actualizaciones o envíanos un correo electrónico para consultas formales.</p>
                             <div class="category-actions">
-                                <a href="https://t.me/verificalapaz_bot" class="btn btn-telegram" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-telegram" aria-hidden="true"></i> Bot de Telegram
-                                </a>
-                                <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline">
-                                    <i class="fas fa-envelope" aria-hidden="true"></i> Email
-                                </a>
+                                <a href="https://t.me/verificalapaz_bot" class="btn btn-telegram" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram" aria-hidden="true"></i> Bot de Telegram</a>
+                                <a href="mailto:contactoverificalapaz@gmail.com" class="btn btn-outline"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
                             </div>
                         </div>
                     </div>
@@ -163,46 +147,50 @@
 
                 <section id="formulario" class="fade-in" style="margin-top: 4rem;" aria-labelledby="form-title">
                     <h2 class="section-title" id="form-title"><i class="fas fa-envelope-open-text" aria-hidden="true"></i> ENVÍANOS UN MENSAJE DIRECTO</h2>
-                    <p class="section-description">
-                        Llena este formulario y tu mensaje se guardará en nuestro sistema para una respuesta organizada. También puedes enviarlo directamente por WhatsApp.
-                    </p>
+                    <p class="section-description">Llena este formulario y tu mensaje llegará directamente a nuestro correo para una respuesta organizada. También puedes enviarlo por WhatsApp.</p>
 
                     <div class="featured-section">
-                        <form id="formContactoDB">
+                        <!-- FORMULARIO CON FORMSUBMIT.CO (SIN BACKEND) -->
+                        <form action="https://formsubmit.co/contactoverificalapaz@gmail.com" method="POST">
+                            <!-- Configuración de Formsubmit -->
+                            <input type="hidden" name="_subject" value="Nueva consulta desde Verifica La Paz">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://verificalapaz.com/contacto.html?exito=1">
+                            
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold" for="nombre">Tu Nombre *</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+                                    <input type="text" class="form-control" name="nombre" required placeholder="Ej: Juan Pérez">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold" for="telefono">Teléfono (opcional)</label>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ej: 76512345">
+                                    <input type="tel" class="form-control" name="telefono" placeholder="Ej: 76512345">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold" for="tipo">¿Qué necesitas resolver? *</label>
-                                    <select class="form-select" id="tipo" name="tipo" required>
+                                    <select class="form-select" name="tipo" required>
                                         <option value="">Selecciona una opción...</option>
                                         <option value="Salud">🏥 Salud (Clínica/Veterinaria)</option>
                                         <option value="Hogar">🏠 Hogar (Plomero/Electricista)</option>
                                         <option value="Automotriz">🚗 Automotriz (Taller/Grúa)</option>
                                         <option value="Tecnologia">💻 Tecnología (Celulares/Laptops)</option>
                                         <option value="Funeraria">🕊️ Despedida y Homenaje</option>
-                                        <option value="Proveedor">🤝 Quiero ser proveedor verificado</option>
+                                        <option value="Proveedor">🤝 Quiero ser proveedor</option>
                                         <option value="Otro">Otro / Sugerencia / Queja</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-bold" for="mensaje">Cuéntanos los detalles *</label>
-                                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required placeholder="Describe tu consulta con el mayor detalle posible..."></textarea>
+                                    <textarea class="form-control" name="mensaje" rows="4" required placeholder="Describe tu consulta con el mayor detalle posible..."></textarea>
                                 </div>
                             </div>
                             
                             <div class="d-flex gap-2 justify-content-end mt-4 flex-wrap">
                                 <button type="button" class="btn btn-success" onclick="enviarWhatsAppDirecto()">
-                                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar por WhatsApp (Respuesta inmediata)
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar por WhatsApp (Inmediato)
                                 </button>
-                                <button type="submit" id="btnSubmitContacto" class="btn-submit">
-                                    <i class="fas fa-save" aria-hidden="true"></i> Guardar Consulta en el Sistema
+                                <button type="submit" class="btn-submit">
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar por Correo
                                 </button>
                             </div>
                         </form>
@@ -211,41 +199,34 @@
 
                 <section id="faq" class="fade-in" style="margin-top: 4rem;" aria-labelledby="faq-title">
                     <h2 class="section-title" id="faq-title"><i class="fas fa-question-circle" aria-hidden="true"></i> PREGUNTAS FRECUENTES</h2>
-                    <p class="section-description">
-                        Las dudas más comunes de nuestros usuarios, resueltas en segundos.
-                    </p>
+                    <p class="section-description">Las dudas más comunes de nuestros usuarios, resueltas en segundos.</p>
 
                     <div class="why-us-grid">
                         <div class="why-card">
                             <div class="why-icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
                             <h3>¿Cuánto cuesta usar Verifica La Paz?</h3>
-                            <p>Para los ciudadanos que buscan servicios, es 100% gratuito. Solo pagas el servicio del proveedor (clínica, taller, etc.) al precio que ya verificamos.</p>
+                            <p>Para los ciudadanos que buscan servicios, es 100% gratuito. Solo pagas el servicio del proveedor al precio que ya verificamos.</p>
                         </div>
-
                         <div class="why-card">
                             <div class="why-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
                             <h3>¿Cómo verifican que un servicio es confiable?</h3>
                             <p>Llamamos, visitamos y probamos personalmente cada lugar. Verificamos horarios, precios, equipamiento y pedimos referencias a clientes reales antes de darles nuestro sello.</p>
                         </div>
-
                         <div class="why-card">
                             <div class="why-icon"><i class="fas fa-store" aria-hidden="true"></i></div>
                             <h3>Soy proveedor, ¿cómo aparezco en el directorio?</h3>
-                            <p>Escríbenos a nuestra Línea de Empresas. Evaluamos tu negocio y, si cumples nuestros estándares de calidad, te integramos al directorio con el sello "Verificado".</p>
+                            <p>Escríbenos a nuestra Línea de Empresas. Evaluamos tu negocio y, si cumples nuestros estándares de calidad, te integramos al directorio con el sello de confianza.</p>
                         </div>
-
                         <div class="why-card">
                             <div class="why-icon"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></div>
-                            <h3>¿Qué pasa si un proveedor verificado me estafa?</h3>
+                            <h3>¿Qué pasa si un proveedor me estafa?</h3>
                             <p>Aplicamos la "Regla de las 3 quejas". Si recibimos 3 reclamos verificados contra un proveedor, lo retiramos inmediatamente del directorio para proteger a la comunidad.</p>
                         </div>
                     </div>
                 </section>
 
                 <section class="featured-section fade-in" style="margin-top: 4rem; background: var(--gradiente-hero); color: white; border-left: none;" aria-labelledby="cta-title">
-                    <div class="featured-badge" style="background: rgba(255,255,255,0.2); color: white;">
-                        <i class="fas fa-search" aria-hidden="true"></i> ¿NO ENCONTRASTE LO QUE BUSCABAS?
-                    </div>
+                    <div class="featured-badge" style="background: rgba(255,255,255,0.2); color: white;"><i class="fas fa-search" aria-hidden="true"></i> ¿NO ENCONTRASTE LO QUE BUSCABAS?</div>
                     <h3 id="cta-title" style="color: white;">Si el servicio que necesitas no está en nuestra web, dínoslo.</h3>
                     <p style="color: rgba(255,255,255,0.9);">Lo verificamos personalmente para ti y lo agregamos al directorio. Tu solicitud es importante para nosotros.</p>
                     <div class="hero-features" style="margin: 2rem 0; justify-content: center;">
@@ -263,7 +244,6 @@
             </div>
 
             <aside class="sidebar" role="complementary">
-                
                 <div class="sidebar-section fade-in">
                     <h3><i class="fas fa-fire" aria-hidden="true"></i> LO MÁS CONSULTADO</h3>
                     <ul class="popular-list">
@@ -275,7 +255,6 @@
                         <li><a href="#formulario"><i class="fas fa-chevron-right" aria-hidden="true"></i> Solicitar verificación nueva</a></li>
                     </ul>
                 </div>
-
                 <div class="sidebar-section fade-in">
                     <h3><i class="fas fa-clock" aria-hidden="true"></i> HORARIOS DE ATENCIÓN</h3>
                     <ul class="contact-info" style="color: var(--gris-oscuro);">
@@ -285,29 +264,21 @@
                         <li><i class="fas fa-bolt" aria-hidden="true"></i> WhatsApp 24h para emergencias</li>
                     </ul>
                 </div>
-
                 <div class="sidebar-section fade-in">
                     <h3><i class="fas fa-store" aria-hidden="true"></i> ¿ERES PROVEEDOR?</h3>
-                    <p>Únete a nuestro directorio verificado y aumenta tu visibilidad.</p>
+                    <p>Únete a nuestro directorio y aumenta tu visibilidad.</p>
                     <ul class="provider-benefits">
-                        <li><i class="fas fa-check" aria-hidden="true"></i> Sello de verificado</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Sello de confianza</li>
                         <li><i class="fas fa-check" aria-hidden="true"></i> Sin comisión por cliente</li>
                         <li><i class="fas fa-check" aria-hidden="true"></i> Mayor visibilidad online</li>
                     </ul>
-                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-store" aria-hidden="true"></i> Unirme ahora
-                    </a>
+                    <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer"><i class="fas fa-store" aria-hidden="true"></i> Unirme ahora</a>
                 </div>
-
                 <div class="sidebar-section fade-in">
                     <h3><i class="fas fa-share-alt" aria-hidden="true"></i> SÍGUENOS</h3>
                     <div class="social-grid">
-                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                            <i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span>
-                        </a>
-                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                            <i class="fab fa-tiktok" aria-hidden="true"></i><span>TikTok</span>
-                        </a>
+                        <a href="https://facebook.com/ContactoverificaLaPaz" class="social-link facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span></a>
+                        <a href="https://tiktok.com/@verifica_la_paz" class="social-link tiktok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok" aria-hidden="true"></i><span>TikTok</span></a>
                     </div>
                 </div>
             </aside>
@@ -320,7 +291,7 @@
                 <div class="footer-section">
                     <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> VERIFICA LA PAZ</h3>
                     <p class="footer-tagline">Primero verifica. Después resuelve.</p>
-                    <p>Tu aliado de confianza para resolver lo que importa en La Paz y El Alto. Verificamos personalmente cada servicio para que tú decidas con seguridad.</p>
+                    <p>Tu aliado de confianza para resolver lo que importa en La Paz y El Alto.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Categorías</h4>
@@ -338,7 +309,6 @@
                         <li><a href="#">Sobre Nosotros</a></li>
                         <li><a href="#">Cómo Funciona</a></li>
                         <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Términos de Servicio</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
@@ -351,10 +321,10 @@
                         <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> La Paz, Bolivia</li>
                     </ul>
                     <div class="footer-social">
-                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
-                        <a href="https://wa.me/59176536286" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                        <a href="https://t.me/verificalapaz_bot" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com/ContactoverificaLaPaz" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://tiktok.com/@verifica_la_paz" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/59176536286" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://t.me/verificalapaz_bot" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -371,110 +341,24 @@
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <!-- Contenedor de Notificaciones Toast (Bootstrap 5) -->
     <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999; margin-top: 80px;" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
 
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('formContactoDB');
-            if (form) {
-                form.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const submitBtn = document.getElementById('btnSubmitContacto');
-                    const originalBtnText = submitBtn.innerHTML;
-                    
-                    const data = {
-                        nombre: document.getElementById('nombre').value.trim(),
-                        telefono: document.getElementById('telefono').value.trim(),
-                        tipo: document.getElementById('tipo').value,
-                        mensaje: document.getElementById('mensaje').value.trim()
-                    };
-
-                    if (!data.nombre || !data.tipo || !data.mensaje) {
-                        mostrarToast('Error', 'Por favor completa todos los campos obligatorios', 'error');
-                        return;
-                    }
-
-                    try {
-                        // Estado de carga para evitar doble envío
-                        submitBtn.disabled = true;
-                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-
-                        const response = await fetch('/api/contacto', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(data)
-                        });
-                        
-                        const result = await response.json();
-                        
-                        if (result.success) {
-                            mostrarToast('¡Éxito!', 'Tu consulta fue enviada correctamente. Te responderemos en menos de 2 horas.', 'success');
-                            form.reset();
-                        } else {
-                            mostrarToast('Error', result.message || 'No se pudo enviar tu consulta', 'error');
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        mostrarToast('Error', 'No se pudo conectar con el servidor. Intenta nuevamente.', 'error');
-                    } finally {
-                        // Restaurar botón siempre, haya éxito o error
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnText;
-                    }
-                });
-            }
-        });
-
+        // Función auxiliar para enviar por WhatsApp directamente desde el formulario
         function enviarWhatsAppDirecto() {
-            const nombre = document.getElementById('nombre').value.trim() || 'Ciudadano';
-            const tipo = document.getElementById('tipo').value || 'Consulta general';
-            const mensaje = document.getElementById('mensaje').value.trim() || 'Sin detalles';
+            const nombre = document.querySelector('input[name="nombre"]').value.trim() || 'Ciudadano';
+            const tipo = document.querySelector('select[name="tipo"]').value || 'Consulta general';
+            const mensaje = document.querySelector('textarea[name="mensaje"]').value.trim() || 'Sin detalles';
             
             const texto = `Hola, soy ${nombre}. Necesito ayuda con: ${tipo}.\n\nDetalles: ${mensaje}`;
             window.open(`https://wa.me/59176536286?text=${encodeURIComponent(texto)}`, '_blank');
             
-            mostrarToast('WhatsApp abierto', 'Tu mensaje se enviará por WhatsApp. ¡Gracias por contactarnos!', 'success');
-        }
-
-        function mostrarToast(titulo, mensaje, tipo = 'info') {
-            const container = document.getElementById('toastContainer');
-            const colores = {
-                success: 'bg-success',
-                error: 'bg-danger',
-                warning: 'bg-warning',
-                info: 'bg-primary'
-            };
-            const iconos = {
-                success: 'fa-check-circle',
-                error: 'fa-exclamation-circle',
-                warning: 'fa-exclamation-triangle',
-                info: 'fa-info-circle'
-            };
-            
-            const toastId = 'toast-' + Date.now();
-            const toastHTML = `
-                <div id="${toastId}" class="toast align-items-center text-white ${colores[tipo]} border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            <i class="fas ${iconos[tipo]} me-2"></i>
-                            <strong>${titulo}:</strong> ${mensaje}
-                        </div>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                </div>
-            `;
-            
-            container.insertAdjacentHTML('beforeend', toastHTML);
-            const toastElement = document.getElementById(toastId);
-            const toast = new bootstrap.Toast(toastElement, { delay: 5000 });
-            toast.show();
-            
-            toastElement.addEventListener('hidden.bs.toast', () => toastElement.remove());
+            if (typeof showToast === 'function') {
+                showToast('WhatsApp abierto', 'Tu mensaje se enviará por WhatsApp. ¡Gracias por contactarnos!', 'success');
+            }
         }
     </script>
 </body>

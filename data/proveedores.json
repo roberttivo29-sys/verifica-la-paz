@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "nombre": "Clínica San Juan",
+    "categoria": "Salud",
+    "subcategoria": "Clínica",
+    "direccion": "Av. 6 de Agosto, Miraflores, La Paz",
+    "telefono": "2-1234567",
+    "whatsapp": "76511122",
+    "horario": "Lun-Dom: 7:00 - 22:00",
+    "precios": "Consulta general: 100 Bs",
+    "descripcion": "Atención integral con 5 especialistas y urgencias 24h.",
+    "tipo_plan": "premium",
+    "destacado": 1,
+    "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "audio_url": ""
+  },
+  {
+    "id": 2,
+    "nombre": "Taller Mecánico El Maestro",
+    "categoria": "Automotriz",
+    "subcategoria": "Taller Mecánico",
+    "direccion": "Av. Perú, Sopocachi, La Paz",
+    "telefono": "2-2345678",
+    "whatsapp": "76599988",
+    "horario": "Lun-Sáb: 8:00-18:00",
+    "precios": "Diagnóstico: 80 Bs (se descuenta del trabajo)",
+    "descripcion": "Especialistas en Toyota y Chevrolet. Garantía de 30 días.",
+    "tipo_plan": "gratuito",
+    "destacado": 0,
+    "video_url": "",
+    "audio_url": ""
+  }
+]

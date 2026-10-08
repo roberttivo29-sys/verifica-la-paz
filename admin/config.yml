@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main # O 'master', dependiendo de tu rama principal en GitHub
+
+media_folder: "img/uploads" # Carpeta para imágenes (si las usas)
+public_folder: "/img/uploads"
+
+collections:
+  - name: "proveedores"
+    label: "Proveedores"
+    folder: "data"
+    create: true
+    slug: "proveedores"
+    extension: json
+    format: json
+    identifier_field: "id"
+    fields:
+      - { label: "ID (Número único)", name: "id", widget: "number" }
+      - { label: "Nombre del Proveedor", name: "nombre", widget: "string" }
+      - { label: "Categoría", name: "categoria", widget: "select", options: ["Salud", "Hogar", "Automotriz", "Tecnologia", "Funeraria"] }
+      - { label: "Subcategoría", name: "subcategoria", widget: "string" }
+      - { label: "Dirección", name: "direccion", widget: "string", required: false }
+      - { label: "Teléfono", name: "telefono", widget: "string", required: false }
+      - { label: "WhatsApp (solo números)", name: "whatsapp", widget: "string", required: false }
+      - { label: "Horario", name: "horario", widget: "string", required: false }
+      - { label: "Rango de Precios", name: "precios", widget: "string", required: false }
+      - { label: "Descripción", name: "descripcion", widget: "text", required: false }
+      - { label: "Plan", name: "tipo_plan", widget: "select", options: ["gratuito", "premium", "ultra_premium"], default: "gratuito" }
+      - { label: "¿Destacado en Portada?", name: "destacado", widget: "number", default: 0, hint: "1 = Sí, 0 = No" }
+      - { label: "Link de Video (YouTube Embed)", name: "video_url", widget: "string", required: false, hint: "Ej: https://www.youtube.com/embed/CODIGO" }
+      - { label: "Link de Audio", name: "audio_url", widget: "string", required: false }
