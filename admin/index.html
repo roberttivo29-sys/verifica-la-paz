@@ -1,40 +1,336 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel de Administración - Verifica La Paz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f7fa;
-    }
-    .loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-size: 1.2rem;
-      color: #666;
-    }
+    body { background: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+    .login-container { max-width: 400px; margin: 100px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .admin-container { max-width: 1200px; margin: 20px auto; padding: 20px; }
+    .hidden { display: none !important; }
+    .provider-card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .btn-primary { background: #2563EB; border: none; }
+    .btn-primary:hover { background: #1E40AF; }
   </style>
 </head>
 <body>
-  <div class="loading" id="loading">
-    Cargando panel de administración...
+
+  <!-- LOGIN -->
+  <div id="loginSection" class="login-container">
+    <h3 class="text-center mb-4"><i class="fas fa-shield-alt text-primary"></i> Admin Verifica La Paz</h3>
+    <div class="mb-3">
+      <label class="form-label">GitHub Personal Access Token</label>
+      <input type="password" id="tokenInput" class="form-control" placeholder="ghp_...">
+      <small class="text-muted">Genera uno en: github.com/settings/tokens</small>
+    </div>
+    <button onclick="login()" class="btn btn-primary w-100">
+      <i class="fab fa-github"></i> Ingresar
+    </button>
+    <div id="loginError" class="alert alert-danger mt-3 hidden"></div>
   </div>
-  
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  
+
+  <!-- ADMIN PANEL -->
+  <div id="adminSection" class="admin-container hidden">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3><i class="fas fa-shield-alt text-primary"></i> Panel de Administración</h3>
+      <button onclick="logout()" class="btn btn-outline-danger btn-sm">
+        <i class="fas fa-sign-out-alt"></i> Salir
+      </button>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Gestión de Proveedores</h5>
+        <button onclick="addProvider()" class="btn btn-success">
+          <i class="fas fa-plus"></i> Agregar Proveedor
+        </button>
+        <button onclick="loadProviders()" class="btn btn-primary ms-2">
+          <i class="fas fa-sync"></i> Recargar
+        </button>
+      </div>
+    </div>
+
+    <div id="providersList"></div>
+    <div id="loading" class="text-center py-5 hidden">
+      <i class="fas fa-spinner fa-spin fa-3x text-primary"></i>
+      <p class="mt-3">Cargando proveedores...</p>
+    </div>
+  </div>
+
+  <!-- MODAL EDITAR -->
+  <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Editar Proveedor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="providerForm">
+            <input type="hidden" id="editIndex">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">ID *</label>
+                <input type="number" id="f_id" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Nombre *</label>
+                <input type="text" id="f_nombre" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Categoría *</label>
+                <select id="f_categoria" class="form-select" required>
+                  <option value="Salud">Salud</option>
+                  <option value="Hogar">Hogar</option>
+                  <option value="Automotriz">Automotriz</option>
+                  <option value="Tecnologia">Tecnologia</option>
+                  <option value="Funeraria">Funeraria</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Subcategoría</label>
+                <input type="text" id="f_subcategoria" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Dirección</label>
+                <input type="text" id="f_direccion" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Teléfono</label>
+                <input type="text" id="f_telefono" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">WhatsApp</label>
+                <input type="text" id="f_whatsapp" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Horario</label>
+                <input type="text" id="f_horario" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Precios</label>
+                <input type="text" id="f_precios" class="form-control">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Descripción</label>
+                <textarea id="f_descripcion" class="form-control" rows="2"></textarea>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Plan</label>
+                <select id="f_tipo_plan" class="form-select">
+                  <option value="gratuito">Gratuito</option>
+                  <option value="premium">Premium</option>
+                  <option value="ultra_premium">Ultra Premium</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Destacado (0 o 1)</label>
+                <input type="number" id="f_destacado" class="form-control" min="0" max="1" value="0">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Video URL (YouTube embed)</label>
+                <input type="text" id="f_video_url" class="form-control">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Audio URL</label>
+                <input type="text" id="f_audio_url" class="form-control">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" onclick="saveProvider()" class="btn btn-primary">
+            <i class="fas fa-save"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Ocultar mensaje de carga cuando CMS esté listo
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        var loading = document.getElementById('loading');
-        if (loading) loading.style.display = 'none';
-      }, 2000);
+    const REPO = 'roberttivo29-sys/verifica-la-paz';
+    const BRANCH = 'main';
+    const FILE_PATH = 'data/proveedores.json';
+    let token = '';
+    let providers = [];
+    let fileSha = '';
+
+    function login() {
+      token = document.getElementById('tokenInput').value.trim();
+      if (!token) {
+        showError('Ingresa un token válido');
+        return;
+      }
+      // Verificar token
+      fetch('https://api.github.com/user', {
+        headers: { 'Authorization': `token ${token}` }
+      })
+      .then(r => {
+        if (!r.ok) throw new Error('Token inválido');
+        return r.json();
+      })
+      .then(user => {
+        localStorage.setItem('gh_token', token);
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('adminSection').classList.remove('hidden');
+        loadProviders();
+      })
+      .catch(e => showError('Error: ' + e.message));
+    }
+
+    function logout() {
+      localStorage.removeItem('gh_token');
+      location.reload();
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('loginError');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    async function loadProviders() {
+      document.getElementById('loading').classList.remove('hidden');
+      document.getElementById('providersList').innerHTML = '';
+      try {
+        const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`, {
+          headers: { 'Authorization': `token ${token}` }
+        });
+        if (!res.ok) throw new Error('No se pudo cargar el archivo');
+        const data = await res.json();
+        fileSha = data.sha;
+        const content = atob(data.content);
+        providers = JSON.parse(content);
+        renderProviders();
+      } catch (e) {
+        document.getElementById('providersList').innerHTML = `<div class="alert alert-danger">Error: ${e.message}</div>`;
+      } finally {
+        document.getElementById('loading').classList.add('hidden');
+      }
+    }
+
+    function renderProviders() {
+      const html = providers.map((p, i) => `
+        <div class="provider-card">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5>${p.nombre} <span class="badge bg-${p.destacado == 1 ? 'warning' : 'secondary'}">${p.destacado == 1 ? '⭐ Destacado' : 'Normal'}</span></h5>
+              <p class="text-muted mb-1">${p.categoria} > ${p.subcategoria || 'Sin subcategoría'}</p>
+              <p class="mb-1"><i class="fas fa-map-marker-alt"></i> ${p.direccion || 'Sin dirección'}</p>
+              <p class="mb-0"><i class="fas fa-phone"></i> ${p.telefono || 'Sin teléfono'} | <i class="fab fa-whatsapp"></i> ${p.whatsapp || 'Sin WhatsApp'}</p>
+            </div>
+            <div>
+              <button onclick="editProvider(${i})" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+              <button onclick="deleteProvider(${i})" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('providersList').innerHTML = html || '<p class="text-center text-muted">No hay proveedores</p>';
+    }
+
+    function addProvider() {
+      document.getElementById('modalTitle').textContent = 'Agregar Proveedor';
+      document.getElementById('editIndex').value = '-1';
+      document.getElementById('providerForm').reset();
+      new bootstrap.Modal(document.getElementById('editModal')).show();
+    }
+
+    function editProvider(index) {
+      const p = providers[index];
+      document.getElementById('modalTitle').textContent = 'Editar Proveedor';
+      document.getElementById('editIndex').value = index;
+      document.getElementById('f_id').value = p.id;
+      document.getElementById('f_nombre').value = p.nombre;
+      document.getElementById('f_categoria').value = p.categoria;
+      document.getElementById('f_subcategoria').value = p.subcategoria || '';
+      document.getElementById('f_direccion').value = p.direccion || '';
+      document.getElementById('f_telefono').value = p.telefono || '';
+      document.getElementById('f_whatsapp').value = p.whatsapp || '';
+      document.getElementById('f_horario').value = p.horario || '';
+      document.getElementById('f_precios').value = p.precios || '';
+      document.getElementById('f_descripcion').value = p.descripcion || '';
+      document.getElementById('f_tipo_plan').value = p.tipo_plan || 'gratuito';
+      document.getElementById('f_destacado').value = p.destacado || 0;
+      document.getElementById('f_video_url').value = p.video_url || '';
+      document.getElementById('f_audio_url').value = p.audio_url || '';
+      new bootstrap.Modal(document.getElementById('editModal')).show();
+    }
+
+    async function saveProvider() {
+      const index = parseInt(document.getElementById('editIndex').value);
+      const newProvider = {
+        id: parseInt(document.getElementById('f_id').value),
+        nombre: document.getElementById('f_nombre').value,
+        categoria: document.getElementById('f_categoria').value,
+        subcategoria: document.getElementById('f_subcategoria').value,
+        direccion: document.getElementById('f_direccion').value,
+        telefono: document.getElementById('f_telefono').value,
+        whatsapp: document.getElementById('f_whatsapp').value,
+        horario: document.getElementById('f_horario').value,
+        precios: document.getElementById('f_precios').value,
+        descripcion: document.getElementById('f_descripcion').value,
+        tipo_plan: document.getElementById('f_tipo_plan').value,
+        destacado: parseInt(document.getElementById('f_destacado').value),
+        video_url: document.getElementById('f_video_url').value,
+        audio_url: document.getElementById('f_audio_url').value
+      };
+
+      if (index === -1) {
+        providers.push(newProvider);
+      } else {
+        providers[index] = newProvider;
+      }
+
+      await commitChanges();
+      bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+    }
+
+    async function deleteProvider(index) {
+      if (!confirm('¿Eliminar este proveedor?')) return;
+      providers.splice(index, 1);
+      await commitChanges();
+    }
+
+    async function commitChanges() {
+      const content = btoa(JSON.stringify(providers, null, 2));
+      try {
+        const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'Update providers via admin panel',
+            content: content,
+            sha: fileSha,
+            branch: BRANCH
+          })
+        });
+        if (!res.ok) throw new Error('Error al guardar');
+        alert('✅ Cambios guardados. Cloudflare redeployará en 1-2 minutos.');
+        loadProviders();
+      } catch (e) {
+        alert('❌ Error: ' + e.message);
+      }
+    }
+
+    // Auto-login si hay token guardado
+    window.addEventListener('load', () => {
+      const savedToken = localStorage.getItem('gh_token');
+      if (savedToken) {
+        token = savedToken;
+        document.getElementById('tokenInput').value = savedToken;
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('adminSection').classList.remove('hidden');
+        loadProviders();
+      }
     });
   </script>
 </body>
