@@ -11,7 +11,8 @@
     .login-container { max-width: 400px; margin: 100px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
     .admin-container { max-width: 1200px; margin: 20px auto; padding: 20px; }
     .hidden { display: none !important; }
-    .provider-card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .provider-card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.2s; }
+    .provider-card:hover { transform: translateY(-2px); }
     .btn-primary { background: #2563EB; border: none; }
     .btn-primary:hover { background: #1E40AF; }
   </style>
@@ -24,7 +25,7 @@
     <div class="mb-3">
       <label class="form-label">GitHub Personal Access Token</label>
       <input type="password" id="tokenInput" class="form-control" placeholder="ghp_...">
-      <small class="text-muted">Genera uno en: github.com/settings/tokens</small>
+      <small class="text-muted">Genera uno en: github.com/settings/tokens (scope: repo)</small>
     </div>
     <button onclick="login()" class="btn btn-primary w-100">
       <i class="fab fa-github"></i> Ingresar
@@ -42,14 +43,16 @@
     </div>
 
     <div class="card mb-4">
-      <div class="card-body">
-        <h5 class="card-title">Gestión de Proveedores</h5>
-        <button onclick="addProvider()" class="btn btn-success">
-          <i class="fas fa-plus"></i> Agregar Proveedor
-        </button>
-        <button onclick="loadProviders()" class="btn btn-primary ms-2">
-          <i class="fas fa-sync"></i> Recargar
-        </button>
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">Gestión de Proveedores</h5>
+        <div>
+          <button onclick="addProvider()" class="btn btn-success">
+            <i class="fas fa-plus"></i> Agregar Proveedor
+          </button>
+          <button onclick="loadProviders()" class="btn btn-primary ms-2">
+            <i class="fas fa-sync"></i> Recargar
+          </button>
+        </div>
       </div>
     </div>
 
@@ -60,12 +63,12 @@
     </div>
   </div>
 
-  <!-- MODAL EDITAR -->
+  <!-- MODAL EDITAR/AGREGAR -->
   <div class="modal fade" id="editModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle">Editar Proveedor</h5>
+          <h5 class="modal-title" id="modalTitle">Proveedor</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -73,16 +76,18 @@
             <input type="hidden" id="editIndex">
             <div class="row g-3">
               <div class="col-md-6">
-                <label class="form-label">ID *</label>
+                <label class="form-label">ID (Número único) *</label>
                 <input type="number" id="f_id" class="form-control" required>
               </div>
               <div class="col-md-6">
-                <label class="form-label">Nombre *</label>
+                <label class="form-label">Nombre del Proveedor *</label>
                 <input type="text" id="f_nombre" class="form-control" required>
               </div>
+              
+              <!-- CATEGORÍA Y SUBCATEGORÍA DINÁMICA -->
               <div class="col-md-6">
                 <label class="form-label">Categoría *</label>
-                <select id="f_categoria" class="form-select" required>
+                <select id="f_categoria" class="form-select" required onchange="actualizarSubcategorias()">
                   <option value="Salud">Salud</option>
                   <option value="Hogar">Hogar</option>
                   <option value="Automotriz">Automotriz</option>
@@ -91,9 +96,14 @@
                 </select>
               </div>
               <div class="col-md-6">
-                <label class="form-label">Subcategoría</label>
-                <input type="text" id="f_subcategoria" class="form-control">
+                <label class="form-label">Subcategoría *</label>
+                <select id="f_subcategoria_select" class="form-select" required onchange="toggleOtroInput()">
+                  <!-- Se llena dinámicamente con JS -->
+                </select>
+                <input type="text" id="f_subcategoria_otro" class="form-control mt-2 hidden" placeholder="Escribe la subcategoría específica">
+                <input type="hidden" id="f_subcategoria"> <!-- Guarda el valor final -->
               </div>
+
               <div class="col-md-6">
                 <label class="form-label">Dirección</label>
                 <input type="text" id="f_direccion" class="form-control">
@@ -103,7 +113,7 @@
                 <input type="text" id="f_telefono" class="form-control">
               </div>
               <div class="col-md-6">
-                <label class="form-label">WhatsApp</label>
+                <label class="form-label">WhatsApp (solo números)</label>
                 <input type="text" id="f_whatsapp" class="form-control">
               </div>
               <div class="col-md-6">
@@ -111,7 +121,7 @@
                 <input type="text" id="f_horario" class="form-control">
               </div>
               <div class="col-md-6">
-                <label class="form-label">Precios</label>
+                <label class="form-label">Rango de Precios</label>
                 <input type="text" id="f_precios" class="form-control">
               </div>
               <div class="col-12">
@@ -127,12 +137,15 @@
                 </select>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Destacado (0 o 1)</label>
-                <input type="number" id="f_destacado" class="form-control" min="0" max="1" value="0">
+                <label class="form-label">¿Destacado en Portada?</label>
+                <select id="f_destacado" class="form-select">
+                  <option value="0">No (0)</option>
+                  <option value="1">Sí (1)</option>
+                </select>
               </div>
               <div class="col-md-4">
                 <label class="form-label">Video URL (YouTube embed)</label>
-                <input type="text" id="f_video_url" class="form-control">
+                <input type="text" id="f_video_url" class="form-control" placeholder="https://www.youtube.com/embed/...">
               </div>
               <div class="col-12">
                 <label class="form-label">Audio URL</label>
@@ -144,7 +157,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="button" onclick="saveProvider()" class="btn btn-primary">
-            <i class="fas fa-save"></i> Guardar
+            <i class="fas fa-save"></i> Guardar Cambios
           </button>
         </div>
       </div>
@@ -156,31 +169,77 @@
     const REPO = 'roberttivo29-sys/verifica-la-paz';
     const BRANCH = 'main';
     const FILE_PATH = 'data/proveedores.json';
+    
+    // Mapeo de subcategorías por categoría
+    const subcategoriasPorCategoria = {
+      "Salud": ["Clínica", "Veterinaria", "Laboratorio", "Farmacia", "Otro"],
+      "Hogar": ["Plomería", "Electricidad", "Pintura", "Albañilería", "Carpintería", "Gasfitería", "Cerrajería", "Otro"],
+      "Automotriz": ["Taller Mecánico", "Frenos", "Muñonería", "Chapista", "Eléctrico", "Electromecánico", "Grúas", "Lavado", "Otro"],
+      "Tecnologia": ["PC y Laptops", "Celulares", "Cámaras de Seguridad", "Redes e Internet", "Otro"],
+      "Funeraria": ["Funeraria", "Crematorio", "Floristería", "Otro"]
+    };
+
     let token = '';
     let providers = [];
     let fileSha = '';
 
+    // --- LÓGICA DE SUBCATEGORÍAS ---
+    function actualizarSubcategorias() {
+      const categoria = document.getElementById('f_categoria').value;
+      const subSelect = document.getElementById('f_subcategoria_select');
+      subSelect.innerHTML = '';
+      
+      if (subcategoriasPorCategoria[categoria]) {
+        subcategoriasPorCategoria[categoria].forEach(sub => {
+          const option = document.createElement('option');
+          option.value = sub;
+          option.textContent = sub;
+          subSelect.appendChild(option);
+        });
+      }
+      toggleOtroInput();
+    }
+
+    function toggleOtroInput() {
+      const subSelect = document.getElementById('f_subcategoria_select');
+      const otroInput = document.getElementById('f_subcategoria_otro');
+      const hiddenInput = document.getElementById('f_subcategoria');
+
+      if (subSelect.value === 'Otro') {
+        otroInput.classList.remove('hidden');
+        otroInput.required = true;
+        hiddenInput.value = otroInput.value;
+      } else {
+        otroInput.classList.add('hidden');
+        otroInput.required = false;
+        hiddenInput.value = subSelect.value;
+      }
+    }
+
+    // Sincronizar el input "Otro" con el campo oculto mientras se escribe
+    document.getElementById('f_subcategoria_otro').addEventListener('input', function() {
+      document.getElementById('f_subcategoria').value = this.value;
+    });
+
+    // --- AUTENTICACIÓN ---
     function login() {
       token = document.getElementById('tokenInput').value.trim();
       if (!token) {
         showError('Ingresa un token válido');
         return;
       }
-      // Verificar token
-      fetch('https://api.github.com/user', {
-        headers: { 'Authorization': `token ${token}` }
-      })
-      .then(r => {
-        if (!r.ok) throw new Error('Token inválido');
-        return r.json();
-      })
-      .then(user => {
-        localStorage.setItem('gh_token', token);
-        document.getElementById('loginSection').classList.add('hidden');
-        document.getElementById('adminSection').classList.remove('hidden');
-        loadProviders();
-      })
-      .catch(e => showError('Error: ' + e.message));
+      fetch('https://api.github.com/user', { headers: { 'Authorization': `token ${token}` } })
+        .then(r => {
+          if (!r.ok) throw new Error('Token inválido o sin permisos');
+          return r.json();
+        })
+        .then(user => {
+          localStorage.setItem('gh_token', token);
+          document.getElementById('loginSection').classList.add('hidden');
+          document.getElementById('adminSection').classList.remove('hidden');
+          loadProviders();
+        })
+        .catch(e => showError('Error: ' + e.message));
     }
 
     function logout() {
@@ -194,6 +253,7 @@
       el.classList.remove('hidden');
     }
 
+    // --- CARGA DE DATOS (Con soporte UTF-8 para tildes y ñ) ---
     async function loadProviders() {
       document.getElementById('loading').classList.remove('hidden');
       document.getElementById('providersList').innerHTML = '';
@@ -201,10 +261,14 @@
         const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`, {
           headers: { 'Authorization': `token ${token}` }
         });
-        if (!res.ok) throw new Error('No se pudo cargar el archivo');
+        if (!res.ok) throw new Error('No se pudo cargar el archivo. Verifica que exista data/proveedores.json');
         const data = await res.json();
         fileSha = data.sha;
-        const content = atob(data.content);
+        
+        // Decodificación segura para UTF-8 (tildes y ñ)
+        const binaryString = atob(data.content);
+        const content = decodeURIComponent(escape(binaryString));
+        
         providers = JSON.parse(content);
         renderProviders();
       } catch (e) {
@@ -219,25 +283,31 @@
         <div class="provider-card">
           <div class="d-flex justify-content-between align-items-start">
             <div>
-              <h5>${p.nombre} <span class="badge bg-${p.destacado == 1 ? 'warning' : 'secondary'}">${p.destacado == 1 ? '⭐ Destacado' : 'Normal'}</span></h5>
-              <p class="text-muted mb-1">${p.categoria} > ${p.subcategoria || 'Sin subcategoría'}</p>
-              <p class="mb-1"><i class="fas fa-map-marker-alt"></i> ${p.direccion || 'Sin dirección'}</p>
-              <p class="mb-0"><i class="fas fa-phone"></i> ${p.telefono || 'Sin teléfono'} | <i class="fab fa-whatsapp"></i> ${p.whatsapp || 'Sin WhatsApp'}</p>
+              <h5 class="mb-1">${p.nombre} <span class="badge bg-${p.destacado == 1 ? 'warning text-dark' : 'secondary'}">${p.destacado == 1 ? '⭐ Destacado' : 'Normal'}</span></h5>
+              <p class="text-muted mb-1"><strong>${p.categoria}</strong> > ${p.subcategoria || 'Sin subcategoría'}</p>
+              <p class="mb-1"><i class="fas fa-map-marker-alt text-danger"></i> ${p.direccion || 'Sin dirección'}</p>
+              <p class="mb-0"><i class="fas fa-phone text-primary"></i> ${p.telefono || 'Sin teléfono'} | <i class="fab fa-whatsapp text-success"></i> ${p.whatsapp || 'Sin WhatsApp'}</p>
             </div>
-            <div>
-              <button onclick="editProvider(${i})" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
-              <button onclick="deleteProvider(${i})" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+            <div class="d-flex flex-column gap-2">
+              <button onclick="editProvider(${i})" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Editar</button>
+              <button onclick="deleteProvider(${i})" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Eliminar</button>
             </div>
           </div>
         </div>
       `).join('');
-      document.getElementById('providersList').innerHTML = html || '<p class="text-center text-muted">No hay proveedores</p>';
+      document.getElementById('providersList').innerHTML = html || '<p class="text-center text-muted py-4">No hay proveedores registrados aún.</p>';
     }
 
+    // --- MODAL Y GUARDADO ---
     function addProvider() {
-      document.getElementById('modalTitle').textContent = 'Agregar Proveedor';
+      document.getElementById('modalTitle').textContent = 'Agregar Nuevo Proveedor';
       document.getElementById('editIndex').value = '-1';
       document.getElementById('providerForm').reset();
+      
+      // Resetear subcategorías al estado inicial
+      document.getElementById('f_categoria').value = 'Salud';
+      actualizarSubcategorias();
+      
       new bootstrap.Modal(document.getElementById('editModal')).show();
     }
 
@@ -245,10 +315,28 @@
       const p = providers[index];
       document.getElementById('modalTitle').textContent = 'Editar Proveedor';
       document.getElementById('editIndex').value = index;
+      
       document.getElementById('f_id').value = p.id;
       document.getElementById('f_nombre').value = p.nombre;
       document.getElementById('f_categoria').value = p.categoria;
-      document.getElementById('f_subcategoria').value = p.subcategoria || '';
+      
+      // Lógica para manejar subcategoría "Otro" al editar
+      actualizarSubcategorias();
+      const subSelect = document.getElementById('f_subcategoria_select');
+      const otroInput = document.getElementById('f_subcategoria_otro');
+      
+      const validSubs = subcategoriasPorCategoria[p.categoria] || [];
+      if (validSubs.includes(p.subcategoria)) {
+        subSelect.value = p.subcategoria;
+        otroInput.classList.add('hidden');
+        document.getElementById('f_subcategoria').value = p.subcategoria;
+      } else {
+        subSelect.value = 'Otro';
+        otroInput.classList.remove('hidden');
+        otroInput.value = p.subcategoria || '';
+        document.getElementById('f_subcategoria').value = p.subcategoria || '';
+      }
+
       document.getElementById('f_direccion').value = p.direccion || '';
       document.getElementById('f_telefono').value = p.telefono || '';
       document.getElementById('f_whatsapp').value = p.whatsapp || '';
@@ -259,11 +347,16 @@
       document.getElementById('f_destacado').value = p.destacado || 0;
       document.getElementById('f_video_url').value = p.video_url || '';
       document.getElementById('f_audio_url').value = p.audio_url || '';
+      
       new bootstrap.Modal(document.getElementById('editModal')).show();
     }
 
     async function saveProvider() {
       const index = parseInt(document.getElementById('editIndex').value);
+      
+      // Asegurar que el valor de subcategoría esté actualizado
+      toggleOtroInput(); 
+      
       const newProvider = {
         id: parseInt(document.getElementById('f_id').value),
         nombre: document.getElementById('f_nombre').value,
@@ -292,14 +385,18 @@
     }
 
     async function deleteProvider(index) {
-      if (!confirm('¿Eliminar este proveedor?')) return;
+      if (!confirm('¿Estás seguro de eliminar este proveedor? Esta acción no se puede deshacer.')) return;
       providers.splice(index, 1);
       await commitChanges();
     }
 
     async function commitChanges() {
-      const content = btoa(JSON.stringify(providers, null, 2));
+      document.getElementById('loading').classList.remove('hidden');
       try {
+        // Codificación segura para UTF-8 (tildes y ñ)
+        const jsonString = JSON.stringify(providers, null, 2);
+        const content = btoa(unescape(encodeURIComponent(jsonString)));
+        
         const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
           method: 'PUT',
           headers: {
@@ -307,17 +404,24 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: 'Update providers via admin panel',
+            message: 'Update providers via custom admin panel',
             content: content,
             sha: fileSha,
             branch: BRANCH
           })
         });
-        if (!res.ok) throw new Error('Error al guardar');
-        alert('✅ Cambios guardados. Cloudflare redeployará en 1-2 minutos.');
+        
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.message || 'Error al guardar en GitHub');
+        }
+        
+        alert('✅ ¡Cambios guardados exitosamente!\n\nCloudflare Pages redeplegará tu sitio web en 1-2 minutos.');
         loadProviders();
       } catch (e) {
-        alert('❌ Error: ' + e.message);
+        alert('❌ Error al guardar: ' + e.message);
+      } finally {
+        document.getElementById('loading').classList.add('hidden');
       }
     }
 
