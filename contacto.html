@@ -41,10 +41,11 @@
             <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
                 <a href="index.html" class="nav-link">Inicio</a>
                 <a href="salud.html" class="nav-link"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud</a>
-                <a href="hogar.html" class="nav-link"><i class="fas fa-home" aria-hidden="true"></i> Mi Hogar</a>
+                <a href="hogar.html" class="nav-link"><i class="fas fa-tools" aria-hidden="true"></i> Hogar</a>
                 <a href="automotriz.html" class="nav-link"><i class="fas fa-car" aria-hidden="true"></i> Auto</a>
                 <a href="tecnologia.html" class="nav-link"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología</a>
                 <a href="funerarias.html" class="nav-link"><i class="fas fa-dove" aria-hidden="true"></i> Despedida</a>
+                <a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Eventos</a>
                 <a href="contacto.html" class="nav-link active" aria-current="page">Contacto</a>
                 <a href="https://wa.me/59178835306?text=Hola,%20soy%20proveedor%20y%20quiero%20aparecer%20en%20el%20directorio" class="nav-link btn-proveedor" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-store" aria-hidden="true"></i> Soy Proveedor
@@ -77,7 +78,6 @@
                     </div>
                 </section>
 
-                <!-- ESTADÍSTICAS CUALITATIVAS (sin números inflados) -->
                 <section class="stats-section fade-in" aria-labelledby="stats-title">
                     <h2 class="section-title" id="stats-title" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Compromiso de Atención</h2>
                     <div class="stats-grid">
@@ -151,9 +151,7 @@
                     <p class="section-description">Llena este formulario y tu mensaje llegará directamente a nuestro correo para una respuesta organizada. También puedes enviarlo por WhatsApp.</p>
 
                     <div class="featured-section">
-                        <!-- FORMULARIO CON FORMSUBMIT.CO (SIN BACKEND) -->
                         <form action="https://formsubmit.co/contactoverificalapaz@gmail.com" method="POST">
-                            <!-- Configuración de Formsubmit -->
                             <input type="hidden" name="_subject" value="Nueva consulta desde Verifica La Paz">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://verificalapaz.com/contacto.html?exito=1">
@@ -172,10 +170,11 @@
                                     <select class="form-select" name="tipo" required>
                                         <option value="">Selecciona una opción...</option>
                                         <option value="Salud">🏥 Salud (Clínica/Veterinaria)</option>
-                                        <option value="Hogar"> Hogar (Plomero/Electricista)</option>
-                                        <option value="Automotriz"> Automotriz (Taller/Grúa)</option>
+                                        <option value="Hogar">🔧 Hogar (Plomero/Electricista)</option>
+                                        <option value="Automotriz">🚗 Automotriz (Taller/Grúa)</option>
                                         <option value="Tecnologia">💻 Tecnología (Celulares/Laptops)</option>
                                         <option value="Funeraria">🕊️ Despedida y Homenaje</option>
+                                        <option value="Eventos">🎉 Servicios para Eventos</option>
                                         <option value="Proveedor">🤝 Quiero ser proveedor</option>
                                         <option value="Otro">Otro / Sugerencia / Queja</option>
                                     </select>
@@ -298,10 +297,11 @@
                     <h4>Categorías</h4>
                     <ul>
                         <li><a href="salud.html"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud y Bienestar</a></li>
-                        <li><a href="hogar.html"><i class="fas fa-home" aria-hidden="true"></i> Mi Hogar Seguro</a></li>
-                        <li><a href="automotriz.html"><i class="fas fa-car" aria-hidden="true"></i> Auto y Movilidad</a></li>
-                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología</a></li>
-                        <li><a href="funerarias.html"><i class="fas fa-dove" aria-hidden="true"></i> Despedida y Homenaje</a></li>
+                        <li><a href="hogar.html"><i class="fas fa-tools" aria-hidden="true"></i> Mantenimiento del Hogar</a></li>
+                        <li><a href="automotriz.html"><i class="fas fa-car" aria-hidden="true"></i> Talleres Automotrices</a></li>
+                        <li><a href="tecnologia.html"><i class="fas fa-laptop-code" aria-hidden="true"></i> Tecnología y Redes</a></li>
+                        <li><a href="funerarias.html"><i class="fas fa-dove" aria-hidden="true"></i> Servicios de Despedida</a></li>
+                        <li><a href="eventos.html"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Servicios para Eventos</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -348,7 +348,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Función auxiliar para enviar por WhatsApp directamente desde el formulario
         function enviarWhatsAppDirecto() {
             const nombre = document.querySelector('input[name="nombre"]').value.trim() || 'Ciudadano';
             const tipo = document.querySelector('select[name="tipo"]').value || 'Consulta general';
