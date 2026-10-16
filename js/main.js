@@ -1,12 +1,13 @@
 // ========================================
-// VERIFICA LA PAZ - JavaScript Estático v5.0
+// VERIFICA LA PAZ - JavaScript Estático v6.0
 // Arquitectura: 100% Frontend (Sin Backend)
+// Actualizado: Octubre 2026
 // ========================================
 
 window.VerificaLP = window.VerificaLP || {};
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Verifica La Paz - JavaScript v5.0 (Estático) cargado correctamente');
+    console.log('✅ Verifica La Paz - JavaScript v6.0 cargado correctamente');
     
     // Inicializar todos los módulos
     initHeader();
@@ -26,11 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initPrefetchEnlaces();
     initModoOscuroSistema();
     initMobileAccordion();
+    cargarDestacados(); // NUEVO: Cargar destacados en el index
     
-    // Nota: actualizarEstadisticasReales() se ha eliminado porque ya no hay API.
-    // Los contadores animarán los valores que ya están en el HTML (data-target).
-    
-    console.log('🚀 Todos los módulos inicializados correctamente');
+    console.log(' Todos los módulos inicializados correctamente');
 });
 
 // ========================================
@@ -38,28 +37,39 @@ document.addEventListener('DOMContentLoaded', function() {
 // ========================================
 function getCategoriaClass(categoria) {
     const classes = {
-        'Salud': 'category-salud',
-        'Hogar': 'category-hogar',
-        'Automotriz': 'category-auto',
-        'Tecnologia': 'category-tecnologia',
-        'Funeraria': 'category-funeraria'
+        'Salud y Bienestar': 'category-salud',
+        'Mantenimiento del Hogar': 'category-hogar',
+        'Talleres Automotrices': 'category-auto',
+        'Tecnología y Redes': 'category-tecnologia',
+        'Servicios de Despedida': 'category-funeraria',
+        'Servicios para Eventos': 'category-eventos'
     };
     return classes[categoria] || '';
 }
 
 function getColorVariable(categoria) {
     const colors = {
-        'Salud': 'var(--color-salud, #0D9488)',
-        'Hogar': 'var(--color-hogar, #EA580C)',
-        'Automotriz': 'var(--color-auto, #1D4ED8)',
-        'Tecnologia': 'var(--color-tecnologia, #0891B2)',
-        'Funeraria': 'var(--color-funeraria, #4338CA)'
+        'Salud y Bienestar': 'var(--color-salud, #0D9488)',
+        'Mantenimiento del Hogar': 'var(--color-hogar, #EA580C)',
+        'Talleres Automotrices': 'var(--color-auto, #1D4ED8)',
+        'Tecnología y Redes': 'var(--color-tecnologia, #0891B2)',
+        'Servicios de Despedida': 'var(--color-funeraria, #4338CA)',
+        'Servicios para Eventos': '#8B5CF6'
     };
     return colors[categoria] || '#2563EB';
 }
 
+function getPlanBadge(tipo_plan) {
+    const badges = {
+        'gratuito': '',
+        'premium': '<span class="badge-nivel nivel-premium"><i class="fas fa-star"></i> Premium</span>',
+        'ultra_premium': '<span class="badge-nivel nivel-ultra"><i class="fas fa-crown"></i> Ultra Premium</span>'
+    };
+    return badges[tipo_plan] || '';
+}
+
 // ========================================
-// CARGA DE PROVEEDORES DESDE JSON (NUEVO)
+// CARGA DE PROVEEDORES DESDE JSON
 // ========================================
 async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraClave = null) {
     const container = document.getElementById(contenedorId);
@@ -69,6 +79,10 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
         const response = await fetch('data/proveedores.json');
         if (!response.ok) throw new Error('No se pudo cargar el archivo de datos');
         const proveedores = await response.json();
+        
+        // Ordenar por plan: Ultra Premium > Premium > Gratuito
+        const ordenPorPlan = { 'ultra_premium': 0, 'premium': 1, 'gratuito': 2 };
+        proveedores.sort((a, b) => (ordenPorPlan[a.tipo_plan] || 2) - (ordenPorPlan[b.tipo_plan] || 2));
         
         // Filtrar por categoría
         let filtrados = proveedores.filter(p => p.categoria.toLowerCase() === categoria.toLowerCase());
@@ -96,6 +110,9 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
         if (window.fadeObserver) {
             container.querySelectorAll('.fade-in').forEach(el => window.fadeObserver.observe(el));
         }
+        
+        // Inicializar carruseles si existen
+        initCarruseles();
     } catch (error) {
         console.error(`Error cargando proveedores en ${contenedorId}:`, error);
         container.innerHTML = `
@@ -106,28 +123,79 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
     }
 }
 
+// ========================================
+// GENERAR TARJETA DE PROVEEDOR (ACTUALIZADA)
+// ========================================
 function generarTarjetaProveedor(p) {
     const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
     const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz y me interesa tu servicio')}` : '#';
     const categoriaClass = getCategoriaClass(p.categoria);
     const colorVar = getColorVariable(p.categoria);
+    const planBadge = getPlanBadge(p.tipo_plan);
+    
+    // Recopilar imágenes disponibles
+    const imagenes = [p.imagen1, p.imagen2, p.imagen3, p.imagen4].filter(img => img && img.trim() !== '');
+    const tieneImagenes = imagenes.length > 0;
+    const esUltraPremium = p.tipo_plan === 'ultra_premium';
+    
+    // Construir HTML de imágenes (carrusel si hay más de 1, o imagen simple)
+    let htmlImagenes = '';
+    if (tieneImagenes) {
+        if (imagenes.length === 1) {
+            htmlImagenes = `
+                <div class="proveedor-imagen-simple" style="width: 100%; height: 180px; overflow: hidden; border-radius: 8px; margin-bottom: 1rem;">
+                    <img src="${imagenes[0]}" alt="${p.nombre}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            `;
+        } else {
+            // Carrusel para 2+ imágenes
+            htmlImagenes = `
+                <div class="carrusel-imagenes" data-carrusel-id="${p.id}">
+                    ${imagenes.map((img, idx) => `
+                        <img src="${img}" alt="${p.nombre} - imagen ${idx + 1}" class="${idx === 0 ? 'activo' : ''}">
+                    `).join('')}
+                    <div class="carrusel-controles">
+                        ${imagenes.map((_, idx) => `
+                            <span class="carrusel-punto ${idx === 0 ? 'activo' : ''}" onclick="cambiarImagenCarrusel(${p.id}, ${idx})"></span>
+                        `).join('')}
+                    </div>
+                    ${imagenes.length > 1 ? `
+                        <button class="carrusel-btn carrusel-prev" onclick="cambiarImagenCarrusel(${p.id}, -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carrusel-btn carrusel-next" onclick="cambiarImagenCarrusel(${p.id}, 1)"><i class="fas fa-chevron-right"></i></button>
+                    ` : ''}
+                </div>
+            `;
+        }
+    }
+    
+    // Badge de 24h y aviso responsable
+    let html24h = '';
+    if (p['24horas']) {
+        html24h = `
+            <span class="badge-24horas"><i class="fas fa-moon"></i> Atención 24h</span>
+            <p class="aviso-24horas">⚠️ Te sugerimos llamar para confirmar disponibilidad en horarios nocturnos o festivos.</p>
+        `;
+    }
     
     return `
-        <article class="category-card ${categoriaClass} fade-in" style="position: relative; border-left: 4px solid ${colorVar};">
-            ${p.destacado == 1 ? `<div class="featured-badge" style="position:absolute; top:10px; right:10px; z-index:2;"><i class="fas fa-crown"></i> DESTACADO</div>` : ''}
+        <article class="category-card ${categoriaClass} ${esUltraPremium ? 'card-ultra-premium' : ''} fade-in" style="position: relative; border-left: 4px solid ${colorVar};">
+            ${p.destacado == 1 ? '<div class="featured-badge" style="position:absolute; top:10px; right:10px; z-index:2;"><i class="fas fa-crown"></i> DESTACADO</div>' : ''}
+            ${planBadge ? `<div style="position:absolute; top:10px; left:10px; z-index:2;">${planBadge}</div>` : ''}
+            
+            ${htmlImagenes}
+            
             <h3 style="margin-top: 0;">${p.nombre || 'Proveedor Verificado'}</h3>
             <p class="category-subtitle" style="color: ${colorVar}; font-weight: 600;">${p.subcategoria || ''}</p>
             ${p.descripcion ? `<p style="color: #475569; font-size: 0.95rem; margin-bottom: 1rem;">${p.descripcion}</p>` : ''}
+            
+            ${html24h}
+            
             <ul class="category-services" style="list-style: none; padding: 0; margin: 0 0 1rem 0; font-size: 0.9rem; color: #64748b;">
                 ${p.direccion ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt" style="width: 20px; color: #ef4444;"></i> ${p.direccion}</li>` : ''}
                 ${p.horario ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="width: 20px; color: #3b82f6;"></i> ${p.horario}</li>` : ''}
                 ${p.precios ? `<li style="margin-bottom: 0.5rem;"><i class="fas fa-dollar-sign" style="width: 20px; color: #10b981;"></i> ${p.precios}</li>` : ''}
             </ul>
-            ${p.video_url ? `
-                <div style="margin: 1rem 0; border-radius: 8px; overflow: hidden; background: #000;">
-                    <iframe width="100%" height="200" src="${p.video_url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px;"></iframe>
-                </div>
-            ` : ''}
+            
             ${p.audio_url ? `
                 <div style="margin: 1rem 0; background: #f1f5f9; padding: 0.5rem; border-radius: 8px;">
                     <audio controls preload="metadata" style="width: 100%;">
@@ -136,11 +204,119 @@ function generarTarjetaProveedor(p) {
                     </audio>
                 </div>
             ` : ''}
+            
             <div class="category-actions" style="margin-top: 1rem; display: flex; gap: 0.5rem;">
                 ${whatsappNum ? `<a href="${whatsappLink}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" style="flex: 1; text-align: center;"><i class="fab fa-whatsapp"></i> Contactar</a>` : ''}
                 ${p.telefono && !whatsappNum ? `<a href="tel:${p.telefono}" class="btn btn-outline" style="flex: 1; text-align: center; border-color: ${colorVar}; color: ${colorVar};"><i class="fas fa-phone"></i> Llamar</a>` : ''}
             </div>
         </article>
+    `;
+}
+
+// ========================================
+// CARRUSEL DE IMÁGENES
+// ========================================
+function cambiarImagenCarrusel(id, indice) {
+    const carrusel = document.querySelector(`[data-carrusel-id="${id}"]`);
+    if (!carrusel) return;
+    
+    const imagenes = carrusel.querySelectorAll('img');
+    const puntos = carrusel.querySelectorAll('.carrusel-punto');
+    const total = imagenes.length;
+    
+    let indiceActual = Array.from(imagenes).findIndex(img => img.classList.contains('activo'));
+    
+    if (indice === -1) {
+        // Anterior
+        indiceActual = (indiceActual - 1 + total) % total;
+    } else if (indice === 1) {
+        // Siguiente
+        indiceActual = (indiceActual + 1) % total;
+    } else {
+        // Ir a índice específico
+        indiceActual = indice;
+    }
+    
+    imagenes.forEach((img, i) => img.classList.toggle('activo', i === indiceActual));
+    puntos.forEach((punto, i) => punto.classList.toggle('activo', i === indiceActual));
+}
+
+function initCarruseles() {
+    // Auto-play opcional para carruseles (cada 5 segundos)
+    document.querySelectorAll('.carrusel-imagenes').forEach(carrusel => {
+        const id = carrusel.getAttribute('data-carrusel-id');
+        if (carrusel.querySelectorAll('img').length > 1) {
+            setInterval(() => cambiarImagenCarrusel(id, 1), 5000);
+        }
+    });
+}
+
+// ========================================
+// CARGAR DESTACADOS EN EL INDEX
+// ========================================
+async function cargarDestacados() {
+    const container = document.getElementById('destacados-container');
+    if (!container) return;
+    
+    try {
+        const response = await fetch('data/proveedores.json');
+        if (!response.ok) throw new Error('No se pudo cargar');
+        const proveedores = await response.json();
+        
+        // Filtrar solo los destacados y ordenar por plan
+        const ordenPorPlan = { 'ultra_premium': 0, 'premium': 1, 'gratuito': 2 };
+        const destacados = proveedores
+            .filter(p => p.destacado === 1)
+            .sort((a, b) => (ordenPorPlan[a.tipo_plan] || 2) - (ordenPorPlan[b.tipo_plan] || 2));
+        
+        if (destacados.length === 0) {
+            container.innerHTML = `
+                <div class="no-data fade-in visible" style="text-align:center; padding: 2rem; color: #666; grid-column: 1/-1;">
+                    <i class="fas fa-star" style="font-size: 2rem; margin-bottom: 1rem; display: block; color: #cbd5e1;"></i>
+                    <p>Próximamente agregaremos proveedores destacados.</p>
+                </div>`;
+            return;
+        }
+        
+        container.innerHTML = destacados.map(p => generarTarjetaDestacada(p)).join('');
+        
+        if (window.fadeObserver) {
+            container.querySelectorAll('.fade-in').forEach(el => window.fadeObserver.observe(el));
+        }
+        initCarruseles();
+    } catch (error) {
+        console.error('Error cargando destacados:', error);
+    }
+}
+
+function generarTarjetaDestacada(p) {
+    const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
+    const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil destacado en Verifica La Paz')}` : '#';
+    const colorVar = getColorVariable(p.categoria);
+    const imagenes = [p.imagen1, p.imagen2, p.imagen3, p.imagen4].filter(img => img && img.trim() !== '');
+    
+    let htmlImagen = '';
+    if (imagenes.length > 0) {
+        htmlImagen = `
+            <div style="width: 100%; height: 150px; overflow: hidden; border-radius: 8px; margin-bottom: 0.75rem;">
+                <img src="${imagenes[0]}" alt="${p.nombre}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        `;
+    }
+    
+    return `
+        <div class="destacado-card ${getCategoriaClass(p.categoria)} fade-in">
+            <div class="destacado-badge"><i class="fas fa-crown"></i> DESTACADO</div>
+            ${htmlImagen}
+            <h4>${p.nombre}</h4>
+            <p class="destacado-subtitle">${p.categoria} > ${p.subcategoria}</p>
+            <p class="destacado-info"><i class="fas fa-map-marker-alt"></i> ${p.direccion || 'Sin dirección'}</p>
+            <p class="destacado-info"><i class="fas fa-phone"></i> ${p.telefono || 'Sin teléfono'}</p>
+            ${p.descripcion ? `<p style="font-size: 0.9rem; color: #64748b; margin: 0.5rem 0;">${p.descripcion}</p>` : ''}
+            <div style="margin-top: 1rem;">
+                ${whatsappNum ? `<a href="${whatsappLink}" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer" style="width: 100%; text-align: center;"><i class="fab fa-whatsapp"></i> Contactar</a>` : ''}
+            </div>
+        </div>
     `;
 }
 
@@ -219,7 +395,7 @@ function initContadoresAnimados() {
             if (entry.isIntersecting) {
                 const target = parseInt(entry.target.getAttribute('data-target')) || 0;
                 const suffix = entry.target.getAttribute('data-suffix') || '';
-                animateCounter(entry.target, target, suffix);
+                if (target > 0) animateCounter(entry.target, target, suffix);
                 counterObserver.unobserve(entry.target);
             }
         });
@@ -334,10 +510,11 @@ function initBusquedaInteligente() {
     
     const datosBusqueda = [
         { nombre: 'Salud y Bienestar', categoria: 'salud', icono: 'fa-heartbeat', url: 'salud.html', tipo: 'Categoría' },
-        { nombre: 'Mi Hogar Seguro', categoria: 'hogar', icono: 'fa-home', url: 'hogar.html', tipo: 'Categoría' },
-        { nombre: 'Auto y Movilidad', categoria: 'automotriz', icono: 'fa-car', url: 'automotriz.html', tipo: 'Categoría' },
-        { nombre: 'Tecnología y Reparaciones', categoria: 'tecnologia', icono: 'fa-laptop-code', url: 'tecnologia.html', tipo: 'Categoría' },
-        { nombre: 'Despedida y Homenaje', categoria: 'funeraria', icono: 'fa-dove', url: 'funerarias.html', tipo: 'Categoría' },
+        { nombre: 'Mantenimiento del Hogar', categoria: 'hogar', icono: 'fa-tools', url: 'hogar.html', tipo: 'Categoría' },
+        { nombre: 'Talleres Automotrices', categoria: 'automotriz', icono: 'fa-car', url: 'automotriz.html', tipo: 'Categoría' },
+        { nombre: 'Tecnología y Redes', categoria: 'tecnologia', icono: 'fa-laptop-code', url: 'tecnologia.html', tipo: 'Categoría' },
+        { nombre: 'Servicios de Despedida', categoria: 'funeraria', icono: 'fa-dove', url: 'funerarias.html', tipo: 'Categoría' },
+        { nombre: 'Servicios para Eventos', categoria: 'eventos', icono: 'fa-calendar-alt', url: 'eventos.html', tipo: 'Categoría' },
         { nombre: 'Contacto', categoria: 'contacto', icono: 'fa-envelope', url: 'contacto.html', tipo: 'Página' }
     ];
     
