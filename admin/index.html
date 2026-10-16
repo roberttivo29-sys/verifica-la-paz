@@ -19,13 +19,11 @@
     .image-upload-container input[type="text"] { flex: 1; }
     .image-preview { max-width: 100px; max-height: 100px; border-radius: 8px; margin-top: 5px; }
     
-    /* Tabs de navegación */
     .admin-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
     .admin-tab { padding: 10px 20px; background: white; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
     .admin-tab:hover { border-color: #2563EB; color: #2563EB; }
     .admin-tab.active { background: #2563EB; color: white; border-color: #2563EB; }
     
-    /* Consulta Rápida */
     .quick-search-container { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
     .quick-provider-row { background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #2563EB; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
     .quick-provider-info { flex: 1; min-width: 250px; }
@@ -46,6 +44,8 @@
     
     .no-results { text-align: center; padding: 40px; color: #94A3B8; }
     .no-results i { font-size: 3rem; margin-bottom: 10px; }
+    
+    .results-counter { background: #EFF6FF; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; color: #1E40AF; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -110,12 +110,12 @@
     <div id="tabConsulta" class="hidden">
       <div class="quick-search-container">
         <h5 class="mb-3"><i class="fas fa-search text-primary"></i> Consulta Rápida</h5>
-        <p class="text-muted mb-3">Busca proveedores rápidamente para responder consultas por WhatsApp</p>
+        <p class="text-muted mb-3">Busca proveedores rápidamente para responder consultas por WhatsApp. Los filtros se aplican automáticamente.</p>
         
         <div class="row g-3">
           <div class="col-md-4">
             <label class="form-label fw-bold">Categoría</label>
-            <select id="filtroCategoria" class="form-select" onchange="actualizarFiltroSubcategoria(); filtrarConsultaRapida()">
+            <select id="filtroCategoria" class="form-select" onchange="actualizarFiltroSubcategoria()">
               <option value="">Todas las categorías</option>
               <option value="Salud y Bienestar">Salud y Bienestar</option>
               <option value="Mantenimiento del Hogar">Mantenimiento del Hogar</option>
@@ -136,6 +136,8 @@
             <input type="text" id="filtroTexto" class="form-control" placeholder="Nombre, dirección, teléfono..." oninput="filtrarConsultaRapida()">
           </div>
         </div>
+        
+        <div id="resultsCounter" class="results-counter hidden" style="margin-top: 15px;"></div>
       </div>
 
       <div id="consultaRapidaList"></div>
@@ -157,13 +159,13 @@
               <div class="col-md-6">
                 <label class="form-label">ID (Número único) *</label>
                 <input type="number" id="f_id" class="form-control" required>
+                <small class="text-muted">Se genera automáticamente. No modificar.</small>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Nombre del Proveedor *</label>
                 <input type="text" id="f_nombre" class="form-control" required>
               </div>
               
-              <!-- CATEGORÍA Y SUBCATEGORÍA DINÁMICA -->
               <div class="col-md-6">
                 <label class="form-label">Categoría *</label>
                 <select id="f_categoria" class="form-select" required onchange="actualizarSubcategorias()">
@@ -178,7 +180,6 @@
               <div class="col-md-6">
                 <label class="form-label">Subcategoría *</label>
                 <select id="f_subcategoria_select" class="form-select" required onchange="toggleOtroInput()">
-                  <!-- Se llena dinámicamente con JS -->
                 </select>
                 <input type="text" id="f_subcategoria_otro" class="form-control mt-2 hidden" placeholder="Escribe la subcategoría específica">
                 <input type="hidden" id="f_subcategoria">
@@ -301,7 +302,6 @@
     const FILE_PATH = 'data/proveedores.json';
     const IMGBB_API_KEY = '4fe0adea7f03a09e9c615226b80a533a';
     
-    // Mapeo de subcategorías por categoría
     const subcategoriasPorCategoria = {
       "Salud y Bienestar": [
         "Clínicas y Urgencias",
@@ -376,6 +376,7 @@
         document.querySelectorAll('.admin-tab')[1].classList.add('active');
         document.getElementById('tabGestion').classList.add('hidden');
         document.getElementById('tabConsulta').classList.remove('hidden');
+        // Al entrar a Consulta Rápida, mostrar todos los proveedores
         filtrarConsultaRapida();
       }
     }
@@ -412,6 +413,8 @@
           subSelect.appendChild(option);
         });
       }
+      // Filtrar automáticamente al cambiar categoría
+      filtrarConsultaRapida();
     }
 
     function toggleOtroInput() {
@@ -583,7 +586,7 @@
     }
 
     // ============================================
-    // CONSULTA RÁPIDA
+    // CONSULTA RÁPIDA (MEJORADA - FILTRADO AUTOMÁTICO)
     // ============================================
     function filtrarConsultaRapida() {
       const categoria = document.getElementById('filtroCategoria').value;
@@ -598,10 +601,20 @@
           (p.direccion || '').toLowerCase().includes(texto) ||
           (p.telefono || '').toLowerCase().includes(texto) ||
           (p.whatsapp || '').toLowerCase().includes(texto) ||
-          (p.descripcion || '').toLowerCase().includes(texto);
+          (p.descripcion || '').toLowerCase().includes(texto) ||
+          (p.subcategoria || '').toLowerCase().includes(texto);
         
         return matchCategoria && matchSubcategoria && matchTexto;
       });
+
+      // Mostrar contador de resultados
+      const counter = document.getElementById('resultsCounter');
+      if (filtrados.length > 0) {
+        counter.textContent = `📊 ${filtrados.length} proveedor${filtrados.length !== 1 ? 'es' : ''} encontrado${filtrados.length !== 1 ? 's' : ''}`;
+        counter.classList.remove('hidden');
+      } else {
+        counter.classList.add('hidden');
+      }
 
       renderConsultaRapida(filtrados);
     }
@@ -614,6 +627,7 @@
           <div class="no-results">
             <i class="fas fa-search"></i>
             <p>No se encontraron proveedores con esos filtros</p>
+            <small class="text-muted">Intenta cambiar la categoría o el texto de búsqueda</small>
           </div>
         `;
         return;
@@ -622,7 +636,7 @@
       const html = lista.map(p => {
         const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
         const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}` : '#';
-        const textoCopiar = `${p.nombre}\n${p.categoria} > ${p.subcategoria}\n ${p.direccion || 'Sin dirección'}\n📞 ${p.telefono || 'Sin teléfono'}\n💬 WhatsApp: ${p.whatsapp || 'Sin WhatsApp'}\n ${p.horario || 'Sin horario'}`;
+        const textoCopiar = `${p.nombre}\n${p.categoria} > ${p.subcategoria}\n📍 ${p.direccion || 'Sin dirección'}\n📞 ${p.telefono || 'Sin teléfono'}\n💬 WhatsApp: ${p.whatsapp || 'Sin WhatsApp'}\n ${p.horario || 'Sin horario'}`;
         
         return `
           <div class="quick-provider-row">
@@ -639,7 +653,7 @@
             </div>
             <div class="quick-provider-actions">
               ${whatsappNum ? `
-                <button class="btn-copy" onclick="copiarDatos('${textoCopiar.replace(/'/g, "\\'").replace(/\n/g, '\\n')}')" title="Copiar datos para WhatsApp">
+                <button class="btn-copy" onclick="copiarDatos(\`${textoCopiar.replace(/`/g, '\\`')}\`)" title="Copiar datos para WhatsApp">
                   <i class="fas fa-copy"></i> Copiar
                 </button>
                 <button class="btn-copy" onclick="copiarNumero('${whatsappNum}')" title="Copiar solo el número">
@@ -674,12 +688,18 @@
     }
 
     // ============================================
-    // MODAL Y GUARDADO
+    // MODAL Y GUARDADO (CON ID AUTOMÁTICO Y VALIDACIÓN)
     // ============================================
     function addProvider() {
       document.getElementById('modalTitle').textContent = 'Agregar Nuevo Proveedor';
       document.getElementById('editIndex').value = '-1';
       document.getElementById('providerForm').reset();
+      
+      // 🔥 AUTO-GENERAR ID: busca el ID más alto y suma 1
+      const maxId = providers.length > 0 
+        ? Math.max(...providers.map(p => p.id || 0)) 
+        : 0;
+      document.getElementById('f_id').value = maxId + 1;
       
       document.getElementById('f_categoria').value = 'Salud y Bienestar';
       actualizarSubcategorias();
@@ -751,8 +771,32 @@
       
       toggleOtroInput(); 
       
+      const nuevoId = parseInt(document.getElementById('f_id').value);
+      
+      // 🔒 VALIDACIÓN: verificar que el ID no esté duplicado
+      if (index === -1) {
+        // Es un proveedor NUEVO, verificar que el ID no exista
+        const idDuplicado = providers.find(p => p.id === nuevoId);
+        if (idDuplicado) {
+          showToast('Error', `El ID ${nuevoId} ya existe (proveedor: ${idDuplicado.nombre}). Usa otro ID.`, 'error');
+          return;
+        }
+      } else {
+        // Es una EDICIÓN, verificar que no choque con OTRO proveedor
+        const idDuplicado = providers.find((p, i) => p.id === nuevoId && i !== index);
+        if (idDuplicado) {
+          showToast('Error', `El ID ${nuevoId} ya está en uso por "${idDuplicado.nombre}".`, 'error');
+          return;
+        }
+      }
+      
+      if (isNaN(nuevoId) || nuevoId <= 0) {
+        showToast('Error', 'El ID debe ser un número positivo.', 'error');
+        return;
+      }
+      
       const newProvider = {
-        id: parseInt(document.getElementById('f_id').value),
+        id: nuevoId,
         nombre: document.getElementById('f_nombre').value,
         categoria: document.getElementById('f_categoria').value,
         subcategoria: document.getElementById('f_subcategoria').value,
