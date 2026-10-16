@@ -1113,3 +1113,71 @@ body {
         padding: 1rem;
     }
 }
+/* ========================================
+   ACTUALIZACIÓN v6.0: EVENTOS, BADGES Y CARRUSEL
+   ======================================== */
+
+/* Categoría Eventos (Morado) */
+.category-eventos::before { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+.category-eventos .category-icon { background: #F3E8FF; color: #8B5CF6; }
+.category-eventos:hover .category-icon { transform: scale(1.1) rotate(5deg); }
+.btn-eventos { background: #8B5CF6; color: white; }
+.btn-eventos:hover { background: #7C3AED; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4); }
+.btn-outline.btn-eventos { border-color: #8B5CF6; color: #8B5CF6; }
+.btn-outline.btn-eventos:hover { background: #8B5CF6; color: white; }
+
+/* Badges de Planes (Premium / Ultra) */
+.badge-nivel { 
+    display: inline-flex; align-items: center; gap: 0.3rem; 
+    padding: 0.25rem 0.75rem; border-radius: 9999px; 
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; 
+    letter-spacing: 0.3px; margin-bottom: 0.5rem; 
+}
+.nivel-premium { background: var(--gradiente-dorado); color: var(--azul-profundo); border: 1px solid var(--dorado-oscuro); }
+.nivel-ultra { 
+    background: linear-gradient(135deg, #F59E0B, #D97706); color: white; 
+    border: 1px solid #B45309; box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); 
+}
+
+/* Badge 24h y Aviso Responsable */
+.badge-24horas { 
+    display: inline-flex; align-items: center; gap: 0.3rem; 
+    background: #1F2937; color: white; padding: 0.25rem 0.6rem; 
+    border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; 
+}
+.aviso-24horas { 
+    font-size: 0.75rem; color: #D97706; font-style: italic; 
+    margin-top: -0.5rem; margin-bottom: 1rem; font-weight: 500; 
+}
+
+/* Tarjeta Ultra Premium (Borde Dorado) */
+.card-ultra-premium { 
+    border: 2px solid #F59E0B !important; 
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2) !important; 
+}
+
+/* Carrusel de Imágenes */
+.proveedor-imagen-simple { width: 100%; height: 180px; overflow: hidden; border-radius: 8px; margin-bottom: 1rem; background: #f1f5f9; }
+.proveedor-imagen-simple img { width: 100%; height: 100%; object-fit: cover; }
+
+.carrusel-imagenes { position: relative; width: 100%; height: 200px; overflow: hidden; border-radius: 8px; margin-bottom: 1rem; background: #f1f5f9; }
+.carrusel-imagenes img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s ease; }
+.carrusel-imagenes img.activo { opacity: 1; }
+
+.carrusel-controles { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
+.carrusel-punto { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; }
+.carrusel-punto.activo { background: white; transform: scale(1.2); }
+
+.carrusel-btn { 
+    position: absolute; top: 50%; transform: translateY(-50%); 
+    background: rgba(0,0,0,0.4); color: white; border: none; 
+    width: 32px; height: 32px; border-radius: 50%; cursor: pointer; 
+    display: flex; align-items: center; justify-content: center; 
+    z-index: 2; transition: background 0.3s; 
+}
+.carrusel-btn:hover { background: rgba(0,0,0,0.7); }
+.carrusel-prev { left: 10px; }
+.carrusel-next { right: 10px; }
+
+/* Ajuste para el contenedor de destacados */
+.destacados-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--espacio-md); }
