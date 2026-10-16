@@ -1,7 +1,8 @@
 /* ========================================
-   VERIFICA LA PAZ - CSS MODERNO PREMIUM v4.0
+   VERIFICA LA PAZ - CSS MODERNO PREMIUM v6.0
    Diseño: Glassmorphism + Neumorphism
    Sistema de colores por categoría
+   Incluye: Eventos, Carrusel, Badges Premium
    Última actualización: Octubre 2026
    ======================================== */
 
@@ -54,12 +55,18 @@
     --color-funeraria-claro: #6366F1;
     --bg-funeraria: #EEF2FF;
     
+    /* NUEVO: Color para Eventos */
+    --color-eventos: #8B5CF6;
+    --color-eventos-claro: #A78BFA;
+    --bg-eventos: #F3E8FF;
+    
     /* Gradientes Modernos */
     --gradiente-principal: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradiente-azul: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
     --gradiente-dorado: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
     --gradiente-hero: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #2563EB 100%);
     --gradiente-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    --gradiente-eventos: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
     
     /* Sombras Modernas */
     --sombra-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -69,6 +76,7 @@
     --sombra-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     --sombra-glow-azul: 0 0 40px rgba(37, 99, 235, 0.3);
     --sombra-glow-dorado: 0 0 40px rgba(245, 158, 11, 0.3);
+    --sombra-glow-eventos: 0 0 40px rgba(139, 92, 246, 0.3);
     
     /* Bordes */
     --radio-sm: 8px;
@@ -483,6 +491,10 @@ body {
 .btn-funeraria { background: var(--color-funeraria); color: var(--blanco); }
 .btn-funeraria:hover { background: var(--color-funeraria-claro); box-shadow: 0 8px 20px rgba(67, 56, 202, 0.4); }
 
+/* NUEVO: Botón Eventos */
+.btn-eventos { background: var(--color-eventos); color: var(--blanco); }
+.btn-eventos:hover { background: var(--color-eventos-claro); box-shadow: var(--sombra-glow-eventos); }
+
 .btn-outline.btn-salud { border-color: var(--color-salud); color: var(--color-salud); }
 .btn-outline.btn-salud:hover { background: var(--color-salud); color: var(--blanco); }
 .btn-outline.btn-hogar { border-color: var(--color-hogar); color: var(--color-hogar); }
@@ -493,6 +505,10 @@ body {
 .btn-outline.btn-tecnologia:hover { background: var(--color-tecnologia); color: var(--blanco); }
 .btn-outline.btn-funeraria { border-color: var(--color-funeraria); color: var(--color-funeraria); }
 .btn-outline.btn-funeraria:hover { background: var(--color-funeraria); color: var(--blanco); }
+
+/* NUEVO: Botón Eventos Outline */
+.btn-outline.btn-eventos { border-color: var(--color-eventos); color: var(--color-eventos); }
+.btn-outline.btn-eventos:hover { background: var(--color-eventos); color: var(--blanco); }
 
 .btn-sm { padding: 0.5rem 1rem; font-size: 0.85rem; }
 
@@ -612,6 +628,11 @@ body {
 .category-tecnologia .category-icon { background: var(--bg-tecnologia); color: var(--color-tecnologia); }
 .category-funeraria::before { background: linear-gradient(135deg, var(--color-funeraria), var(--color-funeraria-claro)); }
 .category-funeraria .category-icon { background: var(--bg-funeraria); color: var(--color-funeraria); }
+
+/* NUEVO: Categoría Eventos */
+.category-eventos::before { background: var(--gradiente-eventos); }
+.category-eventos .category-icon { background: var(--bg-eventos); color: var(--color-eventos); }
+.category-eventos:hover .category-icon { transform: scale(1.1) rotate(5deg); }
 
 .category-card h3 { font-family: var(--fuente-titulos); font-size: 1.5rem; font-weight: 800; color: var(--azul-profundo); text-align: center; margin-bottom: var(--espacio-xs); }
 .category-subtitle { text-align: center; color: var(--dorado-oscuro); font-weight: 600; font-size: 0.9rem; margin-bottom: var(--espacio-md); }
@@ -772,6 +793,7 @@ body {
 .destacado-card.category-auto::before { background: linear-gradient(135deg, var(--color-auto), var(--color-auto-claro)); }
 .destacado-card.category-tecnologia::before { background: linear-gradient(135deg, var(--color-tecnologia), var(--color-tecnologia-claro)); }
 .destacado-card.category-funeraria::before { background: linear-gradient(135deg, var(--color-funeraria), var(--color-funeraria-claro)); }
+.destacado-card.category-eventos::before { background: var(--gradiente-eventos); }
 
 .destacado-card:hover { transform: translateY(-5px); box-shadow: var(--sombra-xl); }
 
@@ -1009,44 +1031,11 @@ body {
 }
 
 /* ========================================
-   RESPONSIVE
-   ======================================== */
-@media (max-width: 968px) {
-    .menu-toggle { display: flex; }
-    .nav { position: fixed; top: 0; right: -100%; width: 80%; max-width: 400px; height: 100vh; background: var(--blanco); flex-direction: column; padding: var(--espacio-xl); box-shadow: var(--sombra-xl); transition: var(--transicion-normal); z-index: 1000; overflow-y: auto; }
-    .nav.active { right: 0; }
-    .nav-link { width: 100%; text-align: center; padding: var(--espacio-md); }
-    .btn-proveedor { margin-top: var(--espacio-md); }
-    .hero-title { font-size: 2.25rem; }
-    .hero-buttons { grid-template-columns: repeat(2, 1fr); }
-    .hero-features { flex-direction: column; gap: var(--espacio-sm); }
-    .section-title { font-size: 1.75rem; }
-    .categories-grid { grid-template-columns: 1fr; }
-    .why-us-grid { grid-template-columns: 1fr; }
-    .sidebar { position: static; }
-    .back-to-top { bottom: 90px; right: 20px; width: 45px; height: 45px; }
-    .toast-container { top: 80px; right: 10px; left: 10px; max-width: none; }
-}
-
-@media (max-width: 600px) {
-    .hero { padding: var(--espacio-xl) var(--espacio-md); }
-    .hero-title { font-size: 1.75rem; }
-    .hero-subtitle { font-size: 1rem; }
-    .hero-buttons { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-content { grid-template-columns: 1fr; }
-    .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 20px; }
-    .search-input { padding: 1rem 1rem 1rem 2.75rem; font-size: 0.95rem; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .proveedores-grid { grid-template-columns: 1fr; }
-}
-
-/* ========================================
-   VERIFICA LA PAZ v4.0 - MEJORAS ADICIONALES
-   (Badges de Nivel, Rango Estimado, Acordeón Móvil)
+   VERIFICA LA PAZ v6.0 - MEJORAS ADICIONALES
+   (Badges de Plan, 24h, Carrusel, Eventos)
    ======================================== */
 
-/* Badges de Niveles de Verificación (Pilar 3) */
+/* Badges de Niveles de Verificación */
 .badge-nivel {
     display: inline-flex;
     align-items: center;
@@ -1057,14 +1046,138 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
 }
 
 .nivel-basico { background: #E2E8F0; color: #475569; border: 1px solid #CBD5E1; }
 .nivel-verificado { background: #DBEAFE; color: #1E40AF; border: 1px solid #93C5FD; }
 .nivel-premium { background: var(--gradiente-dorado); color: var(--azul-profundo); border: 1px solid var(--dorado-oscuro); }
+.nivel-ultra { 
+    background: linear-gradient(135deg, #F59E0B, #D97706); 
+    color: white; 
+    border: 1px solid #B45309; 
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); 
+}
 .nivel-pendiente { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
 
-/* Texto de Rango Estimado (Pilar 1) */
+/* Badge 24h y Aviso Responsable */
+.badge-24horas { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 0.3rem; 
+    background: #1F2937; 
+    color: white; 
+    padding: 0.25rem 0.6rem; 
+    border-radius: 4px; 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    margin-bottom: 0.5rem; 
+}
+
+.aviso-24horas { 
+    font-size: 0.75rem; 
+    color: #D97706; 
+    font-style: italic; 
+    margin-top: -0.5rem; 
+    margin-bottom: 1rem; 
+    font-weight: 500; 
+}
+
+/* Tarjeta Ultra Premium (Borde Dorado) */
+.card-ultra-premium { 
+    border: 2px solid #F59E0B !important; 
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2) !important; 
+}
+
+/* Imagen Simple de Proveedor */
+.proveedor-imagen-simple { 
+    width: 100%; 
+    height: 180px; 
+    overflow: hidden; 
+    border-radius: 8px; 
+    margin-bottom: 1rem; 
+    background: #f1f5f9; 
+}
+.proveedor-imagen-simple img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Carrusel de Imágenes */
+.carrusel-imagenes { 
+    position: relative; 
+    width: 100%; 
+    height: 200px; 
+    overflow: hidden; 
+    border-radius: 8px; 
+    margin-bottom: 1rem; 
+    background: #f1f5f9; 
+}
+
+.carrusel-imagenes img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    opacity: 0; 
+    transition: opacity 0.5s ease; 
+}
+
+.carrusel-imagenes img.activo { opacity: 1; }
+
+.carrusel-controles { 
+    position: absolute; 
+    bottom: 10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    display: flex; 
+    gap: 6px; 
+    z-index: 2; 
+}
+
+.carrusel-punto { 
+    width: 8px; 
+    height: 8px; 
+    border-radius: 50%; 
+    background: rgba(255,255,255,0.5); 
+    cursor: pointer; 
+    transition: all 0.3s; 
+}
+
+.carrusel-punto.activo { 
+    background: white; 
+    transform: scale(1.2); 
+}
+
+.carrusel-btn { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: rgba(0,0,0,0.4); 
+    color: white; 
+    border: none; 
+    width: 32px; 
+    height: 32px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 2; 
+    transition: background 0.3s; 
+}
+
+.carrusel-btn:hover { background: rgba(0,0,0,0.7); }
+.carrusel-prev { left: 10px; }
+.carrusel-next { right: 10px; }
+
+/* Contenedor de Destacados */
+.destacados-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: var(--espacio-md); 
+}
+
+/* Texto de Rango Estimado */
 .rango-estimado-texto {
     font-size: 0.85rem;
     color: var(--gris-medio);
@@ -1076,7 +1189,7 @@ body {
     padding: 0 var(--espacio-md);
 }
 
-/* Acordeón Móvil para Secciones Largas (Pilar 4) */
+/* Acordeón Móvil para Secciones Largas */
 @media (max-width: 768px) {
     .featured-section, .categories-grid {
         max-height: 280px;
@@ -1113,71 +1226,36 @@ body {
         padding: 1rem;
     }
 }
+
 /* ========================================
-   ACTUALIZACIÓN v6.0: EVENTOS, BADGES Y CARRUSEL
+   RESPONSIVE
    ======================================== */
-
-/* Categoría Eventos (Morado) */
-.category-eventos::before { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
-.category-eventos .category-icon { background: #F3E8FF; color: #8B5CF6; }
-.category-eventos:hover .category-icon { transform: scale(1.1) rotate(5deg); }
-.btn-eventos { background: #8B5CF6; color: white; }
-.btn-eventos:hover { background: #7C3AED; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4); }
-.btn-outline.btn-eventos { border-color: #8B5CF6; color: #8B5CF6; }
-.btn-outline.btn-eventos:hover { background: #8B5CF6; color: white; }
-
-/* Badges de Planes (Premium / Ultra) */
-.badge-nivel { 
-    display: inline-flex; align-items: center; gap: 0.3rem; 
-    padding: 0.25rem 0.75rem; border-radius: 9999px; 
-    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; 
-    letter-spacing: 0.3px; margin-bottom: 0.5rem; 
-}
-.nivel-premium { background: var(--gradiente-dorado); color: var(--azul-profundo); border: 1px solid var(--dorado-oscuro); }
-.nivel-ultra { 
-    background: linear-gradient(135deg, #F59E0B, #D97706); color: white; 
-    border: 1px solid #B45309; box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); 
+@media (max-width: 968px) {
+    .menu-toggle { display: flex; }
+    .nav { position: fixed; top: 0; right: -100%; width: 80%; max-width: 400px; height: 100vh; background: var(--blanco); flex-direction: column; padding: var(--espacio-xl); box-shadow: var(--sombra-xl); transition: var(--transicion-normal); z-index: 1000; overflow-y: auto; }
+    .nav.active { right: 0; }
+    .nav-link { width: 100%; text-align: center; padding: var(--espacio-md); }
+    .btn-proveedor { margin-top: var(--espacio-md); }
+    .hero-title { font-size: 2.25rem; }
+    .hero-buttons { grid-template-columns: repeat(2, 1fr); }
+    .hero-features { flex-direction: column; gap: var(--espacio-sm); }
+    .section-title { font-size: 1.75rem; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .why-us-grid { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .back-to-top { bottom: 90px; right: 20px; width: 45px; height: 45px; }
+    .toast-container { top: 80px; right: 10px; left: 10px; max-width: none; }
 }
 
-/* Badge 24h y Aviso Responsable */
-.badge-24horas { 
-    display: inline-flex; align-items: center; gap: 0.3rem; 
-    background: #1F2937; color: white; padding: 0.25rem 0.6rem; 
-    border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; 
+@media (max-width: 600px) {
+    .hero { padding: var(--espacio-xl) var(--espacio-md); }
+    .hero-title { font-size: 1.75rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-buttons { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-content { grid-template-columns: 1fr; }
+    .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 20px; }
+    .search-input { padding: 1rem 1rem 1rem 2.75rem; font-size: 0.95rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .proveedores-grid { grid-template-columns: 1fr; }
 }
-.aviso-24horas { 
-    font-size: 0.75rem; color: #D97706; font-style: italic; 
-    margin-top: -0.5rem; margin-bottom: 1rem; font-weight: 500; 
-}
-
-/* Tarjeta Ultra Premium (Borde Dorado) */
-.card-ultra-premium { 
-    border: 2px solid #F59E0B !important; 
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2) !important; 
-}
-
-/* Carrusel de Imágenes */
-.proveedor-imagen-simple { width: 100%; height: 180px; overflow: hidden; border-radius: 8px; margin-bottom: 1rem; background: #f1f5f9; }
-.proveedor-imagen-simple img { width: 100%; height: 100%; object-fit: cover; }
-
-.carrusel-imagenes { position: relative; width: 100%; height: 200px; overflow: hidden; border-radius: 8px; margin-bottom: 1rem; background: #f1f5f9; }
-.carrusel-imagenes img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s ease; }
-.carrusel-imagenes img.activo { opacity: 1; }
-
-.carrusel-controles { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
-.carrusel-punto { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; }
-.carrusel-punto.activo { background: white; transform: scale(1.2); }
-
-.carrusel-btn { 
-    position: absolute; top: 50%; transform: translateY(-50%); 
-    background: rgba(0,0,0,0.4); color: white; border: none; 
-    width: 32px; height: 32px; border-radius: 50%; cursor: pointer; 
-    display: flex; align-items: center; justify-content: center; 
-    z-index: 2; transition: background 0.3s; 
-}
-.carrusel-btn:hover { background: rgba(0,0,0,0.7); }
-.carrusel-prev { left: 10px; }
-.carrusel-next { right: 10px; }
-
-/* Ajuste para el contenedor de destacados */
-.destacados-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--espacio-md); }
