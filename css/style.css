@@ -1,8 +1,8 @@
 /* ========================================
-   VERIFICA LA PAZ - CSS MODERNO PREMIUM v6.0
+   VERIFICA LA PAZ - CSS MODERNO PREMIUM v6.1
    Diseño: Glassmorphism + Neumorphism
    Sistema de colores por categoría
-   Incluye: Eventos, Carrusel, Badges Premium
+   Incluye: Eventos, Galería, Badges Premium
    Última actualización: Octubre 2026
    ======================================== */
 
@@ -55,7 +55,7 @@
     --color-funeraria-claro: #6366F1;
     --bg-funeraria: #EEF2FF;
     
-    /* NUEVO: Color para Eventos */
+    /* Color para Eventos */
     --color-eventos: #8B5CF6;
     --color-eventos-claro: #A78BFA;
     --bg-eventos: #F3E8FF;
@@ -490,8 +490,6 @@ body {
 .btn-tecnologia:hover { background: var(--color-tecnologia-claro); box-shadow: 0 8px 20px rgba(8, 145, 178, 0.4); }
 .btn-funeraria { background: var(--color-funeraria); color: var(--blanco); }
 .btn-funeraria:hover { background: var(--color-funeraria-claro); box-shadow: 0 8px 20px rgba(67, 56, 202, 0.4); }
-
-/* NUEVO: Botón Eventos */
 .btn-eventos { background: var(--color-eventos); color: var(--blanco); }
 .btn-eventos:hover { background: var(--color-eventos-claro); box-shadow: var(--sombra-glow-eventos); }
 
@@ -505,8 +503,6 @@ body {
 .btn-outline.btn-tecnologia:hover { background: var(--color-tecnologia); color: var(--blanco); }
 .btn-outline.btn-funeraria { border-color: var(--color-funeraria); color: var(--color-funeraria); }
 .btn-outline.btn-funeraria:hover { background: var(--color-funeraria); color: var(--blanco); }
-
-/* NUEVO: Botón Eventos Outline */
 .btn-outline.btn-eventos { border-color: var(--color-eventos); color: var(--color-eventos); }
 .btn-outline.btn-eventos:hover { background: var(--color-eventos); color: var(--blanco); }
 
@@ -628,8 +624,6 @@ body {
 .category-tecnologia .category-icon { background: var(--bg-tecnologia); color: var(--color-tecnologia); }
 .category-funeraria::before { background: linear-gradient(135deg, var(--color-funeraria), var(--color-funeraria-claro)); }
 .category-funeraria .category-icon { background: var(--bg-funeraria); color: var(--color-funeraria); }
-
-/* NUEVO: Categoría Eventos */
 .category-eventos::before { background: var(--gradiente-eventos); }
 .category-eventos .category-icon { background: var(--bg-eventos); color: var(--color-eventos); }
 .category-eventos:hover .category-icon { transform: scale(1.1) rotate(5deg); }
@@ -646,6 +640,87 @@ body {
 .category-actions .btn { flex: 1; min-width: 140px; }
 
 .proveedores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--espacio-lg); margin-top: var(--espacio-md); }
+
+/* ========================================
+   GALERÍA DE IMÁGENES (REEMPLAZA CARRUSEL)
+   ======================================== */
+.galeria-proveedor {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: #f1f5f9;
+    display: flex;
+    gap: 6px;
+}
+
+.img-galeria {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.img-galeria:hover {
+    transform: scale(1.03);
+}
+
+/* 1 imagen: ocupa todo el ancho */
+.galeria-1 {
+    height: 220px;
+}
+.galeria-1 .img-galeria {
+    height: 220px;
+}
+
+/* 2 imágenes: lado a lado */
+.galeria-2 {
+    height: 200px;
+}
+.galeria-2 .img-galeria {
+    width: 50%;
+    height: 200px;
+}
+
+/* 3-4 imágenes: principal grande + secundarias abajo */
+.galeria-3, .galeria-4 {
+    flex-direction: column;
+    height: auto;
+}
+
+.galeria-3 .img-principal,
+.galeria-4 .img-principal {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+}
+
+.galeria-secundarias {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+}
+
+.galeria-secundarias .img-galeria {
+    flex: 1;
+    height: 90px;
+    border-radius: 0 0 10px 10px;
+}
+
+@media (max-width: 600px) {
+    .galeria-1 .img-galeria,
+    .galeria-1 { height: 180px; }
+    
+    .galeria-2 .img-galeria,
+    .galeria-2 { height: 160px; }
+    
+    .galeria-3 .img-principal,
+    .galeria-4 .img-principal { height: 160px; }
+    
+    .galeria-secundarias .img-galeria { height: 70px; }
+}
 
 /* ========================================
    TESTIMONIOS
@@ -1031,8 +1106,8 @@ body {
 }
 
 /* ========================================
-   VERIFICA LA PAZ v6.0 - MEJORAS ADICIONALES
-   (Badges de Plan, 24h, Carrusel, Eventos)
+   VERIFICA LA PAZ v6.1 - MEJORAS ADICIONALES
+   (Badges de Plan, 24h, Galería, Eventos)
    ======================================== */
 
 /* Badges de Niveles de Verificación */
@@ -1088,87 +1163,6 @@ body {
     border: 2px solid #F59E0B !important; 
     box-shadow: 0 0 20px rgba(245, 158, 11, 0.2) !important; 
 }
-
-/* Imagen Simple de Proveedor */
-.proveedor-imagen-simple { 
-    width: 100%; 
-    height: 180px; 
-    overflow: hidden; 
-    border-radius: 8px; 
-    margin-bottom: 1rem; 
-    background: #f1f5f9; 
-}
-.proveedor-imagen-simple img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Carrusel de Imágenes */
-.carrusel-imagenes { 
-    position: relative; 
-    width: 100%; 
-    height: 200px; 
-    overflow: hidden; 
-    border-radius: 8px; 
-    margin-bottom: 1rem; 
-    background: #f1f5f9; 
-}
-
-.carrusel-imagenes img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    opacity: 0; 
-    transition: opacity 0.5s ease; 
-}
-
-.carrusel-imagenes img.activo { opacity: 1; }
-
-.carrusel-controles { 
-    position: absolute; 
-    bottom: 10px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    display: flex; 
-    gap: 6px; 
-    z-index: 2; 
-}
-
-.carrusel-punto { 
-    width: 8px; 
-    height: 8px; 
-    border-radius: 50%; 
-    background: rgba(255,255,255,0.5); 
-    cursor: pointer; 
-    transition: all 0.3s; 
-}
-
-.carrusel-punto.activo { 
-    background: white; 
-    transform: scale(1.2); 
-}
-
-.carrusel-btn { 
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    background: rgba(0,0,0,0.4); 
-    color: white; 
-    border: none; 
-    width: 32px; 
-    height: 32px; 
-    border-radius: 50%; 
-    cursor: pointer; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    z-index: 2; 
-    transition: background 0.3s; 
-}
-
-.carrusel-btn:hover { background: rgba(0,0,0,0.7); }
-.carrusel-prev { left: 10px; }
-.carrusel-next { right: 10px; }
 
 /* Contenedor de Destacados */
 .destacados-grid { 

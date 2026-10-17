@@ -1,13 +1,14 @@
 // ========================================
-// VERIFICA LA PAZ - JavaScript Estático v6.0
+// VERIFICA LA PAZ - JavaScript Estático v6.1
 // Arquitectura: 100% Frontend (Sin Backend)
 // Actualizado: Octubre 2026
+// Galería de imágenes (sin carrusel)
 // ========================================
 
 window.VerificaLP = window.VerificaLP || {};
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Verifica La Paz - JavaScript v6.0 cargado correctamente');
+    console.log('✅ Verifica La Paz - JavaScript v6.1 cargado correctamente');
     
     // Inicializar todos los módulos
     initHeader();
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPrefetchEnlaces();
     initModoOscuroSistema();
     initMobileAccordion();
-    cargarDestacados(); // NUEVO: Cargar destacados en el index
+    cargarDestacados();
     
     console.log(' Todos los módulos inicializados correctamente');
 });
@@ -110,9 +111,6 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
         if (window.fadeObserver) {
             container.querySelectorAll('.fade-in').forEach(el => window.fadeObserver.observe(el));
         }
-        
-        // Inicializar carruseles si existen
-        initCarruseles();
     } catch (error) {
         console.error(`Error cargando proveedores en ${contenedorId}:`, error);
         container.innerHTML = `
@@ -124,7 +122,7 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
 }
 
 // ========================================
-// GENERAR TARJETA DE PROVEEDOR (ACTUALIZADA)
+// GENERAR TARJETA DE PROVEEDOR (CON GALERÍA)
 // ========================================
 function generarTarjetaProveedor(p) {
     const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
@@ -135,37 +133,45 @@ function generarTarjetaProveedor(p) {
     
     // Recopilar imágenes disponibles
     const imagenes = [p.imagen1, p.imagen2, p.imagen3, p.imagen4].filter(img => img && img.trim() !== '');
-    const tieneImagenes = imagenes.length > 0;
+    const totalImagenes = imagenes.length;
     const esUltraPremium = p.tipo_plan === 'ultra_premium';
     
-    // Construir HTML de imágenes (carrusel si hay más de 1, o imagen simple)
+    // Construir HTML de galería según cantidad de imágenes
     let htmlImagenes = '';
-    if (tieneImagenes) {
-        if (imagenes.length === 1) {
-            htmlImagenes = `
-                <div class="proveedor-imagen-simple" style="width: 100%; height: 180px; overflow: hidden; border-radius: 8px; margin-bottom: 1rem;">
-                    <img src="${imagenes[0]}" alt="${p.nombre}" style="width: 100%; height: 100%; object-fit: cover;">
+    if (totalImagenes === 1) {
+        htmlImagenes = `
+            <div class="galeria-proveedor galeria-1">
+                <img src="${imagenes[0]}" alt="${p.nombre}" class="img-galeria" loading="lazy">
+            </div>
+        `;
+    } else if (totalImagenes === 2) {
+        htmlImagenes = `
+            <div class="galeria-proveedor galeria-2">
+                <img src="${imagenes[0]}" alt="${p.nombre} 1" class="img-galeria" loading="lazy">
+                <img src="${imagenes[1]}" alt="${p.nombre} 2" class="img-galeria" loading="lazy">
+            </div>
+        `;
+    } else if (totalImagenes === 3) {
+        htmlImagenes = `
+            <div class="galeria-proveedor galeria-3">
+                <img src="${imagenes[0]}" alt="${p.nombre} 1" class="img-galeria img-principal" loading="lazy">
+                <div class="galeria-secundarias">
+                    <img src="${imagenes[1]}" alt="${p.nombre} 2" class="img-galeria" loading="lazy">
+                    <img src="${imagenes[2]}" alt="${p.nombre} 3" class="img-galeria" loading="lazy">
                 </div>
-            `;
-        } else {
-            // Carrusel para 2+ imágenes
-            htmlImagenes = `
-                <div class="carrusel-imagenes" data-carrusel-id="${p.id}">
-                    ${imagenes.map((img, idx) => `
-                        <img src="${img}" alt="${p.nombre} - imagen ${idx + 1}" class="${idx === 0 ? 'activo' : ''}">
-                    `).join('')}
-                    <div class="carrusel-controles">
-                        ${imagenes.map((_, idx) => `
-                            <span class="carrusel-punto ${idx === 0 ? 'activo' : ''}" onclick="cambiarImagenCarrusel(${p.id}, ${idx})"></span>
-                        `).join('')}
-                    </div>
-                    ${imagenes.length > 1 ? `
-                        <button class="carrusel-btn carrusel-prev" onclick="cambiarImagenCarrusel(${p.id}, -1)"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carrusel-btn carrusel-next" onclick="cambiarImagenCarrusel(${p.id}, 1)"><i class="fas fa-chevron-right"></i></button>
-                    ` : ''}
+            </div>
+        `;
+    } else if (totalImagenes >= 4) {
+        htmlImagenes = `
+            <div class="galeria-proveedor galeria-4">
+                <img src="${imagenes[0]}" alt="${p.nombre} 1" class="img-galeria img-principal" loading="lazy">
+                <div class="galeria-secundarias">
+                    <img src="${imagenes[1]}" alt="${p.nombre} 2" class="img-galeria" loading="lazy">
+                    <img src="${imagenes[2]}" alt="${p.nombre} 3" class="img-galeria" loading="lazy">
+                    <img src="${imagenes[3]}" alt="${p.nombre} 4" class="img-galeria" loading="lazy">
                 </div>
-            `;
-        }
+            </div>
+        `;
     }
     
     // Badge de 24h y aviso responsable
@@ -214,44 +220,6 @@ function generarTarjetaProveedor(p) {
 }
 
 // ========================================
-// CARRUSEL DE IMÁGENES
-// ========================================
-function cambiarImagenCarrusel(id, indice) {
-    const carrusel = document.querySelector(`[data-carrusel-id="${id}"]`);
-    if (!carrusel) return;
-    
-    const imagenes = carrusel.querySelectorAll('img');
-    const puntos = carrusel.querySelectorAll('.carrusel-punto');
-    const total = imagenes.length;
-    
-    let indiceActual = Array.from(imagenes).findIndex(img => img.classList.contains('activo'));
-    
-    if (indice === -1) {
-        // Anterior
-        indiceActual = (indiceActual - 1 + total) % total;
-    } else if (indice === 1) {
-        // Siguiente
-        indiceActual = (indiceActual + 1) % total;
-    } else {
-        // Ir a índice específico
-        indiceActual = indice;
-    }
-    
-    imagenes.forEach((img, i) => img.classList.toggle('activo', i === indiceActual));
-    puntos.forEach((punto, i) => punto.classList.toggle('activo', i === indiceActual));
-}
-
-function initCarruseles() {
-    // Auto-play opcional para carruseles (cada 5 segundos)
-    document.querySelectorAll('.carrusel-imagenes').forEach(carrusel => {
-        const id = carrusel.getAttribute('data-carrusel-id');
-        if (carrusel.querySelectorAll('img').length > 1) {
-            setInterval(() => cambiarImagenCarrusel(id, 1), 5000);
-        }
-    });
-}
-
-// ========================================
 // CARGAR DESTACADOS EN EL INDEX
 // ========================================
 async function cargarDestacados() {
@@ -283,7 +251,6 @@ async function cargarDestacados() {
         if (window.fadeObserver) {
             container.querySelectorAll('.fade-in').forEach(el => window.fadeObserver.observe(el));
         }
-        initCarruseles();
     } catch (error) {
         console.error('Error cargando destacados:', error);
     }
@@ -294,12 +261,31 @@ function generarTarjetaDestacada(p) {
     const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil destacado en Verifica La Paz')}` : '#';
     const colorVar = getColorVariable(p.categoria);
     const imagenes = [p.imagen1, p.imagen2, p.imagen3, p.imagen4].filter(img => img && img.trim() !== '');
+    const totalImagenes = imagenes.length;
     
     let htmlImagen = '';
-    if (imagenes.length > 0) {
+    if (totalImagenes === 1) {
         htmlImagen = `
-            <div style="width: 100%; height: 150px; overflow: hidden; border-radius: 8px; margin-bottom: 0.75rem;">
-                <img src="${imagenes[0]}" alt="${p.nombre}" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="galeria-proveedor galeria-1">
+                <img src="${imagenes[0]}" alt="${p.nombre}" class="img-galeria" loading="lazy">
+            </div>
+        `;
+    } else if (totalImagenes === 2) {
+        htmlImagen = `
+            <div class="galeria-proveedor galeria-2">
+                <img src="${imagenes[0]}" alt="${p.nombre} 1" class="img-galeria" loading="lazy">
+                <img src="${imagenes[1]}" alt="${p.nombre} 2" class="img-galeria" loading="lazy">
+            </div>
+        `;
+    } else if (totalImagenes >= 3) {
+        htmlImagen = `
+            <div class="galeria-proveedor galeria-3">
+                <img src="${imagenes[0]}" alt="${p.nombre} 1" class="img-galeria img-principal" loading="lazy">
+                <div class="galeria-secundarias">
+                    ${imagenes.slice(1, 4).map((img, idx) => `
+                        <img src="${img}" alt="${p.nombre} ${idx + 2}" class="img-galeria" loading="lazy">
+                    `).join('')}
+                </div>
             </div>
         `;
     }
