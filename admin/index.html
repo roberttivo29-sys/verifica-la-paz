@@ -390,9 +390,6 @@
     let providers = [];
     let fileSha = '';
 
-    // ============================================
-    // NAVEGACIÓN DE TABS
-    // ============================================
     function cambiarTab(tab) {
       document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
       if (tab === 'gestion') {
@@ -407,9 +404,6 @@
       }
     }
 
-    // ============================================
-    // LÓGICA DE SUBCATEGORÍAS
-    // ============================================
     function actualizarSubcategorias() {
       const categoria = document.getElementById('f_categoria').value;
       const subSelect = document.getElementById('f_subcategoria_select');
@@ -468,9 +462,6 @@
       document.getElementById('f_subcategoria').value = this.value;
     });
 
-    // ============================================
-    // LÓGICA DE IMÁGENES CON IMGBB
-    // ============================================
     function handleFileSelect(numero, input) {
       const file = input.files[0];
       if (!file) return;
@@ -510,9 +501,6 @@
       }
     }
 
-    // ============================================
-    // TOGGLE ULTRA PREMIUM
-    // ============================================
     function toggleUltraPremiumFields() {
       const plan = document.getElementById('f_tipo_plan').value;
       const ultraFields = document.querySelectorAll('.ultra-premium-only');
@@ -528,9 +516,6 @@
       }
     }
 
-    // ============================================
-    // AUTENTICACIÓN
-    // ============================================
     function login() {
       token = document.getElementById('tokenInput').value.trim();
       if (!token) {
@@ -562,9 +547,6 @@
       el.classList.remove('hidden');
     }
 
-    // ============================================
-    // CARGA DE DATOS
-    // ============================================
     async function loadProviders() {
       document.getElementById('loading').classList.remove('hidden');
       document.getElementById('providersList').innerHTML = '';
@@ -616,9 +598,6 @@
       document.getElementById('providersList').innerHTML = html || '<p class="text-center text-muted py-4">No hay proveedores registrados aún.</p>';
     }
 
-    // ============================================
-    // CONSULTA RÁPIDA
-    // ============================================
     function filtrarConsultaRapida() {
       const categoria = document.getElementById('filtroCategoria').value;
       const subcategoria = document.getElementById('filtroSubcategoria').value;
@@ -717,9 +696,6 @@
       });
     }
 
-    // ============================================
-    // MODAL Y GUARDADO
-    // ============================================
     function addProvider() {
       document.getElementById('modalTitle').textContent = 'Agregar Nuevo Proveedor';
       document.getElementById('editIndex').value = '-1';
@@ -892,9 +868,6 @@
       }
     }
 
-    // ============================================
-    // SISTEMA DE TOASTS
-    // ============================================
     function showToast(title, message, type = 'info', duration = 5000) {
       const container = document.getElementById('toastContainer') || createToastContainer();
       const icons = { 
@@ -939,9 +912,6 @@
       return container;
     }
 
-    // ============================================
-    // AUTO-LOGIN
-    // ============================================
     window.addEventListener('load', () => {
       const savedToken = localStorage.getItem('gh_token');
       if (savedToken) {

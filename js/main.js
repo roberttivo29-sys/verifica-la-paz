@@ -11,7 +11,6 @@ window.VerificaLP = window.VerificaLP || {};
 document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Verifica La Paz - JavaScript v7.0 cargado correctamente');
     
-    // Inicializar todos los módulos
     initHeader();
     initMenuHamburguesa();
     initFadeInAnimations();
@@ -34,11 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Todos los módulos inicializados correctamente');
 });
 
-// ========================================
-// FUNCIONES GLOBALES DE UTILIDAD
-// ========================================
-
-// Normaliza texto: quita tildes, pasa a minúsculas, maneja ñ
 function normalizarTexto(texto) {
     if (!texto) return '';
     return String(texto)
@@ -50,16 +44,12 @@ function normalizarTexto(texto) {
         .trim();
 }
 
-// Escapa HTML para prevenir inyección desde el JSON
 function escaparHTML(valor) {
     return String(valor ?? '').replace(/[&<>"']/g, s => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[s]));
 }
 
-// ========================================
-// CLASES Y COLORES POR CATEGORÍA (8 categorías)
-// ========================================
 function getCategoriaClass(categoria) {
     const classes = {
         'Salud y Bienestar': 'category-salud',
@@ -97,9 +87,6 @@ function getPlanBadge(tipo_plan) {
     return badges[tipo_plan] || '';
 }
 
-// ========================================
-// CACHÉ DE PROVEEDORES (evita múltiples fetch)
-// ========================================
 const cacheProveedores = { datos: null, tiempo: 0 };
 
 async function obtenerProveedores() {
@@ -123,9 +110,6 @@ async function obtenerProveedores() {
     return cacheProveedores.datos;
 }
 
-// ========================================
-// CARGA DE PROVEEDORES EN CONTENEDOR (versión mejorada)
-// ========================================
 async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraClave = null) {
     const container = document.getElementById(contenedorId);
     if (!container) return;
@@ -133,19 +117,15 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
     try {
         const todos = await obtenerProveedores();
         
-        // Ordenar por plan: Ultra Premium > Premium > Gratuito
         const ordenPorPlan = { 'ultra_premium': 0, 'premium': 1, 'gratuito': 2 };
         todos.sort((a, b) => (ordenPorPlan[a.tipo_plan] || 2) - (ordenPorPlan[b.tipo_plan] || 2));
         
-        // Filtrar por categoría (normalizado)
         const catNormal = normalizarTexto(categoria);
         let filtrados = todos.filter(p => normalizarTexto(p.categoria) === catNormal);
         
-        // Si hay palabra clave, filtrar además por subcategoría, nombre o descripción
         if (palabraClave) {
             const clave = normalizarTexto(palabraClave);
             
-            // Priorizar coincidencias en subcategoría (evita duplicados entre secciones)
             let porSubcategoria = filtrados.filter(p =>
                 normalizarTexto(p.subcategoria).includes(clave)
             );
@@ -174,7 +154,6 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
         
         container.innerHTML = filtrados.map(p => generarTarjetaProveedor(p)).join('');
         
-        // Reiniciar animaciones de fade-in
         if (window.fadeObserver) {
             container.querySelectorAll('.fade-in').forEach(el => window.fadeObserver.observe(el));
         }
@@ -188,9 +167,6 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
     }
 }
 
-// ========================================
-// GENERAR TARJETA DE PROVEEDOR (CON GALERÍA)
-// ========================================
 function generarTarjetaProveedor(p) {
     const whatsappNum = (p.whatsapp || p.telefono || '').replace(/\D/g, '');
     const whatsappLink = whatsappNum ? `https://wa.me/591${whatsappNum}?text=${encodeURIComponent('Hola, vi tu perfil en Verifica La Paz y me interesa tu servicio')}` : '#';
@@ -198,12 +174,10 @@ function generarTarjetaProveedor(p) {
     const colorVar = getColorVariable(p.categoria);
     const planBadge = getPlanBadge(p.tipo_plan);
     
-    // Recopilar imágenes disponibles
     const imagenes = [p.imagen1, p.imagen2, p.imagen3, p.imagen4].filter(img => img && img.trim() !== '');
     const totalImagenes = imagenes.length;
     const esUltraPremium = p.tipo_plan === 'ultra_premium';
     
-    // Construir HTML de galería según cantidad de imágenes
     let htmlImagenes = '';
     if (totalImagenes === 1) {
         htmlImagenes = `
@@ -241,7 +215,6 @@ function generarTarjetaProveedor(p) {
         `;
     }
     
-    // Badge de 24h y aviso responsable
     let html24h = '';
     if (p['24horas']) {
         html24h = `
@@ -286,9 +259,6 @@ function generarTarjetaProveedor(p) {
     `;
 }
 
-// ========================================
-// CARGAR DESTACADOS EN EL INDEX
-// ========================================
 async function cargarDestacados() {
     const container = document.getElementById('destacados-container');
     if (!container) return;
@@ -296,7 +266,6 @@ async function cargarDestacados() {
     try {
         const proveedores = await obtenerProveedores();
         
-        // Filtrar solo los destacados y ordenar por plan
         const ordenPorPlan = { 'ultra_premium': 0, 'premium': 1, 'gratuito': 2 };
         const destacados = proveedores
             .filter(p => p.destacado === 1)
@@ -371,9 +340,6 @@ function generarTarjetaDestacada(p) {
     `;
 }
 
-// ========================================
-// MÓDULOS DE INICIALIZACIÓN (UI/UX)
-// ========================================
 function initMobileAccordion() {
     if (window.innerWidth <= 768) {
         document.querySelectorAll('.featured-section, .categories-grid').forEach(el => {
@@ -559,7 +525,6 @@ function initBusquedaInteligente() {
     const searchResults = document.getElementById('searchResults');
     if (!searchInput || !searchResults) return;
     
-    // Datos de búsqueda actualizados con las 8 categorías
     const datosBusqueda = [
         { nombre: 'Salud y Bienestar', categoria: 'salud', icono: 'fa-heartbeat', url: 'salud.html', tipo: 'Categoría' },
         { nombre: 'Mantenimiento del Hogar', categoria: 'hogar', icono: 'fa-tools', url: 'hogar.html', tipo: 'Categoría' },
@@ -631,34 +596,6 @@ function initModoOscuroSistema() {
     aplicarModoOscuro(darkModeQuery.matches);
     darkModeQuery.addEventListener('change', (e) => aplicarModoOscuro(e.matches));
 }
-
-function showToast(title, message, type = 'info', duration = 5000) {
-    const container = document.getElementById('toast-container') || document.getElementById('toastContainer');
-    if (!container) return;
-    
-    const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', warning: 'fa-exclamation-triangle', info: 'fa-info-circle' };
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.innerHTML = `
-        <div class="toast-icon"><i class="fas ${icons[type]}"></i></div>
-        <div class="toast-content">
-            <div class="toast-title">${title}</div>
-            <div class="toast-message">${message}</div>
-        </div>
-        <button class="toast-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>
-        <div class="toast-progress"></div>
-    `;
-    container.appendChild(toast);
-    toast.querySelector('.toast-close').addEventListener('click', () => removeToast(toast));
-    setTimeout(() => removeToast(toast), duration);
-}
-
-function removeToast(toast) {
-    if (!toast || toast.classList.contains('hiding')) return;
-    toast.classList.add('hiding');
-    setTimeout(() => toast.remove(), 300);
-}
-window.showToast = showToast;
 
 window.addEventListener('error', (e) => console.error('Error global:', e.error));
 window.addEventListener('unhandledrejection', (e) => console.error('Promesa rechazada:', e.reason));

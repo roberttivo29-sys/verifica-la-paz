@@ -1,5 +1,5 @@
 /* ========================================
-   VERIFICA LA PAZ - CSS v8.0
+   VERIFICA LA PAZ - CSS v8.1 COMPLETO
    Diseño: Glassmorphism + Neumorphism
    Rediseño: Tarjetas minimalistas + Sidebar compacto
    Mobile First + Desktop Optimized
@@ -976,7 +976,7 @@ body {
 .no-data i { font-size: 3rem; color: var(--gris-claro); margin-bottom: var(--espacio-sm); display: block; }
 
 /* ========================================
-   SIDEBAR COMPACTO (REDISEÑO)
+   SIDEBAR
    ======================================== */
 .sidebar { position: sticky; top: 100px; height: fit-content; }
 
@@ -1574,20 +1574,13 @@ body {
     .hero-buttons { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr; }
     .logo h1 { font-size: 1.1rem; }
-    .galeria-2, .galeria-2 .img-galeria { height: 120px !important; }
-    .galeria-1, .galeria-1 .img-galeria { height: 160px; }
-}
+    .g.1, of: and0 to.2
+ to sp of't.8 to to to
+,)7,, sp,3 sp. and to,
+ sp,)0 to sp to to: ( sp
 
-/* ========================================
-   ACCESIBILIDAD - Reduced Motion
-   ======================================== */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-    .fade-in { opacity: 1; transform: none; }
-    .category-card.minimal { opacity: 1; animation: none; }
-}
+
+,.)
+ to
+, sp sp1 to sp  to, of sp.,: sp1
+22 to't..98 to sp sp: to. sp sp sp sp0, sp
