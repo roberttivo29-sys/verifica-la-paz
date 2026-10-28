@@ -119,10 +119,12 @@
               <option value="">Todas las categorías</option>
               <option value="Salud y Bienestar">Salud y Bienestar</option>
               <option value="Mantenimiento del Hogar">Mantenimiento del Hogar</option>
+              <option value="Materiales de Construcción">Materiales de Construcción</option>
               <option value="Talleres Automotrices">Talleres Automotrices</option>
               <option value="Tecnología y Redes">Tecnología y Redes</option>
               <option value="Servicios de Despedida">Servicios de Despedida</option>
               <option value="Servicios para Eventos">Servicios para Eventos</option>
+              <option value="Imagen y Cuidado Personal">Imagen y Cuidado Personal</option>
             </select>
           </div>
           <div class="col-md-4">
@@ -171,10 +173,12 @@
                 <select id="f_categoria" class="form-select" required onchange="actualizarSubcategorias()">
                   <option value="Salud y Bienestar">Salud y Bienestar</option>
                   <option value="Mantenimiento del Hogar">Mantenimiento del Hogar</option>
+                  <option value="Materiales de Construcción">Materiales de Construcción</option>
                   <option value="Talleres Automotrices">Talleres Automotrices</option>
                   <option value="Tecnología y Redes">Tecnología y Redes</option>
                   <option value="Servicios de Despedida">Servicios de Despedida</option>
                   <option value="Servicios para Eventos">Servicios para Eventos</option>
+                  <option value="Imagen y Cuidado Personal">Imagen y Cuidado Personal</option>
                 </select>
               </div>
               <div class="col-md-6">
@@ -322,7 +326,16 @@
         "Cerrajería",
         "Carpintería",
         "Limpieza y Fumigación",
+        "Jardinería y Paisajismo",
+        "Instalación y Mantenimiento de Gas",
         "Otros Oficios del Hogar"
+      ],
+      "Materiales de Construcción": [
+        "Cemento, Estuco y Yeso",
+        "Áridos: Arena, Grava y Piedra",
+        "Ladrillos, Bloques y Prefabricados",
+        "Barracas de Madera y Cubiertas",
+        "Alquiler de Equipos y Maquinaria"
       ],
       "Talleres Automotrices": [
         "Taller Mecánico General",
@@ -332,6 +345,8 @@
         "Electricidad y Electromecánica",
         "Grúas y Auxilio Vial",
         "Lavado y Detallado",
+        "Repuestos y Accesorios",
+        "Lubricentros y Cambio de Aceite",
         "Otros Servicios Automotrices"
       ],
       "Tecnología y Redes": [
@@ -340,13 +355,15 @@
         "Cámaras de Seguridad y CCTV",
         "Redes e Internet",
         "Soporte Técnico a Domicilio",
+        "Impresoras y Suministros de Oficina",
+        "Videojuegos y Consolas",
         "Otros Servicios Tecnológicos"
       ],
       "Servicios de Despedida": [
         "Funerarias y Velatorios",
         "Cremación y Urnas",
         "Floristerías y Homenajes",
-        "Otros Servicios de Despedida"
+        "Trámites y Gestoría Funeraria"
       ],
       "Servicios para Eventos": [
         "Filmación y Fotografía",
@@ -354,8 +371,18 @@
         "Bandas y Música en Vivo",
         "Locales y Salones de Eventos",
         "Decoración y Mobiliario",
+        "Catering y Banquetes",
         "Animación y Espectáculos",
+        "Alquiler de Vestuario y Trajes",
         "Otros Servicios para Eventos"
+      ],
+      "Imagen y Cuidado Personal": [
+        "Barberías",
+        "Salones de Belleza Unisex",
+        "Centros de Estética",
+        "Maquillaje Profesional",
+        "Spas y Masajes",
+        "Servicios a Domicilio"
       ]
     };
 
@@ -376,7 +403,6 @@
         document.querySelectorAll('.admin-tab')[1].classList.add('active');
         document.getElementById('tabGestion').classList.add('hidden');
         document.getElementById('tabConsulta').classList.remove('hidden');
-        // Al entrar a Consulta Rápida, mostrar todos los proveedores
         filtrarConsultaRapida();
       }
     }
@@ -397,6 +423,12 @@
           subSelect.appendChild(option);
         });
       }
+
+      const optOtro = document.createElement('option');
+      optOtro.value = 'Otro';
+      optOtro.textContent = 'Otro (escribir manualmente)';
+      subSelect.appendChild(optOtro);
+
       toggleOtroInput();
     }
 
@@ -413,7 +445,6 @@
           subSelect.appendChild(option);
         });
       }
-      // Filtrar automáticamente al cambiar categoría
       filtrarConsultaRapida();
     }
 
@@ -586,7 +617,7 @@
     }
 
     // ============================================
-    // CONSULTA RÁPIDA (MEJORADA - FILTRADO AUTOMÁTICO)
+    // CONSULTA RÁPIDA
     // ============================================
     function filtrarConsultaRapida() {
       const categoria = document.getElementById('filtroCategoria').value;
@@ -607,7 +638,6 @@
         return matchCategoria && matchSubcategoria && matchTexto;
       });
 
-      // Mostrar contador de resultados
       const counter = document.getElementById('resultsCounter');
       if (filtrados.length > 0) {
         counter.textContent = `📊 ${filtrados.length} proveedor${filtrados.length !== 1 ? 'es' : ''} encontrado${filtrados.length !== 1 ? 's' : ''}`;
@@ -688,14 +718,13 @@
     }
 
     // ============================================
-    // MODAL Y GUARDADO (CON ID AUTOMÁTICO Y VALIDACIÓN)
+    // MODAL Y GUARDADO
     // ============================================
     function addProvider() {
       document.getElementById('modalTitle').textContent = 'Agregar Nuevo Proveedor';
       document.getElementById('editIndex').value = '-1';
       document.getElementById('providerForm').reset();
       
-      // 🔥 AUTO-GENERAR ID: busca el ID más alto y suma 1
       const maxId = providers.length > 0 
         ? Math.max(...providers.map(p => p.id || 0)) 
         : 0;
@@ -773,16 +802,13 @@
       
       const nuevoId = parseInt(document.getElementById('f_id').value);
       
-      // 🔒 VALIDACIÓN: verificar que el ID no esté duplicado
       if (index === -1) {
-        // Es un proveedor NUEVO, verificar que el ID no exista
         const idDuplicado = providers.find(p => p.id === nuevoId);
         if (idDuplicado) {
           showToast('Error', `El ID ${nuevoId} ya existe (proveedor: ${idDuplicado.nombre}). Usa otro ID.`, 'error');
           return;
         }
       } else {
-        // Es una EDICIÓN, verificar que no choque con OTRO proveedor
         const idDuplicado = providers.find((p, i) => p.id === nuevoId && i !== index);
         if (idDuplicado) {
           showToast('Error', `El ID ${nuevoId} ya está en uso por "${idDuplicado.nombre}".`, 'error');

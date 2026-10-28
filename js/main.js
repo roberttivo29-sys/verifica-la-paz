@@ -1,14 +1,15 @@
 // ========================================
-// VERIFICA LA PAZ - JavaScript Estático v6.1
+// VERIFICA LA PAZ - JavaScript Estático v7.0
 // Arquitectura: 100% Frontend (Sin Backend)
 // Actualizado: Octubre 2026
-// Galería de imágenes (sin carrusel)
+// Incluye: 8 categorías, búsqueda normalizada,
+// caché de proveedores, escape de HTML
 // ========================================
 
 window.VerificaLP = window.VerificaLP || {};
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Verifica La Paz - JavaScript v6.1 cargado correctamente');
+    console.log('✅ Verifica La Paz - JavaScript v7.0 cargado correctamente');
     
     // Inicializar todos los módulos
     initHeader();
@@ -30,20 +31,45 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileAccordion();
     cargarDestacados();
     
-    console.log(' Todos los módulos inicializados correctamente');
+    console.log('✅ Todos los módulos inicializados correctamente');
 });
 
 // ========================================
 // FUNCIONES GLOBALES DE UTILIDAD
 // ========================================
+
+// Normaliza texto: quita tildes, pasa a minúsculas, maneja ñ
+function normalizarTexto(texto) {
+    if (!texto) return '';
+    return String(texto)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/ñ/g, "n")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+// Escapa HTML para prevenir inyección desde el JSON
+function escaparHTML(valor) {
+    return String(valor ?? '').replace(/[&<>"']/g, s => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[s]));
+}
+
+// ========================================
+// CLASES Y COLORES POR CATEGORÍA (8 categorías)
+// ========================================
 function getCategoriaClass(categoria) {
     const classes = {
         'Salud y Bienestar': 'category-salud',
         'Mantenimiento del Hogar': 'category-hogar',
+        'Materiales de Construcción': 'category-construccion',
         'Talleres Automotrices': 'category-auto',
         'Tecnología y Redes': 'category-tecnologia',
         'Servicios de Despedida': 'category-funeraria',
-        'Servicios para Eventos': 'category-eventos'
+        'Servicios para Eventos': 'category-eventos',
+        'Imagen y Cuidado Personal': 'category-imagen'
     };
     return classes[categoria] || '';
 }
@@ -52,10 +78,12 @@ function getColorVariable(categoria) {
     const colors = {
         'Salud y Bienestar': 'var(--color-salud, #0D9488)',
         'Mantenimiento del Hogar': 'var(--color-hogar, #EA580C)',
+        'Materiales de Construcción': 'var(--color-construccion, #C2410C)',
         'Talleres Automotrices': 'var(--color-auto, #1D4ED8)',
         'Tecnología y Redes': 'var(--color-tecnologia, #0891B2)',
         'Servicios de Despedida': 'var(--color-funeraria, #4338CA)',
-        'Servicios para Eventos': '#8B5CF6'
+        'Servicios para Eventos': '#8B5CF6',
+        'Imagen y Cuidado Personal': 'var(--color-imagen, #7C3AED)'
     };
     return colors[categoria] || '#2563EB';
 }
@@ -70,37 +98,76 @@ function getPlanBadge(tipo_plan) {
 }
 
 // ========================================
-// CARGA DE PROVEEDORES DESDE JSON
+// CACHÉ DE PROVEEDORES (evita múltiples fetch)
+// ========================================
+const cacheProveedores = { datos: null, tiempo: 0 };
+
+async function obtenerProveedores() {
+    const ahora = Date.now();
+    if (cacheProveedores.datos && ahora - cacheProveedores.tiempo < 300000) {
+        return cacheProveedores.datos;
+    }
+
+    const response = await fetch('data/proveedores.json', { cache: 'no-cache' });
+    if (!response.ok) throw new Error('No se pudo cargar el archivo de datos');
+
+    const raw = await response.json();
+    const lista = Array.isArray(raw) ? raw : (raw.proveedores || []);
+
+    cacheProveedores.datos = lista.map(p =>
+        Object.fromEntries(
+            Object.entries(p).map(([k, v]) => [k, typeof v === 'string' ? escaparHTML(v) : v])
+        )
+    );
+    cacheProveedores.tiempo = ahora;
+    return cacheProveedores.datos;
+}
+
+// ========================================
+// CARGA DE PROVEEDORES EN CONTENEDOR (versión mejorada)
 // ========================================
 async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraClave = null) {
     const container = document.getElementById(contenedorId);
     if (!container) return;
     
     try {
-        const response = await fetch('data/proveedores.json');
-        if (!response.ok) throw new Error('No se pudo cargar el archivo de datos');
-        const proveedores = await response.json();
+        const todos = await obtenerProveedores();
         
         // Ordenar por plan: Ultra Premium > Premium > Gratuito
         const ordenPorPlan = { 'ultra_premium': 0, 'premium': 1, 'gratuito': 2 };
-        proveedores.sort((a, b) => (ordenPorPlan[a.tipo_plan] || 2) - (ordenPorPlan[b.tipo_plan] || 2));
+        todos.sort((a, b) => (ordenPorPlan[a.tipo_plan] || 2) - (ordenPorPlan[b.tipo_plan] || 2));
         
-        // Filtrar por categoría
-        let filtrados = proveedores.filter(p => p.categoria.toLowerCase() === categoria.toLowerCase());
+        // Filtrar por categoría (normalizado)
+        const catNormal = normalizarTexto(categoria);
+        let filtrados = todos.filter(p => normalizarTexto(p.categoria) === catNormal);
         
         // Si hay palabra clave, filtrar además por subcategoría, nombre o descripción
         if (palabraClave) {
-            filtrados = filtrados.filter(p => {
-                const textoBusqueda = `${p.subcategoria} ${p.nombre} ${p.descripcion}`.toLowerCase();
-                return textoBusqueda.includes(palabraClave.toLowerCase());
-            });
+            const clave = normalizarTexto(palabraClave);
+            
+            // Priorizar coincidencias en subcategoría (evita duplicados entre secciones)
+            let porSubcategoria = filtrados.filter(p =>
+                normalizarTexto(p.subcategoria).includes(clave)
+            );
+            
+            if (porSubcategoria.length > 0) {
+                filtrados = porSubcategoria;
+            } else {
+                filtrados = filtrados.filter(p => {
+                    const textoBusqueda = normalizarTexto(`${p.subcategoria} ${p.nombre} ${p.descripcion}`);
+                    return textoBusqueda.includes(clave);
+                });
+            }
         }
         
         if (filtrados.length === 0) {
             container.innerHTML = `
                 <div class="no-data fade-in visible" style="text-align:center; padding: 2rem; color: #666; grid-column: 1/-1;">
                     <i class="fas fa-info-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block; color: #cbd5e1;"></i>
-                    <p>Próximamente agregaremos más proveedores de esta categoría.</p>
+                    <p>Próximamente agregaremos más proveedores de esta sección.</p>
+                    <a href="https://wa.me/59176536286?text=Hola,%20estoy%20buscando%20un%20proveedor" 
+                       class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer" style="margin-top:0.5rem;">
+                       <i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
                 </div>`;
             return;
         }
@@ -227,9 +294,7 @@ async function cargarDestacados() {
     if (!container) return;
     
     try {
-        const response = await fetch('data/proveedores.json');
-        if (!response.ok) throw new Error('No se pudo cargar');
-        const proveedores = await response.json();
+        const proveedores = await obtenerProveedores();
         
         // Filtrar solo los destacados y ordenar por plan
         const ordenPorPlan = { 'ultra_premium': 0, 'premium': 1, 'gratuito': 2 };
@@ -494,13 +559,16 @@ function initBusquedaInteligente() {
     const searchResults = document.getElementById('searchResults');
     if (!searchInput || !searchResults) return;
     
+    // Datos de búsqueda actualizados con las 8 categorías
     const datosBusqueda = [
         { nombre: 'Salud y Bienestar', categoria: 'salud', icono: 'fa-heartbeat', url: 'salud.html', tipo: 'Categoría' },
         { nombre: 'Mantenimiento del Hogar', categoria: 'hogar', icono: 'fa-tools', url: 'hogar.html', tipo: 'Categoría' },
+        { nombre: 'Materiales de Construcción', categoria: 'construccion', icono: 'fa-cubes', url: 'construccion.html', tipo: 'Categoría' },
         { nombre: 'Talleres Automotrices', categoria: 'automotriz', icono: 'fa-car', url: 'automotriz.html', tipo: 'Categoría' },
         { nombre: 'Tecnología y Redes', categoria: 'tecnologia', icono: 'fa-laptop-code', url: 'tecnologia.html', tipo: 'Categoría' },
         { nombre: 'Servicios de Despedida', categoria: 'funeraria', icono: 'fa-dove', url: 'funerarias.html', tipo: 'Categoría' },
         { nombre: 'Servicios para Eventos', categoria: 'eventos', icono: 'fa-calendar-alt', url: 'eventos.html', tipo: 'Categoría' },
+        { nombre: 'Imagen y Cuidado Personal', categoria: 'imagen', icono: 'fa-spa', url: 'imagen.html', tipo: 'Categoría' },
         { nombre: 'Contacto', categoria: 'contacto', icono: 'fa-envelope', url: 'contacto.html', tipo: 'Página' }
     ];
     

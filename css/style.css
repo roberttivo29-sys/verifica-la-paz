@@ -61,6 +61,20 @@
     --color-eventos-claro: #A78BFA;
     --bg-eventos: #F3E8FF;
     
+    /* Color para Materiales de Construcción */
+    --color-construccion: #C2410C;
+    --color-construccion-claro: #EA580C;
+    --bg-construccion: #FFF7ED;
+    --gradiente-construccion: linear-gradient(135deg, #C2410C 0%, #EA580C 100%);
+    
+    /* Color para Imagen y Cuidado Personal */
+    --color-imagen: #7C3AED;
+    --color-imagen-claro: #8B5CF6;
+    --color-imagen-oscuro: #6D28D9;
+    --bg-imagen: #F5F3FF;
+    --gradiente-imagen: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+    --sombra-glow-imagen: 0 0 40px rgba(124, 58, 237, 0.3);
+    
     /* Gradientes Modernos */
     --gradiente-principal: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradiente-azul: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
@@ -126,6 +140,19 @@ body {
     outline-offset: 2px;
     border-radius: var(--radio-sm);
 }
+
+/* ========================================
+   ESTRUCTURA PRINCIPAL (Content Grid)
+   ======================================== */
+.content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 2rem;
+    align-items: start;
+}
+.content-main { min-width: 0; }
+.content-main .category-card,
+.content-main .destacado-card { min-width: 0; }
 
 /* ========================================
    HEADER MODERNO (Glassmorphism)
@@ -493,6 +520,10 @@ body {
 .btn-funeraria:hover { background: var(--color-funeraria-claro); box-shadow: 0 8px 20px rgba(67, 56, 202, 0.4); }
 .btn-eventos { background: var(--color-eventos); color: var(--blanco); }
 .btn-eventos:hover { background: var(--color-eventos-claro); box-shadow: var(--sombra-glow-eventos); }
+.btn-construccion { background: var(--color-construccion); color: var(--blanco); }
+.btn-construccion:hover { background: var(--color-construccion-claro); box-shadow: 0 8px 20px rgba(194, 65, 12, 0.35); }
+.btn-imagen { background: var(--color-imagen); color: var(--blanco); }
+.btn-imagen:hover { background: var(--color-imagen-claro); box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4); }
 
 .btn-outline.btn-salud { border-color: var(--color-salud); color: var(--color-salud); }
 .btn-outline.btn-salud:hover { background: var(--color-salud); color: var(--blanco); }
@@ -506,6 +537,10 @@ body {
 .btn-outline.btn-funeraria:hover { background: var(--color-funeraria); color: var(--blanco); }
 .btn-outline.btn-eventos { border-color: var(--color-eventos); color: var(--color-eventos); }
 .btn-outline.btn-eventos:hover { background: var(--color-eventos); color: var(--blanco); }
+.btn-outline.btn-construccion { border-color: var(--color-construccion); color: var(--color-construccion); background: transparent; }
+.btn-outline.btn-construccion:hover { background: var(--color-construccion); color: var(--blanco); }
+.btn-outline.btn-imagen { border-color: var(--color-imagen); color: var(--color-imagen); }
+.btn-outline.btn-imagen:hover { background: var(--color-imagen); color: var(--blanco); }
 
 .btn-sm { padding: 0.5rem 1rem; font-size: 0.85rem; }
 
@@ -628,6 +663,12 @@ body {
 .category-eventos::before { background: var(--gradiente-eventos); }
 .category-eventos .category-icon { background: var(--bg-eventos); color: var(--color-eventos); }
 .category-eventos:hover .category-icon { transform: scale(1.1) rotate(5deg); }
+.category-construccion::before { background: var(--gradiente-construccion); }
+.category-construccion .category-icon { background: var(--bg-construccion); color: var(--color-construccion); }
+.category-construccion:hover .category-icon { transform: scale(1.1) rotate(5deg); }
+.category-imagen::before { background: var(--gradiente-imagen); }
+.category-imagen .category-icon { background: var(--bg-imagen); color: var(--color-imagen); }
+.category-imagen:hover .category-icon { transform: scale(1.1) rotate(5deg); }
 
 .category-card h3 { font-family: var(--fuente-titulos); font-size: 1.5rem; font-weight: 800; color: var(--azul-profundo); text-align: center; margin-bottom: var(--espacio-xs); }
 .category-subtitle { text-align: center; color: var(--dorado-oscuro); font-weight: 600; font-size: 0.9rem; margin-bottom: var(--espacio-md); }
@@ -668,59 +709,23 @@ body {
     transform: scale(1.03);
 }
 
-/* 1 imagen: ocupa todo el ancho */
-.galeria-1 {
-    height: 220px;
-}
-.galeria-1 .img-galeria {
-    height: 220px;
-}
+.galeria-1 { height: 220px; }
+.galeria-1 .img-galeria { height: 220px; }
 
-/* 2 imágenes: lado a lado SIN GAP */
-.galeria-2 {
-    height: 200px;
-    flex-direction: row;
-    gap: 0;
-}
-.galeria-2 .img-galeria {
-    width: 50%;
-    height: 200px;
-    border-right: 3px solid white;
-    flex-shrink: 0;
-}
-.galeria-2 .img-galeria:last-child {
-    border-right: none;
-}
+.galeria-2 { height: 200px; flex-direction: row; gap: 0; }
+.galeria-2 .img-galeria { width: 50%; height: 200px; border-right: 3px solid white; flex-shrink: 0; }
+.galeria-2 .img-galeria:last-child { border-right: none; }
 
-/* 3-4 imágenes: principal grande + secundarias abajo */
-.galeria-3, .galeria-4 {
-    flex-direction: column;
-    height: auto;
-}
+.galeria-3, .galeria-4 { flex-direction: column; height: auto; }
 
 .galeria-3 .img-principal,
-.galeria-4 .img-principal {
-    width: 100%;
-    height: 200px;
-    border-radius: 10px 10px 0 0;
-}
+.galeria-4 .img-principal { width: 100%; height: 200px; border-radius: 10px 10px 0 0; }
 
-.galeria-secundarias {
-    display: flex;
-    gap: 0;
-    width: 100%;
-}
+.galeria-secundarias { display: flex; gap: 0; width: 100%; }
 
-.galeria-secundarias .img-galeria {
-    flex: 1;
-    height: 90px;
-    border-radius: 0 0 10px 10px;
-    border-right: 3px solid white;
-}
+.galeria-secundarias .img-galeria { flex: 1; height: 90px; border-radius: 0 0 10px 10px; border-right: 3px solid white; }
 
-.galeria-secundarias .img-galeria:last-child {
-    border-right: none;
-}
+.galeria-secundarias .img-galeria:last-child { border-right: none; }
 
 /* ========================================
    TESTIMONIOS
@@ -869,6 +874,8 @@ body {
 .destacado-card.category-tecnologia::before { background: linear-gradient(135deg, var(--color-tecnologia), var(--color-tecnologia-claro)); }
 .destacado-card.category-funeraria::before { background: linear-gradient(135deg, var(--color-funeraria), var(--color-funeraria-claro)); }
 .destacado-card.category-eventos::before { background: var(--gradiente-eventos); }
+.destacado-card.category-construccion::before { background: var(--gradiente-construccion); }
+.destacado-card.category-imagen::before { background: var(--gradiente-imagen); }
 
 .destacado-card:hover { transform: translateY(-5px); box-shadow: var(--sombra-xl); }
 
@@ -1183,10 +1190,33 @@ body {
     padding: 0 var(--espacio-md);
 }
 
+/* Aviso de directorio (para Construcción) */
+.aviso-directorio {
+    max-width: 720px;
+    margin: 0 auto 1.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+}
+
 /* ========================================
-   RESPONSIVE - TABLET (968px)
+   RESPONSIVE - NAV EXTENSA (9 categorías)
    ======================================== */
-@media (max-width: 968px) {
+@media (min-width: 1101px) {
+    .nav { gap: 2px; flex-wrap: nowrap; }
+    .nav-link { padding: 0.5rem 0.6rem; font-size: 0.82rem; }
+    .nav-link i { margin-right: 4px; font-size: 0.8rem; }
+    .logo h1 { font-size: 1.4rem; }
+}
+
+/* ========================================
+   RESPONSIVE - TABLET (1100px)
+   ======================================== */
+@media (max-width: 1100px) {
     .menu-toggle { display: flex; }
     .nav { 
         position: fixed; 
@@ -1219,7 +1249,8 @@ body {
     .section-title { font-size: 1.75rem; }
     .categories-grid { grid-template-columns: 1fr; }
     .why-us-grid { grid-template-columns: 1fr; }
-    .sidebar { position: static; }
+    .sidebar { position: static; margin-top: 1rem; }
+    .content-grid { grid-template-columns: 1fr; gap: 2rem; }
     .back-to-top { bottom: 90px; right: 20px; width: 45px; height: 45px; }
     .toast-container { top: 80px; right: 10px; left: 10px; max-width: none; }
     
@@ -1446,6 +1477,9 @@ body {
         padding: 0.6rem 1rem;
         min-height: 38px;
     }
+    
+    /* Aviso directorio en móvil */
+    .aviso-directorio { font-size: 0.75rem; text-align: left; }
 }
 
 /* ========================================
