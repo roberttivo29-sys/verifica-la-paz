@@ -153,18 +153,44 @@ body {
 
 .tagline { font-size: 0.75rem; color: var(--dorado-oscuro); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
+/* ========================================
+   MENU HAMBURGUESA - TAMAÑO ESTÁNDAR OPTIMIZADO
+   Según Apple HIG (44x44px) y Material Design (48x48dp)
+   ======================================== */
 .menu-toggle {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 11px; /* 44px total (11px padding x 2 + 22px icon) */
     z-index: 1001;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: var(--radio-sm);
+    transition: var(--transicion-rapida);
 }
 
-.menu-toggle span { width: 25px; height: 3px; background: var(--azul-profundo); border-radius: 2px; transition: var(--transicion-normal); }
+.menu-toggle:hover {
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.menu-toggle:active {
+    transform: scale(0.95);
+}
+
+.menu-toggle span {
+    width: 22px; /* Tamaño estándar de línea */
+    height: 2.5px; /* Grosor optimizado */
+    background: var(--azul-profundo);
+    border-radius: 2px;
+    transition: var(--transicion-normal);
+    display: block;
+}
+
 .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
@@ -1438,6 +1464,18 @@ kbd {
     .logo h1 { font-size: 1.2rem; }
     .logo h1 i { font-size: 1.1rem; }
     .tagline { font-size: 0.6rem; }
+    
+    /* MENU HAMBURGUESA OPTIMIZADO PARA MÓVIL */
+    .menu-toggle {
+        padding: 10px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+    }
+    
+    .menu-toggle span {
+        width: 20px !important;
+        height: 2.5px !important;
+    }
     
     .hero { 
         padding: 1rem 0.5rem;
