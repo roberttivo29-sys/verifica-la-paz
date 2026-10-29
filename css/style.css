@@ -1,7 +1,8 @@
 /* ========================================
-   VERIFICA LA PAZ - CSS v8.7
-   Desktop: Número visible pero equilibrado
-   Móvil: Compacto para ver categorías
+   VERIFICA LA PAZ - CSS v8.8
+   Desktop: Número visible equilibrado
+   Móvil: Ultra compacto - 8 categorías visibles
+   Última actualización: Octubre 2026
    ======================================== */
 
 * {
@@ -1431,85 +1432,94 @@ kbd {
 }
 
 @media (max-width: 768px) {
-    .header { padding: 0.5rem 0; }
-    .logo h1 { font-size: 1.3rem; }
-    .logo h1 i { font-size: 1.2rem; }
-    .tagline { font-size: 0.65rem; }
+    .header { padding: 0.4rem 0; }
+    .logo h1 { font-size: 1.2rem; }
+    .logo h1 i { font-size: 1.1rem; }
+    .tagline { font-size: 0.6rem; }
     
     .hero { 
-        padding: 1.5rem 1rem;
+        padding: 1rem 0.75rem;
         border-radius: var(--radio-lg);
-        margin-bottom: var(--espacio-lg);
+        margin-bottom: 1rem;
     }
     .hero-title { 
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+        line-height: 1.2;
     }
     .hero-subtitle,
     .hero-subtitle-short { 
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.4;
     }
 
-    /* CTA WhatsApp Móvil - COMPACTO */
+    /* CTA WhatsApp Móvil - ULTRA COMPACTO */
     .whatsapp-contact-box {
-        flex-direction: column;
-        gap: 0.75rem;
-        padding: 1rem 1.25rem;
-        margin-bottom: 0.5rem;
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+        margin-bottom: 0.4rem;
+        flex-wrap: nowrap;
     }
     
     .whatsapp-number {
-        font-size: 1.8rem;
-        gap: 0.5rem;
+        font-size: 1.3rem;
+        gap: 0.3rem;
+        flex-shrink: 0;
     }
     
     .whatsapp-number i {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
     
     .btn-whatsapp-directo {
-        width: 100%;
+        flex: 1;
         justify-content: center;
-        padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
     }
     
     .btn-whatsapp-directo i {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
     
     .whatsapp-subtexto {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
     }
     
     .hero-buttons { 
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.5rem;
-        margin-top: 1rem;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
     }
     .hero-buttons .btn { 
-        padding: 0.7rem 0.5rem; 
-        font-size: 0.8rem;
+        padding: 0.5rem 0.3rem; 
+        font-size: 0.75rem;
+    }
+    .hero-buttons .btn i {
+        font-size: 0.75rem;
     }
     .hero-features { 
         flex-direction: column; 
-        gap: var(--espacio-xs);
-        margin-bottom: var(--espacio-md);
+        gap: 0.3rem;
+        margin-bottom: 0.5rem;
     }
-    .hero-feature { font-size: 0.85rem; }
-    .hero-feature i { font-size: 1rem; }
+    .hero-feature { font-size: 0.75rem; }
+    .hero-feature i { font-size: 0.85rem; }
     .btn-provider-link { 
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
     }
     
     .section-title { 
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         margin-bottom: var(--espacio-sm);
     }
     .section-description { 
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         margin-bottom: var(--espacio-md);
     }
     
@@ -1518,38 +1528,38 @@ kbd {
         gap: var(--espacio-sm);
     }
     .stat-card { padding: var(--espacio-md); }
-    .stat-icon { font-size: 2rem; }
-    .stat-number { font-size: 1.8rem; }
-    .stat-label { font-size: 0.8rem; }
+    .stat-icon { font-size: 1.5rem; }
+    .stat-number { font-size: 1.5rem; }
+    .stat-label { font-size: 0.75rem; }
     
     .category-card.minimal .category-services {
         display: block;
-        margin-top: 0.75rem;
-        padding-top: 0.75rem;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
         border-top: 1px solid var(--gris-borde);
     }
     
     .category-card.minimal .category-services li {
-        font-size: 0.85rem;
-        padding: 0.3rem 0;
+        font-size: 0.8rem;
+        padding: 0.2rem 0;
     }
     
     .category-card.minimal {
-        padding: 1.25rem;
+        padding: 1rem;
     }
     
     .category-card.minimal .category-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
     
     .category-card.minimal h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .category-card.minimal > p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
     
     .categories-grid { 
@@ -1558,25 +1568,25 @@ kbd {
     }
     .category-card { padding: var(--espacio-md); }
     .category-icon { 
-        width: 60px; 
-        height: 60px; 
-        font-size: 2rem;
+        width: 55px; 
+        height: 55px; 
+        font-size: 1.8rem;
         margin-bottom: var(--espacio-sm);
     }
-    .category-card h3 { font-size: 1.25rem; }
-    .category-actions .btn { min-width: 120px; font-size: 0.85rem; }
+    .category-card h3 { font-size: 1.15rem; }
+    .category-actions .btn { min-width: 110px; font-size: 0.8rem; }
     
     .galeria-1,
-    .galeria-1 .img-galeria { height: 180px; }
+    .galeria-1 .img-galeria { height: 160px; }
     
     .galeria-2 { 
-        height: 140px !important; 
+        height: 130px !important; 
         flex-direction: row !important;
         gap: 0 !important;
     }
     .galeria-2 .img-galeria { 
         width: 50% !important;
-        height: 140px !important;
+        height: 130px !important;
         border-right: 2px solid white;
         flex-shrink: 0;
     }
@@ -1584,11 +1594,11 @@ kbd {
     
     .galeria-3, .galeria-4 { flex-direction: column; }
     .galeria-3 .img-principal,
-    .galeria-4 .img-principal { height: 140px; }
+    .galeria-4 .img-principal { height: 130px; }
     
     .galeria-secundarias { flex-direction: row !important; flex-wrap: nowrap; gap: 0; }
     .galeria-secundarias .img-galeria { 
-        height: 60px;
+        height: 55px;
         flex: 1;
         min-width: 0;
         border-right: 2px solid white;
@@ -1606,17 +1616,17 @@ kbd {
     .why-us-grid { grid-template-columns: 1fr; }
     .why-card { padding: var(--espacio-md); }
     .why-icon { 
-        width: 60px; 
-        height: 60px; 
-        font-size: 1.5rem;
+        width: 55px; 
+        height: 55px; 
+        font-size: 1.3rem;
     }
-    .why-card h3 { font-size: 1.1rem; }
+    .why-card h3 { font-size: 1rem; }
     
     .featured-section { 
         padding: var(--espacio-md);
         border-left-width: 4px;
     }
-    .featured-section h3 { font-size: 1.3rem; }
+    .featured-section h3 { font-size: 1.2rem; }
     
     .destacados-grid { 
         grid-template-columns: 1fr;
@@ -1628,23 +1638,23 @@ kbd {
         grid-template-columns: 1fr;
         gap: var(--espacio-lg);
     }
-    .footer-section h3 { font-size: 1.2rem; }
-    .footer-section h4 { font-size: 1rem; }
-    .footer-legal p { font-size: 0.75rem; }
+    .footer-section h3 { font-size: 1.1rem; }
+    .footer-section h4 { font-size: 0.95rem; }
+    .footer-legal p { font-size: 0.7rem; }
     
     .whatsapp-float { 
-        width: 55px; 
-        height: 55px; 
-        font-size: 1.6rem; 
-        bottom: 20px; 
-        right: 20px;
+        width: 50px; 
+        height: 50px; 
+        font-size: 1.4rem; 
+        bottom: 15px; 
+        right: 15px;
     }
     .back-to-top { 
-        bottom: 85px; 
-        right: 20px; 
-        width: 45px; 
-        height: 45px;
-        font-size: 1rem;
+        bottom: 75px; 
+        right: 15px; 
+        width: 40px; 
+        height: 40px;
+        font-size: 0.9rem;
     }
     
     .sidebar { 
@@ -1652,34 +1662,34 @@ kbd {
         margin-top: var(--espacio-lg);
     }
     .sidebar-section { padding: var(--espacio-md); }
-    .sidebar-compact .sidebar-section { padding: 1rem; }
+    .sidebar-compact .sidebar-section { padding: 0.75rem; }
     
     .toast-container { 
         top: auto;
-        bottom: 90px;
+        bottom: 80px;
         right: 10px; 
         left: 10px; 
         max-width: none;
     }
-    .toast { font-size: 0.9rem; }
+    .toast { font-size: 0.85rem; }
     
     .btn { 
-        padding: 0.9rem 1.5rem;
-        min-height: 44px;
+        padding: 0.75rem 1.25rem;
+        min-height: 40px;
     }
     .btn-sm { 
-        padding: 0.6rem 1rem;
-        min-height: 38px;
+        padding: 0.5rem 0.75rem;
+        min-height: 36px;
     }
     
-    .aviso-directorio { font-size: 0.75rem; text-align: left; }
+    .aviso-directorio { font-size: 0.7rem; text-align: left; }
 
     .smart-contact-buttons {
-        bottom: 15px;
-        right: 15px;
+        bottom: 12px;
+        right: 12px;
     }
-    .contact-btn { width: 50px; height: 50px; font-size: 1.3rem; }
-    .contact-btn.primary { width: 56px; height: 56px; }
+    .contact-btn { width: 45px; height: 45px; font-size: 1.2rem; }
+    .contact-btn.primary { width: 50px; height: 50px; }
     .btn-tooltip { display: none; }
 }
 
@@ -1689,12 +1699,12 @@ kbd {
     .hero-subtitle-short { font-size: 0.85rem; }
     
     .whatsapp-number {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .btn-whatsapp-directo {
-        padding: 0.65rem 1.25rem;
-        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
     }
     
     .hero-buttons { 
@@ -1702,11 +1712,11 @@ kbd {
         gap: 0.4rem;
     }
     .hero-buttons .btn { 
-        padding: 0.6rem 0.3rem; 
-        font-size: 0.75rem;
+        padding: 0.5rem 0.3rem; 
+        font-size: 0.7rem;
     }
     .hero-buttons .btn i {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
     .stats-grid { grid-template-columns: 1fr; }
     .logo h1 { font-size: 1.05rem; }
