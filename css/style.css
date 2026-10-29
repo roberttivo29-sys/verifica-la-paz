@@ -1,6 +1,6 @@
 /* ========================================
-   VERIFICA LA PAZ - CSS v9.0
-   Móvil: Márgenes mínimos + Stats 2x2 + Textos balanceados
+   VERIFICA LA PAZ - CSS v9.1
+   Móvil: Márgenes mínimos + Stats 2x2 + Textos balanceados + Menú hamburguesa compacto
    Desktop: Sin cambios
    Última actualización: Octubre 2026
    ======================================== */
@@ -154,8 +154,7 @@ body {
 .tagline { font-size: 0.75rem; color: var(--dorado-oscuro); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
 /* ========================================
-   MENU HAMBURGUESA - TAMAÑO ESTÁNDAR OPTIMIZADO
-   Según Apple HIG (44x44px) y Material Design (48x48dp)
+   MENU HAMBURGUESA - TAMAÑO ESTÁNDAR
    ======================================== */
 .menu-toggle {
     display: none;
@@ -166,7 +165,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 11px; /* 44px total (11px padding x 2 + 22px icon) */
+    padding: 11px;
     z-index: 1001;
     min-width: 44px;
     min-height: 44px;
@@ -183,8 +182,8 @@ body {
 }
 
 .menu-toggle span {
-    width: 22px; /* Tamaño estándar de línea */
-    height: 2.5px; /* Grosor optimizado */
+    width: 22px;
+    height: 2.5px;
     background: var(--azul-profundo);
     border-radius: 2px;
     transition: var(--transicion-normal);
@@ -324,9 +323,6 @@ body {
     line-height: 1.5;
 }
 
-/* ========================================
-   CTA WHATSAPP - DESKTOP EQUILIBRADO
-   ======================================== */
 .hero-cta-whatsapp {
     max-width: 650px;
     margin: 0 auto var(--espacio-lg);
@@ -1418,26 +1414,27 @@ kbd {
         position: fixed; 
         top: 0; 
         right: -100%; 
-        width: 80%; 
-        max-width: 400px; 
+        width: 75%; 
+        max-width: 280px; 
         height: 100vh; 
         background: var(--blanco); 
         flex-direction: column; 
-        padding: var(--espacio-xl); 
+        padding: 1.5rem 1rem; 
         box-shadow: var(--sombra-xl); 
         transition: var(--transicion-normal); 
         z-index: 1000; 
         overflow-y: auto;
         align-items: stretch;
+        gap: 0.25rem;
     }
     .nav.active { right: 0; }
     .nav-link { 
         width: 100%; 
         text-align: center; 
-        padding: var(--espacio-md);
-        font-size: 1rem;
+        padding: 0.75rem 0.5rem;
+        font-size: 0.95rem;
     }
-    .btn-proveedor { margin-top: var(--espacio-md); justify-content: center; }
+    .btn-proveedor { margin-top: 0.75rem; justify-content: center; }
     
     .hero-title { font-size: 2.25rem; }
     .hero-buttons { grid-template-columns: repeat(2, 1fr); }
@@ -1458,14 +1455,12 @@ kbd {
 }
 
 @media (max-width: 768px) {
-    /* Márgenes mínimos en todo el móvil */
     .header { padding: 0.4rem 0; }
     .container { padding: 0 0.5rem; }
     .logo h1 { font-size: 1.2rem; }
     .logo h1 i { font-size: 1.1rem; }
     .tagline { font-size: 0.6rem; }
     
-    /* MENU HAMBURGUESA OPTIMIZADO PARA MÓVIL */
     .menu-toggle {
         padding: 10px !important;
         min-width: 44px !important;
@@ -1475,6 +1470,24 @@ kbd {
     .menu-toggle span {
         width: 20px !important;
         height: 2.5px !important;
+    }
+    
+    .nav {
+        width: 70% !important;
+        max-width: 260px !important;
+        padding: 1.25rem 0.75rem !important;
+        gap: 0.2rem !important;
+    }
+    
+    .nav-link {
+        padding: 0.65rem 0.5rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .btn-proveedor {
+        margin-top: 0.5rem !important;
+        padding: 0.6rem 0.75rem !important;
+        font-size: 0.85rem !important;
     }
     
     .hero { 
@@ -1494,7 +1507,6 @@ kbd {
         line-height: 1.4;
     }
 
-    /* CTA WhatsApp Móvil - Compacto y balanceado */
     .whatsapp-contact-box {
         flex-direction: row;
         gap: 0.5rem;
@@ -1565,7 +1577,6 @@ kbd {
         padding: 0 0.5rem;
     }
     
-    /* Stats Grid 2x2 FORZADO en todos los móviles */
     .stats-grid { 
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.5rem;
@@ -1780,7 +1791,6 @@ kbd {
         font-size: 0.7rem;
     }
     
-    /* Stats 2x2 también en pantallas muy pequeñas */
     .stats-grid { 
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.4rem;
