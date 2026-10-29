@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Verifica La Paz - Directorio verificado de servicios en La Paz y El Alto. Clínicas, talleres, técnicos y más con datos confirmados.">
+    <meta name="description" content="Verifica La Paz - Directorio verificado de servicios en La Paz y El Alto.">
     <meta property="og:title" content="Verifica La Paz | Primero verifica. Después resuelve.">
     <meta property="og:description" content="Directorio de confianza con servicios verificados en La Paz y El Alto.">
     <meta property="og:type" content="website">
@@ -68,13 +68,23 @@
                         <div class="hero-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Directorio de Confianza</div>
                         <h2 class="hero-title" id="hero-title">Encuentra servicios de confianza en La Paz y El Alto</h2>
                         <p class="hero-subtitle hero-subtitle-short">Directorio verificado de servicios en La Paz y El Alto. Cotiza directo con proveedores de confianza.</p>
-                        <div class="hero-search">
-                            <div class="search-container">
-                                <i class="fas fa-search search-icon" aria-hidden="true"></i>
-                                <input type="search" id="busquedaGlobal" class="search-input" placeholder="Buscar servicio, proveedor o categoría... (Ctrl+K para búsqueda rápida)" aria-label="Buscar en el directorio" autocomplete="off">
-                                <div id="searchResults" class="search-results" role="listbox" aria-label="Resultados de búsqueda"></div>
+                        
+                        <!-- CTA WhatsApp con número visible -->
+                        <div class="hero-cta-whatsapp">
+                            <div class="whatsapp-contact-box">
+                                <div class="whatsapp-number">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <a href="tel:+59176536286" class="numero-telefono">76536286</a>
+                                </div>
+                                <a href="https://wa.me/59176536286?text=Hola,%20necesito%20un%20servicio%20verificado" 
+                                   class="btn-whatsapp-directo" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>Escríbenos ahora</span>
+                                </a>
                             </div>
+                            <p class="whatsapp-subtexto">Respuesta en menos de 2 horas · Lunes a Domingo</p>
                         </div>
+
                         <div class="hero-buttons">
                             <a href="salud.html" class="btn btn-primary btn-salud"><i class="fas fa-heartbeat" aria-hidden="true"></i> Salud</a>
                             <a href="hogar.html" class="btn btn-primary btn-hogar"><i class="fas fa-tools" aria-hidden="true"></i> Hogar</a>
@@ -381,7 +391,6 @@
         </div>
     </footer>
 
-    <!-- Elementos flotantes (los botones de contacto se inyectan automáticamente desde main.js) -->
     <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
     <button id="backToTop" class="back-to-top" aria-label="Volver arriba" title="Volver arriba"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
 

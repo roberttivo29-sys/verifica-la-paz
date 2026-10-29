@@ -1,7 +1,8 @@
 /* ========================================
-   VERIFICA LA PAZ - CSS v8.2 OPTIMIZADO
+   VERIFICA LA PAZ - CSS v8.5
    Diseño: Glassmorphism + Neumorphism
-   Rediseño: Tarjetas compactas + Multicanal
+   Rediseño: CTA WhatsApp con número visible
+   2 columnas en hero para TODOS los móviles
    Mobile First + Desktop Optimized
    Última actualización: Octubre 2026
    ======================================== */
@@ -13,7 +14,6 @@
 }
 
 :root {
-    /* Paleta Base */
     --azul-profundo: #0F172A;
     --azul-confianza: #2563EB;
     --azul-claro: #3B82F6;
@@ -24,8 +24,6 @@
     --verde-accion: #10B981;
     --verde-oscuro: #059669;
     --rojo-alerta: #EF4444;
-    
-    /* Grises */
     --gris-suave: #F8FAFC;
     --gris-medio: #64748B;
     --gris-claro: #94A3B8;
@@ -33,50 +31,37 @@
     --gris-oscuro: #334155;
     --blanco: #FFFFFF;
     --negro: #0F172A;
-    
-    /* Colores por Categoría */
     --color-salud: #0D9488;
     --color-salud-claro: #14B8A6;
     --bg-salud: #F0FDFA;
-    
     --color-hogar: #EA580C;
     --color-hogar-claro: #F97316;
     --bg-hogar: #FFF7ED;
-    
     --color-construccion: #C2410C;
     --color-construccion-claro: #EA580C;
     --bg-construccion: #FFF7ED;
-    
     --color-auto: #1D4ED8;
     --color-auto-claro: #3B82F6;
     --bg-auto: #EFF6FF;
-    
     --color-tecnologia: #0891B2;
     --color-tecnologia-claro: #06B6D4;
     --bg-tecnologia: #ECFEFF;
-    
     --color-funeraria: #4338CA;
     --color-funeraria-claro: #6366F1;
     --bg-funeraria: #EEF2FF;
-    
     --color-eventos: #8B5CF6;
     --color-eventos-claro: #A78BFA;
     --bg-eventos: #F3E8FF;
-    
     --color-imagen: #7C3AED;
     --color-imagen-claro: #8B5CF6;
     --color-imagen-oscuro: #6D28D9;
     --bg-imagen: #F5F3FF;
-    
-    /* Gradientes */
     --gradiente-azul: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
     --gradiente-dorado: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
     --gradiente-hero: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #2563EB 100%);
     --gradiente-eventos: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
     --gradiente-construccion: linear-gradient(135deg, #C2410C 0%, #EA580C 100%);
     --gradiente-imagen: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
-    
-    /* Sombras */
     --sombra-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --sombra-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --sombra-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -85,23 +70,15 @@
     --sombra-glow-azul: 0 0 40px rgba(37, 99, 235, 0.3);
     --sombra-glow-dorado: 0 0 40px rgba(245, 158, 11, 0.3);
     --sombra-glow-imagen: 0 0 40px rgba(124, 58, 237, 0.3);
-    
-    /* Bordes */
     --radio-sm: 8px;
     --radio-md: 12px;
     --radio-lg: 16px;
     --radio-xl: 24px;
     --radio-full: 9999px;
-    
-    /* Tipografías */
     --fuente-titulos: 'Poppins', sans-serif;
     --fuente-cuerpo: 'Inter', sans-serif;
-    
-    /* Transiciones */
     --transicion-rapida: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transicion-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Espaciado */
     --espacio-xs: 0.5rem;
     --espacio-sm: 1rem;
     --espacio-md: 1.5rem;
@@ -110,7 +87,6 @@
     --espacio-2xl: 4rem;
 }
 
-/* Reset y Base */
 html { scroll-behavior: smooth; }
 
 body {
@@ -133,9 +109,6 @@ body {
     border-radius: var(--radio-sm);
 }
 
-/* ========================================
-   ESTRUCTURA PRINCIPAL
-   ======================================== */
 .content-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 300px;
@@ -144,9 +117,6 @@ body {
 }
 .content-main { min-width: 0; }
 
-/* ========================================
-   HEADER (Glassmorphism)
-   ======================================== */
 .header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
@@ -185,7 +155,6 @@ body {
 
 .tagline { font-size: 0.75rem; color: var(--dorado-oscuro); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-/* Menú Hamburguesa */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -202,7 +171,6 @@ body {
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
 
-/* Navegación */
 .nav { display: flex; gap: var(--espacio-xs); align-items: center; flex-wrap: wrap; }
 
 .nav-link {
@@ -245,9 +213,6 @@ body {
 .btn-proveedor:hover { transform: translateY(-2px); box-shadow: var(--sombra-glow-dorado); color: var(--azul-profundo) !important; }
 .btn-proveedor::after { display: none; }
 
-/* ========================================
-   HERO REFINADO
-   ======================================== */
 .hero {
     background: var(--gradiente-hero);
     color: var(--blanco);
@@ -329,84 +294,95 @@ body {
 
 .hero-subtitle { font-size: 1.2rem; max-width: 700px; margin: 0 auto var(--espacio-xl); opacity: 0.9; line-height: 1.7; animation: fadeInUp 1s ease-out; }
 
-/* Subtítulo corto para el rediseño */
 .hero-subtitle-short {
     max-width: 650px;
     font-size: 1.1rem;
     line-height: 1.5;
 }
 
-/* Barra de búsqueda */
-.hero-search { max-width: 600px; margin: 0 auto var(--espacio-lg); animation: fadeInUp 1.1s ease-out; }
+/* ========================================
+   CTA WHATSAPP CON NÚMERO VISIBLE
+   ======================================== */
+.hero-cta-whatsapp {
+    max-width: 650px;
+    margin: 0 auto var(--espacio-lg);
+    animation: fadeInUp 1.1s ease-out;
+    text-align: center;
+}
 
-.search-container {
-    position: relative;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: var(--radio-full);
-    box-shadow: var(--sombra-lg);
-    transition: var(--transicion-normal);
+.whatsapp-contact-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-}
-
-.search-container:focus-within { box-shadow: var(--sombra-xl), var(--sombra-glow-azul); transform: translateY(-2px); }
-
-.search-icon { position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); color: var(--azul-confianza); font-size: 1.1rem; pointer-events: none; }
-
-.search-input {
-    width: 100%;
-    padding: 1.1rem 1.25rem 1.1rem 3rem;
-    border: none;
-    background: transparent;
-    font-size: 1rem;
-    color: var(--gris-oscuro);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radio-full);
-    outline: none;
-    font-family: var(--fuente-cuerpo);
+    padding: 1rem 2rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
 }
 
-.search-input::placeholder { color: var(--gris-claro); }
-
-.search-results {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-    right: 0;
-    background: var(--blanco);
-    border-radius: var(--radio-lg);
-    box-shadow: var(--sombra-xl);
-    max-height: 400px;
-    overflow-y: auto;
-    display: none;
-    z-index: 100;
-    border: 1px solid var(--gris-borde);
-}
-
-.search-results.active { display: block; animation: slideDown 0.3s ease-out; }
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.search-result-item {
-    padding: 0.875rem 1.25rem;
-    cursor: pointer;
+.whatsapp-number {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    transition: var(--transicion-rapida);
-    border-bottom: 1px solid var(--gris-borde);
-    color: var(--gris-oscuro);
-    text-decoration: none;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 900;
+    font-family: var(--fuente-titulos);
 }
 
-.search-result-item:last-child { border-bottom: none; }
-.search-result-item:hover, .search-result-item:focus { background: var(--gris-suave); color: var(--azul-confianza); }
-.search-result-item i { color: var(--dorado-calidad); font-size: 1.1rem; width: 20px; }
-.search-result-info strong { display: block; font-weight: 700; margin-bottom: 0.1rem; }
-.search-result-info span { font-size: 0.85rem; color: var(--gris-medio); }
+.whatsapp-number i {
+    font-size: 1.5rem;
+    color: var(--dorado-calidad);
+}
 
-/* Botones del Hero */
+.numero-telefono {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+}
+
+.numero-telefono:hover {
+    color: var(--dorado-calidad);
+}
+
+.btn-whatsapp-directo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #25D366;
+    color: white;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radio-full);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-whatsapp-directo:hover {
+    background: #20BA5A;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+}
+
+.btn-whatsapp-directo i {
+    font-size: 1.5rem;
+}
+
+.whatsapp-subtexto {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 500;
+}
+
 .hero-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -439,9 +415,6 @@ body {
 
 .btn-provider-link:hover { background: var(--dorado-calidad); color: var(--azul-profundo); transform: translateY(-2px); box-shadow: var(--sombra-glow-dorado); }
 
-/* ========================================
-   BOTONES MODERNOS
-   ======================================== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -504,7 +477,6 @@ body {
 
 .btn-submit:hover { transform: translateY(-2px); box-shadow: var(--sombra-glow-dorado); }
 
-/* Botones por Categoría */
 .btn-salud { background: var(--color-salud); color: var(--blanco); }
 .btn-salud:hover { background: var(--color-salud-claro); box-shadow: 0 8px 20px rgba(13, 148, 136, 0.4); }
 .btn-hogar { background: var(--color-hogar); color: var(--blanco); }
@@ -541,9 +513,6 @@ body {
 
 .btn-sm { padding: 0.5rem 1rem; font-size: 0.85rem; }
 
-/* ========================================
-   SECCIONES GENERALES
-   ======================================== */
 .section-title {
     font-family: var(--fuente-titulos);
     font-size: 2.25rem;
@@ -562,9 +531,6 @@ body {
 
 .section-description { text-align: center; font-size: 1.1rem; color: var(--gris-medio); max-width: 700px; margin: 0 auto var(--espacio-xl); line-height: 1.7; }
 
-/* ========================================
-   ESTADÍSTICAS
-   ======================================== */
 .stats-section { margin-bottom: var(--espacio-xl); }
 
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--espacio-md); }
@@ -613,9 +579,6 @@ body {
 
 .stat-label { font-size: 0.9rem; color: var(--gris-medio); font-weight: 600; }
 
-/* ========================================
-   CATEGORÍAS - VERSIÓN CLÁSICA (páginas internas)
-   ======================================== */
 .categories-section { margin-bottom: var(--espacio-xl); }
 .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--espacio-lg); }
 
@@ -677,9 +640,6 @@ body {
 
 .proveedores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--espacio-lg); margin-top: var(--espacio-md); }
 
-/* ========================================
-   CATEGORÍAS - VERSIÓN MINIMALISTA (portada)
-   ======================================== */
 .category-card.minimal {
     padding: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -714,7 +674,6 @@ body {
     color: var(--gris-medio);
 }
 
-/* Ocultar lista en desktop (sigue en HTML por Regla de Oro) */
 .category-card.minimal .category-services {
     display: none;
 }
@@ -730,7 +689,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Animación de entrada escalonada */
 .category-card.minimal {
     opacity: 0;
     animation: fadeInCard 0.5s ease forwards;
@@ -762,9 +720,6 @@ body {
     border-radius: var(--radio-lg);
 }
 
-/* ========================================
-   GALERÍA DE IMÁGENES
-   ======================================== */
 .galeria-proveedor {
     width: 100%;
     border-radius: 10px;
@@ -804,9 +759,6 @@ body {
 
 .galeria-secundarias .img-galeria:last-child { border-right: none; }
 
-/* ========================================
-   TESTIMONIOS
-   ======================================== */
 .testimonials-section { margin-bottom: var(--espacio-xl); }
 .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--espacio-lg); }
 
@@ -843,9 +795,6 @@ body {
 .author-info strong { display: block; color: var(--azul-profundo); font-weight: 700; font-size: 0.95rem; }
 .author-info span { color: var(--gris-medio); font-size: 0.85rem; }
 
-/* ========================================
-   SKELETON LOADING
-   ======================================== */
 .skeleton-card { background: var(--blanco); padding: var(--espacio-lg); border-radius: var(--radio-lg); box-shadow: var(--sombra-md); animation: skeleton-pulse 1.5s ease-in-out infinite; }
 .skeleton-badge, .skeleton-title, .skeleton-text, .skeleton-button { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: skeleton-shimmer 1.5s infinite; border-radius: var(--radio-sm); }
 .skeleton-badge { width: 120px; height: 24px; margin-bottom: var(--espacio-sm); }
@@ -857,9 +806,6 @@ body {
 @keyframes skeleton-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 @keyframes skeleton-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-/* ========================================
-   POR QUÉ ELEGIRNOS
-   ======================================== */
 .why-us-section { margin-bottom: var(--espacio-xl); }
 .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--espacio-lg); }
 
@@ -893,9 +839,6 @@ body {
 .why-card h3 { font-family: var(--fuente-titulos); font-size: 1.25rem; font-weight: 800; color: var(--azul-profundo); margin-bottom: var(--espacio-sm); }
 .why-card p { color: var(--gris-medio); line-height: 1.6; }
 
-/* ========================================
-   SERVICIO DESTACADO
-   ======================================== */
 .featured-section {
     background: var(--blanco);
     padding: var(--espacio-xl);
@@ -975,9 +918,6 @@ body {
 .no-data { text-align: center; padding: var(--espacio-xl); color: var(--gris-medio); grid-column: 1 / -1; }
 .no-data i { font-size: 3rem; color: var(--gris-claro); margin-bottom: var(--espacio-sm); display: block; }
 
-/* ========================================
-   SIDEBAR
-   ======================================== */
 .sidebar { position: sticky; top: 100px; height: fit-content; }
 
 .sidebar-section {
@@ -1005,7 +945,6 @@ body {
 .sidebar-section h3 i { color: var(--dorado-calidad); }
 .sidebar-section > p { color: var(--gris-medio); margin-bottom: var(--espacio-md); font-size: 0.95rem; }
 
-/* Sidebar compacto para portada */
 .sidebar-compact .sidebar-section {
     padding: 1.25rem;
 }
@@ -1040,9 +979,6 @@ body {
 .social-link.tiktok { background: #000000; }
 .social-link.tiktok:hover { background: #333333; transform: translateY(-2px); }
 
-/* ========================================
-   FOOTER
-   ======================================== */
 .footer { background: var(--azul-profundo); color: var(--blanco); padding: var(--espacio-2xl) 0 var(--espacio-lg); margin-top: var(--espacio-2xl); }
 .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--espacio-xl); margin-bottom: var(--espacio-xl); }
 
@@ -1072,9 +1008,6 @@ body {
 .copyright { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; }
 .copyright i { color: var(--rojo-alerta); }
 
-/* ========================================
-   BOTÓN WHATSAPP FLOTANTE
-   ======================================== */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -1102,9 +1035,6 @@ body {
 
 .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); background: #20BA5A; }
 
-/* ========================================
-   BOTÓN VOLVER ARRIBA
-   ======================================== */
 .back-to-top {
     position: fixed;
     bottom: 100px;
@@ -1131,9 +1061,6 @@ body {
 .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
 .back-to-top:hover { transform: translateY(-5px); box-shadow: var(--sombra-glow-azul); }
 
-/* ========================================
-   TOAST NOTIFICATIONS
-   ======================================== */
 .toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: var(--espacio-sm); max-width: 400px; pointer-events: none; }
 
 .toast {
@@ -1178,15 +1105,9 @@ body {
 .toast.hiding { animation: slideOutRight 0.3s ease-out forwards; }
 @keyframes slideOutRight { to { opacity: 0; transform: translateX(100%); } }
 
-/* ========================================
-   ANIMACIONES
-   ======================================== */
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ========================================
-   BADGES Y NIVELES
-   ======================================== */
 .badge-nivel {
     display: inline-flex;
     align-items: center;
@@ -1260,9 +1181,6 @@ body {
     color: rgba(255,255,255,0.85);
 }
 
-/* ========================================
-   NUEVO: CONTACTO MULTICANAL INTELIGENTE
-   ======================================== */
 .smart-contact-buttons {
     position: fixed;
     bottom: 20px;
@@ -1351,9 +1269,6 @@ body {
 .telegram-subtle-invite a { color: white; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.3s; }
 .telegram-subtle-invite a:hover { gap: 12px; }
 
-/* ========================================
-   NUEVO: BÚSQUEDA RÁPIDA (CTRL+K)
-   ======================================== */
 .quick-search-modal {
     display: none;
     position: fixed;
@@ -1455,9 +1370,6 @@ kbd {
     font-size: 0.85rem;
 }
 
-/* ========================================
-   RESPONSIVE - NAV EXTENSA (10+ categorías)
-   ======================================== */
 @media (min-width: 1400px) {
     .categories-grid {
         grid-template-columns: repeat(4, 1fr);
@@ -1476,9 +1388,6 @@ kbd {
     .logo h1 { font-size: 1.4rem; }
 }
 
-/* ========================================
-   RESPONSIVE - TABLET (769px a 1200px)
-   ======================================== */
 @media (max-width: 1200px) {
     .menu-toggle { display: flex; }
     .nav { 
@@ -1524,17 +1433,12 @@ kbd {
     .galeria-secundarias .img-galeria { height: 80px; }
 }
 
-/* ========================================
-   RESPONSIVE - MÓVIL (hasta 768px)
-   ======================================== */
 @media (max-width: 768px) {
-    /* Header compacto */
     .header { padding: 0.5rem 0; }
     .logo h1 { font-size: 1.3rem; }
     .logo h1 i { font-size: 1.2rem; }
     .tagline { font-size: 0.65rem; }
     
-    /* Hero optimizado */
     .hero { 
         padding: var(--espacio-xl) var(--espacio-md);
         border-radius: var(--radio-lg);
@@ -1549,8 +1453,24 @@ kbd {
         font-size: 0.95rem;
         margin-bottom: var(--espacio-md);
     }
+
+    .whatsapp-contact-box {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .whatsapp-number {
+        font-size: 1.5rem;
+    }
+    
+    .btn-whatsapp-directo {
+        width: 100%;
+        justify-content: center;
+    }
+    
     .hero-buttons { 
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.5rem;
     }
     .hero-buttons .btn { 
@@ -1569,14 +1489,6 @@ kbd {
         font-size: 0.9rem;
     }
     
-    /* Búsqueda */
-    .search-input { 
-        padding: 0.9rem 0.9rem 0.9rem 2.5rem; 
-        font-size: 0.9rem;
-    }
-    .search-icon { left: 1rem; font-size: 1rem; }
-    
-    /* Secciones */
     .section-title { 
         font-size: 1.4rem;
         margin-bottom: var(--espacio-sm);
@@ -1586,7 +1498,6 @@ kbd {
         margin-bottom: var(--espacio-md);
     }
     
-    /* Estadísticas en 2 columnas */
     .stats-grid { 
         grid-template-columns: repeat(2, 1fr);
         gap: var(--espacio-sm);
@@ -1596,7 +1507,6 @@ kbd {
     .stat-number { font-size: 1.8rem; }
     .stat-label { font-size: 0.8rem; }
     
-    /* Categorías minimalistas en móvil - mostrar lista */
     .category-card.minimal .category-services {
         display: block;
         margin-top: 0.75rem;
@@ -1641,7 +1551,6 @@ kbd {
     .category-card h3 { font-size: 1.25rem; }
     .category-actions .btn { min-width: 120px; font-size: 0.85rem; }
     
-    /* Galería móvil */
     .galeria-1,
     .galeria-1 .img-galeria { height: 180px; }
     
@@ -1671,17 +1580,14 @@ kbd {
     }
     .galeria-secundarias .img-galeria:last-child { border-right: none; }
     
-    /* Proveedores */
     .proveedores-grid { 
         grid-template-columns: 1fr;
         gap: var(--espacio-md);
     }
     
-    /* Testimonios */
     .testimonials-grid { grid-template-columns: 1fr; }
     .testimonial-card { padding: var(--espacio-md); }
     
-    /* Why us */
     .why-us-grid { grid-template-columns: 1fr; }
     .why-card { padding: var(--espacio-md); }
     .why-icon { 
@@ -1691,20 +1597,17 @@ kbd {
     }
     .why-card h3 { font-size: 1.1rem; }
     
-    /* Featured */
     .featured-section { 
         padding: var(--espacio-md);
         border-left-width: 4px;
     }
     .featured-section h3 { font-size: 1.3rem; }
     
-    /* Destacados */
     .destacados-grid { 
         grid-template-columns: 1fr;
     }
     .destacado-card { padding: var(--espacio-sm); }
     
-    /* Footer */
     .footer { padding: var(--espacio-xl) 0 var(--espacio-md); }
     .footer-content { 
         grid-template-columns: 1fr;
@@ -1714,7 +1617,6 @@ kbd {
     .footer-section h4 { font-size: 1rem; }
     .footer-legal p { font-size: 0.75rem; }
     
-    /* Botones flotantes */
     .whatsapp-float { 
         width: 55px; 
         height: 55px; 
@@ -1730,7 +1632,6 @@ kbd {
         font-size: 1rem;
     }
     
-    /* Sidebar compacto móvil */
     .sidebar { 
         position: static;
         margin-top: var(--espacio-lg);
@@ -1738,7 +1639,6 @@ kbd {
     .sidebar-section { padding: var(--espacio-md); }
     .sidebar-compact .sidebar-section { padding: 1rem; }
     
-    /* Toasts móvil */
     .toast-container { 
         top: auto;
         bottom: 90px;
@@ -1748,7 +1648,6 @@ kbd {
     }
     .toast { font-size: 0.9rem; }
     
-    /* Botones touch-friendly */
     .btn { 
         padding: 0.9rem 1.5rem;
         min-height: 44px;
@@ -1760,7 +1659,6 @@ kbd {
     
     .aviso-directorio { font-size: 0.75rem; text-align: left; }
 
-    /* Contacto multicanal móvil */
     .smart-contact-buttons {
         bottom: 15px;
         right: 15px;
@@ -1770,20 +1668,24 @@ kbd {
     .btn-tooltip { display: none; }
 }
 
-/* ========================================
-   MÓVIL MUY PEQUEÑO (360px)
-   ======================================== */
 @media (max-width: 360px) {
-    .hero-title { font-size: 1.4rem; }
-    .hero-buttons { grid-template-columns: 1fr; }
+    .hero-title { font-size: 1.3rem; }
+    .hero-buttons { 
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.4rem;
+    }
+    .hero-buttons .btn { 
+        padding: 0.6rem 0.3rem; 
+        font-size: 0.75rem;
+    }
+    .hero-buttons .btn i {
+        font-size: 0.85rem;
+    }
     .stats-grid { grid-template-columns: 1fr; }
-    .logo h1 { font-size: 1.1rem; }
+    .logo h1 { font-size: 1.05rem; }
+    .tagline { font-size: 0.6rem; }
 }
 
-/* ========================================
-   NUEVO: OPTIMIZACIÓN DE TARJETAS PREMIUM (DESKTOP)
-   Layout horizontal para ahorrar espacio vertical
-   ======================================== */
 @media (min-width: 992px) {
     .category-card:not(.minimal) {
         display: grid;
@@ -1806,7 +1708,7 @@ kbd {
     }
 
     .category-card:not(.minimal) .category-services {
-        display: none; /* Ocultar lista larga en desktop para ahorrar espacio */
+        display: none;
     }
 
     .category-card:not(.minimal) .category-actions {

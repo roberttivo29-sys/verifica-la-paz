@@ -1,18 +1,15 @@
 // ========================================
-// VERIFICA LA PAZ - JavaScript v8.2
+// VERIFICA LA PAZ - JavaScript v8.3
 // Arquitectura: 100% Frontend (Sin Backend)
 // Actualizado: Octubre 2026
-// Incluye: Búsqueda Rápida (Ctrl+K), 
-// Inyección de Contacto Multicanal,
-// Caché, Escape HTML, Lazy Loading.
+// Enfoque: CTA WhatsApp en Hero + Ctrl+K oculto
 // ========================================
 
 window.VerificaLP = window.VerificaLP || {};
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Verifica La Paz - JavaScript v8.2 cargado correctamente');
+    console.log('✅ Verifica La Paz - JavaScript v8.3 cargado correctamente');
     
-    // Inicializadores Originales (Mantenidos)
     initHeader();
     initMenuHamburguesa();
     initFadeInAnimations();
@@ -26,21 +23,18 @@ document.addEventListener('DOMContentLoaded', function() {
     initConexionLenta();
     initServiceWorker();
     initBackToTop();
-    initBusquedaInteligente(); // Búsqueda del Hero
     initPrefetchEnlaces();
     initModoOscuroSistema();
     initMobileAccordion();
-    
-    // Nuevas Funcionalidades v8.2
-    initQuickSearch();       // Búsqueda Rápida Ctrl+K
-    initSmartContact();      // Inyección de botones flotantes
-    cargarDestacados();      // Carga inicial de destacados
+    initQuickSearch();       // Ctrl+K oculto (accesible solo por atajo)
+    initSmartContact();      // Botones flotantes
+    cargarDestacados();
     
     console.log('✅ Todos los módulos inicializados correctamente');
 });
 
 // ========================================
-// UTILIDADES Y SEGURIDAD
+// UTILIDADES
 // ========================================
 
 function normalizarTexto(texto) {
@@ -141,7 +135,6 @@ async function cargarProveedoresEnContenedor(contenedorId, categoria, palabraCla
     try {
         const todos = await obtenerProveedores();
         
-        // Ordenar por plan (Ultra > Premium > Gratuito)
         const ordenPorPlan = { 'ultra_premium': 0, 'premium': 1, 'gratuito': 2 };
         todos.sort((a, b) => (ordenPorPlan[a.tipo_plan] || 2) - (ordenPorPlan[b.tipo_plan] || 2));
         
@@ -217,12 +210,11 @@ function generarTarjetaProveedor(p) {
         html24h = `<span class="badge-24horas"><i class="fas fa-moon"></i> Atención 24h</span><p class="aviso-24horas">⚠️ Te sugerimos llamar para confirmar disponibilidad en horarios nocturnos o festivos.</p>`;
     }
     
-    // Determinar zona (La Paz o El Alto) basado en dirección
     let zonaBadge = '';
     if (p.direccion) {
         const dirLower = p.direccion.toLowerCase();
         if (dirLower.includes('el alto')) zonaBadge = '<span style="font-size:0.7rem; background:#e2e8f0; padding:2px 6px; border-radius:4px; margin-left:5px;">📍 El Alto</span>';
-        else if (dirLower.includes('la paz')) zonaBadge = '<span style="font-size:0.7rem; background:#e2e8f0; padding:2px 6px; border-radius:4px; margin-left:5px;">📍 La Paz</span>';
+        else if (dirLower.includes('la paz')) zonaBadge = '<span style="font-size:0.7rem; background:#e2e8f0; padding:2px 6px; border-radius:4px; margin-left:5px;"> La Paz</span>';
     }
 
     return `
@@ -306,7 +298,7 @@ function generarTarjetaDestacada(p) {
 }
 
 // ========================================
-// INICIALIZADORES ORIGINALES
+// INICIALIZADORES
 // ========================================
 
 function initMobileAccordion() {
@@ -485,56 +477,6 @@ function initBackToTop() {
     backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-function initBusquedaInteligente() {
-    const searchInput = document.getElementById('busquedaGlobal');
-    const searchResults = document.getElementById('searchResults');
-    if (!searchInput || !searchResults) return;
-    
-    const datosBusqueda = [
-        { nombre: 'Salud y Bienestar', categoria: 'salud', icono: 'fa-heartbeat', url: 'salud.html', tipo: 'Categoría' },
-        { nombre: 'Mantenimiento del Hogar', categoria: 'hogar', icono: 'fa-tools', url: 'hogar.html', tipo: 'Categoría' },
-        { nombre: 'Materiales de Construcción', categoria: 'construccion', icono: 'fa-cubes', url: 'construccion.html', tipo: 'Categoría' },
-        { nombre: 'Talleres Automotrices', categoria: 'automotriz', icono: 'fa-car', url: 'automotriz.html', tipo: 'Categoría' },
-        { nombre: 'Tecnología y Redes', categoria: 'tecnologia', icono: 'fa-laptop-code', url: 'tecnologia.html', tipo: 'Categoría' },
-        { nombre: 'Servicios de Despedida', categoria: 'funeraria', icono: 'fa-dove', url: 'funerarias.html', tipo: 'Categoría' },
-        { nombre: 'Servicios para Eventos', categoria: 'eventos', icono: 'fa-calendar-alt', url: 'eventos.html', tipo: 'Categoría' },
-        { nombre: 'Imagen y Cuidado Personal', categoria: 'imagen', icono: 'fa-spa', url: 'imagen.html', tipo: 'Categoría' },
-        { nombre: 'Contacto', categoria: 'contacto', icono: 'fa-envelope', url: 'contacto.html', tipo: 'Página' }
-    ];
-    
-    let debounceTimer;
-    searchInput.addEventListener('input', (e) => {
-        clearTimeout(debounceTimer);
-        const query = e.target.value.trim().toLowerCase();
-        if (query.length < 2) { searchResults.classList.remove('active'); searchResults.innerHTML = ''; return; }
-        
-        debounceTimer = setTimeout(() => {
-            const resultados = datosBusqueda.filter(item => 
-                item.nombre.toLowerCase().includes(query) || item.categoria.includes(query)
-            ).slice(0, 8);
-            
-            if (resultados.length === 0) {
-                searchResults.innerHTML = `<div class="search-result-item" style="cursor: default;"><i class="fas fa-search"></i><div class="search-result-info"><strong>No se encontraron resultados</strong><span>Intenta con otros términos</span></div></div>`;
-            } else {
-                searchResults.innerHTML = resultados.map(item => `
-                    <a href="${item.url}" class="search-result-item" tabindex="0">
-                        <i class="fas ${item.icono}"></i>
-                        <div class="search-result-info">
-                            <strong>${item.nombre.replace(new RegExp(`(${query})`, 'gi'), '<mark style="background: var(--dorado-claro); padding: 0 2px; border-radius: 2px;">$1</mark>')}</strong>
-                            <span>${item.tipo}</span>
-                        </div>
-                    </a>
-                `).join('');
-            }
-            searchResults.classList.add('active');
-        }, 200);
-    });
-    
-    document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) searchResults.classList.remove('active');
-    });
-}
-
 function initPrefetchEnlaces() {
     const enlacesInternos = document.querySelectorAll('a[href^="/"]:not([target="_blank"]), a[href$=".html"]:not([target="_blank"])');
     const prefetchCache = new Set();
@@ -563,12 +505,10 @@ function initModoOscuroSistema() {
 }
 
 // ========================================
-// NUEVAS FUNCIONALIDADES v8.2
+// BÚSQUEDA RÁPIDA OCULTA (Ctrl+K)
 // ========================================
 
-// 1. Búsqueda Rápida (Ctrl + K)
 function initQuickSearch() {
-    // Crear modal dinámicamente
     const modalHTML = `
         <div id="quickSearchModal" class="quick-search-modal">
             <div class="quick-search-overlay"></div>
@@ -598,18 +538,14 @@ function initQuickSearch() {
     let currentIndex = -1;
     let currentResults = [];
 
-    // Atajos de teclado
     document.addEventListener('keydown', (e) => {
-        // Abrir con Ctrl/Cmd + K
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
             openQuickSearch();
         }
-        // Cerrar con ESC
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeQuickSearch();
         }
-        // Navegación dentro del modal
         if (modal.classList.contains('active')) {
             if (e.key === 'ArrowDown') {
                 e.preventDefault();
@@ -624,7 +560,6 @@ function initQuickSearch() {
                 window.location.href = currentResults[currentIndex].url;
             }
         }
-        // Atajos directos de categoría (solo si no hay modal abierto y no se escribe en input)
         if (!modal.classList.contains('active') && !e.target.matches('input, textarea')) {
             const shortcuts = { 's': 'salud.html', 'h': 'hogar.html', 'a': 'automotriz.html', 't': 'tecnologia.html', 'c': 'construccion.html' };
             if (shortcuts[e.key.toLowerCase()]) window.location.href = shortcuts[e.key.toLowerCase()];
@@ -639,23 +574,25 @@ function initQuickSearch() {
         
         if (query.length < 2) { resultsDiv.innerHTML = ''; return; }
         
-        // Buscar en categorías estáticas
         const categorias = [
             { nombre: 'Salud y Bienestar', url: 'salud.html', icono: 'fa-heartbeat', tipo: 'Categoría' },
             { nombre: 'Mantenimiento del Hogar', url: 'hogar.html', icono: 'fa-tools', tipo: 'Categoría' },
             { nombre: 'Talleres Automotrices', url: 'automotriz.html', icono: 'fa-car', tipo: 'Categoría' },
-            { nombre: 'Tecnología y Redes', url: 'tecnologia.html', icono: 'fa-laptop-code', tipo: 'Categoría' }
+            { nombre: 'Tecnología y Redes', url: 'tecnologia.html', icono: 'fa-laptop-code', tipo: 'Categoría' },
+            { nombre: 'Materiales de Construcción', url: 'construccion.html', icono: 'fa-cubes', tipo: 'Categoría' },
+            { nombre: 'Servicios de Despedida', url: 'funerarias.html', icono: 'fa-dove', tipo: 'Categoría' },
+            { nombre: 'Servicios para Eventos', url: 'eventos.html', icono: 'fa-calendar-alt', tipo: 'Categoría' },
+            { nombre: 'Imagen y Cuidado Personal', url: 'imagen.html', icono: 'fa-spa', tipo: 'Categoría' }
         ];
         
         let resultados = categorias.filter(c => c.nombre.toLowerCase().includes(query));
         
-        // Buscar en proveedores (asíncrono)
         try {
             const proveedores = await obtenerProveedores();
             const provFiltrados = proveedores.filter(p => 
                 (p.nombre && p.nombre.toLowerCase().includes(query)) || 
                 (p.subcategoria && p.subcategoria.toLowerCase().includes(query))
-            ).slice(0, 5); // Máximo 5 proveedores
+            ).slice(0, 5);
             
             provFiltrados.forEach(p => {
                 resultados.push({
@@ -722,7 +659,10 @@ function initQuickSearch() {
     }
 }
 
-// 2. Inyección de Contacto Multicanal Inteligente
+// ========================================
+// INYECCIÓN DE CONTACTO MULTICANAL
+// ========================================
+
 function initSmartContact() {
     if (document.getElementById('smart-contact-container')) return;
     
@@ -758,7 +698,6 @@ function initSmartContact() {
     
     document.body.appendChild(container);
     
-    // Animación de entrada escalonada
     setTimeout(() => {
         document.getElementById('btn-whatsapp').classList.add('visible');
     }, 500);
@@ -769,7 +708,6 @@ function initSmartContact() {
         document.getElementById('btn-email').classList.add('visible');
     }, 1100);
 
-    // Invitación sutil a Telegram en Sidebar (Desktop)
     if (!isMobile) {
         const sidebar = document.querySelector('.sidebar');
         if (sidebar && !document.querySelector('.telegram-subtle-invite')) {
