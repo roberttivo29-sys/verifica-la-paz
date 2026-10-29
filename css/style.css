@@ -1,7 +1,7 @@
 /* ========================================
-   VERIFICA LA PAZ - CSS v8.1 COMPLETO
+   VERIFICA LA PAZ - CSS v8.2 OPTIMIZADO
    Diseño: Glassmorphism + Neumorphism
-   Rediseño: Tarjetas minimalistas + Sidebar compacto
+   Rediseño: Tarjetas compactas + Multicanal
    Mobile First + Desktop Optimized
    Última actualización: Octubre 2026
    ======================================== */
@@ -1261,6 +1261,201 @@ body {
 }
 
 /* ========================================
+   NUEVO: CONTACTO MULTICANAL INTELIGENTE
+   ======================================== */
+.smart-contact-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.contact-button-wrapper {
+    position: relative;
+    transform: translateX(150%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.contact-button-wrapper.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.contact-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    position: relative;
+    text-decoration: none;
+}
+
+.contact-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.contact-btn.whatsapp { background: #25D366; }
+.contact-btn.telegram { background: #0088cc; }
+.contact-btn.email { background: #EA4335; }
+
+.contact-btn.primary {
+    width: 64px;
+    height: 64px;
+    font-size: 2rem;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+@keyframes pulse-whatsapp {
+    0%, 100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7); }
+}
+
+.btn-tooltip {
+    position: absolute;
+    right: 70px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.contact-btn:hover .btn-tooltip { opacity: 1; }
+
+.telegram-subtle-invite {
+    background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.telegram-subtle-invite p { margin: 0 0 12px 0; font-size: 0.9rem; font-weight: 500; }
+.telegram-subtle-invite a { color: white; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.3s; }
+.telegram-subtle-invite a:hover { gap: 12px; }
+
+/* ========================================
+   NUEVO: BÚSQUEDA RÁPIDA (CTRL+K)
+   ======================================== */
+.quick-search-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 9999;
+}
+
+.quick-search-modal.active {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.quick-search-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.quick-search-container {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 640px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.search-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.search-header i { font-size: 1.25rem; color: #64748b; }
+
+#quickSearchInput {
+    flex: 1;
+    border: none;
+    font-size: 1.1rem;
+    outline: none;
+    color: #1e293b;
+}
+
+.search-shortcuts {
+    padding: 12px 24px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.shortcut-label { font-weight: 600; }
+
+kbd {
+    background: #e2e8f0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    border: 1px solid #cbd5e1;
+}
+
+.quick-search-results {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.quick-result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: #1e293b;
+    transition: background 0.2s;
+}
+
+.quick-result-item:hover, .quick-result-item.active { background: #f1f5f9; }
+.quick-result-item i:first-child { width: 20px; color: #3b82f6; }
+
+.result-info { flex: 1; }
+.result-info strong { display: block; font-weight: 600; }
+.result-info span { font-size: 0.85rem; color: #64748b; }
+
+.search-footer {
+    padding: 12px 24px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* ========================================
    RESPONSIVE - NAV EXTENSA (10+ categorías)
    ======================================== */
 @media (min-width: 1400px) {
@@ -1564,6 +1759,15 @@ body {
     }
     
     .aviso-directorio { font-size: 0.75rem; text-align: left; }
+
+    /* Contacto multicanal móvil */
+    .smart-contact-buttons {
+        bottom: 15px;
+        right: 15px;
+    }
+    .contact-btn { width: 50px; height: 50px; font-size: 1.3rem; }
+    .contact-btn.primary { width: 56px; height: 56px; }
+    .btn-tooltip { display: none; }
 }
 
 /* ========================================
@@ -1574,13 +1778,45 @@ body {
     .hero-buttons { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr; }
     .logo h1 { font-size: 1.1rem; }
-    .g.1, of: and0 to.2
- to sp of't.8 to to to
-,)7,, sp,3 sp. and to,
- sp,)0 to sp to to: ( sp
+}
 
+/* ========================================
+   NUEVO: OPTIMIZACIÓN DE TARJETAS PREMIUM (DESKTOP)
+   Layout horizontal para ahorrar espacio vertical
+   ======================================== */
+@media (min-width: 992px) {
+    .category-card:not(.minimal) {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 1.5rem;
+        padding: 1.25rem;
+        align-items: start;
+    }
 
-,.)
- to
-, sp sp1 to sp  to, of sp.,: sp1
-22 to't..98 to sp sp: to. sp sp sp sp0, sp
+    .category-card:not(.minimal) .galeria-proveedor {
+        margin-bottom: 0;
+        height: 140px;
+    }
+
+    .category-card:not(.minimal) .galeria-1 .img-galeria,
+    .category-card:not(.minimal) .galeria-2 .img-galeria,
+    .category-card:not(.minimal) .galeria-3 .img-principal,
+    .category-card:not(.minimal) .galeria-4 .img-principal {
+        height: 140px;
+    }
+
+    .category-card:not(.minimal) .category-services {
+        display: none; /* Ocultar lista larga en desktop para ahorrar espacio */
+    }
+
+    .category-card:not(.minimal) .category-actions {
+        justify-content: flex-start;
+        margin-top: 0.75rem;
+    }
+
+    .category-card:not(.minimal) .category-actions .btn {
+        min-width: auto;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}

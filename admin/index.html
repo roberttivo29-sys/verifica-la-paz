@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Administración - Verifica La Paz</title>
+  <title>Panel de Administración Seguro - Verifica La Paz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     body { background: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
-    .login-container { max-width: 400px; margin: 100px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .login-container { max-width: 420px; margin: 80px auto; padding: 35px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
     .admin-container { max-width: 1400px; margin: 20px auto; padding: 20px; }
     .hidden { display: none !important; }
     .provider-card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.2s; }
@@ -46,31 +46,78 @@
     .no-results i { font-size: 3rem; margin-bottom: 10px; }
     
     .results-counter { background: #EFF6FF; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; color: #1E40AF; font-weight: 600; }
+
+    /* Nuevos estilos de seguridad */
+    .security-badge {
+      background: #10B981;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 15px;
+    }
+    .session-timer {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-left: 10px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- LOGIN -->
+  <!-- LOGIN SEGURO -->
   <div id="loginSection" class="login-container">
-    <h3 class="text-center mb-4"><i class="fas fa-shield-alt text-primary"></i> Admin Verifica La Paz</h3>
-    <div class="mb-3">
-      <label class="form-label">GitHub Personal Access Token</label>
-      <input type="password" id="tokenInput" class="form-control" placeholder="ghp_...">
-      <small class="text-muted">Genera uno en: github.com/settings/tokens (scope: repo)</small>
+    <div class="text-center mb-4">
+      <div class="security-badge">
+        <i class="fas fa-shield-alt"></i> Conexión Segura
+      </div>
+      <h3 class="mb-1"><i class="fas fa-shield-alt text-primary"></i> Admin Verifica La Paz</h3>
+      <p class="text-muted small">Panel de Administración Seguro</p>
     </div>
-    <button onclick="login()" class="btn btn-primary w-100">
-      <i class="fab fa-github"></i> Ingresar
+    
+    <div class="mb-3">
+      <label class="form-label fw-bold">Usuario Administrador</label>
+      <input type="text" id="adminUser" class="form-control" placeholder="admin" value="admin">
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label fw-bold">Contraseña / GitHub Token</label>
+      <div class="input-group">
+        <input type="password" id="tokenInput" class="form-control" placeholder="ghp_...">
+        <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+          <i class="fas fa-eye" id="toggleIcon"></i>
+        </button>
+      </div>
+      <small class="text-muted d-block mt-1">Genera uno en: github.com/settings/tokens (scope: repo)</small>
+    </div>
+    
+    <button onclick="secureLogin()" class="btn btn-primary w-100 py-2">
+      <i class="fas fa-lock-open me-2"></i> Ingresar de forma segura
     </button>
-    <div id="loginError" class="alert alert-danger mt-3 hidden"></div>
+    
+    <div id="loginError" class="alert alert-danger mt-3 hidden small"></div>
+    
+    <div class="text-center mt-3">
+      <small class="text-muted"><i class="fas fa-info-circle"></i> La sesión expira en 2 horas o al cerrar la pestaña.</small>
+    </div>
   </div>
 
   <!-- ADMIN PANEL -->
   <div id="adminSection" class="admin-container hidden">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h3><i class="fas fa-shield-alt text-primary"></i> Panel de Administración</h3>
-      <button onclick="logout()" class="btn btn-outline-danger btn-sm">
-        <i class="fas fa-sign-out-alt"></i> Salir
-      </button>
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+      <div class="d-flex align-items-center">
+        <h3 class="mb-0"><i class="fas fa-shield-alt text-primary"></i> Panel de Administración</h3>
+        <span class="session-timer" id="sessionTimer"><i class="fas fa-clock"></i> Sesión activa</span>
+      </div>
+      <div>
+        <span class="badge bg-light text-dark border me-2" id="userDisplay"><i class="fas fa-user"></i> Admin</span>
+        <button onclick="logout()" class="btn btn-outline-danger btn-sm">
+          <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+        </button>
+      </div>
     </div>
 
     <!-- TABS DE NAVEGACIÓN -->
@@ -305,91 +352,137 @@
     const BRANCH = 'main';
     const FILE_PATH = 'data/proveedores.json';
     const IMGBB_API_KEY = '4fe0adea7f03a09e9c615226b80a533a';
+    const SESSION_TIMEOUT = 7200000; // 2 horas en milisegundos
     
     const subcategoriasPorCategoria = {
       "Salud y Bienestar": [
-        "Clínicas y Urgencias",
-        "Consultorios y Especialistas",
-        "Odontología",
-        "Laboratorios y Análisis",
-        "Veterinaria y Mascotas",
-        "Óptica y Audición",
-        "Ambulancias y Traslados",
-        "Fisioterapia y Rehabilitación",
-        "Otros Servicios de Salud"
+        "Clínicas y Urgencias", "Consultorios y Especialistas", "Odontología", "Laboratorios y Análisis",
+        "Veterinaria y Mascotas", "Óptica y Audición", "Ambulancias y Traslados", "Fisioterapia y Rehabilitación", "Otros Servicios de Salud"
       ],
       "Mantenimiento del Hogar": [
-        "Plomería",
-        "Electricidad",
-        "Albañilería y Reparaciones",
-        "Pintura y Acabados",
-        "Cerrajería",
-        "Carpintería",
-        "Limpieza y Fumigación",
-        "Jardinería y Paisajismo",
-        "Instalación y Mantenimiento de Gas",
-        "Otros Oficios del Hogar"
+        "Plomería", "Electricidad", "Albañilería y Reparaciones", "Pintura y Acabados", "Cerrajería",
+        "Carpintería", "Limpieza y Fumigación", "Jardinería y Paisajismo", "Instalación y Mantenimiento de Gas", "Otros Oficios del Hogar"
       ],
       "Materiales de Construcción": [
-        "Cemento, Estuco y Yeso",
-        "Áridos: Arena, Grava y Piedra",
-        "Ladrillos, Bloques y Prefabricados",
-        "Barracas de Madera y Cubiertas",
-        "Alquiler de Equipos y Maquinaria"
+        "Cemento, Estuco y Yeso", "Áridos: Arena, Grava y Piedra", "Ladrillos, Bloques y Prefabricados",
+        "Barracas de Madera y Cubiertas", "Alquiler de Equipos y Maquinaria"
       ],
       "Talleres Automotrices": [
-        "Taller Mecánico General",
-        "Frenos y Suspensión",
-        "Muñonería (Alineación y Balanceo)",
-        "Chapistería y Pintura",
-        "Electricidad y Electromecánica",
-        "Grúas y Auxilio Vial",
-        "Lavado y Detallado",
-        "Repuestos y Accesorios",
-        "Lubricentros y Cambio de Aceite",
-        "Otros Servicios Automotrices"
+        "Taller Mecánico General", "Frenos y Suspensión", "Muñonería (Alineación y Balanceo)", "Chapistería y Pintura",
+        "Electricidad y Electromecánica", "Grúas y Auxilio Vial", "Lavado y Detallado", "Repuestos y Accesorios",
+        "Lubricentros y Cambio de Aceite", "Otros Servicios Automotrices"
       ],
       "Tecnología y Redes": [
-        "Reparación de PC y Laptops",
-        "Reparación de Celulares y Tablets",
-        "Cámaras de Seguridad y CCTV",
-        "Redes e Internet",
-        "Soporte Técnico a Domicilio",
-        "Impresoras y Suministros de Oficina",
-        "Videojuegos y Consolas",
-        "Otros Servicios Tecnológicos"
+        "Reparación de PC y Laptops", "Reparación de Celulares y Tablets", "Cámaras de Seguridad y CCTV",
+        "Redes e Internet", "Soporte Técnico a Domicilio", "Impresoras y Suministros de Oficina", "Videojuegos y Consolas", "Otros Servicios Tecnológicos"
       ],
       "Servicios de Despedida": [
-        "Funerarias y Velatorios",
-        "Cremación y Urnas",
-        "Floristerías y Homenajes",
-        "Trámites y Gestoría Funeraria"
+        "Funerarias y Velatorios", "Cremación y Urnas", "Floristerías y Homenajes", "Trámites y Gestoría Funeraria"
       ],
       "Servicios para Eventos": [
-        "Filmación y Fotografía",
-        "Sonido e Iluminación",
-        "Bandas y Música en Vivo",
-        "Locales y Salones de Eventos",
-        "Decoración y Mobiliario",
-        "Catering y Banquetes",
-        "Animación y Espectáculos",
-        "Alquiler de Vestuario y Trajes",
-        "Otros Servicios para Eventos"
+        "Filmación y Fotografía", "Sonido e Iluminación", "Bandas y Música en Vivo", "Locales y Salones de Eventos",
+        "Decoración y Mobiliario", "Catering y Banquetes", "Animación y Espectáculos", "Alquiler de Vestuario y Trajes", "Otros Servicios para Eventos"
       ],
       "Imagen y Cuidado Personal": [
-        "Barberías",
-        "Salones de Belleza Unisex",
-        "Centros de Estética",
-        "Maquillaje Profesional",
-        "Spas y Masajes",
-        "Servicios a Domicilio"
+        "Barberías", "Salones de Belleza Unisex", "Centros de Estética", "Maquillaje Profesional", "Spas y Masajes", "Servicios a Domicilio"
       ]
     };
 
     let token = '';
     let providers = [];
     let fileSha = '';
+    let sessionTimerInterval;
 
+    // ==========================================
+    // FUNCIONES DE SEGURIDAD Y SESIÓN
+    // ==========================================
+    function togglePassword() {
+      const input = document.getElementById('tokenInput');
+      const icon = document.getElementById('toggleIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    async function secureLogin() {
+      const user = document.getElementById('adminUser').value.trim();
+      const inputToken = document.getElementById('tokenInput').value.trim();
+      
+      if (!inputToken) {
+        showError('Ingresa el Token de GitHub o contraseña');
+        return;
+      }
+
+      // Validar token contra la API de GitHub
+      try {
+        const res = await fetch('https://api.github.com/user', { 
+          headers: { 'Authorization': `token ${inputToken}` } 
+        });
+        
+        if (!res.ok) throw new Error('Token inválido o sin permisos de repo');
+        
+        const userData = await res.json();
+        
+        // Guardar en sessionStorage (se borra al cerrar la pestaña)
+        sessionStorage.setItem('gh_token', inputToken);
+        sessionStorage.setItem('gh_user', userData.login);
+        sessionStorage.setItem('login_time', Date.now().toString());
+        
+        token = inputToken;
+        document.getElementById('userDisplay').innerHTML = `<i class="fas fa-user"></i> ${userData.login}`;
+        
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('adminSection').classList.remove('hidden');
+        
+        startSessionTimer();
+        loadProviders();
+      } catch (e) {
+        showError('Error de autenticación: ' + e.message);
+      }
+    }
+
+    function logout() {
+      sessionStorage.clear();
+      clearInterval(sessionTimerInterval);
+      location.reload();
+    }
+
+    function startSessionTimer() {
+      const updateTimer = () => {
+        const loginTime = parseInt(sessionStorage.getItem('login_time'));
+        const elapsed = Date.now() - loginTime;
+        const remaining = SESSION_TIMEOUT - elapsed;
+        
+        if (remaining <= 0) {
+          alert('Tu sesión ha expirado por seguridad. Por favor inicia sesión nuevamente.');
+          logout();
+          return;
+        }
+        
+        const minutes = Math.floor(remaining / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+        document.getElementById('sessionTimer').innerHTML = `<i class="fas fa-clock"></i> Sesión expira en: ${minutes}m ${seconds}s`;
+      };
+      
+      updateTimer();
+      sessionTimerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('loginError');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    // ==========================================
+    // FUNCIONES DE NAVEGACIÓN Y UI
+    // ==========================================
     function cambiarTab(tab) {
       document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
       if (tab === 'gestion') {
@@ -516,37 +609,9 @@
       }
     }
 
-    function login() {
-      token = document.getElementById('tokenInput').value.trim();
-      if (!token) {
-        showError('Ingresa un token válido');
-        return;
-      }
-      fetch('https://api.github.com/user', { headers: { 'Authorization': `token ${token}` } })
-        .then(r => {
-          if (!r.ok) throw new Error('Token inválido o sin permisos');
-          return r.json();
-        })
-        .then(user => {
-          localStorage.setItem('gh_token', token);
-          document.getElementById('loginSection').classList.add('hidden');
-          document.getElementById('adminSection').classList.remove('hidden');
-          loadProviders();
-        })
-        .catch(e => showError('Error: ' + e.message));
-    }
-
-    function logout() {
-      localStorage.removeItem('gh_token');
-      location.reload();
-    }
-
-    function showError(msg) {
-      const el = document.getElementById('loginError');
-      el.textContent = msg;
-      el.classList.remove('hidden');
-    }
-
+    // ==========================================
+    // FUNCIONES DE DATOS (GITHUB API)
+    // ==========================================
     async function loadProviders() {
       document.getElementById('loading').classList.remove('hidden');
       document.getElementById('providersList').innerHTML = '';
@@ -912,13 +977,21 @@
       return container;
     }
 
+    // ==========================================
+    // INICIALIZACIÓN SEGURA
+    // ==========================================
     window.addEventListener('load', () => {
-      const savedToken = localStorage.getItem('gh_token');
-      if (savedToken) {
+      const savedToken = sessionStorage.getItem('gh_token');
+      const loginTime = sessionStorage.getItem('login_time');
+      const savedUser = sessionStorage.getItem('gh_user');
+      
+      // Verificar si hay sesión activa y no ha expirado
+      if (savedToken && loginTime && (Date.now() - parseInt(loginTime) < SESSION_TIMEOUT)) {
         token = savedToken;
-        document.getElementById('tokenInput').value = savedToken;
+        document.getElementById('userDisplay').innerHTML = `<i class="fas fa-user"></i> ${savedUser || 'Admin'}`;
         document.getElementById('loginSection').classList.add('hidden');
         document.getElementById('adminSection').classList.remove('hidden');
+        startSessionTimer();
         loadProviders();
       }
     });
