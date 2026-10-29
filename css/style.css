@@ -1,7 +1,7 @@
 /* ========================================
-   VERIFICA LA PAZ - CSS v8.8
+   VERIFICA LA PAZ - CSS v8.9
    Desktop: Número visible equilibrado
-   Móvil: Ultra compacto - 8 categorías visibles
+   Móvil: Balance perfecto - CTA horizontal + 8 categorías visibles
    Última actualización: Octubre 2026
    ======================================== */
 
@@ -1432,90 +1432,90 @@ kbd {
 }
 
 @media (max-width: 768px) {
-    .header { padding: 0.4rem 0; }
-    .logo h1 { font-size: 1.2rem; }
-    .logo h1 i { font-size: 1.1rem; }
-    .tagline { font-size: 0.6rem; }
+    .header { padding: 0.5rem 0; }
+    .logo h1 { font-size: 1.25rem; }
+    .logo h1 i { font-size: 1.15rem; }
+    .tagline { font-size: 0.65rem; }
     
     .hero { 
-        padding: 1rem 0.75rem;
+        padding: 1.25rem 1rem;
         border-radius: var(--radio-lg);
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
     }
     .hero-title { 
-        font-size: 1.3rem;
-        margin-bottom: 0.4rem;
-        line-height: 1.2;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.25;
     }
     .hero-subtitle,
     .hero-subtitle-short { 
-        font-size: 0.8rem;
-        margin-bottom: 0.6rem;
-        line-height: 1.4;
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.45;
     }
 
-    /* CTA WhatsApp Móvil - ULTRA COMPACTO */
+    /* CTA WhatsApp Móvil - BALANCEADO */
     .whatsapp-contact-box {
         flex-direction: row;
-        gap: 0.5rem;
-        padding: 0.6rem 1rem;
-        margin-bottom: 0.4rem;
+        gap: 0.75rem;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0.5rem;
         flex-wrap: nowrap;
     }
     
     .whatsapp-number {
-        font-size: 1.3rem;
-        gap: 0.3rem;
+        font-size: 1.5rem;
+        gap: 0.4rem;
         flex-shrink: 0;
     }
     
     .whatsapp-number i {
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
     
     .btn-whatsapp-directo {
         flex: 1;
         justify-content: center;
-        padding: 0.5rem 0.75rem;
-        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
         white-space: nowrap;
     }
     
     .btn-whatsapp-directo i {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .whatsapp-subtexto {
-        font-size: 0.7rem;
-        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        margin-bottom: 0.6rem;
     }
     
     .hero-buttons { 
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.4rem;
-        margin-top: 0.5rem;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
     }
     .hero-buttons .btn { 
-        padding: 0.5rem 0.3rem; 
-        font-size: 0.75rem;
+        padding: 0.6rem 0.4rem; 
+        font-size: 0.8rem;
     }
     .hero-buttons .btn i {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
     .hero-features { 
         flex-direction: column; 
-        gap: 0.3rem;
-        margin-bottom: 0.5rem;
+        gap: 0.35rem;
+        margin-bottom: 0.6rem;
     }
-    .hero-feature { font-size: 0.75rem; }
-    .hero-feature i { font-size: 0.85rem; }
+    .hero-feature { font-size: 0.8rem; }
+    .hero-feature i { font-size: 0.9rem; }
     .btn-provider-link { 
-        padding: 0.5rem 0.75rem;
-        font-size: 0.8rem;
+        padding: 0.6rem 0.9rem;
+        font-size: 0.85rem;
     }
     
     .section-title { 
-        font-size: 1.3rem;
+        font-size: 1.35rem;
         margin-bottom: var(--espacio-sm);
     }
     .section-description { 
@@ -1528,38 +1528,38 @@ kbd {
         gap: var(--espacio-sm);
     }
     .stat-card { padding: var(--espacio-md); }
-    .stat-icon { font-size: 1.5rem; }
-    .stat-number { font-size: 1.5rem; }
-    .stat-label { font-size: 0.75rem; }
+    .stat-icon { font-size: 1.75rem; }
+    .stat-number { font-size: 1.6rem; }
+    .stat-label { font-size: 0.8rem; }
     
     .category-card.minimal .category-services {
         display: block;
-        margin-top: 0.5rem;
-        padding-top: 0.5rem;
+        margin-top: 0.6rem;
+        padding-top: 0.6rem;
         border-top: 1px solid var(--gris-borde);
     }
     
     .category-card.minimal .category-services li {
-        font-size: 0.8rem;
-        padding: 0.2rem 0;
+        font-size: 0.82rem;
+        padding: 0.25rem 0;
     }
     
     .category-card.minimal {
-        padding: 1rem;
+        padding: 1.1rem;
     }
     
     .category-card.minimal .category-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
     }
     
     .category-card.minimal h3 {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
     
     .category-card.minimal > p {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
     }
     
     .categories-grid { 
@@ -1568,25 +1568,25 @@ kbd {
     }
     .category-card { padding: var(--espacio-md); }
     .category-icon { 
-        width: 55px; 
-        height: 55px; 
-        font-size: 1.8rem;
+        width: 58px; 
+        height: 58px; 
+        font-size: 1.9rem;
         margin-bottom: var(--espacio-sm);
     }
-    .category-card h3 { font-size: 1.15rem; }
-    .category-actions .btn { min-width: 110px; font-size: 0.8rem; }
+    .category-card h3 { font-size: 1.18rem; }
+    .category-actions .btn { min-width: 115px; font-size: 0.82rem; }
     
     .galeria-1,
-    .galeria-1 .img-galeria { height: 160px; }
+    .galeria-1 .img-galeria { height: 170px; }
     
     .galeria-2 { 
-        height: 130px !important; 
+        height: 135px !important; 
         flex-direction: row !important;
         gap: 0 !important;
     }
     .galeria-2 .img-galeria { 
         width: 50% !important;
-        height: 130px !important;
+        height: 135px !important;
         border-right: 2px solid white;
         flex-shrink: 0;
     }
@@ -1594,11 +1594,11 @@ kbd {
     
     .galeria-3, .galeria-4 { flex-direction: column; }
     .galeria-3 .img-principal,
-    .galeria-4 .img-principal { height: 130px; }
+    .galeria-4 .img-principal { height: 135px; }
     
     .galeria-secundarias { flex-direction: row !important; flex-wrap: nowrap; gap: 0; }
     .galeria-secundarias .img-galeria { 
-        height: 55px;
+        height: 58px;
         flex: 1;
         min-width: 0;
         border-right: 2px solid white;
@@ -1616,17 +1616,17 @@ kbd {
     .why-us-grid { grid-template-columns: 1fr; }
     .why-card { padding: var(--espacio-md); }
     .why-icon { 
-        width: 55px; 
-        height: 55px; 
-        font-size: 1.3rem;
+        width: 58px; 
+        height: 58px; 
+        font-size: 1.4rem;
     }
-    .why-card h3 { font-size: 1rem; }
+    .why-card h3 { font-size: 1.05rem; }
     
     .featured-section { 
         padding: var(--espacio-md);
         border-left-width: 4px;
     }
-    .featured-section h3 { font-size: 1.2rem; }
+    .featured-section h3 { font-size: 1.25rem; }
     
     .destacados-grid { 
         grid-template-columns: 1fr;
@@ -1638,23 +1638,23 @@ kbd {
         grid-template-columns: 1fr;
         gap: var(--espacio-lg);
     }
-    .footer-section h3 { font-size: 1.1rem; }
-    .footer-section h4 { font-size: 0.95rem; }
-    .footer-legal p { font-size: 0.7rem; }
+    .footer-section h3 { font-size: 1.15rem; }
+    .footer-section h4 { font-size: 0.98rem; }
+    .footer-legal p { font-size: 0.72rem; }
     
     .whatsapp-float { 
-        width: 50px; 
-        height: 50px; 
-        font-size: 1.4rem; 
-        bottom: 15px; 
-        right: 15px;
+        width: 52px; 
+        height: 52px; 
+        font-size: 1.5rem; 
+        bottom: 18px; 
+        right: 18px;
     }
     .back-to-top { 
-        bottom: 75px; 
-        right: 15px; 
-        width: 40px; 
-        height: 40px;
-        font-size: 0.9rem;
+        bottom: 80px; 
+        right: 18px; 
+        width: 42px; 
+        height: 42px;
+        font-size: 0.95rem;
     }
     
     .sidebar { 
@@ -1662,34 +1662,34 @@ kbd {
         margin-top: var(--espacio-lg);
     }
     .sidebar-section { padding: var(--espacio-md); }
-    .sidebar-compact .sidebar-section { padding: 0.75rem; }
+    .sidebar-compact .sidebar-section { padding: 0.85rem; }
     
     .toast-container { 
         top: auto;
-        bottom: 80px;
+        bottom: 85px;
         right: 10px; 
         left: 10px; 
         max-width: none;
     }
-    .toast { font-size: 0.85rem; }
+    .toast { font-size: 0.88rem; }
     
     .btn { 
-        padding: 0.75rem 1.25rem;
-        min-height: 40px;
+        padding: 0.8rem 1.35rem;
+        min-height: 42px;
     }
     .btn-sm { 
-        padding: 0.5rem 0.75rem;
-        min-height: 36px;
+        padding: 0.55rem 0.85rem;
+        min-height: 38px;
     }
     
-    .aviso-directorio { font-size: 0.7rem; text-align: left; }
+    .aviso-directorio { font-size: 0.72rem; text-align: left; }
 
     .smart-contact-buttons {
-        bottom: 12px;
-        right: 12px;
+        bottom: 15px;
+        right: 15px;
     }
-    .contact-btn { width: 45px; height: 45px; font-size: 1.2rem; }
-    .contact-btn.primary { width: 50px; height: 50px; }
+    .contact-btn { width: 48px; height: 48px; font-size: 1.25rem; }
+    .contact-btn.primary { width: 52px; height: 52px; }
     .btn-tooltip { display: none; }
 }
 
